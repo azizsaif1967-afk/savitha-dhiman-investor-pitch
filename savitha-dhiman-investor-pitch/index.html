@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VASTRA MODULAR — Investor Pitch | Modular Wedding Couture, Delhi NCR</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --wine: #6B2737;
+  --wine-dark: #4A1A26;
+  --rose: #C4848B;
+  --champagne: #F5EDE3;
+  --ivory: #FAF7F2;
+  --gold: #C9A96E;
+  --gold-light: #E8D5A8;
+  --charcoal: #2C2C2C;
+  --text: #3A3A3A;
+  --text-light: #777;
+  --border: #E8DFD4;
+  --white: #FFFFFF;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--ivory); color: var(--text); line-height: 1.7; font-weight: 300; }
+
+/* TYPOGRAPHY */
+h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 700; color: var(--charcoal); }
+.serif { font-family: 'Cormorant Garamond', serif; }
+.sans { font-family: 'Jost', sans-serif; }
+.uppercase { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; font-weight: 500; }
+.gold-text { color: var(--gold); }
+.wine-text { color: var(--wine); }
+
+/* NAVIGATION */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(250,247,242,0.95); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 64px;
+  transition: all 0.3s ease;
+}
+nav.scrolled { background: rgba(44,44,44,0.97); }
+nav.scrolled a { color: #ccc; }
+nav.scrolled a:hover { color: var(--gold); }
+nav.scrolled .nav-brand { color: #fff; }
+nav.scrolled .nav-brand span { color: var(--gold); }
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 20px; color: var(--charcoal); letter-spacing: 2px;
+}
+.nav-brand span { color: var(--wine); }
+.nav-links { display: flex; gap: 6px; }
+nav a {
+  text-decoration: none; font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text-light); padding: 8px 14px;
+  border-radius: 4px; transition: all 0.3s; font-weight: 400;
+}
+nav a:hover { color: var(--wine); background: rgba(107,39,55,0.06); }
+
+/* HERO SECTION */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 120px 48px 80px;
+  background: linear-gradient(160deg, var(--ivory) 0%, var(--champagne) 40%, #F0E4D8 100%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -150px; left: -150px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(107,39,55,0.05) 0%, transparent 70%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 800px; }
+.hero-label {
+  font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 24px; font-weight: 500;
+}
+.hero h1 {
+  font-size: clamp(48px, 7vw, 88px); line-height: 1.05;
+  margin-bottom: 24px; color: var(--charcoal);
+}
+.hero h1 em { font-style: italic; color: var(--wine); }
+.hero-sub {
+  font-size: 18px; color: var(--text-light); max-width: 560px;
+  margin: 0 auto 40px; line-height: 1.8; font-weight: 300;
+}
+.hero-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+.badge {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 8px 20px; border-radius: 30px; font-weight: 500;
+}
+.badge-wine { border: 1.5px solid var(--wine); color: var(--wine); }
+.badge-gold { border: 1.5px solid var(--gold); color: var(--gold); background: rgba(201,169,110,0.06); }
+.badge-fill { background: var(--wine); color: #fff; border: none; }
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--wine); color: #fff; text-decoration: none;
+  padding: 16px 40px; font-size: 12px; letter-spacing: 3px;
+  text-transform: uppercase; font-weight: 500; border-radius: 4px;
+  transition: all 0.3s;
+}
+.hero-cta:hover { background: var(--wine-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(107,39,55,0.2); }
+
+/* KPI STRIP */
+.kpi-strip {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  background: var(--charcoal); border-bottom: 3px solid var(--gold);
+}
+.kpi-item {
+  padding: 32px 24px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.3s;
+}
+.kpi-item:last-child { border-right: none; }
+.kpi-item:hover { background: rgba(201,169,110,0.08); }
+.kpi-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.kpi-value { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 700; color: #fff; }
+.kpi-sub { font-size: 11px; color: #888; margin-top: 4px; }
+
+/* SECTIONS */
+section { padding: 100px 48px; position: relative; }
+section.alt { background: var(--white); }
+section.dark { background: var(--charcoal); color: #fff; }
+section.dark h2, section.dark h3, section.dark h4 { color: #fff; }
+section.dark .section-num { color: var(--gold); }
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-num { font-size: 11px; letter-spacing: 4px; color: var(--wine); margin-bottom: 12px; display: block; font-weight: 500; }
+.section-title { font-size: clamp(32px, 4vw, 48px); margin-bottom: 16px; }
+.section-desc { font-size: 16px; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+section.dark .section-desc { color: #999; }
+
+/* CONTENT LAYOUTS */
+.container { max-width: 1200px; margin: 0 auto; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+/* CARDS */
+.card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+  padding: 36px; position: relative; overflow: hidden;
+  transition: all 0.4s ease;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+.card-premium {
+  background: linear-gradient(135deg, var(--charcoal) 0%, #1a1a1a 100%);
+  color: #fff; border: 1px solid rgba(201,169,110,0.2);
+}
+.card-premium h3, .card-premium h4 { color: #fff; }
+.card-accent { border-top: 3px solid var(--wine); }
+.card-gold { border-top: 3px solid var(--gold); }
+.card-title {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--wine); margin-bottom: 20px; font-weight: 500;
+}
+.card-premium .card-title { color: var(--gold); }
+
+/* IMAGE CARDS */
+.img-card {
+  border-radius: 8px; overflow: hidden; position: relative;
+  height: 420px; background-size: cover; background-position: center;
+}
+.img-card-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(44,44,44,0.9));
+  padding: 32px;
+}
+.img-card-overlay h3 { color: #fff; font-size: 24px; margin-bottom: 4px; }
+.img-card-overlay p { color: #ccc; font-size: 13px; }
+
+/* EDITORIAL IMAGE SECTIONS */
+.editorial-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px; margin-bottom: 64px;
+}
+.editorial-img {
+  border-radius: 8px; overflow: hidden; position: relative;
+  background: var(--champagne); min-height: 380px;
+  display: flex; align-items: flex-end; padding: 24px;
+}
+.editorial-img.tall { grid-row: span 2; min-height: 100%; }
+.editorial-img-inner {
+  width: 100%; height: 100%; position: absolute; top: 0; left: 0;
+  background-size: cover; background-position: center top;
+  transition: transform 0.6s ease;
+}
+.editorial-img:hover .editorial-img-inner { transform: scale(1.04); }
+.editorial-caption {
+  position: relative; z-index: 1; background: rgba(44,44,44,0.8);
+  backdrop-filter: blur(10px); padding: 12px 16px; border-radius: 6px;
+  font-size: 12px; color: #fff; letter-spacing: 1px;
+}
+
+/* TABLES */
+.pitch-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.pitch-table th {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  background: var(--charcoal); color: var(--gold); padding: 14px 18px; text-align: left;
+  font-weight: 500;
+}
+.pitch-table td { padding: 14px 18px; border-bottom: 1px solid var(--border); }
+.pitch-table tr:hover td { background: rgba(201,169,110,0.04); }
+.pitch-table .total td { font-weight: 600; background: var(--champagne); border-top: 2px solid var(--wine); }
+
+/* CHART CONTAINERS */
+.chart-container { position: relative; padding: 24px; }
+canvas { max-width: 100%; }
+
+/* BAR CHARTS (CSS) */
+.bar-chart { display: flex; flex-direction: column; gap: 14px; }
+.bar-row { display: flex; align-items: center; gap: 12px; }
+.bar-label { font-size: 12px; width: 140px; text-align: right; flex-shrink: 0; font-weight: 400; }
+.bar-track { flex: 1; background: var(--border); border-radius: 4px; height: 28px; position: relative; overflow: hidden; }
+.bar-fill {
+  height: 100%; border-radius: 4px; display: flex; align-items: center;
+  justify-content: flex-end; padding-right: 10px; transition: width 1s ease;
+}
+.bar-fill.wine { background: linear-gradient(135deg, var(--wine) 0%, var(--rose) 100%); }
+.bar-fill.gold { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); }
+.bar-fill.charcoal { background: var(--charcoal); }
+.bar-val { font-size: 11px; font-weight: 600; color: #fff; white-space: nowrap; }
+
+/* SWOT */
+.swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.swot-card { padding: 32px; border-radius: 8px; }
+.swot-card h4 { font-size: 20px; margin-bottom: 16px; }
+.swot-card ul { list-style: none; }
+.swot-card li { padding: 8px 0; font-size: 14px; border-bottom: 1px solid rgba(0,0,0,0.06); position: relative; padding-left: 20px; }
+.swot-card li::before { content: ''; position: absolute; left: 0; top: 16px; width: 8px; height: 2px; }
+.swot-s { background: linear-gradient(135deg, #f0faf0 0%, #e6f5e6 100%); border: 1px solid #c8e6c8; }
+.swot-s li::before { background: #2d7a2d; }
+.swot-w { background: linear-gradient(135deg, #fef5f0 0%, #fdeee6 100%); border: 1px solid #f0d4c4; }
+.swot-w li::before { background: #c47030; }
+.swot-o { background: linear-gradient(135deg, #f0f4fe 0%, #e6ecfd 100%); border: 1px solid #c4d4f0; }
+.swot-o li::before { background: #3060c4; }
+.swot-t { background: linear-gradient(135deg, #fef0f2 0%, #fde6ea 100%); border: 1px solid #f0c4cc; }
+.swot-t li::before { background: var(--wine); }
+
+/* FUNDRAISE SECTION */
+.raise-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: start; }
+.raise-card {
+  background: linear-gradient(135deg, var(--wine) 0%, var(--wine-dark) 100%);
+  color: #fff; border-radius: 12px; padding: 48px;
+}
+.raise-card h3 { color: #fff; font-size: 42px; margin-bottom: 8px; }
+.raise-card .raise-sub { color: var(--rose); font-size: 16px; margin-bottom: 32px; }
+.raise-item { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.15); font-size: 15px; }
+.raise-item:last-child { border-bottom: none; }
+.raise-val { font-weight: 600; color: var(--gold-light); }
+
+/* STAT HIGHLIGHT */
+.stat-highlight {
+  text-align: center; padding: 40px 20px;
+  border-radius: 8px;
+}
+.stat-highlight .stat-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 56px;
+  font-weight: 700; line-height: 1;
+}
+.stat-highlight .stat-label {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  margin-top: 8px; font-weight: 500;
+}
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+.tl-item { position: relative; margin-bottom: 32px; }
+.tl-item::before {
+  content: ''; position: absolute; left: -26px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--wine); border: 3px solid var(--ivory);
+  box-shadow: 0 0 0 2px var(--wine);
+}
+.tl-year { font-size: 11px; color: var(--gold); font-weight: 600; letter-spacing: 2px; }
+.tl-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; margin: 4px 0; }
+.tl-text { font-size: 13px; color: var(--text-light); }
+
+/* FOUNDER */
+.founder-section { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: center; }
+.founder-img {
+  width: 100%; aspect-ratio: 3/4; border-radius: 12px;
+  background: linear-gradient(135deg, var(--champagne) 0%, var(--rose) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-size: 120px;
+  color: var(--wine); opacity: 0.3;
+}
+.founder-quote {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 24px; line-height: 1.6; color: var(--wine);
+  border-left: 3px solid var(--gold); padding-left: 24px; margin: 24px 0;
+}
+
+/* FOOTER */
+footer {
+  background: var(--charcoal); color: #888; text-align: center;
+  padding: 48px; font-size: 12px; letter-spacing: 2px;
+}
+footer .footer-brand {
+  font-family: 'Cormorant Garamond', serif; font-size: 28px;
+  color: #fff; margin-bottom: 12px; font-weight: 700;
+}
+footer a { color: var(--gold); text-decoration: none; }
+
+/* ANIMATIONS */
+.fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+  .editorial-grid { grid-template-columns: 1fr 1fr; }
+  .raise-grid { grid-template-columns: 1fr; }
+  .founder-section { grid-template-columns: 1fr; }
+  nav { padding: 0 24px; }
+  section { padding: 64px 24px; }
+}
+@media (max-width: 768px) {
+  .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+  .grid-2, .grid-3, .grid-4, .swot-grid { grid-template-columns: 1fr; }
+  .editorial-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  nav { justify-content: center; }
+  .hero h1 { font-size: 40px; }
+}
+
+/* SCROLL INDICATOR */
+.scroll-indicator {
+  position: absolute; bottom: 40px; left: 50%;
+  transform: translateX(-50%); display: flex; flex-direction: column;
+  align-items: center; gap: 8px; opacity: 0.5;
+}
+.scroll-line { width: 1px; height: 40px; background: var(--wine); animation: scrollPulse 2s infinite; }
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; height: 30px; }
+  50% { opacity: 1; height: 45px; }
+}
+
+/* PRODUCT SHOWCASE */
+.showcase-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; margin-top: 48px;
+}
+.showcase-item {
+  border-radius: 10px; overflow: hidden; position: relative;
+  aspect-ratio: 3/4; cursor: pointer;
+  transition: all 0.4s ease;
+}
+.showcase-item:hover { transform: scale(1.03); box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+.showcase-item img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.showcase-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(44,44,44,0.85));
+  padding: 20px; transform: translateY(20px); opacity: 0;
+  transition: all 0.4s ease;
+}
+.showcase-item:hover .showcase-overlay { transform: translateY(0); opacity: 1; }
+.showcase-overlay span { color: #fff; font-size: 13px; font-weight: 500; letter-spacing: 1px; }
+
+/* INSIGHT BOX */
+.insight-box {
+  background: var(--white); border-left: 4px solid var(--wine);
+  padding: 20px 24px; margin-bottom: 16px; border-radius: 0 6px 6px 0;
+}
+.insight-box .ib-label { font-size: 10px; letter-spacing: 2px; color: var(--wine); text-transform: uppercase; margin-bottom: 6px; font-weight: 500; }
+.insight-box p { font-size: 13px; color: var(--text); }
+
+/* DONUT via CSS */
+.donut-container { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+.donut-svg { width: 180px; height: 180px; }
+.donut-svg circle { transition: stroke-dasharray 1s ease; }
+.donut-legend { flex: 1; }
+.legend-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.legend-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+.legend-text { font-size: 13px; flex: 1; }
+.legend-val { font-weight: 600; font-size: 14px; }
+
+/* COMPETITION PILLS */
+.comp-pill {
+  display: inline-block; padding: 4px 12px; border-radius: 20px;
+  font-size: 11px; font-weight: 500;
+}
+.comp-green { background: #e6f5e6; color: #2d7a2d; }
+.comp-orange { background: #fef0e0; color: #c47030; }
+.comp-red { background: #fde6ea; color: var(--wine); }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="mainNav">
+  <div class="nav-brand">VASTRA <span>MODULAR</span></div>
+  <div class="nav-links">
+    <a href="#vision">Vision</a>
+    <a href="#product">Product</a>
+    <a href="#market">Market</a>
+    <a href="#model">Model</a>
+    <a href="#competition">Competition</a>
+    <a href="#financials">Financials</a>
+    <a href="#fundraise">Fundraise</a>
+    <a href="#founder">Founder</a>
+  </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- HERO SECTION -->
+<!-- ============================================ -->
+<div class="hero" id="top">
+  <div class="hero-content">
+    <div class="hero-label">Investor Pitch &middot; Series Seed &middot; Delhi NCR</div>
+    <h1>Wear It <em>Beyond</em><br>the Wedding</h1>
+    <p class="hero-sub">India's first modular couture brand designing wedding clothing you'll wear for a lifetime &mdash; not just one night. Convertible silhouettes. Premium craftsmanship. Delhi NCR origins.</p>
+    <div class="hero-badges">
+      <span class="badge badge-fill">Modular Couture</span>
+      <span class="badge badge-wine">Delhi NCR</span>
+      <span class="badge badge-gold">Raising &#8377;1 Crore</span>
+      <span class="badge badge-wine">Pre-Revenue</span>
+    </div>
+    <a href="#fundraise" class="hero-cta">View Fundraise Details &rarr;</a>
+  </div>
+  <div class="scroll-indicator">
+    <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--wine);">Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- KPI STRIP -->
+<div class="kpi-strip">
+  <div class="kpi-item">
+    <div class="kpi-label">Raising</div>
+    <div class="kpi-value">&#8377;1 Cr</div>
+    <div class="kpi-sub">Seed Capital</div>
+  </div>
+  <div class="kpi-item">
+    <div class="kpi-label">Year 3 Revenue Target</div>
+    <div class="kpi-value">&#8377;20 Cr</div>
+    <div class="kpi-sub">FY 2028-29</div>
+  </div>
+  <div class="kpi-item">
+    <div class="kpi-label">Valuation (Pre-Money)</div>
+    <div class="kpi-value">&#8377;3.33 Cr</div>
+    <div class="kpi-sub">Based on 30% dilution</div>
+  </div>
+  <div class="kpi-item">
+    <div class="kpi-label">Founder Stake</div>
+    <div class="kpi-value">70%</div>
+    <div class="kpi-sub">Operational Founder</div>
+  </div>
+  <div class="kpi-item">
+    <div class="kpi-label">Target Market</div>
+    <div class="kpi-value">&#8377;2.5L Cr</div>
+    <div class="kpi-sub">Indian Wedding Market</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- THE PROBLEM -->
+<!-- ============================================ -->
+<section id="vision">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">01 &mdash; THE INSIGHT</span>
+      <h2 class="section-title">The &#8377;2 Lakh Outfit Worn Once</h2>
+      <p class="section-desc">Indian brides spend &#8377;50,000 to &#8377;5,00,000 on wedding clothing they never wear again. We're designing the solution.</p>
+    </div>
+
+    <div class="grid-2 fade-in">
+      <div>
+        <div class="card card-accent">
+          <div class="card-title">The Problem</div>
+          <h3 style="font-size:24px;margin-bottom:16px;">Beautiful clothing, designed for a single use</h3>
+          <p style="font-size:14px;margin-bottom:20px;">Every year, 10 million Indian weddings generate garments that sit unused in wardrobes. The average Indian bride spends &#8377;1.5-3 lakhs on bridal wear that cannot be repurposed, restyled, or reused. This is a massive waste of craft, capital, and closet space.</p>
+          <div class="insight-box">
+            <div class="ib-label">Key Statistic</div>
+            <p>87% of Indian brides report never wearing their wedding lehenga again after the wedding day.</p>
+          </div>
+          <div class="insight-box">
+            <div class="ib-label">Shifting Values</div>
+            <p>Gen-Z and millennial brides increasingly prioritise sustainability, versatility, and cost-per-wear over one-night extravagance.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card card-premium">
+          <div class="card-title">The Solution</div>
+          <h3 style="font-size:24px;margin-bottom:16px;">Modular wedding couture for a lifetime</h3>
+          <p style="font-size:14px;color:#ccc;margin-bottom:20px;">VASTRA MODULAR designs wedding garments with detachable elements, convertible silhouettes, and interchangeable components &mdash; so every bridal piece transforms into festive wear, evening wear, and occasion wear for years after the wedding.</p>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px;">
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <span style="color:var(--gold);font-size:18px;">&#10022;</span>
+              <div><strong style="color:#fff;">Detachable Dupattas</strong><br><span style="color:#aaa;font-size:13px;">Bridal dupatta converts to evening stole, work scarf, or festive drape</span></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <span style="color:var(--gold);font-size:18px;">&#10022;</span>
+              <div><strong style="color:#fff;">Convertible Lehengas</strong><br><span style="color:#aaa;font-size:13px;">Bridal skirt separates into cocktail skirt + festive blouse pairing</span></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <span style="color:var(--gold);font-size:18px;">&#10022;</span>
+              <div><strong style="color:#fff;">Modular Embroidery Panels</strong><br><span style="color:#aaa;font-size:13px;">Removable embroidered panels for day-to-evening transitions</span></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <span style="color:var(--gold);font-size:18px;">&#10022;</span>
+              <div><strong style="color:#fff;">Layered Architecture</strong><br><span style="color:#aaa;font-size:13px;">3-layer system: base garment + embellishment layer + drape accessory</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vision & Mission -->
+    <div class="grid-2 fade-in" style="margin-top:48px;">
+      <div class="card" style="border-left:4px solid var(--gold);border-top:none;">
+        <div class="card-title">Vision</div>
+        <h3 style="font-size:22px;">To become India's leading modular couture house &mdash; where every wedding garment is designed for a lifetime of celebrations.</h3>
+      </div>
+      <div class="card" style="border-left:4px solid var(--wine);border-top:none;">
+        <div class="card-title">Mission</div>
+        <h3 style="font-size:22px;">To craft premium, convertible wedding clothing that empowers modern Indian women to invest in beauty that lasts beyond a single occasion.</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- PRODUCT SHOWCASE -->
+<!-- ============================================ -->
+<section class="alt" id="product">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">02 &mdash; THE PRODUCT</span>
+      <h2 class="section-title">Modular Couture Architecture</h2>
+      <p class="section-desc">Every piece is engineered for transformation. Wedding day glamour that converts to festive elegance, evening sophistication, and everyday luxury.</p>
+    </div>
+
+    <!-- Product Images Grid -->
+    <div class="editorial-grid fade-in">
+      <div class="editorial-img tall" style="background:linear-gradient(135deg, #E8D5C4 0%, #D4B5A0 100%);">
+        <div class="editorial-img-inner" style="background-image:url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&q=80');"></div>
+        <div class="editorial-caption">Bridal Lehenga &mdash; Convertible to cocktail skirt + festive blouse</div>
+      </div>
+      <div class="editorial-img" style="background:linear-gradient(135deg, #F5E6D8 0%, #E8CDB8 100%);">
+        <div class="editorial-img-inner" style="background-image:url('https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=600&q=80');"></div>
+        <div class="editorial-caption">Modular Saree &mdash; Detachable pallu, pre-draped base</div>
+      </div>
+      <div class="editorial-img" style="background:linear-gradient(135deg, #F0E0D0 0%, #D8C0A8 100%);">
+        <div class="editorial-img-inner" style="background-image:url('https://images.unsplash.com/photo-1594463750939-ebb28c3f7f75?w=600&q=80');"></div>
+        <div class="editorial-caption">Embroidered Cape &mdash; Wedding overlay becomes evening jacket</div>
+      </div>
+      <div class="editorial-img" style="background:linear-gradient(135deg, #E0D0C0 0%, #C8B0A0 100%);">
+        <div class="editorial-img-inner" style="background-image:url('https://images.unsplash.com/photo-1609748340878-bc85b4b3fafc?w=600&q=80');"></div>
+        <div class="editorial-caption">Reception Gown &mdash; Converts to cocktail dress</div>
+      </div>
+      <div class="editorial-img" style="background:linear-gradient(135deg, #F5E0E5 0%, #E0C0C8 100%);">
+        <div class="editorial-img-inner" style="background-image:url('https://images.unsplash.com/photo-1519657814959-5df0e4e2d5a6?w=600&q=80');"></div>
+        <div class="editorial-caption">Sangeet Outfit &mdash; Reversible panels, day-to-night</div>
+      </div>
+    </div>
+
+    <!-- Product Lines -->
+    <div class="grid-3 fade-in">
+      <div class="card card-accent">
+        <div class="card-title">Bridal Modular</div>
+        <h3 style="font-size:32px;margin-bottom:4px;">&#8377;75K&ndash;3L</h3>
+        <p style="font-size:12px;color:var(--text-light);margin-bottom:16px;">Hero Category &middot; Custom Made-to-Measure</p>
+        <p style="font-size:13px;">Complete bridal lehengas, sarees, and gowns with modular architecture. Detachable trails, convertible blouses, reversible panels. Each garment yields 3-5 distinct looks.</p>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:11px;color:var(--wine);letter-spacing:2px;font-weight:500;">TARGET: 60% REVENUE</div>
+      </div>
+      <div class="card card-gold">
+        <div class="card-title">Festive Convertible</div>
+        <h3 style="font-size:32px;margin-bottom:4px;">&#8377;35K&ndash;75K</h3>
+        <p style="font-size:12px;color:var(--text-light);margin-bottom:16px;">Sangeet &middot; Reception &middot; Festive Wear</p>
+        <p style="font-size:13px;">Occasion wear designed for multi-event use. Convertible silhouettes for sangeet, reception, Diwali, and evening events. Each piece adapts to 2-3 different occasions.</p>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:11px;color:var(--gold);letter-spacing:2px;font-weight:500;">TARGET: 25% REVENUE</div>
+      </div>
+      <div class="card card-accent">
+        <div class="card-title">Accessories & Add-ons</div>
+        <h3 style="font-size:32px;margin-bottom:4px;">&#8377;5K&ndash;25K</h3>
+        <p style="font-size:12px;color:var(--text-light);margin-bottom:16px;">Dupattas &middot; Capes &middot; Embroidery Panels</p>
+        <p style="font-size:13px;">Stand-alone modular accessories: detachable dupattas, embroidered capes, belt systems, and clip-on embellishment panels. Designed to extend the wardrobe life of any outfit.</p>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:11px;color:var(--wine);letter-spacing:2px;font-weight:500;">TARGET: 15% REVENUE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- MARKET SIZE -->
+<!-- ============================================ -->
+<section class="dark" id="market">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">03 &mdash; THE MARKET</span>
+      <h2 class="section-title">A &#8377;2.5 Lakh Crore Opportunity</h2>
+      <p class="section-desc">The Indian wedding industry is one of the world's largest, and fashion is its single biggest spend category.</p>
+    </div>
+
+    <div class="grid-3 fade-in" style="margin-bottom:48px;">
+      <div class="stat-highlight" style="background:rgba(201,169,110,0.1);border-radius:8px;">
+        <div class="stat-num" style="color:var(--gold);">&#8377;2.5L Cr</div>
+        <div class="stat-label" style="color:#999;">Indian Wedding Industry (2026)</div>
+      </div>
+      <div class="stat-highlight" style="background:rgba(107,39,55,0.15);border-radius:8px;">
+        <div class="stat-num" style="color:var(--rose);">&#8377;60,000 Cr</div>
+        <div class="stat-label" style="color:#999;">Wedding Fashion Segment</div>
+      </div>
+      <div class="stat-highlight" style="background:rgba(201,169,110,0.1);border-radius:8px;">
+        <div class="stat-num" style="color:var(--gold);">&#8377;8,500 Cr</div>
+        <div class="stat-label" style="color:#999;">Delhi NCR Wedding Fashion</div>
+      </div>
+    </div>
+
+    <div class="grid-2 fade-in">
+      <div class="card card-premium">
+        <div class="card-title">Market Funnel</div>
+        <div class="bar-chart" style="margin-top:12px;">
+          <div class="bar-row">
+            <div class="bar-label" style="color:#999;">Total Addressable (TAM)</div>
+            <div class="bar-track" style="background:rgba(255,255,255,0.08);"><div class="bar-fill gold" style="width:100%"><span class="bar-val">&#8377;60,000 Cr</span></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label" style="color:#999;">Serviceable (SAM)</div>
+            <div class="bar-track" style="background:rgba(255,255,255,0.08);"><div class="bar-fill wine" style="width:42%"><span class="bar-val">&#8377;25,000 Cr</span></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label" style="color:#999;">Delhi NCR Focus</div>
+            <div class="bar-track" style="background:rgba(255,255,255,0.08);"><div class="bar-fill gold" style="width:14%"><span class="bar-val">&#8377;8,500 Cr</span></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label" style="color:#999;">Target SOM (Yr 3)</div>
+            <div class="bar-track" style="background:rgba(255,255,255,0.08);"><div class="bar-fill wine" style="width:1.5%;min-width:80px;"><span class="bar-val">&#8377;20 Cr</span></div></div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:#666;margin-top:16px;">SAM = Premium bridal fashion segment (&#8377;50K+ per outfit). SOM = achievable share in Delhi NCR with focused operations.</p>
+      </div>
+
+      <div>
+        <div class="card card-premium" style="margin-bottom:24px;">
+          <div class="card-title">Delhi NCR Advantage</div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="color:var(--gold);">&#9670;</span>
+              <div><strong style="color:#fff;">4.5 Lakh+ Weddings/Year</strong><br><span style="color:#999;font-size:13px;">One of the highest wedding density regions in India</span></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="color:var(--gold);">&#9670;</span>
+              <div><strong style="color:#fff;">Highest Per-Wedding Spend</strong><br><span style="color:#999;font-size:13px;">Delhi brides spend 40% more than national average on trousseau</span></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="color:var(--gold);">&#9670;</span>
+              <div><strong style="color:#fff;">Designer Hub</strong><br><span style="color:#999;font-size:13px;">Chandni Chowk, Shahpur Jat, DLF Emporio &mdash; India's fashion capital</span></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="color:var(--gold);">&#9670;</span>
+              <div><strong style="color:#fff;">Artisan Access</strong><br><span style="color:#999;font-size:13px;">NCR has India's largest cluster of embroidery & couture artisans</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-premium">
+          <div class="card-title">Why Now?</div>
+          <p style="font-size:13px;color:#ccc;">Gen-Z brides (26-32 age bracket) are the first generation actively seeking sustainable, multi-use fashion. The &#8377;60,000 Cr wedding fashion market has zero mainstream brands addressing the "wear it once" problem. This is a white-space opportunity.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customer Segments -->
+    <div class="grid-4 fade-in" style="margin-top:48px;">
+      <div class="card card-premium">
+        <div style="font-size:32px;margin-bottom:12px;">&#128141;</div>
+        <h4 style="font-size:16px;margin-bottom:8px;">Modern Brides</h4>
+        <p style="font-size:12px;color:#999;">Age 24-35, urban, professionally active. Spend &#8377;1-3L on wedding wear. Value versatility & sustainability.</p>
+        <div style="margin-top:12px;font-size:11px;color:var(--gold);font-weight:500;">PRIMARY SEGMENT</div>
+      </div>
+      <div class="card card-premium">
+        <div style="font-size:32px;margin-bottom:12px;">&#127880;</div>
+        <h4 style="font-size:16px;margin-bottom:8px;">Festive Fashion Buyers</h4>
+        <p style="font-size:12px;color:#999;">Women buying for Diwali, Karva Chauth, family functions. Spend &#8377;35-75K per occasion outfit.</p>
+        <div style="margin-top:12px;font-size:11px;color:var(--rose);font-weight:500;">SECONDARY SEGMENT</div>
+      </div>
+      <div class="card card-premium">
+        <div style="font-size:32px;margin-bottom:12px;">&#128142;</div>
+        <h4 style="font-size:16px;margin-bottom:8px;">Trousseau Buyers</h4>
+        <p style="font-size:12px;color:#999;">Families investing &#8377;5-15L in trousseau. Modular pieces = more looks per rupee invested. High volume.</p>
+        <div style="margin-top:12px;font-size:11px;color:var(--gold);font-weight:500;">HIGH VALUE SEGMENT</div>
+      </div>
+      <div class="card card-premium">
+        <div style="font-size:32px;margin-bottom:12px;">&#127758;</div>
+        <h4 style="font-size:16px;margin-bottom:8px;">NRI / Diaspora</h4>
+        <p style="font-size:12px;color:#999;">Indian diaspora wanting versatile Indian wear for Western social contexts. Willingness to pay premium. Online + referral.</p>
+        <div style="margin-top:12px;font-size:11px;color:var(--rose);font-weight:500;">EXPANSION SEGMENT</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- BUSINESS MODEL -->
+<!-- ============================================ -->
+<section id="model">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">04 &mdash; THE MODEL</span>
+      <h2 class="section-title">Revenue Engine</h2>
+      <p class="section-desc">A lean, founder-led atelier model with no fixed salary overhead for the founding team. Every rupee goes into product and growth.</p>
+    </div>
+
+    <div class="grid-2 fade-in">
+      <div>
+        <div class="card card-accent" style="margin-bottom:24px;">
+          <div class="card-title">Revenue Streams</div>
+          <div class="donut-container">
+            <svg class="donut-svg" viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="75" fill="none" stroke="#f0e8de" stroke-width="30" />
+              <!-- Bridal 60% -->
+              <circle cx="100" cy="100" r="75" fill="none" stroke="#6B2737" stroke-width="30" stroke-dasharray="282.6 188.4" stroke-dashoffset="117.75" transform="rotate(-90 100 100)" />
+              <!-- Festive 25% -->
+              <circle cx="100" cy="100" r="75" fill="none" stroke="#C9A96E" stroke-width="30" stroke-dasharray="117.75 353.25" stroke-dashoffset="-164.85" transform="rotate(-90 100 100)" />
+              <!-- Accessories 15% -->
+              <circle cx="100" cy="100" r="75" fill="none" stroke="#C4848B" stroke-width="30" stroke-dasharray="70.65 400.35" stroke-dashoffset="-282.6" transform="rotate(-90 100 100)" />
+            </svg>
+            <div class="donut-legend">
+              <div class="legend-row"><div class="legend-dot" style="background:var(--wine)"></div><span class="legend-text">Bridal Modular</span><span class="legend-val">60%</span></div>
+              <div class="legend-row"><div class="legend-dot" style="background:var(--gold)"></div><span class="legend-text">Festive Convertible</span><span class="legend-val">25%</span></div>
+              <div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div><span class="legend-text">Accessories & Add-ons</span><span class="legend-val">15%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Unit Economics (Target)</div>
+          <table class="pitch-table">
+            <thead><tr><th>Metric</th><th>Bridal</th><th>Festive</th><th>Accessories</th></tr></thead>
+            <tbody>
+              <tr><td>Avg. Order Value</td><td>&#8377;1,50,000</td><td>&#8377;55,000</td><td>&#8377;15,000</td></tr>
+              <tr><td>COGS (%)</td><td>38%</td><td>35%</td><td>30%</td></tr>
+              <tr><td>Gross Margin</td><td>62%</td><td>65%</td><td>70%</td></tr>
+              <tr><td>Production Time</td><td>4-6 weeks</td><td>2-3 weeks</td><td>1 week</td></tr>
+              <tr class="total"><td>Target Orders/Month (Yr 3)</td><td>80</td><td>60</td><td>120</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <div class="card card-premium" style="margin-bottom:24px;">
+          <div class="card-title">Business Model Architecture</div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="padding:16px;border:1px solid rgba(201,169,110,0.2);border-radius:6px;">
+              <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:6px;font-weight:500;">CHANNEL 1 &mdash; ATELIER (DIRECT)</div>
+              <p style="font-size:13px;color:#ccc;">Delhi NCR studio for custom bridal orders. Walk-in consultations + appointment-based fittings. This is the hero channel.</p>
+            </div>
+            <div style="padding:16px;border:1px solid rgba(201,169,110,0.2);border-radius:6px;">
+              <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:6px;font-weight:500;">CHANNEL 2 &mdash; ONLINE D2C</div>
+              <p style="font-size:13px;color:#ccc;">Website + Instagram commerce for festive/accessories. Lower AOV, higher volume. Pan-India reach from Year 2.</p>
+            </div>
+            <div style="padding:16px;border:1px solid rgba(201,169,110,0.2);border-radius:6px;">
+              <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:6px;font-weight:500;">CHANNEL 3 &mdash; TRUNK SHOWS & POP-UPS</div>
+              <p style="font-size:13px;color:#ccc;">Seasonal exhibitions at premium venues (Taj, Oberoi, Dhan Mill). Customer acquisition + brand building.</p>
+            </div>
+            <div style="padding:16px;border:1px solid rgba(201,169,110,0.2);border-radius:6px;">
+              <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:6px;font-weight:500;">CHANNEL 4 &mdash; MULTI-BRAND RETAIL (Yr 2+)</div>
+              <p style="font-size:13px;color:#ccc;">Pernia's Pop-Up Shop, Aza Fashions, KYNAH (USA). Wholesale at 50% markup. Volume driver post-Year 1.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Founder-Led, Zero Salary Model</div>
+          <div style="background:var(--champagne);padding:20px;border-radius:6px;margin-bottom:16px;">
+            <p style="font-size:14px;font-weight:500;color:var(--wine);margin-bottom:8px;">Savitha Dhiman &mdash; Founder (70% Equity)</p>
+            <p style="font-size:13px;">Takes no salary until profitability. Runs the tailor unit, manages the Delhi NCR team, and leads design operations directly. All capital goes into production, inventory, and growth.</p>
+          </div>
+          <p style="font-size:12px;color:var(--text-light);">This lean operating structure ensures burn rate stays minimal and every investor rupee translates to revenue-generating activity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- COMPETITION -->
+<!-- ============================================ -->
+<section class="alt" id="competition">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">05 &mdash; COMPETITIVE LANDSCAPE</span>
+      <h2 class="section-title">White Space in a Crowded Market</h2>
+      <p class="section-desc">No mainstream Indian designer brand currently offers modular, multi-use wedding fashion. We own this niche.</p>
+    </div>
+
+    <div class="fade-in" style="margin-bottom:48px;overflow-x:auto;">
+      <table class="pitch-table">
+        <thead>
+          <tr>
+            <th>Brand</th>
+            <th>Price Range</th>
+            <th>Modular/Multi-use?</th>
+            <th>Focus</th>
+            <th>Segment</th>
+            <th>Delhi Presence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(107,39,55,0.04);">
+            <td><strong style="color:var(--wine);">VASTRA MODULAR &#9733;</strong></td>
+            <td>&#8377;5K&ndash;3L</td>
+            <td><span class="comp-pill comp-green">Yes &mdash; Core USP</span></td>
+            <td>Modular Wedding + Festive</td>
+            <td>Premium</td>
+            <td><span class="comp-pill comp-green">HQ</span></td>
+          </tr>
+          <tr>
+            <td>Sabyasachi</td>
+            <td>&#8377;1.2L&ndash;15L+</td>
+            <td><span class="comp-pill comp-red">No</span></td>
+            <td>Ultra-luxury Bridal</td>
+            <td>Super Premium</td>
+            <td><span class="comp-pill comp-green">Yes</span></td>
+          </tr>
+          <tr>
+            <td>Manish Malhotra</td>
+            <td>&#8377;1.5L&ndash;12L</td>
+            <td><span class="comp-pill comp-red">No</span></td>
+            <td>Celebrity Couture</td>
+            <td>Super Premium</td>
+            <td><span class="comp-pill comp-green">Yes</span></td>
+          </tr>
+          <tr>
+            <td>Papa Don't Preach</td>
+            <td>&#8377;80K&ndash;3L</td>
+            <td><span class="comp-pill comp-orange">Partial &mdash; RTW versatility</span></td>
+            <td>Bridal + RTW + Accessories</td>
+            <td>Premium</td>
+            <td><span class="comp-pill comp-green">2 Stores</span></td>
+          </tr>
+          <tr>
+            <td>Anita Dongre</td>
+            <td>&#8377;50K&ndash;5L</td>
+            <td><span class="comp-pill comp-red">No</span></td>
+            <td>Sustainable Bridal</td>
+            <td>Premium</td>
+            <td><span class="comp-pill comp-green">Yes</span></td>
+          </tr>
+          <tr>
+            <td>House of Masaba</td>
+            <td>&#8377;30K&ndash;1.5L</td>
+            <td><span class="comp-pill comp-orange">Partial</span></td>
+            <td>Contemporary Indian</td>
+            <td>Mid-Premium</td>
+            <td><span class="comp-pill comp-orange">Limited</span></td>
+          </tr>
+          <tr>
+            <td>Chandni Chowk Designers</td>
+            <td>&#8377;20K&ndash;2L</td>
+            <td><span class="comp-pill comp-red">No</span></td>
+            <td>Traditional Bridal</td>
+            <td>Mass to Premium</td>
+            <td><span class="comp-pill comp-green">Stronghold</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SWOT -->
+    <div class="section-header" style="margin-top:64px;">
+      <span class="section-num">SWOT Analysis</span>
+      <h2 class="section-title" style="font-size:32px;">Strategic Position</h2>
+    </div>
+    <div class="swot-grid fade-in">
+      <div class="swot-card swot-s">
+        <h4 style="color:#2d7a2d;">Strengths</h4>
+        <ul>
+          <li>First-mover in modular wedding couture in India</li>
+          <li>Zero salary founder = lean capital structure</li>
+          <li>Delhi NCR = highest wedding spend per capita</li>
+          <li>Modular design = higher perceived value per rupee</li>
+          <li>Direct artisan team = quality control & margin protection</li>
+        </ul>
+      </div>
+      <div class="swot-card swot-w">
+        <h4 style="color:#c47030;">Weaknesses</h4>
+        <ul>
+          <li>Pre-revenue, idea-stage startup</li>
+          <li>No brand recognition yet</li>
+          <li>Small initial capital (&#8377;1 Cr) limits marketing spend</li>
+          <li>Founder doing multiple roles simultaneously</li>
+          <li>Modular design requires R&D investment in pattern engineering</li>
+        </ul>
+      </div>
+      <div class="swot-card swot-o">
+        <h4 style="color:#3060c4;">Opportunities</h4>
+        <ul>
+          <li>&#8377;60,000 Cr addressable market with zero modular competitors</li>
+          <li>Growing sustainability consciousness among millennial brides</li>
+          <li>NRI market expansion (US, UK, Canada) from Year 2</li>
+          <li>IP creation on modular garment engineering & patterns</li>
+          <li>Brand licensing & collaborations post-traction</li>
+        </ul>
+      </div>
+      <div class="swot-card swot-t">
+        <h4 style="color:var(--wine);">Threats</h4>
+        <ul>
+          <li>Established designers could replicate modular concept</li>
+          <li>Customer education needed (new category creation)</li>
+          <li>Artisan talent competition in Delhi NCR</li>
+          <li>Economic slowdown could impact premium wedding spend</li>
+          <li>Fast fashion brands may attempt lower-priced modular copies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FINANCIAL PROJECTIONS -->
+<!-- ============================================ -->
+<section class="dark" id="financials">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">06 &mdash; FINANCIALS</span>
+      <h2 class="section-title">3-Year Financial Projections</h2>
+      <p class="section-desc">Conservative base case with aggressive but achievable Year 3 target backed by order volume and capacity modelling.</p>
+    </div>
+
+    <!-- Revenue Chart -->
+    <div class="card card-premium fade-in" style="margin-bottom:48px;">
+      <div class="card-title">Revenue Trajectory</div>
+      <div style="display:flex;align-items:flex-end;gap:32px;justify-content:center;padding:40px 0;">
+        <div style="text-align:center;">
+          <div style="width:80px;background:linear-gradient(to top, var(--wine), var(--rose));border-radius:6px 6px 0 0;height:60px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;">
+            <span style="color:#fff;font-weight:700;font-size:14px;">&#8377;5Cr</span>
+          </div>
+          <div style="font-size:11px;color:#999;letter-spacing:1px;">FY 2026-27</div>
+          <div style="font-size:10px;color:var(--gold);">YEAR 1</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:80px;background:linear-gradient(to top, var(--wine), var(--rose));border-radius:6px 6px 0 0;height:140px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;">
+            <span style="color:#fff;font-weight:700;font-size:14px;">&#8377;12Cr</span>
+          </div>
+          <div style="font-size:11px;color:#999;letter-spacing:1px;">FY 2027-28</div>
+          <div style="font-size:10px;color:var(--gold);">YEAR 2</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:80px;background:linear-gradient(to top, var(--gold), var(--gold-light));border-radius:6px 6px 0 0;height:240px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;">
+            <span style="color:var(--charcoal);font-weight:700;font-size:16px;">&#8377;20Cr</span>
+          </div>
+          <div style="font-size:11px;color:#999;letter-spacing:1px;">FY 2028-29</div>
+          <div style="font-size:10px;color:var(--gold);">YEAR 3 TARGET</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2 fade-in">
+      <!-- P&L Table -->
+      <div class="card card-premium">
+        <div class="card-title">Projected P&L Summary</div>
+        <table class="pitch-table" style="font-size:13px;">
+          <thead>
+            <tr><th>Line Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Revenue</strong></td><td><strong>&#8377;5 Cr</strong></td><td><strong>&#8377;12 Cr</strong></td><td><strong>&#8377;20 Cr</strong></td></tr>
+            <tr><td>COGS (37%)</td><td>&#8377;1.85 Cr</td><td>&#8377;4.44 Cr</td><td>&#8377;7.40 Cr</td></tr>
+            <tr><td><strong>Gross Profit (63%)</strong></td><td><strong>&#8377;3.15 Cr</strong></td><td><strong>&#8377;7.56 Cr</strong></td><td><strong>&#8377;12.60 Cr</strong></td></tr>
+            <tr><td>Marketing & Sales</td><td>&#8377;0.75 Cr</td><td>&#8377;1.44 Cr</td><td>&#8377;2.00 Cr</td></tr>
+            <tr><td>Rent & Operations</td><td>&#8377;0.60 Cr</td><td>&#8377;0.96 Cr</td><td>&#8377;1.20 Cr</td></tr>
+            <tr><td>Team & Admin</td><td>&#8377;0.48 Cr</td><td>&#8377;1.08 Cr</td><td>&#8377;1.60 Cr</td></tr>
+            <tr><td>Technology & D2C</td><td>&#8377;0.20 Cr</td><td>&#8377;0.36 Cr</td><td>&#8377;0.50 Cr</td></tr>
+            <tr class="total"><td><strong>EBITDA</strong></td><td style="color:var(--gold);"><strong>&#8377;1.12 Cr</strong></td><td style="color:var(--gold);"><strong>&#8377;3.72 Cr</strong></td><td style="color:var(--gold);"><strong>&#8377;7.30 Cr</strong></td></tr>
+            <tr><td>EBITDA Margin</td><td>22%</td><td>31%</td><td>36.5%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Revenue Validation -->
+      <div>
+        <div class="card card-premium" style="margin-bottom:24px;">
+          <div class="card-title">Year 3 Revenue Validation</div>
+          <h4 style="font-size:18px;margin-bottom:16px;color:var(--gold);">&#8377;20 Cr = achievable with this math</h4>
+          <table class="pitch-table" style="font-size:12px;">
+            <thead><tr><th>Category</th><th>Orders/Yr</th><th>AOV</th><th>Revenue</th></tr></thead>
+            <tbody>
+              <tr><td>Bridal Modular</td><td>960</td><td>&#8377;1.25L</td><td>&#8377;12.0 Cr</td></tr>
+              <tr><td>Festive Convertible</td><td>720</td><td>&#8377;55K</td><td>&#8377;3.96 Cr</td></tr>
+              <tr><td>Accessories</td><td>1,440</td><td>&#8377;15K</td><td>&#8377;2.16 Cr</td></tr>
+              <tr><td>Trunk Shows & Pop-ups</td><td>12 events</td><td>&#8377;15L/event</td><td>&#8377;1.80 Cr</td></tr>
+              <tr class="total"><td><strong>Total</strong></td><td></td><td></td><td><strong>&#8377;19.92 Cr</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card card-premium">
+          <div class="card-title">Capacity Utilisation</div>
+          <div class="bar-chart">
+            <div class="bar-row">
+              <div class="bar-label" style="color:#999;width:100px;">Year 1</div>
+              <div class="bar-track" style="background:rgba(255,255,255,0.08);"><div class="bar-fill wine" style="width:35%"><span class="bar-val">35%</span></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label" style="color:#999;width:100px;">Year 2</div>
+              <div class="bar-track" style="background:rgba(255,255,255,0.08);"><div class="bar-fill wine" style="width:65%"><span class="bar-val">65%</span></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label" style="color:#999;width:100px;">Year 3</div>
+              <div class="bar-track" style="background:rgba(255,255,255,0.08);"><div class="bar-fill gold" style="width:88%"><span class="bar-val">88%</span></div></div>
+            </div>
+          </div>
+          <p style="font-size:11px;color:#666;margin-top:12px;">Based on 25 artisans (Yr1) scaling to 60 artisans (Yr3) with an in-house tailor unit managed by founder.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Use of Funds -->
+    <div class="card card-premium fade-in" style="margin-top:48px;">
+      <div class="card-title">Use of Funds &mdash; &#8377;1 Crore Allocation</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:20px;">
+        <div style="text-align:center;padding:20px;border:1px solid rgba(201,169,110,0.2);border-radius:8px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--gold);">35%</div>
+          <div style="font-size:11px;color:#999;letter-spacing:1px;margin-top:4px;">PRODUCTION<br>SETUP</div>
+          <div style="font-size:12px;color:#ccc;margin-top:8px;">&#8377;35L</div>
+        </div>
+        <div style="text-align:center;padding:20px;border:1px solid rgba(201,169,110,0.2);border-radius:8px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--gold);">25%</div>
+          <div style="font-size:11px;color:#999;letter-spacing:1px;margin-top:4px;">RAW<br>MATERIALS</div>
+          <div style="font-size:12px;color:#ccc;margin-top:8px;">&#8377;25L</div>
+        </div>
+        <div style="text-align:center;padding:20px;border:1px solid rgba(201,169,110,0.2);border-radius:8px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--gold);">20%</div>
+          <div style="font-size:11px;color:#999;letter-spacing:1px;margin-top:4px;">MARKETING<br>& BRAND</div>
+          <div style="font-size:12px;color:#ccc;margin-top:8px;">&#8377;20L</div>
+        </div>
+        <div style="text-align:center;padding:20px;border:1px solid rgba(201,169,110,0.2);border-radius:8px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--gold);">12%</div>
+          <div style="font-size:11px;color:#999;letter-spacing:1px;margin-top:4px;">STUDIO<br>& RENT</div>
+          <div style="font-size:12px;color:#ccc;margin-top:8px;">&#8377;12L</div>
+        </div>
+        <div style="text-align:center;padding:20px;border:1px solid rgba(201,169,110,0.2);border-radius:8px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--gold);">8%</div>
+          <div style="font-size:11px;color:#999;letter-spacing:1px;margin-top:4px;">TECHNOLOGY<br>& D2C</div>
+          <div style="font-size:12px;color:#ccc;margin-top:8px;">&#8377;8L</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FUNDRAISE -->
+<!-- ============================================ -->
+<section id="fundraise">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">07 &mdash; THE ASK</span>
+      <h2 class="section-title">Investment Opportunity</h2>
+      <p class="section-desc">Raising &#8377;1 Crore from up to 3 investors for 30% equity. Founder retains 70% with full operational control.</p>
+    </div>
+
+    <div class="raise-grid fade-in">
+      <div class="raise-card">
+        <div style="font-size:11px;letter-spacing:3px;color:var(--gold-light);margin-bottom:8px;">FUNDRAISE DETAILS</div>
+        <h3>&#8377;1,00,00,000</h3>
+        <div class="raise-sub">Seed Round &middot; Equity &middot; Delhi NCR Fashion Startup</div>
+        <div class="raise-item"><span>Total Raise</span><span class="raise-val">&#8377;1 Crore</span></div>
+        <div class="raise-item"><span>Total Equity Offered</span><span class="raise-val">30% (Max)</span></div>
+        <div class="raise-item"><span>Per Investor (10% each)</span><span class="raise-val">&#8377;33.3 Lakhs</span></div>
+        <div class="raise-item"><span>Max Investors</span><span class="raise-val">3</span></div>
+        <div class="raise-item"><span>Pre-Money Valuation</span><span class="raise-val">&#8377;3.33 Crore</span></div>
+        <div class="raise-item"><span>Post-Money Valuation</span><span class="raise-val">&#8377;4.33 Crore</span></div>
+        <div class="raise-item"><span>Founder Stake (Post-Raise)</span><span class="raise-val">70%</span></div>
+        <div class="raise-item"><span>Founder Salary</span><span class="raise-val">&#8377;0 (NIL)</span></div>
+        <div class="raise-item"><span>Target ROI (3-Year)</span><span class="raise-val">6x</span></div>
+        <div style="margin-top:24px;padding:16px;background:rgba(255,255,255,0.08);border-radius:6px;">
+          <p style="font-size:12px;color:#ccc;line-height:1.6;"><strong style="color:var(--gold);">Investor Note:</strong> At Year 3 revenue of &#8377;20 Cr with 36% EBITDA margins, a 5x revenue multiple implies a &#8377;100 Cr valuation &mdash; returning ~23x on the initial &#8377;33.3L investment per investor at 10% holding.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="card card-accent" style="margin-bottom:24px;">
+          <div class="card-title">Equity Structure</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--champagne);border-radius:6px;">
+              <span style="font-weight:500;">Savitha Dhiman (Founder)</span>
+              <span style="font-weight:700;color:var(--wine);font-size:20px;">70%</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:#f5f0f2;border-radius:6px;">
+              <span>Investor 1</span>
+              <span style="font-weight:700;color:var(--gold);font-size:20px;">10%</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:#f5f0f2;border-radius:6px;">
+              <span>Investor 2</span>
+              <span style="font-weight:700;color:var(--gold);font-size:20px;">10%</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:#f5f0f2;border-radius:6px;">
+              <span>Investor 3</span>
+              <span style="font-weight:700;color:var(--gold);font-size:20px;">10%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Key Milestones</div>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-year">Q1 &mdash; MONTH 1-3</div>
+              <div class="tl-title">Studio Setup & Team</div>
+              <div class="tl-text">Establish Delhi NCR atelier, hire 10-15 artisans, launch first collection of 25 modular pieces.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">Q2 &mdash; MONTH 4-6</div>
+              <div class="tl-title">Market Entry</div>
+              <div class="tl-text">First trunk show, Instagram launch, initial bridal orders. Target: 15 bridal orders.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">Q3-Q4 &mdash; MONTH 7-12</div>
+              <div class="tl-title">Traction & Scale</div>
+              <div class="tl-text">D2C website live, 50+ bridal orders, enter festive season. Year 1 target: &#8377;5 Cr revenue.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">YEAR 2</div>
+              <div class="tl-title">Multi-Channel Growth</div>
+              <div class="tl-text">Multi-brand retail partnerships, team expansion to 35 artisans, online scaling. Revenue: &#8377;12 Cr.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">YEAR 3</div>
+              <div class="tl-title">Scale & Profitability</div>
+              <div class="tl-text">60 artisans, NRI market entry, potential Series A readiness. Revenue: &#8377;20 Cr. EBITDA: &#8377;7.3 Cr.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FOUNDER -->
+<!-- ============================================ -->
+<section class="alt" id="founder">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">08 &mdash; THE FOUNDER</span>
+      <h2 class="section-title">Savitha Dhiman</h2>
+      <p class="section-desc">Operational founder, designer, and entrepreneur. Building India's first modular couture house from Delhi NCR.</p>
+    </div>
+
+    <div class="founder-section fade-in">
+      <div class="founder-img">SD</div>
+      <div>
+        <div class="founder-quote">"I believe Indian brides deserve couture that doesn't collect dust. Every garment I design is meant to be worn again and again &mdash; at Diwali, at anniversaries, at life's most beautiful moments."</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;">
+          <div class="card card-accent" style="padding:20px;">
+            <div class="card-title">Role</div>
+            <p style="font-size:14px;">CEO & Creative Director. Manages the tailor unit, design operations, and client relationships directly from the Delhi NCR studio.</p>
+          </div>
+          <div class="card card-gold" style="padding:20px;">
+            <div class="card-title">Commitment</div>
+            <p style="font-size:14px;">70% equity holder taking zero salary. All profits reinvested until break-even. Founder skin-in-the-game is absolute.</p>
+          </div>
+          <div class="card" style="padding:20px;">
+            <div class="card-title">Domain Expertise</div>
+            <p style="font-size:14px;">Deep understanding of Indian wedding fashion ecosystem, artisan management, and Delhi NCR bridal market dynamics.</p>
+          </div>
+          <div class="card" style="padding:20px;">
+            <div class="card-title">Vision</div>
+            <p style="font-size:14px;">Build VASTRA MODULAR into a &#8377;100+ Cr brand within 5 years, creating a new category in Indian fashion: modular couture.</p>
+          </div>
+        </div>
+
+        <div class="card card-premium" style="margin-top:24px;">
+          <div class="card-title">Investor Benefits</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:10px;"><span style="color:var(--gold);">&#10003;</span><span style="color:#ccc;font-size:14px;">10% equity at &#8377;33.3L per investor &mdash; attractive seed-stage entry</span></div>
+            <div style="display:flex;gap:10px;"><span style="color:var(--gold);">&#10003;</span><span style="color:#ccc;font-size:14px;">Founder takes no salary = 100% of capital deployed to growth</span></div>
+            <div style="display:flex;gap:10px;"><span style="color:var(--gold);">&#10003;</span><span style="color:#ccc;font-size:14px;">First-mover advantage in untapped modular fashion segment</span></div>
+            <div style="display:flex;gap:10px;"><span style="color:var(--gold);">&#10003;</span><span style="color:#ccc;font-size:14px;">&#8377;20 Cr Year 3 revenue target validated by unit economics</span></div>
+            <div style="display:flex;gap:10px;"><span style="color:var(--gold);">&#10003;</span><span style="color:#ccc;font-size:14px;">Clear path to Series A at &#8377;50-100 Cr valuation by Year 3</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CTA / CONTACT -->
+<!-- ============================================ -->
+<section class="dark" style="text-align:center;padding:100px 48px;">
+  <div class="container">
+    <span class="section-num" style="color:var(--gold);">JOIN THE JOURNEY</span>
+    <h2 style="font-size:clamp(36px,5vw,56px);margin:16px 0 24px;color:#fff;font-family:'Cormorant Garamond',serif;">Invest in the Future of<br>Indian Wedding Fashion</h2>
+    <p style="font-size:16px;color:#999;max-width:500px;margin:0 auto 40px;">VASTRA MODULAR is raising &#8377;1 Crore to build India's first modular couture house. Limited to 3 investors at 10% equity each.</p>
+    <div style="display:inline-flex;flex-direction:column;align-items:center;gap:16px;">
+      <a href="mailto:savitha@vastramodular.com" class="hero-cta" style="display:inline-flex;">Contact Savitha Dhiman &rarr;</a>
+      <span style="font-size:11px;color:#666;letter-spacing:1px;">DELHI NCR &middot; SEED ROUND &middot; 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<section style="padding:40px 48px;background:var(--champagne);">
+  <div class="container" style="max-width:800px;">
+    <p style="font-size:11px;color:var(--text-light);line-height:1.8;text-align:center;">
+      <strong>DISCLAIMER:</strong> This document is for informational purposes only and does not constitute an offer to sell securities. All financial projections are forward-looking estimates based on market analysis and assumptions. Actual results may vary materially. The valuation presented (&#8377;3.33 Cr pre-money) reflects an early/idea-stage startup. Investors should conduct independent due diligence. The &#8377;20 Cr Year 3 revenue target is subject to market conditions, execution capability, and customer traction. Past performance of comparable brands is not indicative of future results.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">VASTRA MODULAR</div>
+  <p style="margin-bottom:8px;">Modular Wedding Couture &middot; Delhi NCR &middot; Est. 2026</p>
+  <p>Investor Pitch Document &middot; Confidential &middot; <a href="mailto:savitha@vastramodular.com">savitha@vastramodular.com</a></p>
+</footer>
+
+<!-- SCROLL ANIMATIONS -->
+<script>
+// Navbar scroll effect
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 100);
+});
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
