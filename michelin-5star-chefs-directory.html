@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michelin-Star & 5-Star Hotel Chefs Directory | 25+ Elite Chef Profiles</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;padding:16px;line-height:1.6}
+h1{color:#d4af37;font-size:1.8rem;text-align:center;margin-bottom:4px}
+.subtitle{text-align:center;color:#999;font-size:0.9rem;margin-bottom:16px}
+.stats-bar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+.stat{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:10px 16px;text-align:center;min-width:110px}
+.stat .n{color:#d4af37;font-size:1.4rem;font-weight:bold}
+.stat .l{color:#888;font-size:0.7rem}
+.filter-bar{display:flex;gap:8px;margin:16px 0;flex-wrap:wrap;justify-content:center}
+.filter-bar input,.filter-bar select{padding:10px 14px;border-radius:8px;border:1px solid #333;background:#1a1a1a;color:#fff;font-size:0.9rem}
+.filter-bar input{width:300px}
+.chef-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px;margin-top:16px}
+.chef-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:14px;padding:18px;transition:all 0.3s}
+.chef-card:hover{border-color:#d4af37;box-shadow:0 4px 20px rgba(212,175,55,0.15);transform:translateY(-2px)}
+.chef-name{color:#d4af37;font-size:1.15rem;font-weight:700;margin-bottom:2px}
+.chef-title{color:#aaa;font-size:0.8rem;margin-bottom:8px}
+.stars{color:#d4af37;font-size:0.9rem;margin-bottom:8px}
+.detail-row{display:flex;gap:6px;margin-bottom:4px;font-size:0.82rem}
+.detail-label{color:#888;min-width:100px;flex-shrink:0}
+.detail-value{color:#ccc}
+.links{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.link-btn{display:inline-block;padding:4px 10px;border-radius:6px;font-size:0.72rem;text-decoration:none;font-weight:600;transition:opacity 0.2s}
+.link-btn:hover{opacity:0.8}
+.link-ig{background:#2a1a2a;color:#e1306c;border:1px solid #e1306c40}
+.link-li{background:#1a2a3a;color:#0077b5;border:1px solid #0077b540}
+.link-web{background:#1a2a1a;color:#4ade80;border:1px solid #4ade8040}
+.link-other{background:#2a2a1a;color:#fbbf24;border:1px solid #fbbf2440}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.7rem;font-weight:600;margin-right:4px;margin-bottom:4px}
+.tag-3star{background:#4a3a0a;color:#d4af37;border:1px solid #d4af3740}
+.tag-2star{background:#3a2a0a;color:#e8c547;border:1px solid #e8c54740}
+.tag-1star{background:#2a2a1a;color:#fbbf24;border:1px solid #fbbf2440}
+.tag-5hotel{background:#1a2a3a;color:#60a5fa;border:1px solid #60a5fa40}
+.tag-bib{background:#1a3a2a;color:#4ade80;border:1px solid #4ade8040}
+.tag-cuisine{background:#2a2a2a;color:#ccc}
+.section-title{color:#d4af37;font-size:1.2rem;margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid #333}
+.chef-card .num{color:#555;font-size:0.7rem;margin-bottom:6px}
+.hotels-list{color:#999;font-size:0.78rem;margin-top:4px;line-height:1.5}
+footer{text-align:center;margin-top:40px;color:#555;font-size:0.78rem;padding:20px 0;border-top:1px solid #222}
+footer a{color:#d4af37}
+@media(max-width:768px){.chef-grid{grid-template-columns:1fr}.filter-bar input{width:100%}}
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #d4af37;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #d4af3711 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Elite Chefs</div>
+    <div class="hero-brand-float">Elite Chefs</div>
+    <h1>Michelin-Star & 5-Star Hotel Chefs Directory</h1>
+    <p class="subtitle">25+ Elite Chef Profiles | Middle East, Europe & Asia | Compiled April 2026</p>
+</div>
+<div class="stats-bar">
+<div class="stat"><div class="n" id="totalCount">27</div><div class="l">Total Chefs</div></div>
+<div class="stat"><div class="n">2</div><div class="l">3-Star Michelin</div></div>
+<div class="stat"><div class="n">5</div><div class="l">2-Star Michelin</div></div>
+<div class="stat"><div class="n">11</div><div class="l">1-Star Michelin</div></div>
+<div class="stat"><div class="n">9</div><div class="l">5-Star Hotel</div></div>
+</div>
+
+<div class="filter-bar">
+<input type="text" id="search" placeholder="Search by name, cuisine, nationality, hotel..." oninput="filterCards()">
+<select id="tierFilter" onchange="filterCards()">
+<option value="">All Tiers</option>
+<option value="3star">3 Michelin Stars</option>
+<option value="2star">2 Michelin Stars</option>
+<option value="1star">1 Michelin Star</option>
+<option value="5hotel">5-Star Hotel Chef</option>
+<option value="bib">Bib Gourmand / Selected</option>
+</select>
+<select id="regionFilter" onchange="filterCards()">
+<option value="">All Regions</option>
+<option value="uae">UAE (Dubai/Abu Dhabi)</option>
+<option value="europe">Europe</option>
+<option value="asia">Asia</option>
+</select>
+</div>
+
+<div class="chef-grid" id="chefGrid"></div>
+
+<footer>
+<p>Compiled for <a href="https://eatcookjoy.com" target="_blank">EatCookJoy.com</a> | April 2026</p>
+<p>Sources: Michelin Guide, Caterer Middle East, Hozpitality, Hotel &amp; Catering, Hotelier Middle East, Wikipedia</p>
+<p>All information is publicly available. Contact chefs through official restaurant channels or social media.</p>
+</footer>
+
+<script>
+const chefs = [
+// ===== 3 MICHELIN STARS =====
+{
+  num: 1,
+  name: "Himanshu Saini",
+  nationality: "Indian",
+  title: "Executive Chef, Tresind Studio",
+  tier: "3star",
+  region: "uae",
+  cuisine: "Modern Indian Fine Dining",
+  type: "Executive Chef",
+  experience: "15+ years",
+  stars: "3 Michelin Stars (2025)",
+  workplace: "Tresind Studio, Palm Jumeirah, Dubai (3 Stars); Tresind, Dubai (1 Star)",
+  hotels: "First Indian restaurant in the world to earn 3 Michelin Stars. World's 50 Best Restaurants #27 (2025). Trained under Chef Manish Mehrotra at Indian Accent, Delhi.",
+  phone: "+971 58 895 1272",
+  email: "",
+  ig: "chefhimanshusaini",
+  linkedin: "",
+  website: "tresindstudio.com",
+  other: "thebestchefawards.com/chefs/himanshu-saini"
+},
+{
+  num: 2,
+  name: "Bjorn Frantzen",
+  nationality: "Swedish",
+  title: "Chef-Owner, FZN Dubai / Frantzen Group",
+  tier: "3star",
+  region: "uae",
+  cuisine: "Scandinavian-Japanese Fusion",
+  type: "Chef-Owner / Restaurateur",
+  experience: "25+ years",
+  stars: "9 Michelin Stars Total (3x Three-Star Restaurants)",
+  workplace: "FZN, Atlantis The Palm, Dubai (3 Stars); Frantzen, Stockholm (3 Stars); Zen, Singapore (3 Stars)",
+  hotels: "Only chef in the world with three 3-Michelin-star restaurants. Former professional soccer player. Frantzen Group operates 9 establishments from Bangkok to Marbella.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "restaurantfzn.com",
+  other: "frantzengroup.com"
+},
+
+// ===== 2 MICHELIN STARS =====
+{
+  num: 3,
+  name: "Jason Atherton",
+  nationality: "British (English)",
+  title: "Chef-Owner, Row on 45",
+  tier: "2star",
+  region: "uae",
+  cuisine: "Modern European / French-Japanese",
+  type: "Chef-Owner / Restaurateur",
+  experience: "30+ years (born 1971)",
+  stars: "2 Michelin Stars (Row on 45, Dubai)",
+  workplace: "Row on 45, 45th Floor Grosvenor House, Dubai (2 Stars); City Social, Dubai",
+  hotels: "Trained under Pierre Koffmann, Marco Pierre White, Nico Ladenis, Ferran Adria (el Bulli). Launched Maze for Gordon Ramsay. Founded The Social Company. Previously held 1 star at Pollen Street Social, London.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "",
+  other: "thesocialcompany.co.uk"
+},
+{
+  num: 4,
+  name: "Giacomo Amicucci",
+  nationality: "Italian",
+  title: "Head Chef, Il Ristorante - Niko Romito",
+  tier: "2star",
+  region: "uae",
+  cuisine: "Modern Italian Fine Dining",
+  type: "Head Chef",
+  experience: "15+ years",
+  stars: "2 Michelin Stars (since 2022, retained 3 consecutive years)",
+  workplace: "Il Ristorante - Niko Romito, Bulgari Hotel Dubai (2 Stars)",
+  hotels: "Born in Gradara, Italy. ALMA graduate. Trained at Gellius (Alessandro Breda), Il Pagliaccio (Anthony Genovese). Worked at Cutler & Co. and Rosetta in Australia. Brigade of 30 nationalities. Philosophy: 'ingredient, extraction, lightness.'",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "bulgarihotels.com/dubai/dining/il-ristorante-niko-romito",
+  other: "reportergourmet.com/en/chef/840-giacomo-amicucci"
+},
+{
+  num: 5,
+  name: "Yannick Alleno",
+  nationality: "French",
+  title: "Chef-Owner, STAY by Yannick Alleno",
+  tier: "2star",
+  region: "uae",
+  cuisine: "Modern French Fine Dining",
+  type: "Chef-Owner / Restaurateur",
+  experience: "35+ years (born 1968)",
+  stars: "16 Michelin Stars Total; STAY Dubai holds 2 Stars",
+  workplace: "STAY, One&Only The Palm, Dubai (2 Stars); Maison Pic (consulting); Le 1947, Cheval Blanc Courchevel; Pavilion Ledoyen, Paris",
+  hotels: "One of most decorated chefs globally with 16 stars. Pioneer of Modern Cuisine. Chef de cuisine at Hotel Le Meurice 2003-2013. Founded Le Groupe Yannick Alleno. 'Less is more' approach praised by Michelin.",
+  phone: "",
+  email: "",
+  ig: "stay_dubai",
+  linkedin: "",
+  website: "oneandonlyresorts.com/the-palm/dining/stay-by-yannick-alleno",
+  other: "hosco.com - yannick-alleno profile"
+},
+{
+  num: 6,
+  name: "Anne-Sophie Pic",
+  nationality: "French",
+  title: "Chef-Owner, La Dame de Pic Dubai",
+  tier: "2star",
+  region: "uae",
+  cuisine: "French Fine Dining",
+  type: "Chef-Owner / Restaurateur",
+  experience: "25+ years",
+  stars: "3 Stars (Maison Pic, Valence); 2 Stars (La Dame de Pic, Dubai 2026); Multiple 1-Star locations",
+  workplace: "La Dame de Pic, One Za'abeel, Dubai (2 Stars); Maison Pic, Valence, France (3 Stars); La Dame de Pic, London; La Dame de Pic, Paris",
+  hotels: "Only 4th female chef to earn 3 Michelin Stars. Restaurant on 25th floor of One Za'abeel. Known for 'suffusion' technique and signature Berlingots. World-renowned dynasty chef.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "anne-sophie-pic.com",
+  other: "ladamedepicdubai.com"
+},
+
+// ===== 1 MICHELIN STAR =====
+{
+  num: 7,
+  name: "Massimo Bottura",
+  nationality: "Italian",
+  title: "Chef-Owner, Torno Subito Dubai",
+  tier: "1star",
+  region: "uae",
+  cuisine: "Italian (Contemporary)",
+  type: "Chef-Owner / Restaurateur",
+  experience: "35+ years (born 1962)",
+  stars: "3 Stars (Osteria Francescana); 1 Star (Torno Subito, Dubai)",
+  workplace: "Torno Subito, W Dubai The Palm (1 Star); Osteria Francescana, Modena, Italy (3 Stars + Green Star)",
+  hotels: "World's 50 Best Restaurants #1 (2016, 2018). Osteria Francescana is #1 in the world. Torno Subito is his first restaurant outside Italy. 1960s Riviera concept.",
+  phone: "",
+  email: "",
+  ig: "massimobottura",
+  linkedin: "",
+  website: "tornosubitodubai.com",
+  other: "osteriafrancescana.it | 2M IG followers"
+},
+{
+  num: 8,
+  name: "Jose Avillez",
+  nationality: "Portuguese",
+  title: "Chef-Owner, Tasca Dubai",
+  tier: "1star",
+  region: "uae",
+  cuisine: "Portuguese Fine Dining",
+  type: "Chef-Owner / Restaurateur",
+  experience: "20+ years",
+  stars: "2 Stars (Belcanto, Lisbon); 1 Star (Tasca, Dubai since 2022)",
+  workplace: "Tasca, Mandarin Oriental Jumeira, Dubai (1 Star); Belcanto, Lisbon (2 Stars)",
+  hotels: "Considered Portugal's greatest chef. Trained at El Bulli under Ferran Adria. Dubai's first Michelin star in inaugural guide. Largest Portuguese wine selection in Dubai.",
+  phone: "",
+  email: "",
+  ig: "tascadubai",
+  linkedin: "",
+  website: "joseavillez.pt",
+  other: ""
+},
+{
+  num: 9,
+  name: "Mohamad Orfali",
+  nationality: "Syrian",
+  title: "Chef-Owner, Orfali Bros Bistro",
+  tier: "1star",
+  region: "uae",
+  cuisine: "Modern Aleppian / Contemporary Arabic",
+  type: "Chef-Owner / Restaurateur",
+  experience: "20+ years",
+  stars: "1 Michelin Star (Orfali Bros, 2024); 1 Michelin Star (Manao, partner)",
+  workplace: "Orfali Bros, Wasl 51, Jumeirah, Dubai (1 Star); Manao, Dubai (1 Star, partner)",
+  hotels: "Best Restaurant in MENA 3 consecutive years (2023-2025, World's 50 Best). First Bib Gourmand to earn star in Dubai. Born in Aleppo. Co-owns Manao with Abhiraj Khatwani. Hosted Middle East's first Arabic gastronomy TV show.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "orfalibros.com",
+  other: "Gulfood 2025 Speaker"
+},
+{
+  num: 10,
+  name: "Abhiraj Khatwani",
+  nationality: "Indian (Dubai-born)",
+  title: "Chef-Owner, Manao",
+  tier: "1star",
+  region: "uae",
+  cuisine: "Thai-Inspired Fine Dining",
+  type: "Chef-Owner",
+  experience: "10+ years (age 30)",
+  stars: "1 Michelin Star (Manao, 2025); Young Chef Award 2025",
+  workplace: "Manao, Wasl Vita Mall, Jumeirah 1, Dubai (1 Star)",
+  hotels: "Dubai-born, studied in Canada, culinary school near London. Worked in Denmark and Thailand. Co-founded The Yellow Monkey in JBR. Michelin star within 5 months of opening. Business partner of Mohamad Orfali.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "",
+  other: "MENA's 50 Best Restaurants 2026 #9"
+},
+{
+  num: 11,
+  name: "Rahul Rana",
+  nationality: "Indian",
+  title: "Executive Chef, Avatara",
+  tier: "1star",
+  region: "uae",
+  cuisine: "Vegetarian Indian Fine Dining",
+  type: "Executive Chef",
+  experience: "18+ years (since 2007)",
+  stars: "1 Michelin Star (Avatara, 2023)",
+  workplace: "Avatara, Dubai (1 Star) - World's first vegetarian Indian Michelin-starred restaurant",
+  hotels: "Born in Rishikesh, Uttarakhand. Started at Ananda The Himalayas (2007). Was Executive Pastry Chef at Tresind. 16-course vegetarian tasting menu. Grandfather was cook for Maharajas.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "",
+  other: ""
+},
+{
+  num: 12,
+  name: "Solemann Haddad",
+  nationality: "Syrian-French (Dubai-raised)",
+  title: "Chef-Owner, Moonrise",
+  tier: "1star",
+  region: "uae",
+  cuisine: "Middle Eastern-Japanese-French Fusion",
+  type: "Chef-Owner",
+  experience: "10+ years",
+  stars: "1 Michelin Star (Moonrise, 2023); Young Chef Award 2022",
+  workplace: "Moonrise, Dubai (1 Star) - 12-seater rooftop chef's table",
+  hotels: "Born in Dubai to French mother and Syrian father. Michelin Young Chef Award winner. Intimate 12-seat format. Menu blends Middle Eastern, Japanese, and French influences.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "",
+  other: "Gulfood 2026 Speaker"
+},
+{
+  num: 13,
+  name: "Akira Back",
+  nationality: "Korean-American",
+  title: "Chef-Owner, Akira Back Dubai",
+  tier: "1star",
+  region: "uae",
+  cuisine: "Japanese-Korean Fusion",
+  type: "Chef-Owner / Restaurateur",
+  experience: "20+ years (born 1974)",
+  stars: "Michelin Stars in London and Seoul; Michelin Selected in Dubai",
+  workplace: "Akira Back, W Dubai Palm Jumeirah; Dosa by Akira Back (London, Seoul); 31 locations worldwide",
+  hotels: "Former professional snowboarder. 31 cutting-edge restaurants worldwide. Known for innovative Japanese-Korean cuisine. Signature dishes: rock shrimp tempura, king crab fried rice.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "akiraback.com",
+  other: "akirabackdubai.com"
+},
+{
+  num: 14,
+  name: "Lee Kok Hua",
+  nationality: "Malaysian",
+  title: "Executive Chef, Hakkasan Abu Dhabi",
+  tier: "1star",
+  region: "uae",
+  cuisine: "Modern Cantonese",
+  type: "Executive Chef",
+  experience: "33+ years (started at 17)",
+  stars: "1 Michelin Star (Hakkasan Abu Dhabi, 4 consecutive years since 2022)",
+  workplace: "Hakkasan Abu Dhabi (1 Star); Previously Hakkasan London (6 years)",
+  hotels: "Nearly two decades with the Hakkasan brand. 12 years leading Abu Dhabi kitchen. Started with food carving at age 17. Family of chefs. Kitchens in Johor and Singapore.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "hakkasan.com",
+  other: ""
+},
+{
+  num: 15,
+  name: "Luigi Stinga",
+  nationality: "Italian",
+  title: "Chef, Talea by Antonio Guida",
+  tier: "1star",
+  region: "uae",
+  cuisine: "Italian (Cucina di Famiglia)",
+  type: "Head Chef",
+  experience: "15+ years",
+  stars: "1 Michelin Star (Talea, retained 2026); Young Chef Award Abu Dhabi",
+  workplace: "Talea by Antonio Guida, Mandarin Oriental Emirates Palace, Abu Dhabi (1 Star)",
+  hotels: "Native of Nerano, Amalfi Coast. Started at Don Alfonso 1890 (2 Stars). Worked in top Italian Michelin-starred establishments. Joined Chef Antonio Guida for Seta opening in Milan (2015). Michelin star 8 months after opening.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "luigi-stinga-26354aa0",
+  website: "mandarinoriental.com/abu-dhabi/emirates-palace/dine/talea-by-antonio-guida",
+  other: ""
+},
+{
+  num: 16,
+  name: "Debi Prasad Rath",
+  nationality: "Indian",
+  title: "Head Chef, Erth Abu Dhabi",
+  tier: "1star",
+  region: "uae",
+  cuisine: "Emirati Cuisine",
+  type: "Head Chef",
+  experience: "10+ years",
+  stars: "1 Michelin Star (Erth, 3 consecutive years since 2023)",
+  workplace: "Erth, Al Hosn, Abu Dhabi (1 Star) - First Michelin-starred Emirati restaurant",
+  hotels: "Made history as chef behind first-ever Michelin-starred Emirati restaurant. Philosophy: 'local and traditional with a modern twist.' 100% ingredients from local suppliers. Fusion of Indian spice knowledge with Emirati tradition.",
+  phone: "",
+  email: "",
+  ig: "erth.alhosn",
+  linkedin: "",
+  website: "erthrestaurant.ae",
+  other: ""
+},
+{
+  num: 17,
+  name: "Sin Keun Choi (Chef SK)",
+  nationality: "Korean",
+  title: "Head Chef, Ronin at FIVE LUXE",
+  tier: "1star",
+  region: "uae",
+  cuisine: "Japanese (Teppanyaki / Omakase)",
+  type: "Head Chef / Celebrity Chef",
+  experience: "15+ years",
+  stars: "Opening of the Year Award (Michelin Guide Dubai 2025)",
+  workplace: "Ronin, FIVE LUXE JBR, Dubai",
+  hotels: "Iron Chef Thailand alumnus. Worked under Akira Back in Las Vegas. Positions in China, South Korea, Malaysia, Japan, Thailand. Has worked in several Michelin and Gault&Millau restaurants. Live teppanyaki spectacle.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "ronindubai.com",
+  other: ""
+},
+
+// ===== 5-STAR HOTEL CHEFS / MICHELIN-TRAINED =====
+{
+  num: 18,
+  name: "Gregoire Berger",
+  nationality: "French (Brittany)",
+  title: "Founder, Kraken Dubai / Former Exec Chef Ossiano",
+  tier: "1star",
+  region: "uae",
+  cuisine: "French Seafood / Contemporary",
+  type: "Chef-Owner / Founder",
+  experience: "22+ years",
+  stars: "1 Michelin Star (Ossiano, 2022-2024); Forbes 30 Under 30",
+  workplace: "Kraken Dubai (founder); Monarch Events UAE (founder); Previously Ossiano, Atlantis The Palm (2014-2024)",
+  hotels: "Born in Brittany, France. Led Ossiano for nearly a decade (2014-2024). MENA's 50 Best Restaurants #4. Now runs Kraken Dubai and Monarch Events UAE.",
+  phone: "",
+  email: "Gwarberger@hotmail.fr",
+  ig: "chefgregoireberger",
+  linkedin: "gregoire-berger-31846179",
+  website: "",
+  other: "232K IG followers | chefs4theplanet.com member"
+},
+{
+  num: 19,
+  name: "Remy Marquignon",
+  nationality: "French (Paris)",
+  title: "Executive Chef, Ossiano at Atlantis The Palm",
+  tier: "5hotel",
+  region: "uae",
+  cuisine: "French Fine Dining / Seafood",
+  type: "Executive Chef",
+  experience: "15+ years",
+  stars: "Worked across 10 Michelin-starred restaurants; Forbes ME 30 Under 30",
+  workplace: "Ossiano, Atlantis The Palm, Dubai (current); Previously Jumeirah Al Qasr, Four Seasons George V Paris, Prince de Galles Paris, La Scene Paris",
+  hotels: "Born and raised in Paris. Cooked for the President of France. Forbes ME 30 Under 30 Best Chefs (2021). Nine-course tasting menu at AED 1,250.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "atlantis.com/dubai/dining",
+  other: ""
+},
+{
+  num: 20,
+  name: "Marc Hardiman",
+  nationality: "British",
+  title: "Chef Patron, Bull & Bear, Waldorf Astoria DIFC",
+  tier: "5hotel",
+  region: "uae",
+  cuisine: "European Fine Dining",
+  type: "Chef Patron",
+  experience: "20+ years",
+  stars: "Maintained Michelin Star at The Ritz, London; Cooked for Queen Elizabeth II",
+  workplace: "Bull & Bear, Waldorf Astoria DIFC, Dubai (Chef Patron since Nov 2024); Previously The Ritz London (Michelin Star)",
+  hotels: "Prepared Christmas lunch for late Queen Elizabeth II at Buckingham Palace. Maintained Michelin Star at The Ritz London. Zero-waste, produce-driven approach. Dairy-free focus.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "bullandbeardifc.com",
+  other: ""
+},
+{
+  num: 21,
+  name: "Michael Mina",
+  nationality: "Egyptian-American",
+  title: "Celebrity Chef / Founder, MINA Group",
+  tier: "5hotel",
+  region: "uae",
+  cuisine: "French-Mediterranean / Middleterranean",
+  type: "Chef-Owner / Restaurateur",
+  experience: "30+ years (born 1969)",
+  stars: "James Beard Award Winner; Michelin Stars across portfolio",
+  workplace: "MINA Brasserie, Four Seasons DIFC, Dubai; 30+ restaurants worldwide incl. Bourbon Steak, Stripsteak, Michael Mina SF",
+  hotels: "Born in Cairo, raised in USA. James Beard Award winner. Founder of MINA Group with 30+ restaurants. CIA graduate. Pioneer of 'Middleterranean' cuisine concept.",
+  phone: "",
+  email: "",
+  ig: "chefmichaelmina",
+  linkedin: "",
+  website: "theminagroup.com",
+  other: "87K IG followers"
+},
+{
+  num: 22,
+  name: "Nicolas De Visch",
+  nationality: "Belgian",
+  title: "Executive Chef (formerly Waldorf Astoria RAK)",
+  tier: "5hotel",
+  region: "uae",
+  cuisine: "French / International Fine Dining",
+  type: "Executive Chef",
+  experience: "28+ years",
+  stars: "Trained under Michelin-starred chefs Yves Mattagne and Jean Pierre Bruneau",
+  workplace: "The Grand York (current); Formerly Waldorf Astoria RAK; St Regis Mauritius; InterContinental Fiji; W Hotel Taipei; Peninsula Manila",
+  hotels: "Trained at Ecole Hotelier de Namur, Belgium. Part of pre-opening team for Burj Al Arab's Al Mahara in 2000. Oversaw 8 F&B outlets at Waldorf Astoria RAK. Now aiming for Michelin recognition at The Grand York.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "",
+  other: "contactout.com profile available"
+},
+{
+  num: 23,
+  name: "Hamid Raddawi",
+  nationality: "Middle Eastern",
+  title: "Executive Chef, Marriott Hotel Al Jaddaf",
+  tier: "5hotel",
+  region: "uae",
+  cuisine: "Arabic, Pan-Asian, Italian",
+  type: "Executive Chef",
+  experience: "18+ years",
+  stars: "5-Star Hotel Career: Four Seasons Damascus, JW Marriott Marquis, Courtyard Marriott",
+  workplace: "Marriott Hotel Al Jaddaf, Dubai (current); Previously Four Seasons Damascus, JW Marriott Marquis Dubai, Lapita Autograph Collection",
+  hotels: "Led team of 100+ culinary and stewarding staff. Multiple pre-opening experience. Expertise in Arabic, Pan-Asian and Italian cuisines. Banquet and cold kitchen specialist.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "",
+  other: ""
+},
+{
+  num: 24,
+  name: "Oscar Cimmino",
+  nationality: "Italian (Neapolitan)",
+  title: "Executive Chef, Marriott Marquis Dubai",
+  tier: "5hotel",
+  region: "uae",
+  cuisine: "Italian / Neapolitan Seafood",
+  type: "Executive Chef",
+  experience: "10+ years",
+  stars: "5-Star Hotel Career across Italy, London, Lisbon, Vienna, Dubai",
+  workplace: "Marriott Marquis Dubai at Jewel of the Creek (current); Previously Sheraton Dubai Creek; Hotels in Rimini, Trentino, London, Lisbon, Vienna",
+  hotels: "Born and raised in Naples. Specialist in authentic Neapolitan cuisine. Known for signature Spaghetti with Clams. Oversees culinary operations across entire property.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "",
+  other: "ZoomInfo profile available"
+},
+{
+  num: 25,
+  name: "Darren Andow",
+  nationality: "International (UAE-based)",
+  title: "Director of Culinary, Fairmont The Palm",
+  tier: "5hotel",
+  region: "uae",
+  cuisine: "International / Multi-cuisine",
+  type: "Culinary Director",
+  experience: "15+ years (Exec Chef since 2007)",
+  stars: "5-Star Hotel Career across UAE, China, Bahrain, Lebanon",
+  workplace: "Fairmont The Palm, Dubai (current, 12 restaurants); Previously Le Gray Beirut; Amwaj Rotana Dubai; Movenpick; Pullman Sharjah; Marjan Island Resort RAK",
+  hotels: "Oversees 12 restaurants and bars at Fairmont The Palm. Previously Cluster Executive Chef across multiple Accor properties. Among Hotelier ME Awards 2024 top culinary directors.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "darren-andow-71940230",
+  website: "",
+  other: "500+ LinkedIn connections"
+},
+{
+  num: 26,
+  name: "Vittorio Nania",
+  nationality: "Italian (Calabria)",
+  title: "Chef, Villa Toscana, St. Regis Abu Dhabi",
+  tier: "5hotel",
+  region: "uae",
+  cuisine: "Italian / Tuscan",
+  type: "Head Chef",
+  experience: "10+ years",
+  stars: "Michelin Guide Selected; Young Chef Award Abu Dhabi 2026",
+  workplace: "Villa Toscana, St. Regis Abu Dhabi",
+  hotels: "Won Young Chef of the Year at Michelin Guide Abu Dhabi 2026. Known for classic Tuscan dishes: spaghetti alle vongole, veal Milanese, tiramisu. Beachfront dining at St. Regis.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "villatoscana-abudhabi.com",
+  other: ""
+},
+{
+  num: 27,
+  name: "Maxime Luvara",
+  nationality: "Italian-French (Calabria / French Riviera)",
+  title: "Executive Chef, Four Seasons Hong Kong",
+  tier: "5hotel",
+  region: "asia",
+  cuisine: "French / Mediterranean / Fusion",
+  type: "Executive Chef",
+  experience: "15+ years",
+  stars: "5-Star Hotel Career: Burj Al Arab, InterContinental Hong Kong, Badrutt's Palace Switzerland",
+  workplace: "Four Seasons Hong Kong (current); Previously Burj Al Arab Dubai (Exec Chef since 2010); InterContinental Hong Kong; Badrutt's Palace, Switzerland",
+  hotels: "Born in Calabria, raised on French Riviera. Former Executive Chef at Burj Al Arab. International career spanning luxury hotels worldwide. Michelin-starred restaurant experience.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "maxime-luvara-85820b25",
+  website: "",
+  other: ""
+},
+// BONUS: Pastry Chef
+{
+  num: 28,
+  name: "Rueda Hernandez",
+  nationality: "International",
+  title: "Best Pastry Chef MENA 2025, 3Fils / Brix",
+  tier: "bib",
+  region: "uae",
+  cuisine: "Pastry / Desserts",
+  type: "Pastry Chef",
+  experience: "15+ years",
+  stars: "MENA's Best Pastry Chef 2025 (50 Best); Trained at The Fat Duck & El Bulli",
+  workplace: "3Fils, Jumeirah Fishing Harbour, Dubai (Bib Gourmand); Brix Dessert Bar, Dubai",
+  hotels: "Trained at The Fat Duck (Heston Blumenthal) and El Bulli (Ferran Adria). Created Brix, Dubai's first and only dessert-only dining experience. Signature: African Powerhouse tart with Ghanaian 68% chocolate. Created The Silk Road dessert menu.",
+  phone: "",
+  email: "",
+  ig: "",
+  linkedin: "",
+  website: "",
+  other: "Valrhona Best Pastry Chef Award"
+},
+{
+  num: 29,
+  name: "Reif Othman",
+  nationality: "Singaporean",
+  title: "Chef-Owner, REIF Kushiyaki / TERO",
+  tier: "bib",
+  region: "uae",
+  cuisine: "Japanese / Mediterasian",
+  type: "Chef-Owner / Restaurateur",
+  experience: "10+ years",
+  stars: "Bib Gourmand (REIF Kushiyaki, multiple locations); Michelin Guide Selected (TERO)",
+  workplace: "REIF Japanese Kushiyaki, Dar Wasl & Dubai Hills; TERO; Hoe Lee Kow; Kushi",
+  hotels: "One of UAE's few entirely self-funded chef-restaurateurs. Coined 'Mediterasian' cuisine concept. Known for viral Wagyu sando and 'toilet roll' yuzu cake. Brand ambassador for @eirawater.",
+  phone: "",
+  email: "",
+  ig: "reifo.kee",
+  linkedin: "",
+  website: "reifkushiyaki.com",
+  other: "18K IG followers | World's 50 Best MENA Chef's Choice"
+}
+];
+
+function renderCards(data) {
+  const grid = document.getElementById('chefGrid');
+  grid.innerHTML = '';
+  data.forEach(c => {
+    let starDisplay = '';
+    if(c.tier === '3star') starDisplay = '<span class="tag tag-3star">3 MICHELIN STARS</span>';
+    else if(c.tier === '2star') starDisplay = '<span class="tag tag-2star">2 MICHELIN STARS</span>';
+    else if(c.tier === '1star') starDisplay = '<span class="tag tag-1star">1 MICHELIN STAR</span>';
+    else if(c.tier === '5hotel') starDisplay = '<span class="tag tag-5hotel">5-STAR HOTEL CHEF</span>';
+    else if(c.tier === 'bib') starDisplay = '<span class="tag tag-bib">BIB GOURMAND / SELECTED</span>';
+
+    let links = '';
+    if(c.ig) links += `<a class="link-btn link-ig" href="https://instagram.com/${c.ig}" target="_blank">@${c.ig}</a>`;
+    if(c.linkedin) links += `<a class="link-btn link-li" href="https://linkedin.com/in/${c.linkedin}" target="_blank">LinkedIn</a>`;
+    if(c.website) links += `<a class="link-btn link-web" href="https://${c.website}" target="_blank">Website</a>`;
+    if(c.other) links += `<span class="link-btn link-other">${c.other}</span>`;
+    if(c.email) links += `<a class="link-btn link-web" href="mailto:${c.email}">${c.email}</a>`;
+
+    grid.innerHTML += `
+    <div class="chef-card" data-tier="${c.tier}" data-region="${c.region}" data-search="${(c.name+' '+c.nationality+' '+c.cuisine+' '+c.title+' '+c.workplace+' '+c.hotels).toLowerCase()}">
+      <div class="num">#${c.num}</div>
+      <div class="chef-name">${c.name}</div>
+      <div class="chef-title">${c.title}</div>
+      <div>${starDisplay} <span class="tag tag-cuisine">${c.cuisine}</span></div>
+      <div class="detail-row"><span class="detail-label">Nationality:</span><span class="detail-value">${c.nationality}</span></div>
+      <div class="detail-row"><span class="detail-label">Chef Type:</span><span class="detail-value">${c.type}</span></div>
+      <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">${c.experience}</span></div>
+      <div class="detail-row"><span class="detail-label">Stars/Awards:</span><span class="detail-value">${c.stars}</span></div>
+      <div class="detail-row"><span class="detail-label">Workplace:</span><span class="detail-value">${c.workplace}</span></div>
+      ${c.phone ? `<div class="detail-row"><span class="detail-label">Phone:</span><span class="detail-value">${c.phone}</span></div>` : ''}
+      <div class="hotels-list"><strong>Key Details:</strong> ${c.hotels}</div>
+      <div class="links">${links}</div>
+    </div>`;
+  });
+  document.getElementById('totalCount').textContent = data.length;
+}
+
+function filterCards() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const tier = document.getElementById('tierFilter').value;
+  const region = document.getElementById('regionFilter').value;
+  const filtered = chefs.filter(c => {
+    const matchSearch = !search || (c.name+' '+c.nationality+' '+c.cuisine+' '+c.title+' '+c.workplace+' '+c.hotels).toLowerCase().includes(search);
+    const matchTier = !tier || c.tier === tier;
+    const matchRegion = !region || c.region === region;
+    return matchSearch && matchTier && matchRegion;
+  });
+  renderCards(filtered);
+}
+
+renderCards(chefs);
+</script>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Trainers & Fitness Coaches in Toronto/GTA - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.toronto { background: #1a3a2a; color: #4ade80; }
+  .tag.northyork { background: #1a2a3a; color: #60a5fa; }
+  .tag.scarborough { background: #2a1a3a; color: #c084fc; }
+  .tag.etobicoke { background: #3a2a1a; color: #fbbf24; }
+  .tag.mississauga { background: #1a3a3a; color: #67e8f9; }
+  .tag.brampton { background: #3a1a2a; color: #f472b6; }
+  .tag.vaughan { background: #2a3a1a; color: #a3e635; }
+  .tag.markham { background: #1a2a2a; color: #5eead4; }
+  .tag.oakville { background: #2a2a1a; color: #fde047; }
+  .tag.hamilton { background: #3a1a1a; color: #fb923c; }
+  .tag.durham { background: #1a1a3a; color: #818cf8; }
+  .tag.other { background: #2a2a2a; color: #d4d4d4; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Toronto Fitness</div>
+    <div class="hero-brand-float">Toronto Fitness</div>
+    <h1>Personal Trainers & Fitness Coaches - Toronto / GTA</h1>
+    <p class="subtitle">Instagram profiles | No website required - connect via DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, specialty, or location..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="pt">Personal Trainer</option>
+    <option value="yoga">Yoga / Pilates</option>
+    <option value="boxing">Boxing / MMA / Martial Arts</option>
+    <option value="crossfit">CrossFit</option>
+    <option value="swimming">Swimming</option>
+    <option value="bodybuilding">Bodybuilding / Physique</option>
+    <option value="online">Online Coach</option>
+    <option value="nutrition">Nutrition / Weight Loss</option>
+    <option value="studio">Studio / Gym</option>
+    <option value="stretch">Stretch / Mobility / Rehab</option>
+    <option value="dance">Dance / Zumba / Barre</option>
+    <option value="calisthenics">Calisthenics</option>
+    <option value="cycling">Spin / Cycling</option>
+    <option value="running">Running</option>
+    <option value="strength">Strength & Conditioning</option>
+    <option value="prenatal">Prenatal / Postnatal</option>
+    <option value="senior">Senior Fitness</option>
+    <option value="other">Other</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Locations</option>
+    <option value="toronto">Toronto (Downtown)</option>
+    <option value="northyork">North York</option>
+    <option value="scarborough">Scarborough</option>
+    <option value="etobicoke">Etobicoke</option>
+    <option value="mississauga">Mississauga</option>
+    <option value="brampton">Brampton</option>
+    <option value="vaughan">Vaughan / Woodbridge</option>
+    <option value="markham">Markham / Richmond Hill</option>
+    <option value="oakville">Oakville / Burlington</option>
+    <option value="hamilton">Hamilton</option>
+    <option value="durham">Durham (Oshawa/Ajax/Pickering)</option>
+    <option value="other">Other GTA</option>
+  </select>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+  <p>To connect: Open the profile and send a DM or use the contact in their bio</p>
+</footer>
+
+<script>
+const trainers = [
+  // ===== PERSONAL TRAINERS - TORONTO DOWNTOWN =====
+  {u:"melrosetraining",d:"Mel Grauds, women's personal training Toronto",c:"pt",l:"toronto"},
+  {u:"ola.tsev",d:"Ola, personal trainer Downtown East Toronto",c:"pt",l:"toronto"},
+  {u:"torontotoptrainers",d:"Toronto Top Trainers directory",c:"pt",l:"toronto"},
+  {u:"personal_trainer_toronto",d:"Personal Trainer Toronto",c:"pt",l:"toronto"},
+  {u:"primalbreedfit",d:"Primal Breed Fitness, personal training Toronto",c:"pt",l:"toronto"},
+  {u:"edzofitness",d:"Eduard, personal trainer Toronto",c:"pt",l:"toronto"},
+  {u:"macdonaldfitness",d:"MacDonald Fitness, personal training Toronto",c:"pt",l:"toronto"},
+  {u:"janellefaithill",d:"Janelle Faithill, certified personal trainer",c:"pt",l:"toronto"},
+  {u:"dangfit_",d:"Dang Fit, personal trainer Toronto",c:"pt",l:"toronto"},
+  {u:"tmaxbeauchamp",d:"Max Beauchamp, personal trainer & online coach Toronto",c:"pt",l:"toronto"},
+  {u:"lisadynamixfitness",d:"Lisa, Dynamix Fitness personal training",c:"pt",l:"toronto"},
+  {u:"thecurvebuilder",d:"The Curve Builder, body transformation coach",c:"pt",l:"toronto"},
+  {u:"coach.suziegeria",d:"Coach Suzie Geria, certified personal trainer",c:"pt",l:"toronto"},
+  {u:"fitbyaw",d:"Fit By AW, personal training Toronto",c:"pt",l:"toronto"},
+  {u:"cgbfitness",d:"CGB Fitness, personal training Toronto",c:"pt",l:"toronto"},
+  {u:"buildmybodybeautiful",d:"Build My Body Beautiful, women's fitness coach",c:"pt",l:"toronto"},
+  {u:"aizah_fit",d:"Aizah Fit, certified personal trainer Toronto",c:"pt",l:"toronto"},
+  {u:"team.fst",d:"Team FST, fitness & strength training Toronto",c:"pt",l:"toronto"},
+  {u:"thejewishfitnesscoach",d:"The Jewish Fitness Coach, personal training",c:"pt",l:"toronto"},
+  {u:"intisarfitness",d:"Intisar Fitness, personal training for women",c:"pt",l:"toronto"},
+  {u:"get.it.fitnessx",d:"Get It Fitness, personal training Toronto",c:"pt",l:"toronto"},
+  {u:"pelexfitness",d:"Pelex Fitness, personal trainer Toronto",c:"pt",l:"toronto"},
+  {u:"_danmaskell",d:"Dan Maskell, personal trainer Toronto",c:"pt",l:"toronto"},
+  {u:"mrcoachcody",d:"Coach Cody, personal trainer Toronto",c:"pt",l:"toronto"},
+  {u:"soulmatefit",d:"Jenny Lam - Soulmate Fit, PT for women 30+",c:"pt",l:"toronto"},
+  {u:"fit_with_farnaz",d:"Farnaz, certified personal trainer Toronto",c:"pt",l:"toronto"},
+  {u:"danielleballfitness",d:"Danielle Ball, personal trainer in-person & online",c:"pt",l:"toronto"},
+  {u:"tarek_mohamed777",d:"Tarek Mohamed, ISSA certified personal trainer",c:"pt",l:"toronto"},
+  {u:"_instapham",d:"John Pham, fitness coach Toronto",c:"pt",l:"toronto"},
+  {u:"shane__billings",d:"Shane Billings, certified personal trainer Toronto",c:"pt",l:"toronto"},
+  {u:"wuman000",d:"Manman, personal trainer Toronto",c:"pt",l:"toronto"},
+  {u:"suzymarifitness",d:"Suzy Mari, certified personal trainer & nutritional coach",c:"pt",l:"toronto"},
+  {u:"fitsquad_training",d:"Fit Squad Training, personal training gym Downtown",c:"studio",l:"toronto"},
+  {u:"empact.fit",d:"EMPACT, strength training gym Downtown (366 Adelaide St E)",c:"studio",l:"toronto"},
+  {u:"junxionperformanceto",d:"Junxion Performance Toronto, performance training",c:"studio",l:"toronto"},
+  {u:"iftoronto",d:"Innovative Fitness Toronto, private PT studio (Ritz-Carlton)",c:"studio",l:"toronto"},
+  {u:"dwellgym",d:"Dwell Gym, Leslieville Toronto",c:"studio",l:"toronto"},
+  {u:"purefitnesscanada",d:"Pure Fitness Canada, gym Downtown Toronto",c:"studio",l:"toronto"},
+  {u:"bodyandsoulteam",d:"Body + Soul Fitness, 3 locations Toronto",c:"studio",l:"toronto"},
+  {u:"traininglane",d:"Training Lane, woman-owned fitness co-working (487 King St E)",c:"studio",l:"toronto"},
+  {u:"xtremecouturetoronto",d:"Xtreme Couture Toronto, MMA & fitness facility",c:"studio",l:"toronto"},
+  {u:"placemade.co",d:"Placemade, fitness coworking & PT studio Toronto",c:"studio",l:"toronto"},
+  {u:"shapefitness.ca",d:"Shape Fitness Gym, Toronto",c:"studio",l:"toronto"},
+  {u:"pyrosport",d:"PYRO, gym & studio workouts Toronto",c:"studio",l:"toronto"},
+  {u:"studiolagree",d:"Studio Lagree Toronto, fitness studio",c:"studio",l:"toronto"},
+  {u:"altitudeathletic",d:"Altitude Athletic Training facility Toronto",c:"studio",l:"toronto"},
+  {u:"toronto_athletic_club",d:"Toronto Athletic Club, athletic club & PT",c:"studio",l:"toronto"},
+
+  // ===== YOGA - TORONTO =====
+  {u:"yoga_monkeyy",d:"Yoga Monkey, yoga instructor Toronto",c:"yoga",l:"toronto"},
+  {u:"torontoyogaco",d:"Toronto Yoga Co, yoga studio",c:"yoga",l:"toronto"},
+  {u:"jafferyoga",d:"Jaffery Yoga, yoga instructor Toronto",c:"yoga",l:"toronto"},
+  {u:"naynoyy",d:"Naynoyy, yoga & wellness Toronto",c:"yoga",l:"toronto"},
+  {u:"bluecanoeyoga",d:"Blue Canoe - Zen Gym, yoga/pilates/HIIT (Rosedale & St Clair)",c:"yoga",l:"toronto"},
+
+  // ===== PILATES - TORONTO =====
+  {u:"martina_fong",d:"Martina Fong, pilates instructor Toronto",c:"yoga",l:"toronto"},
+  {u:"tatumtalleyfitness",d:"Tatum Talley, pilates & fitness Toronto",c:"yoga",l:"toronto"},
+  {u:"pilalice.toronto",d:"Pilalice Toronto, pilates studio",c:"yoga",l:"toronto"},
+  {u:"rachel.pilates",d:"Rachel Pilates, instructor Toronto",c:"yoga",l:"toronto"},
+  {u:"inbody.fitness",d:"InBody Fitness, pilates Toronto",c:"yoga",l:"toronto"},
+  {u:"daniya_pilates",d:"Daniya Pilates, instructor Toronto",c:"yoga",l:"toronto"},
+  {u:"workoutwithdem",d:"Workout With Dem, pilates Toronto",c:"yoga",l:"toronto"},
+  {u:"torontopilates.socialclub",d:"Toronto Pilates Social Club",c:"yoga",l:"toronto"},
+  {u:"slivingstudios",d:"S Living Studios, pilates Toronto",c:"yoga",l:"toronto"},
+  {u:"aim.fitness",d:"AIM Fitness, pilates Toronto",c:"yoga",l:"toronto"},
+  {u:"mypilatesstudioto",d:"My Pilates Studio Toronto",c:"yoga",l:"toronto"},
+  {u:"britannybooth",d:"Britanny Booth, pilates & barre instructor Toronto",c:"yoga",l:"toronto"},
+  {u:"movewithdahlia",d:"Dahlia, barre & pilates instructor Toronto",c:"yoga",l:"toronto"},
+  {u:"pilatesnorth",d:"Pilates North, core conditioning & functional training",c:"yoga",l:"other"},
+  {u:"studioflexboutiquefitness",d:"StudioFlex Boutique Fitness, reformer pilates/aerial yoga",c:"yoga",l:"toronto"},
+
+  // ===== CROSSFIT - TORONTO =====
+  {u:"allinonesnc",d:"All In One Strength & Conditioning, CrossFit Toronto",c:"crossfit",l:"toronto"},
+  {u:"cf_colosseum",d:"CrossFit Colosseum, Toronto",c:"crossfit",l:"toronto"},
+  {u:"crossfitykv",d:"CrossFit YKV, Toronto",c:"crossfit",l:"toronto"},
+  {u:"kingshighwaycrossfit",d:"Kings Highway CrossFit, Toronto",c:"crossfit",l:"toronto"},
+  {u:"northerntouchcrossfit",d:"Northern Touch CrossFit, Scarborough",c:"crossfit",l:"scarborough"},
+  {u:"crossfit_oshawa",d:"CrossFit Oshawa, Durham Region",c:"crossfit",l:"durham"},
+  {u:"radixgym",d:"Radix Gym / CrossFit Radix, Oakville",c:"crossfit",l:"oakville"},
+
+  // ===== BOXING / MMA / MARTIAL ARTS =====
+  {u:"121.mma",d:"121 MMA, mixed martial arts Toronto",c:"boxing",l:"toronto"},
+  {u:"bazookakickboxing",d:"Bazooka Kickboxing, Toronto",c:"boxing",l:"toronto"},
+  {u:"tkmt_academy",d:"TKMT Academy, martial arts Toronto",c:"boxing",l:"toronto"},
+  {u:"go1mr",d:"Go 1 More Round, boxing Toronto",c:"boxing",l:"toronto"},
+  {u:"control_kickboxing",d:"Control Kickboxing, Toronto",c:"boxing",l:"toronto"},
+  {u:"relentlessboxiing",d:"Relentless Boxing, Toronto",c:"boxing",l:"toronto"},
+  {u:"brampton_boxing",d:"Brampton Boxing, martial arts Brampton",c:"boxing",l:"brampton"},
+  {u:"boxandlifttoronto",d:"Box & Lift Toronto, kettlebell & boxing training",c:"boxing",l:"etobicoke"},
+  {u:"obft_",d:"OBFT, boxing & functional training Toronto",c:"boxing",l:"toronto"},
+
+  // ===== BODYBUILDING / PHYSIQUE =====
+  {u:"go_ham1",d:"Go HAM, bodybuilding & physique coaching Toronto",c:"bodybuilding",l:"toronto"},
+  {u:"leroy_rollins_fitness",d:"Leroy Rollins, bodybuilding coach Toronto",c:"bodybuilding",l:"toronto"},
+  {u:"darin_starr",d:"Darin Starr, physique coach Toronto",c:"bodybuilding",l:"toronto"},
+  {u:"ajthakid",d:"AJ Tha Kid, bodybuilding Toronto",c:"bodybuilding",l:"toronto"},
+  {u:"grazinroma",d:"Grazin Roma, physique competitor Toronto",c:"bodybuilding",l:"toronto"},
+  {u:"renaldogairy",d:"Renaldo Gairy, IFBB Pro physique & bodybuilding coach",c:"bodybuilding",l:"toronto"},
+  {u:"gainsbydre_",d:"Dre, natural bodybuilder & transformation coach",c:"bodybuilding",l:"toronto"},
+  {u:"emanuel.coaching",d:"Coach Emanuel, vegan bodybuilder & coach",c:"bodybuilding",l:"toronto"},
+  {u:"danny21tran",d:"Danny Tran, fitness coach Toronto",c:"bodybuilding",l:"toronto"},
+  {u:"posingwiththepro",d:"Posing With The Pro, certified posing coach GTA",c:"bodybuilding",l:"other"},
+  {u:"iamstevenbole",d:"Steven Ross Bole, fitness & strength coach Toronto",c:"bodybuilding",l:"toronto"},
+  {u:"lovelucyfit_",d:"Lucy Chewins, female online fitness coach Toronto",c:"bodybuilding",l:"toronto"},
+  {u:"torontostarbodybuilding",d:"Toronto Star Bodybuilding, community page",c:"bodybuilding",l:"toronto"},
+  {u:"jeffnippard",d:"Jeff Nippard, fitness influencer & strength training",c:"bodybuilding",l:"toronto"},
+  {u:"bandofbarbells",d:"Band of Barbells, powerlifting training facility",c:"bodybuilding",l:"toronto"},
+  {u:"torquebarbell",d:"Torque Barbell, powerlifting & bodybuilding gym",c:"bodybuilding",l:"toronto"},
+  {u:"646weightlifting_gym",d:"646 Weightlifting Gym, Toronto",c:"bodybuilding",l:"toronto"},
+  {u:"uoftpowerlifting",d:"UofT Powerlifting Club, Toronto",c:"bodybuilding",l:"toronto"},
+
+  // ===== NUTRITION / WEIGHT LOSS =====
+  {u:"nfitness30",d:"Noah Schwartz, fitness & nutrition coach Toronto",c:"nutrition",l:"toronto"},
+  {u:"moasfarfitness",d:"Mohammed, online fitness & nutrition coach Toronto",c:"nutrition",l:"toronto"},
+  {u:"karinaveee",d:"Karina Vee, nutrition coach Toronto",c:"nutrition",l:"toronto"},
+  {u:"caryn.watt",d:"Caryn Watt, macros nutrition coach & PT Toronto",c:"nutrition",l:"toronto"},
+  {u:"alisa_nutrition",d:"Alisa, nutrition coaching Toronto",c:"nutrition",l:"toronto"},
+  {u:"forkandveg",d:"Stef, holistic nutrition coach Toronto",c:"nutrition",l:"toronto"},
+  {u:"oceannsmith",d:"Ocean Smith, fitness & nutrition coach Toronto",c:"nutrition",l:"toronto"},
+  {u:"fitbykyla",d:"Kyla, fitness & nutrition coach Toronto",c:"nutrition",l:"toronto"},
+  {u:"dietitiantayla",d:"Tayla, weight loss coach & dietitian Toronto",c:"nutrition",l:"toronto"},
+  {u:"weight2loseclinic",d:"Medical Weight Loss Clinic Toronto",c:"nutrition",l:"toronto"},
+  {u:"torontoweightlossclinic",d:"Toronto Weight Loss Clinic",c:"nutrition",l:"toronto"},
+  {u:"coachalexia",d:"Alexia, weight loss coach Toronto",c:"nutrition",l:"toronto"},
+  {u:"fitfoodiestasia",d:"Anastasia D'Amario, fitness & high protein recipes",c:"nutrition",l:"toronto"},
+
+  // ===== ONLINE COACHES (TORONTO-BASED) =====
+  {u:"coachalexanderr",d:"Coach Alexander, CPT strength & conditioning",c:"online",l:"toronto"},
+  {u:"kaylafordwellness",d:"Kayla Ford CNP RYT 200, holistic health & wellness",c:"online",l:"toronto"},
+  {u:"vin0bailey",d:"Vino Bailey, online fitness coach Toronto",c:"online",l:"toronto"},
+  {u:"brockashby",d:"Brock Ashby, online coach Toronto",c:"online",l:"toronto"},
+  {u:"wellwithmelo",d:"Well With Melo, wellness coach Toronto",c:"online",l:"toronto"},
+  {u:"ryangourlayfit",d:"Ryan Gourlay, personal trainer & online coach",c:"online",l:"oakville"},
+  {u:"joelle.fit",d:"Joelle, online personal trainer Ontario",c:"online",l:"other"},
+  {u:"dy.fit",d:"Daniel Yates, physique coach Toronto/GTA",c:"online",l:"toronto"},
+  {u:"coach_raf_",d:"Rafael Escobar, fitness expert Toronto",c:"online",l:"toronto"},
+  {u:"gta.fitness",d:"George Ta, online fitness coach GTA",c:"online",l:"other"},
+  {u:"jasbranderfitness",d:"Jas Brander, personal trainer GTA",c:"online",l:"other"},
+  {u:"lorussofit4all",d:"EpicROI Fit (Lo Russo), fitness coach Toronto",c:"online",l:"toronto"},
+
+  // ===== HIIT / FUNCTIONAL TRAINING =====
+  {u:"f45_training_torontodowntown",d:"F45 Toronto Downtown, functional HIIT",c:"studio",l:"toronto"},
+  {u:"f45_training_regentpark",d:"F45 Training Regent Park, functional HIIT",c:"studio",l:"toronto"},
+  {u:"f45_training_danforthtoronto",d:"F45 Training Danforth, functional HIIT",c:"studio",l:"toronto"},
+  {u:"f45_training_bloorwestvillage",d:"F45 Training Bloor West Village, functional HIIT",c:"studio",l:"toronto"},
+  {u:"defyfunctionalfitness",d:"Defy Functional Fitness, PT/nutrition/group (Leaside)",c:"studio",l:"toronto"},
+  {u:"metricfunctionalfitness",d:"Metric Fitness, group classes/PT (Yonge & Eglinton)",c:"studio",l:"toronto"},
+  {u:"shinefitco",d:"Shine Fit Co, dance fitness/HIIT studio (Yonge & Bloor)",c:"studio",l:"toronto"},
+  {u:"functionalfitnesstoronto",d:"Functional Fitness Toronto, acro yoga/parkour/calisthenics",c:"studio",l:"toronto"},
+
+  // ===== CALISTHENICS =====
+  {u:"calisthenics_canada",d:"Calisthenics Canada, community page",c:"calisthenics",l:"other"},
+  {u:"ultimatecalisthenics",d:"Ultimate Calisthenics gym, North York",c:"calisthenics",l:"northyork"},
+  {u:"mikemike_unbreakable",d:"Mike Hannon, calisthenics trainer Mississauga",c:"calisthenics",l:"mississauga"},
+  {u:"thecalisthenicscentre",d:"Jonathan Abbott, bodyweight strength & skills Toronto",c:"calisthenics",l:"toronto"},
+  {u:"donvalleycalisthenics",d:"Don Valley Calisthenics, fitness park ambassador",c:"calisthenics",l:"toronto"},
+  {u:"payam_calisthenics",d:"Payam Hassannejad, calisthenics Toronto",c:"calisthenics",l:"toronto"},
+
+  // ===== STRETCH / MOBILITY / REHAB =====
+  {u:"stretching.toronto",d:"Lily Flow, transformation & stretch coach Toronto",c:"stretch",l:"toronto"},
+  {u:"decodedpoetry",d:"April Ebru Egerci, CPT barbell rehab & mobility",c:"stretch",l:"toronto"},
+  {u:"artofmobility",d:"Art of Mobility (AOM), therapy & mobility Toronto/Mississauga",c:"stretch",l:"toronto"},
+  {u:"nix.f.i.t",d:"Nicola Jones, remedial massage & functional trainer",c:"stretch",l:"toronto"},
+  {u:"torontomovementtherapy",d:"TMT: Toronto Movement Therapy",c:"stretch",l:"toronto"},
+  {u:"movementmattersyyz",d:"Movement Matters YYZ, movement coach Toronto",c:"stretch",l:"toronto"},
+  {u:"keep_stretching",d:"Stretching & classical pilates coach Toronto",c:"stretch",l:"toronto"},
+  {u:"flexibility.studio",d:"Flexibility Studio, stretching studio Toronto",c:"stretch",l:"toronto"},
+  {u:"stretchwithrex",d:"Rex Abergas, fascial stretch therapist/RMT Scarborough",c:"stretch",l:"scarborough"},
+  {u:"pro.flex.ca",d:"Stretching Toronto, group/private stretch sessions",c:"stretch",l:"toronto"},
+  {u:"stretchlabtorontowest",d:"StretchLab Toronto West, assisted stretch studio",c:"stretch",l:"toronto"},
+  {u:"stretchlabtoronto_downtown",d:"StretchLab Toronto Downtown, assisted stretch studio",c:"stretch",l:"toronto"},
+  {u:"beardthebestyoucanbe",d:"Amir Zandinejad, mobility coach Toronto",c:"stretch",l:"toronto"},
+
+  // ===== DANCE / ZUMBA / BARRE =====
+  {u:"hfd.toronto",d:"Happy Feet Dance & Fitness, ballet/jazz/hip hop/Zumba (Don Mills)",c:"dance",l:"toronto"},
+  {u:"tiara_bellydance_toronto",d:"Tiara Bellydance Toronto, bellydance fitness",c:"dance",l:"toronto"},
+  {u:"vibedanceandfitness",d:"ViBE Dance & Fitness Studio Toronto",c:"dance",l:"toronto"},
+  {u:"brassvixens",d:"Brass Vixens, pole dance fitness (721 Queen St W)",c:"dance",l:"toronto"},
+  {u:"redefine_fitltd",d:"Redefine Fit, pole dance/chair dance fitness (Danforth/Bloor)",c:"dance",l:"toronto"},
+  {u:"kaleilaj",d:"Kaleila Jordan, dance fitness instructor/choreographer",c:"dance",l:"toronto"},
+  {u:"kangoo_club_gta",d:"Kangoo Club GTA, Kangoo Jumps fitness",c:"dance",l:"other"},
+  {u:"om_elvira",d:"Om Elvira, pole/heels/choreography instructor",c:"dance",l:"toronto"},
+  {u:"tanya_fishka",d:"Tanya Fishka, dance instructor hip hop/house",c:"dance",l:"toronto"},
+  {u:"dirtyliciouserica",d:"Erica, dance instructor Toronto",c:"dance",l:"toronto"},
+  {u:"yourdanceclass",d:"Your Dance Class, adult dance training (heels/jazz)",c:"dance",l:"toronto"},
+  {u:"therailpathartscentre",d:"Railpath Arts Centre, dance/fitness/theatre West Toronto",c:"dance",l:"toronto"},
+  {u:"grace_zumba.canada",d:"Grace, Zumba instructor Toronto",c:"dance",l:"toronto"},
+  {u:"mynameiskatezumba",d:"Kate Azizova, Zumba instructor Toronto",c:"dance",l:"toronto"},
+  {u:"tlkfitness01",d:"Tanya Keene, group fitness/Zumba instructor",c:"dance",l:"toronto"},
+  {u:"zumba_w_jane",d:"Jane Yuen, Zumba/Step/Kids instructor",c:"dance",l:"toronto"},
+  {u:"zumbachoreostoronto",d:"Zumba Toronto, community page",c:"dance",l:"toronto"},
+  {u:"remydosreis",d:"RemyFit, Zumba instructor Toronto",c:"dance",l:"toronto"},
+  {u:"zinsarasuleiman",d:"Sara Suleiman, ZIN/SYNC Zumba instructor",c:"dance",l:"toronto"},
+  {u:"barrecollective.to",d:"Toronto Barre Collective, barre studio",c:"dance",l:"toronto"},
+  {u:"barretiquetoronto",d:"Danielle MacDonald, barre instructor Toronto",c:"dance",l:"toronto"},
+  {u:"barrebellestudios",d:"Barre Belle, barre/HIIT studio Toronto & Calgary",c:"dance",l:"toronto"},
+  {u:"purebarretoronto",d:"Pure Barre Toronto Queen St W, barre studio",c:"dance",l:"toronto"},
+  {u:"barre3toronto",d:"barre3 Toronto, barre studio",c:"dance",l:"toronto"},
+
+  // ===== SWIMMING =====
+  {u:"your_personal_swim_coach",d:"Your Personal Swim Coach, Toronto",c:"swimming",l:"toronto"},
+  {u:"swim_by_nina",d:"Nina Salsali, swim instructor & lifeguard Toronto",c:"swimming",l:"toronto"},
+  {u:"iswimaquatics",d:"iSwim Aquatics, private swim lessons Toronto/GTA",c:"swimming",l:"toronto"},
+  {u:"swimcentraltoronto",d:"Swim Central Toronto, private swimming lessons",c:"swimming",l:"toronto"},
+  {u:"schoolinthepool",d:"School In The Pool, private swim lessons North York",c:"swimming",l:"northyork"},
+  {u:"canadaswimschool",d:"Canada Swim School, private lessons Mississauga/Ajax",c:"swimming",l:"mississauga"},
+  {u:"torontoswim",d:"Toronto Swim School, swimming & lifeguard training",c:"swimming",l:"toronto"},
+
+  // ===== SPIN / CYCLING =====
+  {u:"risecycle",d:"RISE CYCLE, indoor cycling (Liberty Village / Queen St E)",c:"cycling",l:"toronto"},
+  {u:"quadspin",d:"Quad Spin Toronto, spinning studio (King West)",c:"cycling",l:"toronto"},
+  {u:"studiospincanada",d:"Studio Spin, spin studio (Queen East / King West)",c:"cycling",l:"toronto"},
+  {u:"spincotoronto",d:"SPINCO Toronto, spin studio (Spadina / Yonge)",c:"cycling",l:"toronto"},
+  {u:"legacytrainingstudio",d:"Legacy Training / Andy Drake, cycling/bootcamp/PT",c:"cycling",l:"toronto"},
+  {u:"spintoronto",d:"SPIN Toronto, cycling studio",c:"cycling",l:"toronto"},
+  {u:"pedalhouse_spinstudio",d:"PedalHouse Spin Studio Toronto",c:"cycling",l:"toronto"},
+
+  // ===== RUNNING =====
+  {u:"trainwithde",d:"Deanna, running/strength/nutrition coach Toronto & Manhattan",c:"running",l:"toronto"},
+  {u:"strongwithpatty",d:"Patty, trainer & running coach Toronto",c:"running",l:"toronto"},
+
+  // ===== STRENGTH & CONDITIONING =====
+  {u:"strengthcollectivetoronto",d:"Strength Collective Toronto, group S&C",c:"strength",l:"toronto"},
+  {u:"ldroj16",d:"Louis Rojas, S&C coach (Toronto Maple Leafs)",c:"strength",l:"toronto"},
+  {u:"trainwrs",d:"Train With Rose, strength & functional coach",c:"strength",l:"toronto"},
+  {u:"nickrobinson_gws",d:"Nick Robinson, S&C coach (M.Sc. Exercise Science)",c:"strength",l:"toronto"},
+  {u:"coachselby17",d:"Alan Selby, S&C coach (Toronto Marlies)",c:"strength",l:"toronto"},
+  {u:"ccsceducation",d:"Andre Benoit, S&C education Toronto",c:"strength",l:"toronto"},
+  {u:"attainphysiospc",d:"Attain Physiotherapy & Sport Performance, S&C",c:"strength",l:"toronto"},
+  {u:"coachtessagrossman",d:"Tessa Grossman CSCS, strength & conditioning coach",c:"strength",l:"toronto"},
+  {u:"shahzman_shafique",d:"Shahzman Shafique, strength & conditioning coach",c:"strength",l:"toronto"},
+  {u:"axisperformanceandtraining",d:"AXIS Performance + Training, athletic development/physio",c:"strength",l:"toronto"},
+  {u:"forgetoronto",d:"Forge Performance Institute, strength & performance",c:"strength",l:"toronto"},
+  {u:"a.m.training",d:"Dr. Al, powerlifting coach (DPT, CSCS)",c:"strength",l:"toronto"},
+  {u:"ianmcfit",d:"Ian McWalter, personal trainer & mobile physique Ontario",c:"strength",l:"other"},
+
+  // ===== PRENATAL / POSTNATAL =====
+  {u:"mightymomjess",d:"Jess Sennet, prenatal & postnatal fitness Toronto",c:"prenatal",l:"toronto"},
+  {u:"vibebychristina",d:"Christina, prenatal & postnatal trainer Toronto",c:"prenatal",l:"toronto"},
+  {u:"bellybootcamp",d:"Belly Bootcamp, prenatal & postpartum fitness Toronto",c:"prenatal",l:"toronto"},
+  {u:"fit.kaur",d:"Jas Kaur, personal trainer & postpartum coach GTA",c:"prenatal",l:"other"},
+
+  // ===== SENIOR FITNESS =====
+  {u:"vintagefitnesscanada",d:"Vintage Fitness, senior in-home personal training GTA",c:"senior",l:"toronto"},
+  {u:"foreverfitwithmitch",d:"Mitch, senior fitness trainer (72 years old)",c:"senior",l:"toronto"},
+
+  // ===== WELLNESS COACHES =====
+  {u:"sklptyourbody",d:"Stephanie Katona, wellness coach Toronto",c:"other",l:"toronto"},
+  {u:"kalpeshpatil_29_",d:"Kalpesh Patil, fitness/wellness/health coach Toronto",c:"other",l:"toronto"},
+  {u:"lindslay_dill",d:"Lindsay Dill, online wellness coach Toronto",c:"other",l:"toronto"},
+  {u:"morganadams.wellness",d:"Morgan Adams MSW, holistic sleep coach Toronto",c:"other",l:"toronto"},
+  {u:"womens_wealth_and_wellness",d:"Robyn Boyle, wellness coach Toronto",c:"other",l:"toronto"},
+  {u:"joannajangcoach",d:"Joanna Jang, wellness & joy coach Toronto",c:"other",l:"toronto"},
+  {u:"healflow.ca",d:"Healflow Elevated Wellness, wellness centre Downtown",c:"other",l:"toronto"},
+
+  // ===== SCARBOROUGH =====
+  {u:"aleya_pereira",d:"Aleya Pereira, PT & fitness instructor women 35+",c:"pt",l:"scarborough"},
+  {u:"bodyformfitness.studio",d:"Body Form Fitness Studio, PT/senior fitness/rehab",c:"studio",l:"scarborough"},
+  {u:"goodlife_kennedyandlawrence_pt",d:"GoodLife Kennedy & Lawrence PTs, injury rehab/weight loss",c:"pt",l:"scarborough"},
+  {u:"femmefatalefitnesstt",d:"Femme Fatale Fitness, ISSA certified trainer & nutrition",c:"pt",l:"scarborough"},
+
+  // ===== NORTH YORK =====
+  {u:"housefit_toronto",d:"Housefit Toronto Studio, private PT (Yonge & Sheppard)",c:"studio",l:"northyork"},
+  {u:"eastyorkpersonaltraining",d:"East York Personal Training Inc",c:"pt",l:"northyork"},
+  {u:"schoolinthepool_ny",d:"School In The Pool, private swim North York",c:"swimming",l:"northyork"},
+
+  // ===== ETOBICOKE =====
+  {u:"buildafitphysique",d:"Etobicoke Personal Trainer, personal training",c:"pt",l:"etobicoke"},
+  {u:"oneacademylife",d:"One Academy, fitness coaching Etobicoke",c:"pt",l:"etobicoke"},
+  {u:"fitnessbyfarach",d:"Luca Farace, Fitness By Farach personal training",c:"pt",l:"etobicoke"},
+  {u:"otspersonaltraining",d:"Only The Strong Personal Training, Etobicoke",c:"pt",l:"etobicoke"},
+  {u:"glf.etobicokewomens",d:"GoodLife Fitness Etobicoke Women's (380 The East Mall)",c:"studio",l:"etobicoke"},
+  {u:"ehpclinic",d:"Etobicoke High Performance Health Clinic, chiro/physio/PT",c:"stretch",l:"etobicoke"},
+
+  // ===== MISSISSAUGA =====
+  {u:"keagmeister",d:"Keag, personal trainer & writer Mississauga",c:"pt",l:"mississauga"},
+  {u:"misterfernandez",d:"Dahvon Fernandez, personal trainer Mississauga",c:"pt",l:"mississauga"},
+  {u:"specialefitness_mississauga",d:"Speciale Fitness Mississauga, PT & EMS",c:"studio",l:"mississauga"},
+
+  // ===== BRAMPTON =====
+  {u:"trainmefitbrampton",d:"Train Me Fit Brampton, personal training",c:"pt",l:"brampton"},
+  {u:"tbfitnessinc",d:"TB Fitness Inc, personal training Brampton",c:"pt",l:"brampton"},
+  {u:"thelabbrampton",d:"The Lab Brampton, functional & athletic training",c:"studio",l:"brampton"},
+  {u:"rgx_fitness",d:"RGX Fitness, women's gym & Hyrox Brampton",c:"studio",l:"brampton"},
+  {u:"thevintagesingh",d:"Taranpreet Singh Gulati, fitness coach Brampton",c:"pt",l:"brampton"},
+  {u:"nashdfitness",d:"Nash Dhaliwal, fitness coach (fat loss specialist) Brampton",c:"pt",l:"brampton"},
+  {u:"fuzionfitnessbrampton",d:"Fuzion Fitness, 24hr gym Brampton",c:"studio",l:"brampton"},
+  {u:"megagymcanada",d:"The Mega Gym, fitness centre Brampton/Caledon",c:"studio",l:"brampton"},
+  {u:"eveolve.coach",d:"Eveolve Coach, fitness coaching Brampton",c:"pt",l:"brampton"},
+
+  // ===== VAUGHAN / WOODBRIDGE =====
+  {u:"vaughan_fitness",d:"Vaughan Fitness, online personal trainer",c:"pt",l:"vaughan"},
+  {u:"specialefitness_vaughan",d:"Speciale Fitness Vaughan, personal training",c:"pt",l:"vaughan"},
+  {u:"fuelnburn.fitness",d:"Fuel n Burn, personal trainer/coach Vaughan",c:"pt",l:"vaughan"},
+  {u:"karenmichellle",d:"KM, fitness trainer & health coach Vaughan",c:"pt",l:"vaughan"},
+  {u:"pojofitness",d:"Liz Jones / Pojo Fitness, trainer & macro coach Vaughan",c:"pt",l:"vaughan"},
+  {u:"derrickalves",d:"Derrick Alves, online fitness coach Vaughan/GTA",c:"pt",l:"vaughan"},
+  {u:"fitclubvaughan",d:"Fit Club Vaughan, private fitness club (Woodbridge)",c:"studio",l:"vaughan"},
+  {u:"thewoodbridgeclub",d:"The Woodbridge Club, fitness club",c:"studio",l:"vaughan"},
+  {u:"o2fuelvaughan",d:"O2 Fuel Vaughan, team training gym",c:"studio",l:"vaughan"},
+  {u:"crunch_woodbridge",d:"Crunch Fitness Woodbridge, gym",c:"studio",l:"vaughan"},
+  {u:"lifetime.woodbridge",d:"Life Time Woodbridge, gym",c:"studio",l:"vaughan"},
+  {u:"hobbyexplorer",d:"Magesh Vadivelu, certified personal trainer Vaughan/GTA",c:"pt",l:"vaughan"},
+
+  // ===== MARKHAM / RICHMOND HILL =====
+  {u:"themarkhamgym",d:"The Markham Gym, gym & personal training",c:"studio",l:"markham"},
+  {u:"ironstonefitnessmarkham",d:"Ironstone Fitness Markham, PT & bootcamp",c:"studio",l:"markham"},
+  {u:"dradams22",d:"David Adams, gym owner/CPT Snap Fitness Markham",c:"pt",l:"markham"},
+  {u:"shenny.fit",d:"Sheneth Fernando, CPT & online coach Markham",c:"pt",l:"markham"},
+  {u:"jasonhoangfit",d:"Jason Hoang, NASM certified PT & nutritionist Markham",c:"pt",l:"markham"},
+  {u:"joannasofosfitness",d:"Joanna Sofos, mobile fitness trainer York Region",c:"pt",l:"markham"},
+  {u:"fitnessconnectionon",d:"Fitness Connection, gym Don Mills/Richmond Hill",c:"studio",l:"markham"},
+  {u:"wfccrhill",d:"Womens Fitness Richmond Hill",c:"studio",l:"markham"},
+  {u:"cruise__fit",d:"Cruise Fit, fitness training Markham/GTA",c:"pt",l:"markham"},
+
+  // ===== OAKVILLE / BURLINGTON =====
+  {u:"greenlight_oakville",d:"Greenlight Personal Training, private gym Oakville",c:"studio",l:"oakville"},
+  {u:"anthonylamfitness",d:"Anthony Lam CSCS, personal trainer Oakville",c:"pt",l:"oakville"},
+  {u:"lamlab_hq",d:"LamLab Fitness Mastery, strength training gym Oakville",c:"studio",l:"oakville"},
+  {u:"novahealthclub",d:"Nova Health Club, personal training Oakville",c:"studio",l:"oakville"},
+  {u:"patcrowleytraining",d:"Patrick Crowley, personal trainer Oakville",c:"pt",l:"oakville"},
+  {u:"tidalfitnessbronte",d:"Tidal Fitness Bronte, group classes/PT Oakville",c:"studio",l:"oakville"},
+  {u:"conkerfitness",d:"Conker Fitness, personal/online training Oakville",c:"pt",l:"oakville"},
+  {u:"limitlesstrainingsystems",d:"Limitless Training Systems, sports science Oakville/Burlington",c:"studio",l:"oakville"},
+  {u:"hubfitnessoakville",d:"Hub Fitness Oakville, 24/7 community gym",c:"studio",l:"oakville"},
+  {u:"flynnfitness",d:"Andrew Flynn, Flynn Fitness personal trainer Burlington",c:"pt",l:"oakville"},
+  {u:"body_fit_4_life",d:"Carrie, fitness coach for women 40+ Oakville",c:"pt",l:"oakville"},
+  {u:"flynnfitnessburlington",d:"Flynn Fitness Burlington, gym & studio",c:"studio",l:"oakville"},
+  {u:"merkulov.denys",d:"Denys Merkulov, personal trainer Burlington",c:"pt",l:"oakville"},
+  {u:"takegoodcarefitness",d:"Hilary, personal trainer Burlington",c:"pt",l:"oakville"},
+  {u:"epcburlington",d:"Elite Performance Center, gym Burlington",c:"studio",l:"oakville"},
+  {u:"ben_c_beckman",d:"Ben Beckman, personal trainer Burlington",c:"pt",l:"oakville"},
+  {u:"btcworkout",d:"Burlington Training Centre, gym & martial arts",c:"studio",l:"oakville"},
+
+  // ===== HAMILTON =====
+  {u:"hamiltonfitnessacademy",d:"HFA, 1-on-1 personal training Hamilton",c:"pt",l:"hamilton"},
+  {u:"builtbybarry",d:"Barry Vincent, #1 personal trainer Hamilton",c:"pt",l:"hamilton"},
+  {u:"highlymotivated_fitness_club",d:"ISSA certified fitness trainer & nutrition coach Hamilton",c:"pt",l:"hamilton"},
+  {u:"xelffitness",d:"XELF, gym & personal training Hamilton",c:"studio",l:"hamilton"},
+  {u:"kurtbradleyfitness",d:"Kurt Bradley, fitness coach Hamilton",c:"pt",l:"hamilton"},
+  {u:"northstarstrong",d:"North Star Strong, PT & strength studio Hamilton (Stoney Creek)",c:"studio",l:"hamilton"},
+
+  // ===== DURHAM (OSHAWA / AJAX / PICKERING) =====
+  {u:"pickering_personal_training",d:"Pickering Personal Training & Wellness, in-home PT/pilates/yoga",c:"pt",l:"durham"},
+  {u:"durhamfitnesscentre",d:"Durham Fitness Centre, gym & PT",c:"studio",l:"durham"},
+  {u:"eastdurhamfitness",d:"East Durham Fitness, functional training/Hyrox/PT",c:"studio",l:"durham"},
+  {u:"ctghockey",d:"Justin MacDonald, CPT & hockey training Durham",c:"pt",l:"durham"},
+  {u:"sharif.fitness",d:"Sharif Fitness, fitness coach Ajax",c:"pt",l:"durham"},
+  {u:"f45_training_ajax",d:"F45 Training Ajax Central, gym",c:"studio",l:"durham"},
+  {u:"onfitness_ajax",d:"ONFitness Ajax, gym & personal training",c:"studio",l:"durham"},
+  {u:"trainedbyjack",d:"Trained by Jack, fitness coach Ajax/Pickering",c:"pt",l:"durham"},
+
+  // ===== OTHER GTA / ONTARIO =====
+  {u:"pgsfitnessstudio",d:"PGS Fitness Studio (Payge), personal trainer Newmarket",c:"pt",l:"other"},
+  {u:"flexfitnessnewmarket",d:"Flex Fitness Newmarket, gym",c:"studio",l:"other"},
+  {u:"reformnewmarket",d:"REFORM Fitness Newmarket, reformer pilates",c:"yoga",l:"other"},
+  {u:"fitchicinfinity",d:"FitChic Infinity, women's fitness studio Newmarket",c:"studio",l:"other"},
+  {u:"aurora_athletics_",d:"Coach Mohamed, personal trainer Aurora",c:"pt",l:"other"},
+  {u:"powerhousegymaurora",d:"Powerhouse Gym Aurora",c:"studio",l:"other"},
+  {u:"danda.training",d:"Danda Training, functional fitness Barrie",c:"pt",l:"other"},
+  {u:"alexacise",d:"Custom Training & Nutrition, personal trainer Barrie",c:"pt",l:"other"},
+  {u:"fitness.animal_",d:"Fitness Animal, personal trainer Barrie",c:"pt",l:"other"},
+  {u:"thewarehousegymm",d:"The Warehouse Gym, Barrie",c:"studio",l:"other"},
+  {u:"forgefittraining",d:"Aleesha, KW trainer & online coach Kitchener",c:"pt",l:"other"},
+  {u:"tmcintyre_fit",d:"Tyler McIntyre, personal trainer Cambridge",c:"pt",l:"other"},
+  {u:"alexsalytchev",d:"Alex Salytchev, personal trainer Cambridge",c:"pt",l:"other"},
+  {u:"caledonfitness",d:"Caledon Fitness, fitness centre Caledon",c:"studio",l:"other"},
+  {u:"glstouffvilletraining",d:"GoodLife Fitness Stouffville PT",c:"pt",l:"other"},
+  {u:"betterbodz",d:"Better Bodz Inc, gym Milton",c:"studio",l:"other"},
+  {u:"sean.protraining",d:"Sean Zulauf, personal trainer Milton",c:"pt",l:"other"},
+  {u:"trainersonsite",d:"Trainers On Site, personal training Milton",c:"pt",l:"other"},
+  {u:"tacsportmed",d:"The Sport Medicine Clinic, sports medicine/athletic therapy",c:"stretch",l:"toronto"},
+
+  // ===== IN-HOME / MOBILE TRAINERS =====
+  {u:"nielsenfitness",d:"Nielsen Fitness, in-home personal training Toronto",c:"pt",l:"toronto"},
+  {u:"yourhousefitness",d:"Your House Fitness, in-home personal training Toronto",c:"pt",l:"toronto"},
+  {u:"mobiletrainers",d:"Mobile Trainers, in-home personal training Toronto/GTA",c:"pt",l:"toronto"},
+
+  // ===== KETTLEBELL =====
+  {u:"aakjuggling",d:"Steph Dykstra, kettlebell specialist Toronto",c:"pt",l:"toronto"},
+
+  // ===== FITNESS INFLUENCERS =====
+  {u:"fitnessinfluencers.to",d:"Fitness Influencers of Toronto, community page",c:"other",l:"toronto"},
+  {u:"janetosbornefitness",d:"Janet Osborne, fitness influencer Toronto",c:"other",l:"toronto"},
+  {u:"annapiotrowski",d:"Anna Piotrowski, fitness coach Canada/Toronto",c:"pt",l:"toronto"},
+  {u:"moriah_moves_",d:"Moriah Chapman, certified personal trainer Toronto/GTA",c:"pt",l:"toronto"},
+  {u:"trainwithjackie",d:"Jackie, functional health coach & CPT GTA",c:"pt",l:"oakville"},
+  {u:"lukobenja",d:"Benny / Luko Benja, fitness coach (NASM-CPT) Toronto",c:"pt",l:"toronto"},
+
+  // ===== ADDITIONAL TORONTO PROFILES =====
+  {u:"thefatpt",d:"The Fat PT, weight loss & mindset coach (Toronto connection)",c:"nutrition",l:"toronto"},
+  {u:"jameslawrenceonlinecoach",d:"James Lawrence, weight loss & lifestyle coach",c:"online",l:"toronto"},
+  {u:"annapiotrowski",d:"Anna Piotrowski, fitness coach Toronto",c:"pt",l:"toronto"},
+  {u:"mobility_house",d:"Mobility House, chiro/physio/wellness Toronto",c:"stretch",l:"toronto"},
+  {u:"beautyandbodytoronto",d:"Beauty & Body Toronto, body contour & fitness",c:"other",l:"toronto"},
+  {u:"teamtkfitness",d:"Tanya Petkovich Kolokotsas, personal trainer Concord",c:"pt",l:"vaughan"},
+  {u:"kpsportsmed",d:"Field Me Athletic Therapy, certified athletic therapist Milton/Mississauga",c:"stretch",l:"mississauga"}
+];
+
+// Deduplicate by username
+const seen = new Set();
+const unique = trainers.filter(t => {
+  if (seen.has(t.u)) return false;
+  seen.add(t.u);
+  return true;
+});
+
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+
+function getLocClass(l) {
+  const map = {toronto:'toronto',northyork:'northyork',scarborough:'scarborough',etobicoke:'etobicoke',mississauga:'mississauga',brampton:'brampton',vaughan:'vaughan',markham:'markham',oakville:'oakville',hamilton:'hamilton',durham:'durham'};
+  return map[l] || 'other';
+}
+function getLocLabel(l) {
+  const map = {toronto:'Toronto',northyork:'North York',scarborough:'Scarborough',etobicoke:'Etobicoke',mississauga:'Mississauga',brampton:'Brampton',vaughan:'Vaughan',markham:'Markham / Richmond Hill',oakville:'Oakville / Burlington',hamilton:'Hamilton',durham:'Durham Region',other:'GTA'};
+  return map[l] || 'GTA';
+}
+function getCatLabel(c) {
+  const map = {pt:'Personal Trainer',yoga:'Yoga / Pilates',boxing:'Boxing / MMA',crossfit:'CrossFit',swimming:'Swimming',bodybuilding:'Bodybuilding',online:'Online Coach',nutrition:'Nutrition / Weight Loss',studio:'Studio / Gym',stretch:'Stretch / Mobility',dance:'Dance / Zumba / Barre',calisthenics:'Calisthenics',cycling:'Spin / Cycling',running:'Running',strength:'Strength & Conditioning',prenatal:'Prenatal / Postnatal',senior:'Senior Fitness',other:'Wellness / Other'};
+  return map[c] || c;
+}
+
+function renderCards(list) {
+  grid.innerHTML = '';
+  list.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<div class="num">#${i + 1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`;
+    grid.appendChild(card);
+  });
+  stats.textContent = `Showing ${list.length} of ${unique.length} profiles across the Greater Toronto Area`;
+}
+
+function filterCards() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const cat = document.getElementById('catFilter').value;
+  const loc = document.getElementById('locFilter').value;
+  const filtered = unique.filter(t => {
+    if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false;
+    if (cat && t.c !== cat) return false;
+    if (loc && t.l !== loc) return false;
+    return true;
+  });
+  renderCards(filtered);
+}
+
+renderCards(unique);
+</script>
+</body>
+</html>

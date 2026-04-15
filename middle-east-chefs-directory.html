@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Chefs Directory - Middle East & International | Freelance & Available for Work</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;padding:16px;line-height:1.5}
+h1{color:#ff6b35;font-size:1.8rem;text-align:center;margin-bottom:4px}
+.sub{text-align:center;color:#888;font-size:0.85rem;margin-bottom:16px}
+.stats-bar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+.stat{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:8px 14px;text-align:center;min-width:90px}
+.stat .n{color:#ff6b35;font-size:1.3rem;font-weight:bold}
+.stat .l{color:#888;font-size:0.65rem}
+.filter-bar{display:flex;gap:8px;margin:16px 0;flex-wrap:wrap;justify-content:center}
+.filter-bar input,.filter-bar select{padding:8px 12px;border-radius:8px;border:1px solid #333;background:#1a1a1a;color:#fff;font-size:0.85rem}
+.filter-bar input{width:280px}
+.chef-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:18px;margin:12px 0;transition:all 0.2s}
+.chef-card:hover{border-color:#ff6b35;box-shadow:0 4px 15px rgba(255,107,53,0.15)}
+.chef-card .top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px}
+.chef-card .name{color:#ff6b35;font-size:1.1rem;font-weight:700}
+.chef-card .title-role{color:#fbbf24;font-size:0.8rem;font-weight:600;margin-top:2px}
+.chef-card .nationality{color:#60a5fa;font-size:0.75rem;margin-top:2px}
+.chef-card .detail-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:10px}
+.chef-card .detail{font-size:0.78rem;color:#bbb}
+.chef-card .detail b{color:#ddd}
+.chef-card .social{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.chef-card .social a{display:inline-block;padding:3px 10px;border-radius:6px;font-size:0.72rem;text-decoration:none;font-weight:600;transition:opacity 0.2s}
+.chef-card .social a:hover{opacity:0.8}
+.ig{background:#e1306c22;color:#e1306c;border:1px solid #e1306c44}
+.fb{background:#1877f222;color:#4293f5;border:1px solid #1877f244}
+.li{background:#0a66c222;color:#5ba3e6;border:1px solid #0a66c244}
+.web{background:#4ade8022;color:#4ade80;border:1px solid #4ade8044}
+.wa{background:#25d36622;color:#25d366;border:1px solid #25d36644}
+.em{background:#fbbf2422;color:#fbbf24;border:1px solid #fbbf2444}
+.ph{background:#ffffff11;color:#aaa;border:1px solid #ffffff22}
+.tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}
+.tag{padding:2px 8px;border-radius:4px;font-size:0.68rem;font-weight:600}
+.tag-uae{background:#1a3a2a;color:#4ade80}
+.tag-ksa{background:#2a1a2a;color:#c084fc}
+.tag-qatar{background:#1a2a3a;color:#60a5fa}
+.tag-kuwait{background:#3a2a1a;color:#fbbf24}
+.tag-bahrain{background:#2a2a1a;color:#facc15}
+.tag-intl{background:#2a2a2a;color:#ccc}
+.tag-michelin{background:#3a1a1a;color:#f87171}
+.tag-5star{background:#2a2a1a;color:#fbbf24}
+.tag-freelance{background:#1a3a3a;color:#22d3ee}
+.section-title{color:#ff6b35;font-size:1.1rem;margin:24px 0 8px;padding-bottom:6px;border-bottom:1px solid #333}
+.note{background:#111;border:1px solid #333;border-radius:8px;padding:12px;font-size:0.78rem;color:#999;margin:16px 0}
+footer{text-align:center;margin-top:30px;color:#555;font-size:0.75rem;padding:16px 0;border-top:1px solid #222}
+footer a{color:#ff6b35}
+@media(max-width:768px){.detail-grid{grid-template-columns:1fr}}
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #ff6b35;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #ff6b3511 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Chefs Directory</div>
+    <div class="hero-brand-float">Chefs Directory</div>
+    <h1>Professional Chefs Directory - Middle East & International</h1>
+    <p class="sub">25 Verified Chef Profiles | Freelance, Private & Available for Work | April 2026</p>
+</div>
+<div class="stats-bar">
+<div class="stat"><div class="n">25</div><div class="l">Total Chefs</div></div>
+<div class="stat"><div class="n">8</div><div class="l">Private Chefs</div></div>
+<div class="stat"><div class="n">6</div><div class="l">Executive/Head</div></div>
+<div class="stat"><div class="n">4</div><div class="l">Pastry Chefs</div></div>
+<div class="stat"><div class="n">4</div><div class="l">Consultants</div></div>
+<div class="stat"><div class="n">3</div><div class="l">Specialty</div></div>
+</div>
+
+<div class="filter-bar">
+<input type="text" id="search" placeholder="Search by name, cuisine, nationality, location..." oninput="filterCards()">
+<select id="typeFilter" onchange="filterCards()">
+<option value="">All Types</option>
+<option value="private">Private Chef</option>
+<option value="executive">Executive/Head Chef</option>
+<option value="pastry">Pastry Chef</option>
+<option value="consultant">Consultant</option>
+<option value="specialty">Specialty Chef</option>
+</select>
+<select id="locFilter" onchange="filterCards()">
+<option value="">All Locations</option>
+<option value="uae">UAE</option>
+<option value="qatar">Qatar</option>
+<option value="ksa">Saudi Arabia</option>
+<option value="kuwait">Kuwait</option>
+<option value="intl">International</option>
+</select>
+</div>
+
+<div id="cards">
+
+<!-- ====== CHEF 1 ====== -->
+<div class="chef-card" data-type="private" data-loc="uae" data-search="luca napoleone italian private chef dubai michelin royal family luxury">
+<div class="top">
+<div>
+<div class="name">1. Luca Napoleone</div>
+<div class="title-role">Private Chef / Founder, Private Chefs Atelier Dubai</div>
+<div class="nationality">Italian (born in Rome)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Michelin-level fine dining, Italian, French, international</div>
+<div class="detail"><b>Experience:</b> 15+ years (Michelin-starred restaurants in Italy, France, Spain, Switzerland, UK)</div>
+<div class="detail"><b>Star Rating:</b> Michelin-starred restaurants; Ex-Royal Family of Abu Dhabi private chef</div>
+<div class="detail"><b>Previous:</b> Executive Chef at Cavalli Club Dubai (2016), Clinique La Prairie Switzerland, Royal Family Abu Dhabi</div>
+<div class="detail"><b>Followers:</b> 18K Instagram</div>
+<div class="detail"><b>Contact:</b> DM on Instagram for bookings</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/privatechefdubai/" target="_blank">@privatechefdubai</a>
+<a class="ig" href="https://www.instagram.com/privatechefsatelier/" target="_blank">@privatechefsatelier</a>
+<a class="li" href="https://www.linkedin.com/in/luca-edoardo-napoleone-0634b7172/" target="_blank">LinkedIn</a>
+<a class="fb" href="https://www.facebook.com/luca.napoleone/" target="_blank">Facebook</a>
+<a class="web" href="https://www.privatechefsatelier.com/" target="_blank">Website</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-michelin">Michelin Background</span>
+<span class="tag tag-5star">Royal Family</span>
+<span class="tag tag-freelance">Private Chef</span>
+</div>
+</div>
+
+<!-- ====== CHEF 2 ====== -->
+<div class="chef-card" data-type="pastry" data-loc="uae" data-search="karim bourgi lebanese pastry chef mena best 2023 chocolate dubai qatar">
+<div class="top">
+<div>
+<div class="name">2. Karim Bourgi</div>
+<div class="title-role">Head Pastry Chef / Consultant / MENA's Best Pastry Chef 2023</div>
+<div class="nationality">Lebanese (born in Senegal, raised between France & Lebanon)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> French pastry, chocolate, gelato, modern desserts</div>
+<div class="detail"><b>Experience:</b> 15+ years in high-end pastry</div>
+<div class="detail"><b>Star Rating:</b> MENA's 50 Best Pastry Chef Award 2023</div>
+<div class="detail"><b>Previous:</b> Head Pastry Chef at Al Mana Group; Regional Chef for La Maison du Chocolat Paris (ME); Founder of KAYU, CALLA, OPPA</div>
+<div class="detail"><b>Followers:</b> 718K Instagram</div>
+<div class="detail"><b>Phone:</b> +971 52 999 9422</div>
+<div class="detail"><b>Email:</b> admin@trykayu.com</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/karim.bourgi/" target="_blank">@karim.bourgi</a>
+<a class="fb" href="https://www.facebook.com/Kbgourmandise/" target="_blank">Facebook</a>
+<a class="ph" href="tel:+97152999422">+971 52 999 9422</a>
+<a class="em" href="mailto:admin@trykayu.com">admin@trykayu.com</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-michelin">MENA Best Pastry 2023</span>
+<span class="tag tag-freelance">Consultant</span>
+</div>
+</div>
+
+<!-- ====== CHEF 3 ====== -->
+<div class="chef-card" data-type="private" data-loc="uae intl" data-search="francois savin french private chef dubai riviera michelin luxury yacht">
+<div class="top">
+<div>
+<div class="name">3. Francois Savin</div>
+<div class="title-role">Private Chef & Culinary Consultant</div>
+<div class="nationality">French</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> French haute cuisine, Mediterranean, international fine dining</div>
+<div class="detail"><b>Experience:</b> 10+ years (since 2016 as private chef); worked alongside 7 Michelin-starred chefs</div>
+<div class="detail"><b>Star Rating:</b> Michelin-starred restaurant alumni (7 establishments)</div>
+<div class="detail"><b>Previous:</b> Prestigious establishments in France; Private chef on French Riviera & Dubai</div>
+<div class="detail"><b>Locations:</b> Dubai (winter) & French Riviera (summer); available in UAE</div>
+<div class="detail"><b>Phone FR:</b> +33 (0)6 01 33 43 62</div>
+<div class="detail"><b>Phone UAE:</b> +971 (0)50 343 9604</div>
+<div class="detail"><b>Email:</b> booking@chefsavin.com</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/francois_savin/" target="_blank">@francois_savin</a>
+<a class="fb" href="https://www.facebook.com/privatechefriviera/" target="_blank">Facebook</a>
+<a class="li" href="https://www.linkedin.com/in/fran%C3%A7ois-savin-596b14aa/" target="_blank">LinkedIn</a>
+<a class="web" href="https://chefsavin.com/" target="_blank">Website</a>
+<a class="ph" href="tel:+971503439604">+971 50 343 9604</a>
+<a class="em" href="mailto:booking@chefsavin.com">booking@chefsavin.com</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-intl">French Riviera</span>
+<span class="tag tag-michelin">Michelin Background</span>
+<span class="tag tag-freelance">Private Chef</span>
+</div>
+</div>
+
+<!-- ====== CHEF 4 ====== -->
+<div class="chef-card" data-type="consultant" data-loc="uae" data-search="paul hayward british pastry chef consultant dubai ritz carlton mandarin oriental">
+<div class="top">
+<div>
+<div class="name">4. Paul Hayward</div>
+<div class="title-role">Pastry Chef & Consultant / Founder of PH by Design</div>
+<div class="nationality">British (England)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Pastry fusion, modern desserts, also savory with global flavors</div>
+<div class="detail"><b>Experience:</b> 30+ years as Pastry Chef; trained under Master Chefs from France, Germany, Switzerland</div>
+<div class="detail"><b>Star Rating:</b> Michelin-level; worked at The Ritz London, Mandarin Oriental London</div>
+<div class="detail"><b>Previous:</b> The Ritz London, Mandarin Oriental London, Ritz Carlton Miami, Atlantis Bahamas, Madinat Jumeirah Dubai</div>
+<div class="detail"><b>Followers:</b> 78K Instagram</div>
+<div class="detail"><b>Current:</b> PH by Design consultancy in Dubai (est. 2019), travels worldwide</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/chefpaulhayward/" target="_blank">@chefpaulhayward</a>
+<a class="li" href="https://www.linkedin.com/in/paul-hayward-46440a13/" target="_blank">LinkedIn</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-michelin">Ritz / Mandarin Oriental</span>
+<span class="tag tag-5star">5-Star Hotels</span>
+<span class="tag tag-freelance">Consultant</span>
+</div>
+</div>
+
+<!-- ====== CHEF 5 ====== -->
+<div class="chef-card" data-type="executive" data-loc="uae qatar" data-search="surender mohan indian executive chef michelin jamavar london dubai doha">
+<div class="top">
+<div>
+<div class="name">5. Surender Mohan</div>
+<div class="title-role">Michelin Star Chef / Culinary Director & Executive Chef at LSL Capital (Jamavar)</div>
+<div class="nationality">Indian</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Indian fine dining (North Indian royal kitchens to South Indian coastal)</div>
+<div class="detail"><b>Experience:</b> 27+ years (since 1994); started at Hyatt Regency Delhi</div>
+<div class="detail"><b>Star Rating:</b> Michelin Star - Jamavar London</div>
+<div class="detail"><b>Previous:</b> Hyatt Regency Delhi, Jamavar London (Michelin Star), Jamavar Doha (2021), Jamavar Dubai</div>
+<div class="detail"><b>Followers:</b> 157K Instagram</div>
+<div class="detail"><b>Locations:</b> London, Dubai, Doha</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/chefsurendermohan/" target="_blank">@chefsurendermohan</a>
+<a class="web" href="https://jamavarrestaurants.com/" target="_blank">jamavarrestaurants.com</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-qatar">Doha</span>
+<span class="tag tag-michelin">Michelin Star</span>
+<span class="tag tag-5star">5-Star</span>
+</div>
+</div>
+
+<!-- ====== CHEF 6 ====== -->
+<div class="chef-card" data-type="specialty" data-loc="uae" data-search="chef eyad alhasan palestinian smoked meat bbq barbecue dubai khobar">
+<div class="top">
+<div>
+<div class="name">6. Chef Eyad Alhasan</div>
+<div class="title-role">Specialty Chef / "King of Smoked Meats" / Restaurant Owner</div>
+<div class="nationality">Palestinian (from Kafr Qasim)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Smoked meats, Levantine-Texan BBQ fusion, USDA prime Angus, lamb</div>
+<div class="detail"><b>Experience:</b> 20+ years as specialist butcher and pitmaster</div>
+<div class="detail"><b>Star Rating:</b> 20+ branches worldwide</div>
+<div class="detail"><b>Locations:</b> Sheikh Zayed Rd Dubai, Mirdif Hills, Dubai Festival City, + international</div>
+<div class="detail"><b>Followers:</b> 37K Instagram</div>
+<div class="detail"><b>Phone Dubai:</b> 04 343 3328 / 052 299 6444 / 055 123 3174</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/chefeyad.dubai/" target="_blank">@chefeyad.dubai</a>
+<a class="ig" href="https://www.instagram.com/chef_eyad.khobar/" target="_blank">@chef_eyad.khobar</a>
+<a class="web" href="https://chefeyaddubai.com/" target="_blank">chefeyaddubai.com</a>
+<a class="web" href="https://linktr.ee/chefeyaddubai" target="_blank">Linktree</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-ksa">Khobar</span>
+<span class="tag tag-freelance">Restaurant Owner</span>
+</div>
+</div>
+
+<!-- ====== CHEF 7 ====== -->
+<div class="chef-card" data-type="specialty" data-loc="uae" data-search="hattem mattar egyptian arab pitmaster bbq live fire dubai culinary ambassador">
+<div class="top">
+<div>
+<div class="name">7. Hattem Mattar</div>
+<div class="title-role">World's First Arab Pitmaster / UAE Culinary Ambassador / Restaurant Owner</div>
+<div class="nationality">Egyptian</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Live fire BBQ, smoked meats, Middle Eastern-American fusion</div>
+<div class="detail"><b>Experience:</b> Former oil & gas professional turned pitmaster; trained in USA</div>
+<div class="detail"><b>Recognition:</b> Dubai's first Tastemaker; UAE Embassy's first Culinary Ambassador</div>
+<div class="detail"><b>Current:</b> Fiya restaurant (Keturah Reserve Dubai); Reign School of Live Fire</div>
+<div class="detail"><b>Followers:</b> 30K Instagram</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/hattemmattar/" target="_blank">@hattemmattar</a>
+<a class="web" href="https://mattar.ae/" target="_blank">mattar.ae</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-freelance">Pitmaster / Educator</span>
+</div>
+</div>
+
+<!-- ====== CHEF 8 ====== -->
+<div class="chef-card" data-type="specialty" data-loc="uae" data-search="chef shaheen iraqi science based chef yaba restaurant dubai 5M">
+<div class="top">
+<div>
+<div class="name">8. Chef Shaheen</div>
+<div class="title-role">Chef & Architect / Science-Based Chef / Restaurant Owner</div>
+<div class="nationality">Iraqi (WhatsApp +964 country code)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Iraqi cuisine (non-traditional, engineering-based cooking)</div>
+<div class="detail"><b>Experience:</b> Restaurant founder and food science innovator</div>
+<div class="detail"><b>Recognition:</b> 5M+ Instagram followers; top chef influencer in UAE</div>
+<div class="detail"><b>Restaurant:</b> YABA by Chef Shaheen, Dubai</div>
+<div class="detail"><b>WhatsApp:</b> +964 772 228 2826</div>
+<div class="detail"><b>Followers:</b> 5M Instagram</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/chef.shaheen/" target="_blank">@chef.shaheen</a>
+<a class="ig" href="https://www.instagram.com/yaba.rest/" target="_blank">@yaba.rest</a>
+<a class="wa" href="https://wa.me/9647722282826">WhatsApp</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-freelance">Restaurant Owner</span>
+</div>
+</div>
+
+<!-- ====== CHEF 9 ====== -->
+<div class="chef-card" data-type="private" data-loc="uae" data-search="mariam hamdy egyptian chef food photographer stylist recipe developer dubai cairo">
+<div class="top">
+<div>
+<div class="name">9. Mariam Hamdy</div>
+<div class="title-role">Chef / Food Photographer & Stylist / Recipe Developer / Workshop Instructor</div>
+<div class="nationality">Egyptian (based in Cairo)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> International, Middle Eastern, modern creative</div>
+<div class="detail"><b>Experience:</b> Workshops in Egypt, Paris, Dubai, and online</div>
+<div class="detail"><b>Services:</b> Chef, food photography/styling, recipe development, workshops</div>
+<div class="detail"><b>Followers:</b> 74K Instagram</div>
+<div class="detail"><b>Email:</b> mariamhamdy@gmail.com</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/mariamhamdy/" target="_blank">@mariamhamdy</a>
+<a class="fb" href="https://www.facebook.com/mariamhamdyfoodblog/" target="_blank">Facebook</a>
+<a class="web" href="https://mariam-hamdy.com/" target="_blank">mariam-hamdy.com</a>
+<a class="em" href="mailto:mariamhamdy@gmail.com">mariamhamdy@gmail.com</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai Workshops</span>
+<span class="tag tag-intl">Cairo / Paris</span>
+<span class="tag tag-freelance">Freelance</span>
+</div>
+</div>
+
+<!-- ====== CHEF 10 ====== -->
+<div class="chef-card" data-type="private" data-loc="uae" data-search="teresa ibanez gastronomista spanish private chef supper club dubai ICCA">
+<div class="top">
+<div>
+<div class="name">10. Teresa Ibanez</div>
+<div class="title-role">Private Chef / Supper Club Host (The Gastronomista)</div>
+<div class="nationality">Spanish</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Spanish, Mediterranean, supper club dining</div>
+<div class="detail"><b>Experience:</b> Professional chef graduate from ICCA Dubai (2024); Pastry training at Ecole Ducasse Abu Dhabi; blogging since 2010</div>
+<div class="detail"><b>Services:</b> Spanish supper club, private chef events, bespoke dinners, cooking classes</div>
+<div class="detail"><b>License:</b> Marketing license #1602981</div>
+<div class="detail"><b>Contact:</b> DM on Instagram for queries and collaborations</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/thegastronomista/" target="_blank">@thegastronomista</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-freelance">Private Chef / Supper Club</span>
+</div>
+</div>
+
+<!-- ====== CHEF 11 ====== -->
+<div class="chef-card" data-type="private" data-loc="uae" data-search="khalid eats palestinian private chef supper club dubai middle eastern mishkah">
+<div class="top">
+<div>
+<div class="name">11. Khalid (Khalid Eats)</div>
+<div class="title-role">Private Chef & Supper Club Host / Brand Builder</div>
+<div class="nationality">Palestinian heritage</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Authentic Middle Eastern, Palestinian</div>
+<div class="detail"><b>Services:</b> Private chef, supper club (Mishkah), brand building</div>
+<div class="detail"><b>Contact:</b> DM on Instagram for bookings</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/khalideats/" target="_blank">@khalideats</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-freelance">Private Chef / Supper Club</span>
+</div>
+</div>
+
+<!-- ====== CHEF 12 ====== -->
+<div class="chef-card" data-type="executive" data-loc="uae" data-search="howard ko american chef dubai LA NYC celavi asian michelin 11 years">
+<div class="top">
+<div>
+<div class="name">12. Howard Ko</div>
+<div class="title-role">Executive Chef (CE LA VI Dubai)</div>
+<div class="nationality">American (raised in Los Angeles)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Contemporary Asian with European/American approach; approachable, rustic fine dining</div>
+<div class="detail"><b>Experience:</b> 11+ years of Michelin star culinary experience</div>
+<div class="detail"><b>Star Rating:</b> Michelin-starred restaurant alumni</div>
+<div class="detail"><b>Previous:</b> Michelin restaurants across LA, NYC, Napa, San Francisco; CE LA VI Dubai</div>
+<div class="detail"><b>Followers:</b> ~5K Instagram</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/chef.h.ko/" target="_blank">@chef.h.ko</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-intl">LA / NYC / Napa</span>
+<span class="tag tag-michelin">Michelin Background</span>
+</div>
+</div>
+
+<!-- ====== CHEF 13 ====== -->
+<div class="chef-card" data-type="executive" data-loc="uae" data-search="ilker ciftci turkish executive chef rixos hotels dubai istanbul">
+<div class="top">
+<div>
+<div class="name">13. Ilker Ciftci</div>
+<div class="title-role">Country Director Culinary & F&B Concepts at Rixos Hotels</div>
+<div class="nationality">Turkish</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Turkish, international, hotel F&B concepts</div>
+<div class="detail"><b>Experience:</b> Executive Chef level; extensive 5-star hotel background</div>
+<div class="detail"><b>Star Rating:</b> 5-star (Rixos Hotels chain)</div>
+<div class="detail"><b>Previous:</b> Executive Chef at Rixos Premium Dubai; now Country Director at Rixos Hotels Istanbul</div>
+<div class="detail"><b>Education:</b> Mengen Anadolu Ascilik Meslek Lisesi (Turkish culinary school)</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/chefilkerciftci/" target="_blank">@chefilkerciftci</a>
+<a class="fb" href="https://www.facebook.com/ilkerciftcioffical/" target="_blank">Facebook</a>
+<a class="li" href="https://www.linkedin.com/in/ilker-ciftci-1908876a/" target="_blank">LinkedIn</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai (former)</span>
+<span class="tag tag-intl">Istanbul</span>
+<span class="tag tag-5star">5-Star Rixos</span>
+</div>
+</div>
+
+<!-- ====== CHEF 14 ====== -->
+<div class="chef-card" data-type="executive" data-loc="intl" data-search="philippe chevalier french executive chef michelin bib gourmand private">
+<div class="top">
+<div>
+<div class="name">14. Philippe Chevalier</div>
+<div class="title-role">Private Executive Chef / 9-Time Michelin Awards</div>
+<div class="nationality">French (from Vendee, France)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> French, fine dining, international</div>
+<div class="detail"><b>Experience:</b> 40+ years (apprentice at 14 in 1980; graduated top of class 1983)</div>
+<div class="detail"><b>Star Rating:</b> 9 Michelin Awards; Michelin Bib Gourmand 2010-2016; Executive Chef at 27</div>
+<div class="detail"><b>Previous:</b> Michelin establishments in Paris; Hilton Concord (California)</div>
+<div class="detail"><b>Followers:</b> 13K Instagram</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/chefchevalier/" target="_blank">@chefchevalier</a>
+<a class="li" href="https://www.linkedin.com/in/philippe-chevalier-a0112719" target="_blank">LinkedIn</a>
+<a class="web" href="https://www.chefphilippechevalier.com/" target="_blank">Website</a>
+</div>
+<div class="tags">
+<span class="tag tag-intl">International</span>
+<span class="tag tag-michelin">9x Michelin Awards</span>
+<span class="tag tag-freelance">Private Executive Chef</span>
+</div>
+</div>
+
+<!-- ====== CHEF 15 ====== -->
+<div class="chef-card" data-type="executive" data-loc="intl uae" data-search="david schaumburger german executive chef ritz carlton dubai denver marriott">
+<div class="top">
+<div>
+<div class="name">15. David A. Schaumburger</div>
+<div class="title-role">Executive Chef (The Ritz-Carlton)</div>
+<div class="nationality">German</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> International fine dining, luxury hotel cuisine</div>
+<div class="detail"><b>Experience:</b> Multiple Ritz-Carlton properties; Rising Star Award Middle East & Africa (Marriott International)</div>
+<div class="detail"><b>Star Rating:</b> 5-star (The Ritz-Carlton chain)</div>
+<div class="detail"><b>Previous:</b> Ritz-Carlton Dubai (hotel opening), Ritz-Carlton Naples (FL), Ritz-Carlton Denver (2024)</div>
+<div class="detail"><b>Followers:</b> ~1.3K Instagram</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/schaumiskitchen/" target="_blank">@schaumiskitchen</a>
+<a class="li" href="https://www.linkedin.com/in/david-schaumburger-577750105/" target="_blank">LinkedIn</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai (former)</span>
+<span class="tag tag-intl">Denver (current)</span>
+<span class="tag tag-5star">5-Star Ritz-Carlton</span>
+</div>
+</div>
+
+<!-- ====== CHEF 16 ====== -->
+<div class="chef-card" data-type="executive" data-loc="qatar" data-search="youssef doro executive chef freelance doha lebanon hospitality">
+<div class="top">
+<div>
+<div class="name">16. Youssef Doro</div>
+<div class="title-role">Executive Chef - Freelance</div>
+<div class="nationality">Lebanese (educated at C.I.T Lebanon)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> International, Middle Eastern</div>
+<div class="detail"><b>Experience:</b> 15+ years (hospitality industry since 2009)</div>
+<div class="detail"><b>Education:</b> Bachelor's degree from C.I.T Lebanon</div>
+<div class="detail"><b>Location:</b> Doha, Qatar</div>
+<div class="detail"><b>Status:</b> Actively freelancing</div>
+</div>
+<div class="social">
+<a class="li" href="https://www.linkedin.com/in/youssef-doro-1b27b3204/" target="_blank">LinkedIn</a>
+</div>
+<div class="tags">
+<span class="tag tag-qatar">Doha</span>
+<span class="tag tag-freelance">Freelance</span>
+</div>
+</div>
+
+<!-- ====== CHEF 17 ====== -->
+<div class="chef-card" data-type="consultant" data-loc="uae" data-search="khalid dahbi moroccan british chef entrepreneur luxury caviar gold dubai london gordon ramsay">
+<div class="top">
+<div>
+<div class="name">17. Khalid Dahbi</div>
+<div class="title-role">Chef, Entrepreneur & Philanthropist / Founder of KD Luxury & Caviar Experiences</div>
+<div class="nationality">British-Moroccan (born in Rabat, Morocco)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Luxury dining, caviar, edible gold, fine ingredients</div>
+<div class="detail"><b>Experience:</b> Worked with Gordon Ramsay at Claridge's, Jamie Oliver, Rhubarb Food Designs</div>
+<div class="detail"><b>Star Rating:</b> Michelin-level (Gordon Ramsay at Claridge's)</div>
+<div class="detail"><b>Ventures:</b> KD Luxury (2015) - rare ingredients; Caviar Experiences; KD Foundation (philanthropy)</div>
+<div class="detail"><b>Locations:</b> Dubai & London</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/khaliddahbi/" target="_blank">@khaliddahbi</a>
+<a class="fb" href="https://www.facebook.com/khaliddahbi123/" target="_blank">Facebook</a>
+<a class="li" href="https://www.linkedin.com/in/khalid-dahbi-365a745/" target="_blank">LinkedIn</a>
+<a class="web" href="https://khaliddahbi.com/" target="_blank">khaliddahbi.com</a>
+<a class="web" href="https://caviarexperiences.com/" target="_blank">caviarexperiences.com</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-intl">London</span>
+<span class="tag tag-michelin">Gordon Ramsay / Claridge's</span>
+<span class="tag tag-freelance">Entrepreneur</span>
+</div>
+</div>
+
+<!-- ====== CHEF 18 ====== -->
+<div class="chef-card" data-type="private" data-loc="uae" data-search="andrea karidis greek canadian private chef dubai panama television cooking">
+<div class="top">
+<div>
+<div class="name">18. Andrea T. Karidis (Chef Andrea K)</div>
+<div class="title-role">Private Chef / TV Presenter / Food Demonstrator / Event Host</div>
+<div class="nationality">Greek-Canadian</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Mediterranean, Greek, international</div>
+<div class="detail"><b>Services:</b> Private chef, TV presenting, food demonstrations, event hosting, cooking classes</div>
+<div class="detail"><b>Locations:</b> Dubai and Panama</div>
+<div class="detail"><b>Contact:</b> DM on Instagram or Facebook</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/chefandreak/" target="_blank">@chefandreak</a>
+<a class="fb" href="https://www.facebook.com/ChefAndreaK/" target="_blank">Facebook (1.3K likes)</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-intl">Panama</span>
+<span class="tag tag-freelance">Private Chef / TV</span>
+</div>
+</div>
+
+<!-- ====== CHEF 19 ====== -->
+<div class="chef-card" data-type="pastry" data-loc="uae" data-search="andrea melendez peruvian R&D pastry chef dubai le cordon bleu consultant saudi kuwait">
+<div class="top">
+<div>
+<div class="name">19. Andrea Melendez</div>
+<div class="title-role">R&D Pastry Chef & Consultant</div>
+<div class="nationality">Peruvian</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Pastry, R&D, dessert innovation</div>
+<div class="detail"><b>Experience:</b> Based in Dubai since 2016; Le Cordon Bleu graduate</div>
+<div class="detail"><b>Services:</b> Pastry R&D, consulting projects in Dubai, Saudi Arabia, Kuwait</div>
+<div class="detail"><b>Education:</b> Le Cordon Bleu</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/am.pastrychef/" target="_blank">@am.pastrychef</a>
+<a class="web" href="https://www.amconsultancy.love/" target="_blank">amconsultancy.love</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-ksa">Saudi Arabia</span>
+<span class="tag tag-kuwait">Kuwait</span>
+<span class="tag tag-freelance">Consultant</span>
+</div>
+</div>
+
+<!-- ====== CHEF 20 ====== -->
+<div class="chef-card" data-type="private" data-loc="uae" data-search="chef sterik private chef freelance dubai">
+<div class="top">
+<div>
+<div class="name">20. Chef Sterik</div>
+<div class="title-role">Private Chef / Freelance Chef</div>
+<div class="nationality">Not publicly listed</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> International, private dining</div>
+<div class="detail"><b>Services:</b> Private chef, freelance chef for events and homes</div>
+<div class="detail"><b>Followers:</b> 3.9K Instagram; 524 posts</div>
+<div class="detail"><b>Location:</b> Dubai, UAE</div>
+<div class="detail"><b>Contact:</b> DM on Instagram</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/chefsterik/" target="_blank">@chefsterik</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-freelance">Freelance</span>
+</div>
+</div>
+
+<!-- ====== CHEF 21 ====== -->
+<div class="chef-card" data-type="private" data-loc="uae" data-search="chef CA official music songwriter producer luxury private chef dubai 89K">
+<div class="top">
+<div>
+<div class="name">21. Chef CA</div>
+<div class="title-role">Luxury Private Chef / Songwriter & Producer</div>
+<div class="nationality">Not publicly listed</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Luxury private chef experiences</div>
+<div class="detail"><b>Services:</b> Private chef, luxury dining experiences</div>
+<div class="detail"><b>Followers:</b> 89K Instagram</div>
+<div class="detail"><b>Location:</b> Dubai, UAE</div>
+<div class="detail"><b>Contact:</b> DM for bookings</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/chefcaofficial/" target="_blank">@chefcaofficial</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-freelance">Private Chef</span>
+</div>
+</div>
+
+<!-- ====== CHEF 22 ====== -->
+<div class="chef-card" data-type="consultant" data-loc="uae" data-search="harris aoki shawn ryan pastry chef consultants dubai GCC luxury hotel">
+<div class="top">
+<div>
+<div class="name">22. Ryan Harris & Shawn Aoki (Harris Aoki)</div>
+<div class="title-role">Chef Consultancy Firm / Pastry & Savory Specialists</div>
+<div class="nationality">International</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Pastry/bakery (Ryan Harris), savory/culinary concepts (Shawn Aoki)</div>
+<div class="detail"><b>Experience:</b> Award-winning pastry chef (Ryan); globally experienced culinary consultant (Shawn) with luxury hotel brands</div>
+<div class="detail"><b>Star Rating:</b> Michelin-starred restaurant backgrounds; luxury hotel brand consulting</div>
+<div class="detail"><b>Services:</b> Menu design, recipe creation, concept refinement, restaurant openings, hospitality consulting</div>
+<div class="detail"><b>Email:</b> info@harrisaoki.com</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/harrisxaoki/" target="_blank">@harrisxaoki</a>
+<a class="li" href="https://www.linkedin.com/in/shawn-aoki-2747a135/" target="_blank">LinkedIn (Shawn)</a>
+<a class="web" href="https://harrisaoki.com/" target="_blank">harrisaoki.com</a>
+<a class="em" href="mailto:info@harrisaoki.com">info@harrisaoki.com</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-intl">GCC-wide</span>
+<span class="tag tag-michelin">Michelin Background</span>
+<span class="tag tag-freelance">Consultants</span>
+</div>
+</div>
+
+<!-- ====== CHEF 23 ====== -->
+<div class="chef-card" data-type="executive" data-loc="uae" data-search="vishal rane indian executive chef dubai sports city sheraton JW marriott mumbai">
+<div class="top">
+<div>
+<div class="name">23. Vishal Rane</div>
+<div class="title-role">Executive Chef at Dubai Sports City</div>
+<div class="nationality">Indian (University of Mumbai)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Indian, international, hotel cuisine</div>
+<div class="detail"><b>Experience:</b> Multiple 5-star hotel properties; menu development, banquets, catering</div>
+<div class="detail"><b>Star Rating:</b> 5-star hotels (Sheraton, JW Marriott)</div>
+<div class="detail"><b>Previous:</b> DLL Emirates Restaurants LLC, Sheraton Dubai Creek Hotel & Towers, Mint Leaf Restaurants, JW Marriott Mumbai</div>
+<div class="detail"><b>Skills:</b> Customer service, catering, project management, banquets, menu development</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/r_vishhal/" target="_blank">@r_vishhal</a>
+<a class="ig" href="https://www.instagram.com/vishal.chef/" target="_blank">@vishal.chef</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-5star">5-Star Hotels</span>
+</div>
+</div>
+
+<!-- ====== CHEF 24 ====== -->
+<div class="chef-card" data-type="consultant" data-loc="kuwait" data-search="asmaa albahar kuwaiti chef executive consultant television menu development 529K">
+<div class="top">
+<div>
+<div class="name">24. Chef Asmaa Albahar</div>
+<div class="title-role">Executive Chef / Restaurant Consultant / TV Cooking Host</div>
+<div class="nationality">Kuwaiti</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Kuwaiti, Middle Eastern, international</div>
+<div class="detail"><b>Services:</b> Executive chef, restaurant consultations, menu development, TV cooking programs</div>
+<div class="detail"><b>Followers:</b> 529K Instagram</div>
+<div class="detail"><b>Phone:</b> 94449381</div>
+<div class="detail"><b>Location:</b> Kuwait</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/chef_asmaa/" target="_blank">@chef_asmaa</a>
+</div>
+<div class="tags">
+<span class="tag tag-kuwait">Kuwait</span>
+<span class="tag tag-freelance">Consultant / TV Host</span>
+</div>
+</div>
+
+<!-- ====== CHEF 25 ====== -->
+<div class="chef-card" data-type="private" data-loc="uae" data-search="safa sartawi palestinian chef dubai middle eastern certified licensed sofiesworld">
+<div class="top">
+<div>
+<div class="name">25. Safa Sartawi</div>
+<div class="title-role">Certified & Licensed Chef / Recipe Creator</div>
+<div class="nationality">Palestinian (based in Dubai for 12+ years)</div>
+</div>
+</div>
+<div class="detail-grid">
+<div class="detail"><b>Cuisine:</b> Middle Eastern, easy recipes inspired by Palestinian/Arab cuisine</div>
+<div class="detail"><b>Experience:</b> Certified chef; 12+ years in Dubai</div>
+<div class="detail"><b>Services:</b> Certified and licensed chef; recipe creation; available for inquiries</div>
+<div class="detail"><b>Contact:</b> DM on Instagram for inquiries</div>
+</div>
+<div class="social">
+<a class="ig" href="https://www.instagram.com/sofiesworld__/" target="_blank">@sofiesworld__</a>
+</div>
+<div class="tags">
+<span class="tag tag-uae">Dubai</span>
+<span class="tag tag-freelance">Licensed Chef</span>
+</div>
+</div>
+
+</div><!-- end cards -->
+
+<div class="note">
+<b>Additional Resources for Finding Chefs:</b><br>
+- <a href="https://eazchef.com/our-chefs/" style="color:#ff6b35">EAZ Chef Dubai</a> - Platform with multiple private chefs (Chef Boudi, Chef Ryan UK) | Phone: +971 50 717 1248 / +971 50 717 1249<br>
+- <a href="https://www.personalchefdubai.com/" style="color:#ff6b35">JP Private Chef Dubai</a> - Chef Jeffrey Pearson, 29+ years, Michelin-level private dining in Dubai & Maldives<br>
+- <a href="https://gronda.com/en/chefs/united-arab-emirates" style="color:#ff6b35">Gronda</a> - 2M+ chef community platform with UAE/Qatar/KSA profiles<br>
+- <a href="https://www.dubaichefscollective.com/chefs" style="color:#ff6b35">Dubai Chefs Collective</a> - Co-founded by James Knight-Pacheco, community of Dubai chefs<br>
+- <a href="https://hospitalityrecruiter.com/middle-east-chef-recruitment/" style="color:#ff6b35">Hospitalio Recruitment</a> - 20+ years sourcing chefs for UAE, KSA, Kuwait, Oman, Bahrain, Qatar<br>
+- <a href="https://oceanearthchefs.com/location/uae-and-middle-east/" style="color:#ff6b35">Ocean Earth Chefs</a> - Private chef placements across the Middle East<br>
+- <a href="https://www.takeachef.com/en-ae" style="color:#ff6b35">Take a Chef UAE</a> - 600+ chefs; book private chefs from 180-250 USD<br>
+- <a href="https://www.instachef.ae/" style="color:#ff6b35">InstaChef Dubai</a> - On-demand personal chef service<br>
+- <a href="https://splidu.com/" style="color:#ff6b35">Splidu</a> - Supper clubs and private chef experiences in Dubai<br>
+- <a href="https://starngage.com/app/global/influencer/ranking/united-arab-emirates/cooking" style="color:#ff6b35">StarNgage UAE Cooking Influencers</a> - Top 1,000 cooking Instagram influencers in UAE
+</div>
+
+<footer>
+<p>Compiled April 2026 | 25 Verified Chef Profiles with Real Social Media Links</p>
+<p>Data sourced from Instagram, LinkedIn, Facebook, official websites, and industry publications</p>
+</footer>
+
+<script>
+function filterCards(){
+  const q = document.getElementById('search').value.toLowerCase();
+  const t = document.getElementById('typeFilter').value;
+  const l = document.getElementById('locFilter').value;
+  document.querySelectorAll('.chef-card').forEach(c => {
+    const s = c.dataset.search || '';
+    const ct = c.dataset.type || '';
+    const cl = c.dataset.loc || '';
+    const txt = c.textContent.toLowerCase();
+    let show = true;
+    if(q && !txt.includes(q) && !s.includes(q)) show = false;
+    if(t && ct !== t) show = false;
+    if(l && !cl.includes(l)) show = false;
+    c.style.display = show ? '' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>

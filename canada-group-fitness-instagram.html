@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Group Fitness Instructors Across Canada - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.loc-toronto { background: #166534; color: #4ade80; }
+  .tag.loc-vancouver { background: #1e3a5f; color: #60a5fa; }
+  .tag.loc-montreal { background: #5b21b6; color: #c4b5fd; }
+  .tag.loc-calgary { background: #92400e; color: #fbbf24; }
+  .tag.loc-edmonton { background: #7c2d12; color: #fb923c; }
+  .tag.loc-ottawa { background: #164e63; color: #67e8f9; }
+  .tag.loc-winnipeg { background: #4a044e; color: #e879f9; }
+  .tag.loc-halifax { background: #1e3a5f; color: #93c5fd; }
+  .tag.loc-kelowna { background: #1a2e4a; color: #7dd3fc; }
+  .tag.loc-victoria { background: #3b1a4a; color: #d8b4fe; }
+  .tag.loc-saskatoon { background: #3a2a1a; color: #fcd34d; }
+  .tag.loc-canada { background: #1a3a2a; color: #6ee7b7; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Canada Group Fitness</div>
+    <div class="hero-brand-float">Canada Group Fitness</div>
+    <h1>Group Fitness Instructors Across Canada</h1>
+    <p class="subtitle">Instagram profiles | No website required - connect via DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, specialty, or city..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="bootcamp">Bootcamp</option>
+    <option value="circuit">Circuit</option>
+    <option value="outdoor">Outdoor</option>
+    <option value="functional">Functional</option>
+    <option value="classes">Classes</option>
+    <option value="hiit">HIIT</option>
+    <option value="crossfit">CrossFit</option>
+    <option value="strength">Strength</option>
+    <option value="community">Community</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Cities</option>
+    <option value="toronto">Toronto</option>
+    <option value="vancouver">Vancouver</option>
+    <option value="montreal">Montreal</option>
+    <option value="calgary">Calgary</option>
+    <option value="edmonton">Edmonton</option>
+    <option value="ottawa">Ottawa</option>
+    <option value="winnipeg">Winnipeg</option>
+    <option value="halifax">Halifax</option>
+    <option value="kelowna">Kelowna</option>
+    <option value="victoria">Victoria</option>
+    <option value="saskatoon">Saskatoon</option>
+  </select>
+</div>
+<div class="grid" id="grid"></div>
+<footer>
+  <p>GroupFit App Compatible | Group Fitness Across Canada</p>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+</footer>
+<script>
+const trainers = [
+  {u:"outdoorfitnesstoronto",d:"Outdoor Fitness Toronto - Workout sessions in Toronto parks",c:"outdoor",l:"toronto"},
+  {u:"tmaxbeauchamp",d:"Max Beauchamp - Toronto PT & online fitness coach (35K)",c:"circuit",l:"toronto"},
+  {u:"bodybusterfitness",d:"Body Buster Fitness - High Park bootcamp & indoor classes since 2007",c:"bootcamp",l:"toronto"},
+  {u:"conquer_bootcamp",d:"Conquer Bootcamp - Group bootcamp training in Toronto",c:"bootcamp",l:"toronto"},
+  {u:"edzofitness",d:"Edzo Fitness - Helping busy professionals become lean & athletic",c:"circuit",l:"toronto"},
+  {u:"powerhousefitness_6ix",d:"Powerhouse Fitness 6ix - Hybrid performance & women's strength",c:"strength",l:"toronto"},
+  {u:"sweatandtonic",d:"Sweat & Tonic - Canada's widest group fitness: yoga, pilates, HIIT, ride",c:"classes",l:"toronto"},
+  {u:"f45_training_torontodowntown",d:"F45 Toronto Downtown - Functional HIIT, 45-min team workouts",c:"functional",l:"toronto"},
+  {u:"fitfactoryto",d:"Fit Factory - High-energy coach-led group workouts",c:"classes",l:"toronto"},
+  {u:"move_toronto",d:"Move Fitness Club Toronto - Group strength training classes",c:"strength",l:"toronto"},
+  {u:"recessfitclub",d:"Recess Fit Club - Beginner-friendly group strength training",c:"classes",l:"toronto"},
+  {u:"sweatsocietyto",d:"Sweat Society TO - Boutique fitness, HYROX club",c:"hiit",l:"toronto"},
+  {u:"liftlabtoronto",d:"Lift Lab Toronto - Leslieville boutique, group & HYROX training",c:"functional",l:"toronto"},
+  {u:"barryscanada",d:"Barry's Canada - Bootcamp in Toronto, Calgary & Vancouver (30K)",c:"bootcamp",l:"toronto"},
+  {u:"lizzymitchellfitness",d:"Lizzy Mitchell - ACE certified group fitness & HIIT instructor",c:"hiit",l:"toronto"},
+  {u:"fitnesswithmakayla",d:"Makayla - NASM PT & AFAA certified group fitness instructor",c:"hiit",l:"toronto"},
+  {u:"aim.fitness",d:"AIM Fitness - PT, pilates instructor & lifestyle therapist",c:"classes",l:"toronto"},
+  {u:"_hellafit",d:"Hellafit - Trying every fitness class in Toronto, content creator",c:"classes",l:"toronto"},
+  {u:"jeffcodyfit",d:"Jeff Cody - Certified PT, strength & conditioning coach",c:"circuit",l:"toronto"},
+  {u:"stephanieannestewart",d:"Stephanie Stewart - Private PT, Spin Society master instructor",c:"classes",l:"vancouver"},
+  {u:"jennerwick",d:"Jennerwick - Group fitness trainer at Equinox Vancouver",c:"classes",l:"vancouver"},
+  {u:"lena_fitnesscoach",d:"Lena - Women's body transformation specialist, Vancouver",c:"circuit",l:"vancouver"},
+  {u:"vipfitnessandlifestyle",d:"VIP Fitness - Premium PT, group fitness & nutrition, Vancouver (50K)",c:"classes",l:"vancouver"},
+  {u:"groundworkathletics",d:"Groundwork Athletics - Downtown Vancouver group & PT",c:"classes",l:"vancouver"},
+  {u:"604_athletics",d:"604 Athletics - CrossFit & HYROX affiliate, Vancouver",c:"crossfit",l:"vancouver"},
+  {u:"foundationburnaby",d:"Foundation Burnaby - Group strength, pilates & women's only",c:"strength",l:"vancouver"},
+  {u:"survivorbootcamp",d:"Survivor Bootcamp - Outdoor classes year-round, East Vancouver",c:"bootcamp",l:"vancouver"},
+  {u:"hyroxkyle",d:"Kyle - HYROX regional manager Pacific Northwest, hybrid coach",c:"functional",l:"vancouver"},
+  {u:"epfitnessca",d:"EP Fitness - Elite Performance studio, group & HYROX",c:"functional",l:"vancouver"},
+  {u:"functionhealthclub",d:"Function Health Club - Official HYROX partner gym, Vancouver",c:"functional",l:"vancouver"},
+  {u:"vancouver.fitness",d:"Vancouver Fitness - Official community page (24K)",c:"community",l:"vancouver"},
+  {u:"coquitlamfbbc",d:"Fit Body Boot Camp Coquitlam - Group bootcamp sessions",c:"bootcamp",l:"vancouver"},
+  {u:"nattybeefit",d:"Natty Bee - Fitness & health influencer, BC",c:"classes",l:"vancouver"},
+  {u:"abbyverigin",d:"Abby Verigin - Yoga & fitness instructor, wellness coach, BC",c:"outdoor",l:"vancouver"},
+  {u:"urbanathletecalgary",d:"Urban Athlete Calgary - PT & group classes, Kensington YYC",c:"classes",l:"calgary"},
+  {u:"riseathlete",d:"Rise Athlete - Functional fitness gym, drop-in group classes",c:"functional",l:"calgary"},
+  {u:"crossfitcalgary",d:"CrossFit Calgary - Calgary's original CF box since 2006",c:"crossfit",l:"calgary"},
+  {u:"yycxfit",d:"YYC CrossFit - Group functional fitness classes",c:"crossfit",l:"calgary"},
+  {u:"corfityyc",d:"Corfit YYC - Calgary's OCR, Ninja & HYROX affiliate gym",c:"functional",l:"calgary"},
+  {u:"12fitness",d:"12 Fitness - Mitch Murphy, 21+ years S&C coaching",c:"strength",l:"calgary"},
+  {u:"barracksfitness",d:"Barracks Fitness - CrossFit SW Calgary, group & kids programs",c:"crossfit",l:"calgary"},
+  {u:"crossfitsunalta",d:"CrossFit Sunalta - Inner city CF box, community classes",c:"crossfit",l:"calgary"},
+  {u:"f45bridgelandcalgary",d:"F45 Bridgeland Calgary - Group HIIT for all levels",c:"hiit",l:"calgary"},
+  {u:"forgefitnessbootcamp_yyc",d:"Forge Fitness Bootcamp Calgary",c:"bootcamp",l:"calgary"},
+  {u:"epix_bootcamp",d:"EPIX Training - Bootcamp in Montreal",c:"bootcamp",l:"montreal"},
+  {u:"sthenribootcamp",d:"St-Henri Bootcamp - Neighborhood bootcamp, Montreal",c:"bootcamp",l:"montreal"},
+  {u:"legymbootcamp",d:"Le Gym Bootcamp - Group fitness classes, Montreal",c:"bootcamp",l:"montreal"},
+  {u:"fitnessfactorymtl",d:"Fitness Factory MTL - Youth & athlete development",c:"classes",l:"montreal"},
+  {u:"newlifefitnessmtl",d:"New Life Fitness MTL - Group, spinning, bootcamp, weightlifting",c:"classes",l:"montreal"},
+  {u:"studiobfit.mtl",d:"Studio B Fit MTL - HIIT, circuit, boxing group classes",c:"hiit",l:"montreal"},
+  {u:"paradigmfitnessmtl",d:"Paradigm Fitness MTL - Small group PT in NDG",c:"classes",l:"montreal"},
+  {u:"vsquarefit",d:"V Square Fit - Kinesiology studio, Old Montreal group classes",c:"functional",l:"montreal"},
+  {u:"bakfit",d:"Bak Fit - PT & group coach, Montreal",c:"circuit",l:"montreal"},
+  {u:"felincamuscle_gym",d:"Félin Camuscle - Fitness coach & gym, Montreal",c:"classes",l:"montreal"},
+  {u:"runawayworkoutclub",d:"Runaway Workout Club - Run intervals + HIIT group training",c:"hiit",l:"edmonton"},
+  {u:"fitbody_yeg",d:"Fit Body Boot Camp YEG - Group HIIT sessions",c:"bootcamp",l:"edmonton"},
+  {u:"gymvmt",d:"GymVMT - 13 locations across Calgary & Edmonton",c:"classes",l:"edmonton"},
+  {u:"betterbodybootcampottawa",d:"Better Body Bootcamp Ottawa - Fitness, nutrition & injury prevention",c:"bootcamp",l:"ottawa"},
+  {u:"ottfreefit",d:"OTT Free Fit - Free fitness & wellness activities in Ottawa",c:"outdoor",l:"ottawa"},
+  {u:"freeformfitness",d:"Freeform Fitness - PT with Ottawa locations (Kanata, Glebe, Hintonburg)",c:"classes",l:"ottawa"},
+  {u:"christinebeaudoinfitness",d:"Christine Beaudoin - Certified PT & HYROX coach, Ottawa",c:"functional",l:"ottawa"},
+  {u:"nsebfitness",d:"Nicole NSEB - Ottawa PT offering group sessions",c:"classes",l:"ottawa"},
+  {u:"frstfitness",d:"FRST Fitness - Programmed group classes & PT, Ottawa",c:"classes",l:"ottawa"},
+  {u:"loveyourbody_fitness",d:"Love Your Body Fitness - PT & group classes, Ottawa",c:"classes",l:"ottawa"},
+  {u:"fbbc.eastwpg",d:"Fit Body Boot Camp East Winnipeg - Unlimited group training",c:"bootcamp",l:"winnipeg"},
+  {u:"fitbodyst.vital",d:"Fit Body St. Vital - Fat burn & toning bootcamp, Winnipeg",c:"bootcamp",l:"winnipeg"},
+  {u:"fbbc.southwin",d:"Fit Body South Winnipeg - Unlimited group training",c:"bootcamp",l:"winnipeg"},
+  {u:"primaltraininghalifax",d:"Primal Training Halifax - Group PT & 8-week course",c:"bootcamp",l:"halifax"},
+  {u:"ruslana_fitness",d:"Ruslana Fitness - PT & yoga teacher, Halifax",c:"outdoor",l:"halifax"},
+  {u:"eastcoast_strengthcoach",d:"Aaron McDonald - East coast strength coaching, Halifax",c:"strength",l:"halifax"},
+  {u:"novafitnesspt",d:"Nova Fitness PT - Private & semi-private training, Halifax",c:"classes",l:"halifax"},
+  {u:"kelownabootcamp",d:"Kelowna Bootcamp - Inclusive fitness community, all levels",c:"bootcamp",l:"kelowna"},
+  {u:"recfitnesskelowna",d:"Rec Fitness Kelowna - High-intensity & strength group classes",c:"hiit",l:"kelowna"},
+  {u:"sweatkelowna",d:"Sweat Kelowna - Boutique: barre, bootcamp, cycle, pilates, yoga",c:"classes",l:"kelowna"},
+  {u:"viala_training",d:"Scott Viala - Top PT gym owner, 20+ years, Kelowna",c:"classes",l:"kelowna"},
+  {u:"suka.fit",d:"SUKA Fit - West Kelowna fitness studio",c:"classes",l:"kelowna"},
+  {u:"beyondfitnessyyj",d:"Beyond Fitness YYJ - Elite trainer studio, Victoria",c:"classes",l:"victoria"},
+  {u:"sambrosiofit",d:"Sam Brosio - Health coach, in-person & online, Victoria",c:"classes",l:"victoria"},
+  {u:"studiofitnessvictoria",d:"Studio Fitness Victoria - First barre & bungee studio",c:"classes",l:"victoria"},
+  {u:"lisakramer.personaltraining",d:"Lisa Kramer - PT & group coach, Saskatoon",c:"bootcamp",l:"saskatoon"},
+  {u:"challenge_life_fitness_jay",d:"Challenge Life Fitness - Outdoor bootcamp, Saskatoon",c:"outdoor",l:"saskatoon"},
+  {u:"pointfitnessyxe",d:"Point Fitness Club - Personal & team training, Saskatoon",c:"classes",l:"saskatoon"},
+  {u:"canadian_functional_fitness",d:"Canadian Functional Fitness Federation - National governing body",c:"functional",l:"canada"},
+  {u:"janellefaithill",d:"Janelle Hill - Canadian online fitness coach & PT (28K)",c:"circuit",l:"canada"},
+  {u:"annapiotrowski",d:"Anna Piotrowski - Founder of One Athletica, group fitness focus",c:"classes",l:"canada"},
+  {u:"pelefitness",d:"Sasha Dias - Certified master trainer, bootcamp instructor",c:"bootcamp",l:"canada"},
+  {u:"zallibhai",d:"Zehra Allibhai - Kinesiologist helping women 35+ build muscle (783K)",c:"strength",l:"canada"},
+  {u:"groupfitapp",d:"GroupFit App - Book group fitness trainers across Canada",c:"community",l:"canada"}
+];
+const seen = new Set();
+const unique = trainers.filter(t => { if (seen.has(t.u)) return false; seen.add(t.u); return true; });
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+function getLocClass(l) { const map = {'toronto':'loc-toronto','vancouver':'loc-vancouver','montreal':'loc-montreal','calgary':'loc-calgary','edmonton':'loc-edmonton','ottawa':'loc-ottawa','winnipeg':'loc-winnipeg','halifax':'loc-halifax','kelowna':'loc-kelowna','victoria':'loc-victoria','saskatoon':'loc-saskatoon','canada':'loc-canada'}; return map[l] || ''; }
+function getLocLabel(l) { const map = {'toronto':'Toronto','vancouver':'Vancouver','montreal':'Montreal','calgary':'Calgary','edmonton':'Edmonton','ottawa':'Ottawa','winnipeg':'Winnipeg','halifax':'Halifax','kelowna':'Kelowna','victoria':'Victoria','saskatoon':'Saskatoon','canada':'Canada-wide'}; return map[l] || l; }
+function getCatLabel(c) { const map = {bootcamp:'Bootcamp',circuit:'Circuit',outdoor:'Outdoor',functional:'Functional',classes:'Classes',hiit:'HIIT',crossfit:'CrossFit',strength:'Strength',community:'Community'}; return map[c] || c; }
+function renderCards(list) { grid.innerHTML = ''; list.forEach((t, i) => { const card = document.createElement('div'); card.className = 'card'; card.innerHTML = `<div class="num">#${i+1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`; grid.appendChild(card); }); stats.textContent = `Showing ${list.length} of ${unique.length} profiles across Canada`; }
+function filterCards() { const q = document.getElementById('search').value.toLowerCase(); const cat = document.getElementById('catFilter').value; const loc = document.getElementById('locFilter').value; const filtered = unique.filter(t => { if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false; if (cat && t.c !== cat) return false; if (loc && t.l !== loc) return false; return true; }); renderCards(filtered); }
+renderCards(unique);
+</script>
+</body>
+</html>

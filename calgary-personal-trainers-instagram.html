@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Trainers & Fitness Coaches in Calgary - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.loc-calgary { background: #166534; color: #4ade80; }
+  .tag.loc-airdrie { background: #1e3a5f; color: #60a5fa; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Calgary Fitness</div>
+    <div class="hero-brand-float">Calgary Fitness</div>
+    <h1>Personal Trainers & Fitness Coaches - Calgary</h1>
+    <p class="subtitle">Instagram profiles | No website required - connect via DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, specialty, or location..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="pt">Personal Trainer</option>
+    <option value="yoga">Yoga / Pilates</option>
+    <option value="boxing">Boxing / MMA</option>
+    <option value="crossfit">CrossFit</option>
+    <option value="studio">Studio / Gym</option>
+    <option value="nutrition">Nutrition</option>
+    <option value="online">Online Coach</option>
+    <option value="bodybuilding">Bodybuilding</option>
+    <option value="stretch">Stretch / Mobility</option>
+    <option value="dance">Dance / Barre</option>
+    <option value="calisthenics">Calisthenics</option>
+    <option value="cycling">Cycling / Spin</option>
+    <option value="strength">Strength & Conditioning</option>
+    <option value="swimming">Swimming</option>
+    <option value="other">Other</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Locations</option>
+    <option value="calgary">Calgary</option>
+    <option value="airdrie">Airdrie</option>
+    <option value="other">Other</option>
+  </select>
+</div>
+<div class="grid" id="grid"></div>
+<footer>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+  <p>To connect: Open the profile and send a DM or use the contact in their bio</p>
+</footer>
+<script>
+const trainers = [
+  {u:"12fitness",d:"Mitch Murphy",c:"pt",l:"calgary"},
+  {u:"levialencartrainer",d:"Levi Alencar",c:"pt",l:"calgary"},
+  {u:"personal.trainer.calgary",d:"Personal Trainer Calgary",c:"pt",l:"calgary"},
+  {u:"ragefitnessyyc",d:"Rage Fitness PT Studio",c:"pt",l:"calgary"},
+  {u:"priyajfit",d:"Priya Johnson",c:"pt",l:"calgary"},
+  {u:"trainwithtiana",d:"Train With Tiana",c:"pt",l:"calgary"},
+  {u:"coachtamaraj",d:"Coach T (Tamara J)",c:"pt",l:"calgary"},
+  {u:"jl_fitness__",d:"Jamie Leavitt Online Coach",c:"online",l:"calgary"},
+  {u:"centerfitpersonaltraining",d:"Janice CenterFit",c:"pt",l:"calgary"},
+  {u:"my.page.di.fit",d:"Diana Fitness Bikini",c:"pt",l:"calgary"},
+  {u:"coachjoshdiesel",d:"Josh Diesel Valhalla Strength",c:"strength",l:"calgary"},
+  {u:"gaganpreetshergill",d:"Sky Shergill",c:"pt",l:"calgary"},
+  {u:"adammannfit",d:"Adam Mann",c:"pt",l:"calgary"},
+  {u:"natefityyc",d:"NateFit",c:"pt",l:"calgary"},
+  {u:"jensenfitness",d:"Jensen Fitness",c:"pt",l:"calgary"},
+  {u:"sculptedfitness_calgary",d:"Kassandra Ballard",c:"pt",l:"calgary"},
+  {u:"glover.fitness",d:"Dennis Glover",c:"pt",l:"calgary"},
+  {u:"thetransformationking",d:"Paul Anthony DreamBody",c:"pt",l:"calgary"},
+  {u:"dream_fitness_yyc",d:"Dream Fitness",c:"pt",l:"calgary"},
+  {u:"renegade_yyc",d:"Renegade Training Co",c:"pt",l:"calgary"},
+  {u:"fitcoachdenis",d:"Denis PT & Nutrition",c:"pt",l:"calgary"},
+  {u:"ashbakercoaching",d:"Ash Baker PT & Nutrition",c:"pt",l:"calgary"},
+  {u:"jeffakerfitness",d:"Jeff Aker Urban Athlete",c:"pt",l:"calgary"},
+  {u:"davidbeanpt",d:"David Bean PT",c:"pt",l:"airdrie"},
+  {u:"themichellemethod",d:"Michelle",c:"online",l:"calgary"},
+  {u:"brookeblends",d:"Brooke",c:"online",l:"calgary"},
+  {u:"emiliejanefish",d:"Emilie Jane Fish",c:"online",l:"calgary"},
+  {u:"temiiojo_",d:"Temi Ojo",c:"online",l:"calgary"},
+  {u:"petramace",d:"Petra Mace",c:"online",l:"calgary"},
+  {u:"innergizeyourlife",d:"Brittany Lane",c:"online",l:"calgary"},
+  {u:"sarabarluzzi_pt",d:"Sara Barluzzi",c:"online",l:"calgary"},
+  {u:"mettayogayyc",d:"Metta Yoga Calgary",c:"yoga",l:"calgary"},
+  {u:"breathehotyogayyc",d:"Breathe Hot Yoga",c:"yoga",l:"calgary"},
+  {u:"yogashalacalgary",d:"Yoga Shala Calgary",c:"yoga",l:"calgary"},
+  {u:"pozenyoga",d:"POZEN Yoga",c:"yoga",l:"calgary"},
+  {u:"ashtangayogacalgary",d:"Ashtanga Yoga Calgary",c:"yoga",l:"calgary"},
+  {u:"outdooryoga",d:"Yoga Events YYC",c:"yoga",l:"calgary"},
+  {u:"yogasaranayyc",d:"Yoga Sarana",c:"yoga",l:"calgary"},
+  {u:"hotshopyyc",d:"HotShop Hot Yoga Spin Barre",c:"yoga",l:"calgary"},
+  {u:"acroyogacalgary",d:"Acroyoga Calgary",c:"yoga",l:"calgary"},
+  {u:"purehotyoga_yyc",d:"Pure Hot Yoga YYC",c:"yoga",l:"calgary"},
+  {u:"crossfitsunalta",d:"Inner City CrossFit Box",c:"crossfit",l:"calgary"},
+  {u:"crossfitcalgary",d:"CrossFit Calgary",c:"crossfit",l:"calgary"},
+  {u:"yycxfit",d:"YYC CrossFit",c:"crossfit",l:"calgary"},
+  {u:"corfityyc",d:"CORFit OCR/Ninja/HYROX",c:"crossfit",l:"calgary"},
+  {u:"barracksfitness",d:"Barracks Fitness",c:"crossfit",l:"calgary"},
+  {u:"legacyboxingyyc",d:"Legacy Boxing",c:"boxing",l:"calgary"},
+  {u:"10thstreetboxing",d:"10th Street Boxing Gym",c:"boxing",l:"calgary"},
+  {u:"bowmontboxing",d:"Bowmont Boxing Club",c:"boxing",l:"calgary"},
+  {u:"rogelioboxing",d:"Roger Redoble",c:"boxing",l:"calgary"},
+  {u:"calgaryboxingclub",d:"Calgary Boxing Club",c:"boxing",l:"calgary"},
+  {u:"victorythaiboxingandfitness",d:"Victory Thai Boxing",c:"boxing",l:"calgary"},
+  {u:"calgarypilates",d:"Calgary Pilates Centre",c:"yoga",l:"calgary"},
+  {u:"pilateswithmaddy",d:"Maddy Pilates",c:"yoga",l:"calgary"},
+  {u:"movemountainspilates",d:"Jessica Gilpin",c:"yoga",l:"calgary"},
+  {u:"reformedyyc",d:"Reformed Pilates",c:"studio",l:"calgary"},
+  {u:"clubpilatesmission",d:"Club Pilates Mission",c:"studio",l:"calgary"},
+  {u:"clubpilatesmardaloop",d:"Club Pilates Marda Loop",c:"studio",l:"calgary"},
+  {u:"brittanylange",d:"Brittany Lange Sculpt Pilates",c:"yoga",l:"calgary"},
+  {u:"clubpilatesroyaloak",d:"Club Pilates Royal Oak",c:"studio",l:"calgary"},
+  {u:"kendraperry",d:"Kendra Perry Pilates",c:"yoga",l:"calgary"},
+  {u:"jackietonn_nutrition",d:"Jackie Tonn Nutrition",c:"nutrition",l:"calgary"},
+  {u:"nutritioncoachingbydal",d:"Dal Sekhon Nutrition",c:"nutrition",l:"calgary"},
+  {u:"balancenutritionyyc",d:"Rebekah Women Nutrition",c:"nutrition",l:"calgary"},
+  {u:"eatuitivenutrition",d:"Eatuitive Nutrition",c:"nutrition",l:"calgary"},
+  {u:"wholisticmandy",d:"Mandy Black Nutrition",c:"nutrition",l:"calgary"},
+  {u:"harmonicharvest",d:"Lindsy Wilson Nutritionist",c:"nutrition",l:"calgary"},
+  {u:"csnncalgary",d:"CSNN Calgary",c:"nutrition",l:"calgary"},
+  {u:"wnbfcalgary",d:"WNBF Calgary Nationals",c:"bodybuilding",l:"calgary"},
+  {u:"albertabodybuildingassoc",d:"Alberta Body Building Assoc",c:"bodybuilding",l:"calgary"},
+  {u:"kings.fitness",d:"Kings Fitness",c:"bodybuilding",l:"calgary"},
+  {u:"pfxstrengthandconditioning",d:"PFX Strength & Conditioning",c:"strength",l:"calgary"},
+  {u:"evolve_strength_seton",d:"Evolve Strength Seton",c:"strength",l:"calgary"},
+  {u:"evolved.calgary",d:"Evolved Strength",c:"strength",l:"calgary"},
+  {u:"attacksportsyyc",d:"Attack Sports YYC",c:"strength",l:"calgary"},
+  {u:"thestrengthedge",d:"The Strength Edge Gym",c:"strength",l:"calgary"},
+  {u:"f45_training_calgarykensington",d:"F45 Calgary Kensington",c:"studio",l:"calgary"},
+  {u:"moveology.ca",d:"Moveology Barre/HIIT/Pilates",c:"studio",l:"calgary"},
+  {u:"barrewestyyc",d:"Barre West Calgary",c:"dance",l:"calgary"},
+  {u:"heelsbyiryna",d:"Heels By Iryna",c:"dance",l:"calgary"},
+  {u:"mode.fitness.studio",d:"Mode Fitness Studio",c:"dance",l:"calgary"},
+  {u:"purebarremission",d:"Pure Barre Mission",c:"dance",l:"calgary"},
+  {u:"polejunkiesyyc",d:"PoleJunkies Calgary",c:"dance",l:"calgary"},
+  {u:"stretch4you_yyc",d:"Fascial Stretch Therapy",c:"stretch",l:"calgary"},
+  {u:"stretchlabaspenwoods",d:"StretchLab Aspenwoods",c:"stretch",l:"calgary"},
+  {u:"onecyclespin",d:"ONE CYCLE Spin Studio",c:"cycling",l:"calgary"},
+  {u:"yyccycle",d:"YYC CYCLE Spin Studio",c:"cycling",l:"calgary"},
+  {u:"cascadeswimclubyyc",d:"Cascade Swim Club",c:"swimming",l:"calgary"}
+];
+const seen = new Set();
+const unique = trainers.filter(t => { if (seen.has(t.u)) return false; seen.add(t.u); return true; });
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+function getLocClass(l) { const map = {'calgary':'loc-calgary','airdrie':'loc-airdrie'}; return map[l] || 'other'; }
+function getLocLabel(l) { const map = {'calgary':'Calgary','airdrie':'Airdrie','other':'Other'}; return map[l] || 'Calgary'; }
+function getCatLabel(c) { const map = {pt:'Personal Trainer',yoga:'Yoga / Pilates',boxing:'Boxing / MMA',crossfit:'CrossFit',studio:'Studio / Gym',nutrition:'Nutrition',online:'Online Coach',bodybuilding:'Bodybuilding',stretch:'Stretch / Mobility',dance:'Dance / Barre',calisthenics:'Calisthenics',cycling:'Cycling / Spin',strength:'Strength & Conditioning',swimming:'Swimming',other:'Other'}; return map[c] || c; }
+function renderCards(list) { grid.innerHTML = ''; list.forEach((t, i) => { const card = document.createElement('div'); card.className = 'card'; card.innerHTML = `<div class="num">#${i+1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`; grid.appendChild(card); }); stats.textContent = `Showing ${list.length} of ${unique.length} profiles across Calgary`; }
+function filterCards() { const q = document.getElementById('search').value.toLowerCase(); const cat = document.getElementById('catFilter').value; const loc = document.getElementById('locFilter').value; const filtered = unique.filter(t => { if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false; if (cat && t.c !== cat) return false; if (loc && t.l !== loc) return false; return true; }); renderCards(filtered); }
+renderCards(unique);
+</script>
+</body>
+</html>

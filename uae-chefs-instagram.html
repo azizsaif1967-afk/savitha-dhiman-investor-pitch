@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelancer Chefs & Cooks in UAE - Join EatCookJoy.com</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;padding:20px}
+  .header{text-align:center;margin-bottom:24px}
+  h1{color:#ff6b35;font-size:1.8rem;margin-bottom:4px}
+  .subtitle{color:#888;font-size:0.9rem;margin-bottom:12px}
+  .cta{display:inline-block;background:linear-gradient(135deg,#ff6b35,#e1306c);color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:0.95rem;margin-bottom:12px}
+  .cta:hover{opacity:0.9}
+  .stats{text-align:center;background:linear-gradient(135deg,#ff6b35,#c62828);padding:12px 20px;border-radius:10px;margin-bottom:20px;font-size:1rem;font-weight:bold;color:#fff}
+  .filter-bar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center}
+  .filter-bar input{padding:10px 16px;border-radius:8px;border:1px solid #333;background:#1a1a1a;color:#fff;font-size:0.95rem;width:300px}
+  .filter-bar select{padding:10px 12px;border-radius:8px;border:1px solid #333;background:#1a1a1a;color:#fff;font-size:0.95rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+  .card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:14px 16px;transition:all 0.2s}
+  .card:hover{border-color:#ff6b35;transform:translateY(-2px);box-shadow:0 4px 15px rgba(255,107,53,0.2)}
+  .card .num{color:#555;font-size:0.75rem;margin-bottom:4px}
+  .card a{color:#ff6b35;text-decoration:none;font-weight:600;font-size:1rem}
+  .card a:hover{text-decoration:underline}
+  .card .desc{color:#aaa;font-size:0.8rem;margin-top:4px}
+  .card .tags{margin-top:6px;display:flex;gap:4px;flex-wrap:wrap}
+  .tag{background:#2a2a2a;color:#ccc;padding:2px 8px;border-radius:4px;font-size:0.7rem}
+  .tag.dubai{background:#1a3a2a;color:#4ade80}
+  .tag.abudhabi{background:#1a2a3a;color:#60a5fa}
+  .tag.other{background:#3a2a1a;color:#fbbf24}
+  footer{text-align:center;margin-top:30px;color:#555;font-size:0.8rem;padding:20px 0;border-top:1px solid #222}
+  footer a{color:#ff6b35}
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #ff6b35;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #ff6b3511 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+<div class="header hero-brand-section" style="background:linear-gradient(135deg,#0a0a0a 0%,#111827 40%,#1a1a2e 60%,#0a0a0a 100%);">
+    <div class="hero-brand-glow">UAE Chefs</div>
+    <div class="hero-brand-float">UAE Chefs</div>
+    <h1>Freelancer Chefs & Cooks - UAE</h1>
+  <p class="subtitle">Instagram Directory | Connect via DM to join as freelancer chef</p>
+  <a class="cta" href="https://eatcookjoy.com" target="_blank">Visit EatCookJoy.com</a>
+</div>
+<div class="stats" id="stats">Loading...</div>
+
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, cuisine, or specialty..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="private">Private Chef</option>
+    <option value="home">Home Chef / Cook</option>
+    <option value="pastry">Pastry / Baker</option>
+    <option value="cake">Cake Artist</option>
+    <option value="catering">Catering</option>
+    <option value="meal">Meal Prep / Delivery</option>
+    <option value="food">Food Truck / Street</option>
+    <option value="sushi">Sushi / Japanese</option>
+    <option value="bbq">BBQ / Grill</option>
+    <option value="vegan">Vegan / Healthy</option>
+    <option value="cooking">Cooking Class</option>
+    <option value="supper">Supper Club / Pop-up</option>
+    <option value="arabic">Arabic / Emirati</option>
+    <option value="indian">Indian / South Asian</option>
+    <option value="platter">Grazing / Platters</option>
+    <option value="dessert">Desserts / Sweets</option>
+    <option value="consultant">Consultant / Executive</option>
+    <option value="community">Community / Platform</option>
+    <option value="other">Other</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Locations</option>
+    <option value="dubai">Dubai</option>
+    <option value="abudhabi">Abu Dhabi</option>
+    <option value="sharjah">Sharjah / Ajman</option>
+    <option value="other">Other UAE</option>
+  </select>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+  <p>Compiled for <a href="https://eatcookjoy.com" target="_blank">EatCookJoy.com</a> | April 2026</p>
+  <p>To recruit: Open the profile, send a DM inviting them to join as freelancer chef</p>
+</footer>
+
+<script>
+const t=[
+// ===== PRIVATE CHEFS - DUBAI =====
+{u:"privatechefdubai",d:"Luca Napoleone, Private Chef for Dubai's Elite, 18K",c:"private",l:"dubai"},
+{u:"thegastronomista",d:"Teresa, Private Chef, Supper Club, ICC Dubai graduate",c:"private",l:"dubai"},
+{u:"chef.h.ko",d:"Howard Ko, chef across Dubai/LA/NYC",c:"private",l:"dubai"},
+{u:"chefeyad.dubai",d:"Chef Eyad, smoked meat specialist, 37K",c:"bbq",l:"dubai"},
+{u:"chefsterik",d:"Private Chef / Freelance Chef, 3.8K",c:"private",l:"dubai"},
+{u:"chefcaofficial",d:"Chef CA, luxury private chef experiences, 89K, DM for bookings",c:"private",l:"dubai"},
+{u:"khalideats",d:"Khalid, private chef & supper club, DM for bookings",c:"supper",l:"dubai"},
+{u:"mariamhamdy",d:"Mariam Hamdy, Chef, 74K, DM for details",c:"private",l:"dubai"},
+{u:"islandwaterz",d:"Authentic Caribbean food, catering & private chef, DM to order",c:"catering",l:"dubai"},
+{u:"eazchefuae",d:"EAZ Chef, Dubai",c:"private",l:"dubai"},
+{u:"chef_jamila__",d:"Your Private Personal Chef In Dubai",c:"private",l:"dubai"},
+{u:"satiate_luxe",d:"Satiate Luxe, luxury private chef services",c:"private",l:"dubai"},
+{u:"heychef.ae",d:"On-demand personal chef service Dubai",c:"private",l:"dubai"},
+{u:"chefkenfood",d:"Chef KEN, self-taught chef Cairo & Dubai, recipes & reviews",c:"private",l:"dubai"},
+{u:"cookingwithgrace_official",d:"Cooking With Grace, chef services",c:"private",l:"dubai"},
+{u:"cafyfabio_official",d:"Cafy Fabio, VIP Chef, IFBB Pro, 158K",c:"private",l:"dubai"},
+{u:"instachef.ae",d:"InstaChef, personal chef service Dubai",c:"community",l:"dubai"},
+{u:"privatechefsatelier",d:"Private Chefs Atelier, by Luca Napoleone",c:"community",l:"dubai"},
+{u:"chefpaulhayward",d:"Consultant Chef UAE, menu creation, 78K",c:"consultant",l:"dubai"},
+{u:"chefsurendermohan",d:"Michelin Star Chef, Culinary Director, London/Dubai/Doha",c:"consultant",l:"dubai"},
+{u:"chefkelvincheung",d:"Kelvin Cheung, partner Juns Dubai, 194K",c:"consultant",l:"dubai"},
+{u:"chefizu",d:"Chef Izu, Dubai restaurant chef",c:"consultant",l:"dubai"},
+{u:"chefgregoireberger",d:"Gregoire Berger, acclaimed Dubai chef",c:"consultant",l:"dubai"},
+
+// ===== HOME CHEFS & COOKS =====
+{u:"homechefuae",d:"Home Chef UAE, homemade meals",c:"home",l:"dubai"},
+{u:"signaturecuisine_byalia",d:"Signature Cuisine by Alia, home food delivered Dubai/Sharjah",c:"home",l:"dubai"},
+{u:"homemadedubai",d:"Homemade Dubai, food made with love",c:"home",l:"dubai"},
+{u:"dubaihomecooks",d:"Dubai Home Cooks community",c:"community",l:"dubai"},
+{u:"thehousecook.catering",d:"The House Cook Catering & Events, 3.3K",c:"catering",l:"dubai"},
+{u:"dialacookuae",d:"Dial A Cook UAE, on-demand cooking",c:"community",l:"dubai"},
+{u:"lets_cook_kit",d:"Cook Kit Dubai, meal kits",c:"meal",l:"dubai"},
+{u:"dailymeals_co",d:"Daily Meals Co, homestyle Indian food, meal boxes",c:"indian",l:"dubai"},
+{u:"momandchef.ae",d:"Mom and Chef, DM for catering inquiries",c:"home",l:"dubai"},
+{u:"tiffin_wala_dubai",d:"Tiffin Wala Dubai, Indian home-cooked meals, 23K",c:"indian",l:"dubai"},
+
+// ===== PASTRY CHEFS =====
+{u:"colltom",d:"Tom Coll, Executive Pastry Chef Burj Al Arab, 40K",c:"pastry",l:"dubai"},
+{u:"karim.bourgi",d:"Karim Bourgi, MENA Best Pastry Chef 2023, 718K",c:"pastry",l:"dubai"},
+{u:"kalalrajkumar",d:"Chef Raj, pastry chef Dubai, 32K",c:"pastry",l:"dubai"},
+{u:"mariapazpastry",d:"Maria Paz, Filipino cheesecake across UAE, 9.8K",c:"pastry",l:"dubai"},
+{u:"meltingmomentscakes",d:"Fatema Murtaza, cake artist & pastry chef, 24K",c:"cake",l:"dubai"},
+{u:"lepatissierdubai",d:"Le Patissier, French bakery & catering",c:"pastry",l:"dubai"},
+{u:"vjccbakesandcooks",d:"Vandana Jain, celebrity chef, cooking & baking classes",c:"cooking",l:"dubai"},
+{u:"_essange_",d:"Essange, pastry artist Dubai",c:"pastry",l:"dubai"},
+
+// ===== CAKE ARTISTS & BAKERS =====
+{u:"deytulika",d:"T's Kitchen, home baker Dubai, cake artist",c:"cake",l:"dubai"},
+{u:"craftsycakes",d:"Manar Hassan, cake artist & instructor Dubai",c:"cake",l:"dubai"},
+{u:"pauline_cake_dubai",d:"Pauline Cake Dubai, 286K, DM/WhatsApp orders",c:"cake",l:"dubai"},
+{u:"cakeawaydxb",d:"Cake Away, premium custom cakes, 12K, delivery",c:"cake",l:"dubai"},
+{u:"caketalk_bakery",d:"Cake Talk Bakery, 57K, UAE-wide delivery",c:"cake",l:"dubai"},
+{u:"yummybakes",d:"Yummy Bakes, custom cakes Abu Dhabi & Dubai, 243K",c:"cake",l:"dubai"},
+{u:"cakenbake_uae",d:"Cake N Bake, Al Karama Dubai, premium cakes",c:"cake",l:"dubai"},
+{u:"baked_by_anniestefe",d:"Annie Stefe, custom homemade cakes Dubai",c:"cake",l:"dubai"},
+{u:"porihomecakes",d:"Pori Home Baker, cakes",c:"cake",l:"dubai"},
+{u:"home_bakery",d:"Home Bakery, Dubai/Abu Dhabi/Riyadh, 192K",c:"pastry",l:"dubai"},
+{u:"alifurbancuisine",d:"Home Baker Dubai & Sharjah",c:"cake",l:"dubai"},
+{u:"homebakery_kitchen",d:"Home Bakery Kitchen, homemade dishes, 26K",c:"home",l:"dubai"},
+
+// ===== CATERING =====
+{u:"pinchos_dubai",d:"Pinchos, finger food delivery catering, DM to order",c:"catering",l:"dubai"},
+{u:"tamweencatering",d:"Tamween Catering Services UAE, 13K",c:"catering",l:"sharjah"},
+{u:"ananascatering",d:"Ananas Catering Services, Dubai",c:"catering",l:"dubai"},
+{u:"ahscateringandevents",d:"AHS Catering & Events, Dubai",c:"catering",l:"dubai"},
+{u:"cedartreecatering",d:"Cedar Tree Catering, banquet & events, Dubai",c:"catering",l:"dubai"},
+{u:"kuberluxurycatering",d:"Kuber Luxury Catering, premium events Dubai",c:"catering",l:"dubai"},
+{u:"dishcatering",d:"Dish Catering & Events, est. 2008, Dubai",c:"catering",l:"dubai"},
+{u:"baguette.uae",d:"Baguette Catering, weddings/birthdays/corporate",c:"catering",l:"dubai"},
+{u:"goldenchariotdubai",d:"Golden Chariot, finger food catering est. 2006",c:"catering",l:"dubai"},
+{u:"thehouseofcanapes",d:"The House of Canapes, catering & events",c:"catering",l:"dubai"},
+{u:"pebblesandbambamcatering",d:"Pebbles & BamBam Event Catering Dubai",c:"catering",l:"dubai"},
+{u:"emiratespalace_catering",d:"Emirates Palace Catering by DWTC",c:"catering",l:"abudhabi"},
+
+// ===== MEAL PREP & DELIVERY =====
+{u:"colesmealprep",d:"Coles Meal Prep, macro-counted meals, UAE delivery",c:"meal",l:"dubai"},
+{u:"180degreeae",d:"180 Healthy Meals Plan, customized plans UAE",c:"meal",l:"dubai"},
+{u:"getcurryfit",d:"Curry Fit, #1 Indian healthy meal plan UAE",c:"meal",l:"dubai"},
+{u:"nutritionist_chef_radhey",d:"Chef Radhey, certified nutritionist, celebrity chef",c:"meal",l:"dubai"},
+{u:"karma8.ae",d:"Karma8 Meal Plan, restaurant-grade healthy meals",c:"meal",l:"dubai"},
+{u:"aleens.ae",d:"Aleen's, personalized meal plans, expert nutritionists",c:"meal",l:"dubai"},
+{u:"healthykitchen.dubai",d:"Healthy Kitchen, organic meal protocols, Dubai",c:"meal",l:"dubai"},
+{u:"nutritionist_chef_r",d:"Nutrition Chef, freshy cooked healthy meal plan",c:"meal",l:"dubai"},
+
+// ===== SUSHI & JAPANESE =====
+{u:"_mokkei",d:"Hayato Sato, Japanese Chef, private dining Tokyo/Dubai",c:"sushi",l:"dubai"},
+{u:"diariesofamastersushichef",d:"Master Sushi Chef, Guinness Record, 89K",c:"sushi",l:"dubai"},
+{u:"hibachichef_moelsayed",d:"Mohamed, Hibachi/Teppanyaki/Sushi Chef, Radisson Blu",c:"sushi",l:"dubai"},
+{u:"sushi_chef.hiro",d:"Chef Hiro, sushi chef, 3M followers",c:"sushi",l:"dubai"},
+{u:"sushime.dubai",d:"Sushi Me Dubai",c:"sushi",l:"dubai"},
+{u:"sushizen.dubai",d:"Sushi ZEN Dubai",c:"sushi",l:"dubai"},
+{u:"premium_bbq_sushichef_catering",d:"Premium Sushi Chef Catering & BBQ Rental Dubai",c:"sushi",l:"dubai"},
+
+// ===== BBQ & GRILL =====
+{u:"chefs_emirates",d:"Chef's Smokehouse, Dubai/Riyadh/Makkah",c:"bbq",l:"dubai"},
+
+// ===== VEGAN & HEALTHY =====
+{u:"thevegan_chef",d:"The Vegan Chef, plant-based cooking",c:"vegan",l:"dubai"},
+
+// ===== FOOD TRUCKS =====
+{u:"gobaifoodtruck",d:"GObai Food Truck, catering & events Dubai",c:"food",l:"dubai"},
+{u:"freat.ae",d:"Freat's Food Truck, handcrafted fries Dubai",c:"food",l:"dubai"},
+{u:"lastexitdubai",d:"Last Exit Dubai, food truck experience",c:"food",l:"dubai"},
+{u:"kbj.fries",d:"KBJ Fries, Global Village Dubai",c:"food",l:"dubai"},
+{u:"bab.eloued.dubai",d:"Bab Eloued, UAE's 1st Algerian food truck",c:"food",l:"dubai"},
+{u:"foodtruck_event_dubai",d:"Pit Stop, food truck events Dubai",c:"food",l:"dubai"},
+{u:"sweeetstreet_food_truck",d:"Sweeet Street food truck",c:"food",l:"dubai"},
+
+// ===== COOKING CLASSES =====
+{u:"topchefcookingstudio",d:"Top Chef Dubai, cooking classes & studio",c:"cooking",l:"dubai"},
+{u:"petitschefsdubai",d:"Petits Chefs Dubai, French cuisine workshops, 8.5K",c:"cooking",l:"dubai"},
+
+// ===== SUPPER CLUBS & POP-UPS =====
+{u:"dubaichefscollective",d:"Dubai Chefs Collective, community of chefs",c:"community",l:"dubai"},
+{u:"thefreelancerchefs",d:"The Freelance Chefs, community",c:"community",l:"dubai"},
+{u:"dynamicfreelancer",d:"Dynamic Freelancer, UAE",c:"community",l:"dubai"},
+{u:"ikookapp",d:"iKooK, hire private chef online platform",c:"community",l:"dubai"},
+
+// ===== ARABIC & EMIRATI =====
+{u:"emirati_chef",d:"Ahmed Darweesh, Emirati Chef, 961K followers",c:"arabic",l:"dubai"},
+{u:"uae_twin_chefs",d:"Abdulrahman & Maitha, UAE Twin Chefs",c:"arabic",l:"dubai"},
+{u:"chef_efranjyeh",d:"Chef Efranjyeh, kibbeh & lamb specialists",c:"arabic",l:"dubai"},
+{u:"chef_efranjyeh_dubai",d:"Chef Efranjyeh Dubai branch",c:"arabic",l:"dubai"},
+{u:"dimaalchaar",d:"Dima Al Chaar, chef Dubai",c:"arabic",l:"dubai"},
+{u:"alkhafayef",d:"Khafayef Cafeteria, Arabic food since 1987",c:"arabic",l:"dubai"},
+
+// ===== INDIAN & SOUTH ASIAN =====
+{u:"thushanis_dubai",d:"Thushani's Sri Lankan Food Dubai",c:"indian",l:"dubai"},
+{u:"lankankitchen",d:"Lankan Kitchen & Travels, Sri Lankan cuisine",c:"indian",l:"dubai"},
+{u:"myculinaryfiles",d:"Sadaf, Pakistani recipes, food stylist, 135K",c:"indian",l:"dubai"},
+
+// ===== GRAZING & PLATTERS =====
+{u:"lushplatters",d:"Lush Platters, pioneers of grazing tables",c:"platter",l:"dubai"},
+{u:"platterskitchen",d:"Platters Kitchen, Talabat & Deliveroo delivery",c:"platter",l:"dubai"},
+{u:"feastgrazingplatters",d:"Feast Grazing Platters",c:"platter",l:"dubai"},
+{u:"eatmyboard",d:"Eat My Board, grazing boards Dubai",c:"platter",l:"dubai"},
+{u:"stamfordgrazingco",d:"Stamford Grazing Co, boxes & tables Dubai",c:"platter",l:"dubai"},
+{u:"getgrazy.me",d:"Get Grazy, grazing tables Dubai",c:"platter",l:"dubai"},
+{u:"plateaplatter",d:"Plate a Platter, 25K",c:"platter",l:"dubai"},
+{u:"tarteliere",d:"Atelier by Tarteliere, luxury grazing platters",c:"platter",l:"dubai"},
+
+// ===== ABU DHABI =====
+{u:"chef_yusra",d:"Yusra Ahmed, Certified Private Chef Abu Dhabi",c:"private",l:"abudhabi"},
+{u:"cookingwithalvina",d:"Alvina Moonis, food expert & chef Abu Dhabi",c:"home",l:"abudhabi"},
+{u:"rajibulmondal",d:"Rajibul Mondal, Head Chef Abu Dhabi Corniche Hotel",c:"consultant",l:"abudhabi"},
+{u:"burgeneers_ad",d:"Burgeneers by Chef Khaled, Abu Dhabi",c:"food",l:"abudhabi"},
+{u:"defchefprivatechef",d:"Def Chef, VVIP Private Head Chef Abu Dhabi",c:"private",l:"abudhabi"},
+{u:"abudhabiculinary",d:"Abu Dhabi Culinary, food community",c:"community",l:"abudhabi"},
+{u:"signatureabudhabiofficial",d:"Signature by Sanjeev Kapoor, Abu Dhabi",c:"consultant",l:"abudhabi"},
+{u:"bodyabs.ae",d:"Body Abs Fitness & nutrition, Abu Dhabi",c:"meal",l:"abudhabi"},
+
+// ===== SHARJAH / AJMAN =====
+{u:"chefstory.sharjah",d:"Chef Story Restaurant, Indian/Arabic/Chinese",c:"other",l:"sharjah"},
+{u:"globalchef.ae",d:"Global Chef, catering across UAE",c:"catering",l:"sharjah"},
+{u:"foodbox_uae",d:"Food Box, Ajman & Sharjah locations",c:"other",l:"sharjah"},
+{u:"al_multan",d:"Al Multan Restaurant, catering & hall booking Ajman",c:"catering",l:"sharjah"},
+{u:"kazan.uae",d:"Kazan, Russian restaurant Sharjah, delivery",c:"other",l:"sharjah"},
+{u:"sharjah_foodies",d:"Sharjah Foodies community",c:"community",l:"sharjah"},
+
+// ===== FOOD BLOGGERS WHO COOK =====
+{u:"misszuzucchini",d:"Arezoo Muslemi, food blogger Dubai, 422K",c:"other",l:"dubai"},
+{u:"wheremyfoodat",d:"Kim & Den, Dubai food bloggers, 95K",c:"other",l:"dubai"},
+{u:"dxbreakfasts",d:"DXBreakfasts, Dubai food & restaurants",c:"other",l:"dubai"},
+
+// ===== RESTAURANTS / ESTABLISHMENTS WITH CHEFS =====
+{u:"rondalocatellidubai",d:"Ronda Locatelli, Michelin-starred Italian, Dubai",c:"consultant",l:"dubai"},
+{u:"leonardodubai",d:"Leonardo Dubai, Italian restaurant",c:"other",l:"dubai"},
+{u:"scalinidubai",d:"Scalini Dubai, authentic Italian cuisine",c:"other",l:"dubai"},
+{u:"littleitalydxb",d:"Little Italy Dubai",c:"other",l:"dubai"},
+{u:"cinquedubai",d:"Cinque, Michelin Guide Italian, Dubai",c:"other",l:"dubai"},
+{u:"bvlgarinikoromitodubai",d:"Il Ristorante Niko Romito, 2 Michelin stars",c:"consultant",l:"dubai"},
+{u:"grazedubai",d:"GRAZE Gastro Grill & Bar, Dubai",c:"bbq",l:"dubai"},
+
+// ===== DESSERT SPECIALISTS =====
+{u:"chefmiddleeastofficial",d:"Chef Middle East, foodservice distributor",c:"community",l:"dubai"},
+{u:"chefmiddleeastqa_official",d:"Chef Middle East QA Official",c:"community",l:"other"},
+
+// ===== ADDITIONAL PROFILES =====
+{u:"hotiffin",d:"HOTiffin, tiffin delivery service",c:"indian",l:"dubai"},
+{u:"tiffin_dabba",d:"Tiffin Dabba, lunch & dinner delivery",c:"indian",l:"dubai"},
+{u:"karla_fitnessx",d:"Karla Richards, fitness & food coach Dubai",c:"vegan",l:"dubai"},
+{u:"ajdancefit",d:"AJ DanceFit, wellness Dubai",c:"other",l:"dubai"},
+{u:"rpmgym.uae",d:"RPM Gym & nutrition, Abu Dhabi",c:"meal",l:"abudhabi"},
+];
+
+const grid=document.getElementById('grid');
+const stats=document.getElementById('stats');
+function renderCards(list){
+  grid.innerHTML='';
+  list.forEach((item,i)=>{
+    const locClass=item.l==='dubai'?'dubai':item.l==='abudhabi'?'abudhabi':'other';
+    const locLabel=item.l==='dubai'?'Dubai':item.l==='abudhabi'?'Abu Dhabi':item.l==='sharjah'?'Sharjah/Ajman':'Other UAE';
+    const catLabels={private:'Private Chef',home:'Home Chef',pastry:'Pastry Chef',cake:'Cake Artist',catering:'Catering',meal:'Meal Prep',food:'Food Truck',sushi:'Sushi/Japanese',bbq:'BBQ/Grill',vegan:'Vegan/Healthy',cooking:'Cooking Class',supper:'Supper Club',arabic:'Arabic/Emirati',indian:'Indian/S.Asian',platter:'Grazing/Platters',dessert:'Desserts',consultant:'Executive/Consultant',community:'Platform/Community',other:'Other'};
+    const card=document.createElement('div');
+    card.className='card';
+    card.innerHTML=`
+      <div class="num">#${i+1}</div>
+      <a href="https://www.instagram.com/${item.u}/" target="_blank" rel="noopener">@${item.u}</a>
+      <div class="desc">${item.d}</div>
+      <div class="tags">
+        <span class="tag ${locClass}">${locLabel}</span>
+        <span class="tag">${catLabels[item.c]||item.c}</span>
+      </div>`;
+    grid.appendChild(card);
+  });
+  stats.textContent=`Showing ${list.length} of ${t.length} profiles | Connect via DM to join EatCookJoy.com`;
+}
+function filterCards(){
+  const q=document.getElementById('search').value.toLowerCase();
+  const cat=document.getElementById('catFilter').value;
+  const loc=document.getElementById('locFilter').value;
+  const filtered=t.filter(item=>{
+    const matchQ=!q||item.u.toLowerCase().includes(q)||item.d.toLowerCase().includes(q);
+    const matchCat=!cat||item.c===cat;
+    const matchLoc=!loc||item.l===loc;
+    return matchQ&&matchCat&&matchLoc;
+  });
+  renderCards(filtered);
+}
+renderCards(t);
+</script>
+</body>
+</html>

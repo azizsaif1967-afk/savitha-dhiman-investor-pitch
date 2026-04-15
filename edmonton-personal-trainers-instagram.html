@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Trainers & Fitness Coaches in Edmonton - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.loc-edmonton { background: #166534; color: #4ade80; }
+  .tag.loc-stalbert { background: #1e3a5f; color: #60a5fa; }
+  .tag.loc-sherwoodpark { background: #581c87; color: #c084fc; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Edmonton Fitness</div>
+    <div class="hero-brand-float">Edmonton Fitness</div>
+    <h1>Personal Trainers & Fitness Coaches - Edmonton</h1>
+    <p class="subtitle">Instagram profiles | No website required - connect via DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, specialty, or location..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="pt">Personal Trainer</option>
+    <option value="yoga">Yoga / Pilates</option>
+    <option value="boxing">Boxing / MMA</option>
+    <option value="crossfit">CrossFit</option>
+    <option value="studio">Studio / Gym</option>
+    <option value="nutrition">Nutrition</option>
+    <option value="online">Online Coach</option>
+    <option value="bodybuilding">Bodybuilding</option>
+    <option value="stretch">Stretch / Mobility</option>
+    <option value="dance">Dance / Barre</option>
+    <option value="calisthenics">Calisthenics</option>
+    <option value="cycling">Cycling / Spin</option>
+    <option value="strength">Strength & Conditioning</option>
+    <option value="swimming">Swimming</option>
+    <option value="other">Other</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Locations</option>
+    <option value="edmonton">Edmonton</option>
+    <option value="stalbert">St. Albert</option>
+    <option value="sherwoodpark">Sherwood Park</option>
+    <option value="other">Other</option>
+  </select>
+</div>
+<div class="grid" id="grid"></div>
+<footer>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+  <p>To connect: Open the profile and send a DM or use the contact in their bio</p>
+</footer>
+<script>
+const trainers = [
+  {u:"jeffwoodsfit",d:"Jeff Woods",c:"pt",l:"edmonton"},
+  {u:"rkathletics1",d:"Rich RK Athletics",c:"pt",l:"edmonton"},
+  {u:"maxefficiency.fit",d:"Max Efficiency Fitness",c:"pt",l:"edmonton"},
+  {u:"stevethepersonaltrainer",d:"Steve A",c:"pt",l:"edmonton"},
+  {u:"trainwithcarrieyeg",d:"Carrie",c:"pt",l:"edmonton"},
+  {u:"onegoal.fitness",d:"One Goal Fitness",c:"pt",l:"edmonton"},
+  {u:"tr_fitness_edmonton",d:"Teji Randhawa TR Fitness",c:"pt",l:"edmonton"},
+  {u:"jacob.mand",d:"Jacob Mand Orka Performance",c:"pt",l:"edmonton"},
+  {u:"svptfitness",d:"SVPT Fitness & Athletics",c:"pt",l:"edmonton"},
+  {u:"fitbody_yeg",d:"Fit Body Boot Camp YEG",c:"pt",l:"edmonton"},
+  {u:"shifttostrength",d:"Shift to Strength Coach Luke",c:"pt",l:"edmonton"},
+  {u:"jfitnessandtraining",d:"J Fitness and Training",c:"pt",l:"edmonton"},
+  {u:"fitnessevolutionshpk",d:"Catherine Fitness Evolution",c:"pt",l:"sherwoodpark"},
+  {u:"ashbakercoaching",d:"Ash Baker PT & Nutrition",c:"pt",l:"edmonton"},
+  {u:"super_singh1313",d:"Super Singh WNBF Pro",c:"online",l:"edmonton"},
+  {u:"macfitnesscoaching",d:"Logan Macleod Mac Fitness",c:"online",l:"edmonton"},
+  {u:"christianliddle",d:"Chris Liddle Trainer & Nutrition",c:"online",l:"edmonton"},
+  {u:"thekerriesmart",d:"Kerrie Smart",c:"online",l:"edmonton"},
+  {u:"nutritioncoachingbydal",d:"Dal Nutrition/Weight Loss",c:"nutrition",l:"edmonton"},
+  {u:"csnnedmonton",d:"CSNN Edmonton",c:"nutrition",l:"edmonton"},
+  {u:"nutralisa",d:"Lisa Sebastian Holistic Nutrition",c:"nutrition",l:"edmonton"},
+  {u:"jillymcneils",d:"Jill McNeil Nutrition & Fitness",c:"nutrition",l:"edmonton"},
+  {u:"hd_dietitian",d:"Hannah Deacon Dietitian",c:"nutrition",l:"edmonton"},
+  {u:"mettayogayeg",d:"Metta Yoga Edmonton",c:"yoga",l:"edmonton"},
+  {u:"sunyogaedmonton",d:"Sun Yoga Edmonton",c:"yoga",l:"edmonton"},
+  {u:"pranayogastudio",d:"Prana Yoga Studio",c:"yoga",l:"edmonton"},
+  {u:"yoga_within",d:"Yoga Within",c:"yoga",l:"edmonton"},
+  {u:"yogacentralyeg",d:"Yoga Central Edmonton",c:"yoga",l:"edmonton"},
+  {u:"yogalifestudios",d:"Yogalife Studios",c:"yoga",l:"edmonton"},
+  {u:"alicarsonyoga",d:"Ali Carson Yogi",c:"yoga",l:"edmonton"},
+  {u:"hollydollz",d:"Holly Grimes Yoga",c:"yoga",l:"edmonton"},
+  {u:"oyfsherwoodpark",d:"Oxygen Yoga Sherwood Park",c:"yoga",l:"sherwoodpark"},
+  {u:"ouoanna",d:"Anna Yoga RYT200",c:"yoga",l:"edmonton"},
+  {u:"crossfit_armoury",d:"CrossFit Armoury",c:"crossfit",l:"edmonton"},
+  {u:"crossfit_fna",d:"CrossFit FNA",c:"crossfit",l:"edmonton"},
+  {u:"cfsherwoodpark",d:"CrossFit Sherwood Park",c:"crossfit",l:"sherwoodpark"},
+  {u:"triformathleticsyeg",d:"Triform Athletics",c:"crossfit",l:"edmonton"},
+  {u:"panthergymyeg",d:"Panther Gym",c:"boxing",l:"edmonton"},
+  {u:"champsboxingyeg",d:"Champs Boxing Studio",c:"boxing",l:"edmonton"},
+  {u:"bravemma.fitness",d:"Brave MMA & Carlson Gracie",c:"boxing",l:"edmonton"},
+  {u:"edmontoneaglesabc",d:"Edmonton Eagles Boxing",c:"boxing",l:"edmonton"},
+  {u:"avenue_boxing",d:"Avenue Boxing",c:"boxing",l:"edmonton"},
+  {u:"jelenaboxing",d:"Jelena 8x World Boxing Champion",c:"boxing",l:"edmonton"},
+  {u:"alliance_boxingclub_edmonton",d:"Alliance Boxing Club",c:"boxing",l:"edmonton"},
+  {u:"clinchfightshop",d:"The Clinch Fight Shop",c:"boxing",l:"edmonton"},
+  {u:"forumpilatesstudio",d:"Forum Pilates Studio",c:"studio",l:"edmonton"},
+  {u:"alignpilates_",d:"Align Pilates",c:"studio",l:"edmonton"},
+  {u:"reshape_pilates_",d:"Reshape Pilates & Wellness",c:"studio",l:"edmonton"},
+  {u:"nicetimepilates",d:"Nice Time Pilates",c:"studio",l:"edmonton"},
+  {u:"integrationpilatesstudio",d:"Integration Pilates Studio",c:"studio",l:"edmonton"},
+  {u:"clubpilatesstalbert",d:"Club Pilates St Albert",c:"studio",l:"stalbert"},
+  {u:"clubpilateswindermere",d:"Club Pilates Windermere",c:"studio",l:"edmonton"},
+  {u:"swan.strong",d:"Mackenzie S&C Coach",c:"strength",l:"edmonton"},
+  {u:"evolve_strength",d:"Evolve Strength",c:"strength",l:"edmonton"},
+  {u:"evolvestrengthnorth",d:"Evolve Strength North",c:"strength",l:"edmonton"},
+  {u:"evolvestrengthdt",d:"Evolve Strength Downtown",c:"strength",l:"edmonton"},
+  {u:"sparkgym",d:"SPARK by The Bridge",c:"strength",l:"edmonton"},
+  {u:"elevatestrengthco",d:"Elevate Strength & Conditioning",c:"strength",l:"edmonton"},
+  {u:"manmadesc",d:"Man-Made S&C",c:"strength",l:"edmonton"},
+  {u:"united_strength_yeg",d:"United Strength & Power",c:"strength",l:"edmonton"},
+  {u:"wnbfedmonton",d:"WNBF Edmonton Naturals",c:"bodybuilding",l:"edmonton"},
+  {u:"albertabodybuildingassoc",d:"Alberta Bodybuilding Assoc",c:"bodybuilding",l:"edmonton"},
+  {u:"iron.nation.west.edmonton",d:"Iron Nation West Edmonton",c:"bodybuilding",l:"edmonton"},
+  {u:"highdeffitness",d:"High Definition Fitness",c:"bodybuilding",l:"edmonton"},
+  {u:"gymvmt",d:"GYMVMT Fitness Club",c:"studio",l:"edmonton"},
+  {u:"f45_training_downtownyeg",d:"F45 Downtown Edmonton",c:"studio",l:"edmonton"},
+  {u:"yegcycle",d:"YEG Cycle Spin Studio",c:"cycling",l:"edmonton"},
+  {u:"_revolutionspinstudio",d:"Revolution Spin Studio",c:"cycling",l:"edmonton"},
+  {u:"studiobyeg",d:"Studio B Rebounder & Barre",c:"dance",l:"edmonton"},
+  {u:"embracepoleart",d:"Embrace Pole Art & Fitness",c:"dance",l:"edmonton"},
+  {u:"ridebarretrx",d:"RIDE Spin Barre & TRX",c:"dance",l:"edmonton"},
+  {u:"yegstretch",d:"The Stretch Room",c:"stretch",l:"edmonton"},
+  {u:"swimgym_edmonton",d:"Swimgym Edmonton",c:"swimming",l:"edmonton"},
+  {u:"safetyswimming",d:"Jamie Bastien Private Swim",c:"swimming",l:"edmonton"},
+  {u:"flyfree.movement",d:"FlyFree Movement Academy",c:"calisthenics",l:"edmonton"},
+  {u:"ufcgymsherwoodpark",d:"UFC Gym Sherwood Park",c:"boxing",l:"sherwoodpark"},
+  {u:"360fitness.shpk",d:"360 Fitness Sherwood Park",c:"studio",l:"sherwoodpark"},
+  {u:"iron.nation.sherwoodpark",d:"Iron Nation Sherwood Park",c:"studio",l:"sherwoodpark"}
+];
+const seen = new Set();
+const unique = trainers.filter(t => { if (seen.has(t.u)) return false; seen.add(t.u); return true; });
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+function getLocClass(l) { const map = {'edmonton':'loc-edmonton','stalbert':'loc-stalbert','sherwoodpark':'loc-sherwoodpark'}; return map[l] || 'other'; }
+function getLocLabel(l) { const map = {'edmonton':'Edmonton','stalbert':'St. Albert','sherwoodpark':'Sherwood Park','other':'Other'}; return map[l] || 'Edmonton'; }
+function getCatLabel(c) { const map = {pt:'Personal Trainer',yoga:'Yoga / Pilates',boxing:'Boxing / MMA',crossfit:'CrossFit',studio:'Studio / Gym',nutrition:'Nutrition',online:'Online Coach',bodybuilding:'Bodybuilding',stretch:'Stretch / Mobility',dance:'Dance / Barre',calisthenics:'Calisthenics',cycling:'Cycling / Spin',strength:'Strength & Conditioning',swimming:'Swimming',other:'Other'}; return map[c] || c; }
+function renderCards(list) { grid.innerHTML = ''; list.forEach((t, i) => { const card = document.createElement('div'); card.className = 'card'; card.innerHTML = `<div class="num">#${i+1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`; grid.appendChild(card); }); stats.textContent = `Showing ${list.length} of ${unique.length} profiles across Edmonton`; }
+function filterCards() { const q = document.getElementById('search').value.toLowerCase(); const cat = document.getElementById('catFilter').value; const loc = document.getElementById('locFilter').value; const filtered = unique.filter(t => { if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false; if (cat && t.c !== cat) return false; if (loc && t.l !== loc) return false; return true; }); renderCards(filtered); }
+renderCards(unique);
+</script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strength & Conditioning Coaches Across Canada - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.loc-toronto { background: #166534; color: #4ade80; }
+  .tag.loc-vancouver { background: #1e3a5f; color: #60a5fa; }
+  .tag.loc-montreal { background: #5b21b6; color: #c4b5fd; }
+  .tag.loc-calgary { background: #92400e; color: #fbbf24; }
+  .tag.loc-edmonton { background: #7c2d12; color: #fb923c; }
+  .tag.loc-ottawa { background: #164e63; color: #67e8f9; }
+  .tag.loc-winnipeg { background: #4a044e; color: #e879f9; }
+  .tag.loc-halifax { background: #1e3a5f; color: #93c5fd; }
+  .tag.loc-victoria { background: #065f46; color: #6ee7b7; }
+  .tag.loc-saskatoon { background: #713f12; color: #fde047; }
+  .tag.loc-regina { background: #78350f; color: #fcd34d; }
+  .tag.loc-canada-wide { background: #991b1b; color: #fca5a5; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Canada Strength</div>
+    <div class="hero-brand-float">Canada Strength</div>
+    <h1>Strength & Conditioning Coaches Across Canada</h1>
+    <p class="subtitle">Instagram profiles | No website required - connect via DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, specialty, or city..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="strength">Strength</option>
+    <option value="powerlifting">Powerlifting</option>
+    <option value="olympic-lifting">Olympic Lifting</option>
+    <option value="crossfit">CrossFit</option>
+    <option value="athletic-performance">Athletic Performance</option>
+    <option value="bodybuilding">Bodybuilding</option>
+    <option value="strongman">Strongman</option>
+    <option value="hockey-sc">Hockey S&C</option>
+    <option value="sport-specific">Sport-Specific</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Cities</option>
+    <option value="toronto">Toronto</option>
+    <option value="vancouver">Vancouver</option>
+    <option value="montreal">Montreal</option>
+    <option value="calgary">Calgary</option>
+    <option value="edmonton">Edmonton</option>
+    <option value="ottawa">Ottawa</option>
+    <option value="winnipeg">Winnipeg</option>
+    <option value="halifax">Halifax</option>
+    <option value="victoria">Victoria</option>
+    <option value="saskatoon">Saskatoon</option>
+    <option value="regina">Regina</option>
+    <option value="canada-wide">Canada-wide</option>
+  </select>
+</div>
+<div class="grid" id="grid"></div>
+<footer>
+  <p>GroupFit App Compatible | Strength & Conditioning Across Canada</p>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+</footer>
+<script>
+const trainers = [
+  // TORONTO / GTA
+  {u:"tmaxbeauchamp",d:"Max Beauchamp - Toronto PT & online fitness coach, fat loss/mobility/strength (35K)",c:"strength",l:"toronto"},
+  {u:"ldroj16",d:"Louis Rojas - Head S&C Coach, Toronto Maple Leafs (NHL)",c:"hockey-sc",l:"toronto"},
+  {u:"coachselby17",d:"Alan Selby - Head S&C Coach, Toronto Marlies (AHL)",c:"hockey-sc",l:"toronto"},
+  {u:"danpetkovsekpl",d:"Dan Petkovsek - Torque Barbell owner, pro powerlifter, 3x National Record holder",c:"powerlifting",l:"toronto"},
+  {u:"torquebarbell",d:"Torque Barbell - Strength/performance/athletics gym, Etobicoke",c:"powerlifting",l:"toronto"},
+  {u:"swan.strong",d:"Mackenzie - S&C coach helping athletes get stronger",c:"strength",l:"toronto"},
+  {u:"melrosetraining",d:"Melrose Training - Women's personal training, strength-focused",c:"strength",l:"toronto"},
+  {u:"edzofitness",d:"Eduard - PT helping busy professionals become lean, strong & athletic",c:"strength",l:"toronto"},
+  {u:"james.l.shapiro",d:"James Shapiro - Tennis S&C and sports performance coach",c:"sport-specific",l:"toronto"},
+  {u:"kanamahp",d:"Hani Kanama - World Seniors coach, Syrian Olympic coach Paris 2024, Toronto Weightlifting founder",c:"olympic-lifting",l:"toronto"},
+  {u:"varbanov_weightlifting",d:"Alex Varbanov - Olympic medalist & world records holder, Varbanov Weightlifting School",c:"olympic-lifting",l:"toronto"},
+  {u:"lpsathletic",d:"LPS Athletic 'The Pro Maker' - Advanced neuromuscular training for elite athletes",c:"athletic-performance",l:"toronto"},
+  {u:"mindsetsc",d:"Mind-Set S&C - Gym Jones certified, CrossFit affiliated, Scarborough",c:"crossfit",l:"toronto"},
+  {u:"fitfactorymidtown",d:"Fit Factory Fitness - Official HYROX affiliate, S&C classes",c:"strength",l:"toronto"},
+  {u:"majesticstrength",d:"JP Castillo - Holistic nutrition & strength coach, 25+ years, Reader's Choice award",c:"strength",l:"toronto"},
+  {u:"jeffnippard",d:"Jeff Nippard - Natural pro bodybuilder & IPF powerlifter, BSc biochemistry (6M+)",c:"powerlifting",l:"toronto"},
+  {u:"coachariank",d:"Arian Khamesi - Elite powerlifting coach, 9 World Champs & 30+ National Champs coached",c:"powerlifting",l:"toronto"},
+  {u:"torontostrongman",d:"Toronto Strongman - Programming, coaching & training for strongman competitors",c:"strongman",l:"toronto"},
+  // VANCOUVER / BC
+  {u:"adairtrainer",d:"Adair Trainer - Founder of The Bar Vancouver, manual therapist, calisthenics & powerlifting",c:"strength",l:"vancouver"},
+  {u:"thebarvancouver_",d:"THE BAR - Strength & Conditioning facility, Vancouver",c:"strength",l:"vancouver"},
+  {u:"casciolisc",d:"Stephen Cascioli - 2x IPF World Medalist, 4x CPU National Champion, former squat world record",c:"powerlifting",l:"vancouver"},
+  {u:"ironthronesc",d:"Iron Throne Strength - Metro Vancouver's largest strength community: powerlifting/strongman/weightlifting",c:"strongman",l:"vancouver"},
+  {u:"coach__hall",d:"Mike Hall - S&C coach and personal trainer, Vancouver",c:"strength",l:"vancouver"},
+  {u:"hardcorebarbellvancouver",d:"Hardcore Barbell - 24/7 strength facility, Vancouver",c:"powerlifting",l:"vancouver"},
+  {u:"stephanieannestewart",d:"Stephanie Stewart - Vancouver fitness & strength coach",c:"strength",l:"vancouver"},
+  {u:"bodycofitness",d:"BodyCo Fitness - Training gym for clients & independent trainers, North Vancouver",c:"strength",l:"vancouver"},
+  {u:"vipfitnessandlifestyle",d:"VIP Fitness - Premium personal training & strength, Vancouver",c:"strength",l:"vancouver"},
+  {u:"westcoastiron",d:"West Coast Iron - Strength facility, Port Coquitlam",c:"strength",l:"vancouver"},
+  // CALGARY
+  {u:"calgarybarbell",d:"Calgary Barbell - Powerlifting coaching & content production team (61K)",c:"powerlifting",l:"calgary"},
+  {u:"bryce_cbb",d:"Bryce Krawczyk - Founder of Calgary Barbell, IPF powerlifter, World Deadlift Record holder",c:"powerlifting",l:"calgary"},
+  {u:"danii_cbb",d:"Danii Clavelle - Powerlifting coach at Calgary Barbell",c:"powerlifting",l:"calgary"},
+  {u:"coachtamaraj",d:"Coach Tamara J - M.Sc. in S&C, co-founder of Elements Athletics",c:"strength",l:"calgary"},
+  {u:"coachjoshdiesel",d:"Josh Diesel - Valhalla Strength head coach: Olympic lifting, powerlifting, S&C",c:"olympic-lifting",l:"calgary"},
+  {u:"trainwithtiana",d:"Tiana - Personal trainer: strength, fat loss, nutrition coaching",c:"strength",l:"calgary"},
+  {u:"12fitness",d:"Mitch Murphy - 21+ year trainer and S&C coach",c:"strength",l:"calgary"},
+  {u:"dangfit_",d:"Garima - NASM certified, specializes in training clients with neurological conditions",c:"strength",l:"calgary"},
+  {u:"ragefitnessyyc",d:"Rage Fitness - Personal training studio, Calgary",c:"strength",l:"calgary"},
+  {u:"priyajfit",d:"Priya Johnson - Clinical kinesiologist & personal trainer",c:"strength",l:"calgary"},
+  // EDMONTON
+  {u:"andrewcoatesfitness",d:"Andrew Coates - 23,000+ coaching hours, writer for T-Nation/Men's Health/BarBend (165K)",c:"strength",l:"edmonton"},
+  {u:"evolve_strength",d:"Evolve Strength - Health/fitness/recovery across 8 locations",c:"strength",l:"edmonton"},
+  {u:"evolvestrengthnorth",d:"Evolve Strength North - Personal training & wellness",c:"strength",l:"edmonton"},
+  {u:"evolvestrengthdt",d:"Evolve Strength Downtown - Gym/training/health",c:"strength",l:"edmonton"},
+  {u:"maxefficiency.fit",d:"Max Efficiency - Edmonton PT, B.Kin, 12+ years experience",c:"strength",l:"edmonton"},
+  {u:"jeffwoodsfit",d:"Jeff Woods - Personal trainer, Edmonton",c:"strength",l:"edmonton"},
+  {u:"stevethepersonaltrainer",d:"Steve - CPT & certified nutrition coach, fitness for law enforcement",c:"strength",l:"edmonton"},
+  {u:"powerplus.weightlifting",d:"Power Plus Weightlifting - Edmonton's premier Olympic weightlifting facility",c:"olympic-lifting",l:"edmonton"},
+  // MONTREAL
+  {u:"_mathieudore",d:"Mathieu Dore - Strength coach & physical therapist, powerlifting & hypertrophy",c:"powerlifting",l:"montreal"},
+  {u:"bodhi_falstrault",d:"Eric Falstrault - Bodhifit strength coach, PICP certified, author",c:"strength",l:"montreal"},
+  {u:"thessiane",d:"Thessiane - Strength coach for women 40+, personal trainer",c:"strength",l:"montreal"},
+  {u:"coachalexanderr",d:"Coach Alexander - CPT, strength coach & fascial stretch coach",c:"strength",l:"montreal"},
+  {u:"dynamisstrength_coaching",d:"Dynamis Strength Coaching - Est. 2023, Montreal",c:"strength",l:"montreal"},
+  {u:"felincamuscle_gym",d:"Félin Muscle Gym - Fitness coach in Montreal",c:"strength",l:"montreal"},
+  {u:"bakfit",d:"BakFit - Personal trainer & coach, Montreal",c:"strength",l:"montreal"},
+  {u:"spartrainingmtl",d:"S.P.A.R. Training MTL - Fitness training, Montreal",c:"strength",l:"montreal"},
+  // OTTAWA
+  {u:"utb_strength",d:"Alex Wallace - S&C coach at Ottawa Trainyards",c:"strength",l:"ottawa"},
+  {u:"canam_sc",d:"CANAM S&C - Elite sprint/strength/conditioning, 4,500 sqft performance centre",c:"athletic-performance",l:"ottawa"},
+  {u:"canstrength",d:"Canadian Strength Institute - Works with Pittsburgh Penguins, Hockey Canada, Ottawa 67s",c:"hockey-sc",l:"ottawa"},
+  {u:"rislingperformance",d:"Tony Risling - Personal trainer and S&C coach, Ottawa",c:"strength",l:"ottawa"},
+  {u:"christinebeaudoinfitness",d:"CB Fitness - Certified personal trainer & HYROX coach",c:"strength",l:"ottawa"},
+  {u:"gladiatorstrengthtraining",d:"Greg Pollock - Gladiator Strength Training, Ottawa",c:"strength",l:"ottawa"},
+  {u:"ccsceducation",d:"Andre Benoit - International S&C coach, 2x Olympian, 20-year Olympic coaching career",c:"athletic-performance",l:"ottawa"},
+  // WINNIPEG
+  {u:"sublime_sc",d:"Sublime S&C - CrossFit gym with community culture, Winnipeg",c:"crossfit",l:"winnipeg"},
+  {u:"hercules_wpg",d:"Hercules Weightlifting WPG - Olympic weightlifting club",c:"olympic-lifting",l:"winnipeg"},
+  {u:"neromusclesmart",d:"Melle Nero - Certified athletic therapist/trainer/sports nutritionist",c:"strength",l:"winnipeg"},
+  // HALIFAX
+  {u:"halifaxstrengthunit",d:"Halifax Strength Unit - Private facility: strongman, powerlifting, S&C",c:"strongman",l:"halifax"},
+  {u:"giffordperformancecoaching",d:"Mark Gifford - MSc Kin, CSCS, works with youth to national athletes",c:"strength",l:"halifax"},
+  {u:"ironstonestrength",d:"Ironstone S&C - CrossFit and group fitness, Halifax",c:"crossfit",l:"halifax"},
+  {u:"danielleburstonfitness",d:"Danielle Burston - Personal trainer & online coach, Halifax",c:"strength",l:"halifax"},
+  {u:"nsweightlifting",d:"Weightlifting Nova Scotia - Provincial weightlifting organization",c:"olympic-lifting",l:"halifax"},
+  // VICTORIA
+  {u:"forge_training",d:"Forge Training - Open gym/group classes/personal training, Victoria",c:"strength",l:"victoria"},
+  {u:"justpeachyfitnessco",d:"Natalie - BCRPA-certified personal trainer, strength training at Forge Training",c:"strength",l:"victoria"},
+  // SASKATCHEWAN
+  {u:"adrenaline_training",d:"Adrenaline Strength - High performance training facility, Regina/Saskatoon",c:"athletic-performance",l:"saskatoon"},
+  {u:"synergy.strength",d:"Synergy Strength & Sports Therapy - Weightlifting/functional fitness/high performance",c:"olympic-lifting",l:"saskatoon"},
+  // CANADA-WIDE / NATIONAL
+  {u:"mitchellhooper",d:"Mitchell Hooper - 2023 World's Strongest Man, first Canadian to win title (317K)",c:"strongman",l:"canada-wide"},
+  {u:"djessicabuettner",d:"Jessica Buettner 'The Canadian Forklift' - 2x IPF World Champion (258K)",c:"powerlifting",l:"canada-wide"},
+  {u:"boady_champ",d:"Boady Santavy - 2x Olympian in weightlifting (48K)",c:"olympic-lifting",l:"canada-wide"},
+  {u:"sean_nalewanyj",d:"Sean Nalewanyj - Evidence-based fitness expert, no-BS advice (632K)",c:"strength",l:"canada-wide"},
+  {u:"janellefaithill",d:"Janelle Hill - CSEP-CPT, B.Kin, online fitness coach (28K)",c:"strength",l:"canada-wide"},
+  {u:"ianmcfit",d:"Ian McWalter - Canada's Top Fitness Trainer 2022, co-owner Mobile Physique",c:"strength",l:"canada-wide"},
+  {u:"weightlifting_canada_haltero",d:"Weightlifting Canada Halterophilie - Official national weightlifting organization",c:"olympic-lifting",l:"canada-wide"},
+  {u:"strongman_corp_canada",d:"Strongman Corporation Canada - Official strongman organization",c:"strongman",l:"canada-wide"},
+  {u:"canadaathleticperformance",d:"Canada Athletic Performance Centre - Elite athletic performance",c:"athletic-performance",l:"canada-wide"},
+  {u:"iamtheskywolf",d:"Stefan Skywolf - Powerlifting coach, London ON powerlifting community",c:"powerlifting",l:"canada-wide"},
+  {u:"coachvanasten",d:"Ryan Van Asten - Hockey training & performance strength coach",c:"hockey-sc",l:"canada-wide"},
+  {u:"lorne_goldenberg",d:"Lorne Goldenberg - Hockey strength coach, trained 7+ NHL teams",c:"hockey-sc",l:"canada-wide"},
+  {u:"mprperformance_",d:"Morgan Ryan - Physio & hockey strength coach",c:"hockey-sc",l:"canada-wide"},
+  {u:"mike__brown__",d:"Mike Brown - Former NHL player turned S&C hockey coach",c:"hockey-sc",l:"canada-wide"},
+  {u:"synergyfredericton",d:"Synergy Health & Sports Performance, Fredericton NB",c:"athletic-performance",l:"canada-wide"},
+  {u:"jkconditioning",d:"Jon-Erik Kawamoto - Personalized group strength training, St. John's NL",c:"strength",l:"canada-wide"}
+];
+const seen = new Set();
+const unique = trainers.filter(t => { if (seen.has(t.u)) return false; seen.add(t.u); return true; });
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+function getLocClass(l) { const map = {'toronto':'loc-toronto','vancouver':'loc-vancouver','montreal':'loc-montreal','calgary':'loc-calgary','edmonton':'loc-edmonton','ottawa':'loc-ottawa','winnipeg':'loc-winnipeg','halifax':'loc-halifax','victoria':'loc-victoria','saskatoon':'loc-saskatoon','regina':'loc-regina','canada-wide':'loc-canada-wide'}; return map[l] || ''; }
+function getLocLabel(l) { const map = {'toronto':'Toronto','vancouver':'Vancouver','montreal':'Montreal','calgary':'Calgary','edmonton':'Edmonton','ottawa':'Ottawa','winnipeg':'Winnipeg','halifax':'Halifax','victoria':'Victoria','saskatoon':'Saskatoon','regina':'Regina','canada-wide':'Canada-wide'}; return map[l] || l; }
+function getCatLabel(c) { const map = {strength:'Strength',powerlifting:'Powerlifting','olympic-lifting':'Olympic Lifting',crossfit:'CrossFit','athletic-performance':'Athletic Performance',bodybuilding:'Bodybuilding',strongman:'Strongman','hockey-sc':'Hockey S&C','sport-specific':'Sport-Specific'}; return map[c] || c; }
+function renderCards(list) { grid.innerHTML = ''; list.forEach((t, i) => { const card = document.createElement('div'); card.className = 'card'; card.innerHTML = `<div class="num">#${i+1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`; grid.appendChild(card); }); stats.textContent = `Showing ${list.length} of ${unique.length} profiles across Canada`; }
+function filterCards() { const q = document.getElementById('search').value.toLowerCase(); const cat = document.getElementById('catFilter').value; const loc = document.getElementById('locFilter').value; const filtered = unique.filter(t => { if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false; if (cat && t.c !== cat) return false; if (loc && t.l !== loc) return false; return true; }); renderCards(filtered); }
+renderCards(unique);
+</script>
+</body>
+</html>

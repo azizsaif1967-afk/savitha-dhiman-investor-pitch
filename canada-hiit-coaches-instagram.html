@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIIT & Bootcamp Coaches Across Canada - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.loc-toronto { background: #166534; color: #4ade80; }
+  .tag.loc-vancouver { background: #1e3a5f; color: #60a5fa; }
+  .tag.loc-montreal { background: #5b21b6; color: #c4b5fd; }
+  .tag.loc-calgary { background: #92400e; color: #fbbf24; }
+  .tag.loc-edmonton { background: #7c2d12; color: #fb923c; }
+  .tag.loc-ottawa { background: #164e63; color: #67e8f9; }
+  .tag.loc-winnipeg { background: #4a044e; color: #e879f9; }
+  .tag.loc-halifax { background: #1e3a5f; color: #93c5fd; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Canada HIIT</div>
+    <div class="hero-brand-float">Canada HIIT</div>
+    <h1>HIIT & Bootcamp Coaches Across Canada</h1>
+    <p class="subtitle">Instagram profiles | No website required - connect via DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, specialty, or city..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="hiit">HIIT</option>
+    <option value="bootcamp">Bootcamp</option>
+    <option value="circuit">Circuit</option>
+    <option value="tabata">Tabata</option>
+    <option value="cardio">Cardio</option>
+    <option value="outdoor">Outdoor</option>
+    <option value="functional">Functional</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Cities</option>
+    <option value="toronto">Toronto</option>
+    <option value="vancouver">Vancouver</option>
+    <option value="montreal">Montreal</option>
+    <option value="calgary">Calgary</option>
+    <option value="edmonton">Edmonton</option>
+    <option value="ottawa">Ottawa</option>
+    <option value="winnipeg">Winnipeg</option>
+    <option value="halifax">Halifax</option>
+  </select>
+</div>
+<div class="grid" id="grid"></div>
+<footer>
+  <p>GroupFit App Compatible | HIIT & Bootcamp Across Canada</p>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+</footer>
+<script>
+const trainers = [
+  {u:"tmaxbeauchamp",d:"Max Beauchamp - Toronto PT & online fitness coach (35K)",c:"hiit",l:"toronto"},
+  {u:"janellefaithill",d:"Janelle Hill - CSEP-CPT certified online coach (28K)",c:"hiit",l:"toronto"},
+  {u:"barryscanada",d:"Barry's Canada - Bootcamp in Toronto, Calgary & Vancouver (30K)",c:"bootcamp",l:"toronto"},
+  {u:"bodybusterfitness",d:"Body Buster Fitness - Toronto & Etobicoke bootcamps since 2007",c:"bootcamp",l:"toronto"},
+  {u:"fitfactoryfitness",d:"Fit Factory - Signature bootcamp classes, Toronto",c:"bootcamp",l:"toronto"},
+  {u:"unitytoronto",d:"Unity Toronto - Intimate warrior bootcamp sessions",c:"bootcamp",l:"toronto"},
+  {u:"highergroundto",d:"Higher Ground Toronto - HiitFit classes",c:"hiit",l:"toronto"},
+  {u:"yoururbancore",d:"Urban Core Toronto - Bootcamp fitness classes",c:"bootcamp",l:"toronto"},
+  {u:"leansquad",d:"Phil Mackenzie - LeanSquad fitness coach (593K)",c:"hiit",l:"toronto"},
+  {u:"everydayheroes.fitness",d:"Mitch Gourley - Everyday Heroes fitness (448K)",c:"functional",l:"toronto"},
+  {u:"workoutwithgina",d:"Gina Amin - Workout content creator (844K)",c:"hiit",l:"toronto"},
+  {u:"roulafitness",d:"Roula Fitness - HIIT & workout programs (911K)",c:"hiit",l:"montreal"},
+  {u:"fitsarax",d:"Sara Fiorvento - Fitness content & HIIT (351K)",c:"hiit",l:"toronto"},
+  {u:"thefitfatale",d:"Sam Cutler Mengel - Fitness & bootcamp (333K)",c:"bootcamp",l:"toronto"},
+  {u:"rachelpantano",d:"Rachel Pantano - Fitness & HIIT workouts (322K)",c:"hiit",l:"toronto"},
+  {u:"michaelabentley_fitness",d:"Michaela Bentley - Fitness & training (294K)",c:"hiit",l:"vancouver"},
+  {u:"bigmikevanwyck",d:"Mike Van Wyck - Training & fitness (282K)",c:"functional",l:"toronto"},
+  {u:"scottymc4",d:"Scott Mccarvell - Fitness & circuit training (263K)",c:"circuit",l:"toronto"},
+  {u:"kaylieestewart",d:"Kaylie Stewart - Fitness content creator (394K)",c:"hiit",l:"vancouver"},
+  {u:"tessabarresi",d:"Tessa Barresi - Fitness & training (401K)",c:"hiit",l:"toronto"},
+  {u:"andre.the.vaillant",d:"André Vaillant - CrossFit & HIIT (369K)",c:"hiit",l:"montreal"},
+  {u:"f45training_canada",d:"F45 Training Canada - HIIT franchise across Canada",c:"hiit",l:"toronto"},
+  {u:"orangetheorycan",d:"Orangetheory Canada - Heart-rate based training",c:"hiit",l:"toronto"},
+  {u:"bootcampcalgary",d:"Calgary Bootcamp - Outdoor & indoor fitness",c:"bootcamp",l:"calgary"},
+  {u:"hiitedmonton",d:"HIIT Edmonton - High intensity community",c:"hiit",l:"edmonton"},
+  {u:"bootcampvancouver",d:"Vancouver Bootcamp Co - Outdoor fitness",c:"outdoor",l:"vancouver"},
+  {u:"ottawabootcamp",d:"Ottawa Bootcamp - Community fitness training",c:"bootcamp",l:"ottawa"},
+  {u:"winnipegfitcamp",d:"Winnipeg Fit Camp - Bootcamp & HIIT",c:"bootcamp",l:"winnipeg"},
+  {u:"halifaxhiit",d:"Halifax HIIT - East coast fitness community",c:"hiit",l:"halifax"},
+  {u:"montrealhiit",d:"Montreal HIIT Club - Group training",c:"hiit",l:"montreal"}
+];
+const seen = new Set();
+const unique = trainers.filter(t => { if (seen.has(t.u)) return false; seen.add(t.u); return true; });
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+function getLocClass(l) { const map = {'toronto':'loc-toronto','vancouver':'loc-vancouver','montreal':'loc-montreal','calgary':'loc-calgary','edmonton':'loc-edmonton','ottawa':'loc-ottawa','winnipeg':'loc-winnipeg','halifax':'loc-halifax'}; return map[l] || ''; }
+function getLocLabel(l) { const map = {'toronto':'Toronto','vancouver':'Vancouver','montreal':'Montreal','calgary':'Calgary','edmonton':'Edmonton','ottawa':'Ottawa','winnipeg':'Winnipeg','halifax':'Halifax'}; return map[l] || l; }
+function getCatLabel(c) { const map = {hiit:'HIIT',bootcamp:'Bootcamp',circuit:'Circuit',tabata:'Tabata',cardio:'Cardio',outdoor:'Outdoor',functional:'Functional'}; return map[c] || c; }
+function renderCards(list) { grid.innerHTML = ''; list.forEach((t, i) => { const card = document.createElement('div'); card.className = 'card'; card.innerHTML = `<div class="num">#${i+1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`; grid.appendChild(card); }); stats.textContent = `Showing ${list.length} of ${unique.length} profiles across Canada`; }
+function filterCards() { const q = document.getElementById('search').value.toLowerCase(); const cat = document.getElementById('catFilter').value; const loc = document.getElementById('locFilter').value; const filtered = unique.filter(t => { if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false; if (cat && t.c !== cat) return false; if (loc && t.l !== loc) return false; return true; }); renderCards(filtered); }
+renderCards(unique);
+</script>
+</body>
+</html>

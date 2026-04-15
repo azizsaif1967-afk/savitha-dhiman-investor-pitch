@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Trainers & Fitness Coaches in Halifax - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.loc-halifax { background: #166534; color: #4ade80; }
+  .tag.loc-dartmouth { background: #1e3a5f; color: #60a5fa; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Halifax Fitness</div>
+    <div class="hero-brand-float">Halifax Fitness</div>
+    <h1>Personal Trainers & Fitness Coaches - Halifax</h1>
+    <p class="subtitle">Instagram profiles | No website required - connect via DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, specialty, or location..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="pt">Personal Trainer</option>
+    <option value="yoga">Yoga / Pilates</option>
+    <option value="boxing">Boxing / MMA</option>
+    <option value="crossfit">CrossFit</option>
+    <option value="studio">Studio / Gym</option>
+    <option value="nutrition">Nutrition</option>
+    <option value="online">Online Coach</option>
+    <option value="bodybuilding">Bodybuilding</option>
+    <option value="stretch">Stretch / Mobility</option>
+    <option value="dance">Dance / Barre</option>
+    <option value="calisthenics">Calisthenics</option>
+    <option value="cycling">Cycling / Spin</option>
+    <option value="strength">Strength & Conditioning</option>
+    <option value="swimming">Swimming</option>
+    <option value="other">Other</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Locations</option>
+    <option value="halifax">Halifax</option>
+    <option value="dartmouth">Dartmouth</option>
+    <option value="other">Other</option>
+  </select>
+</div>
+<div class="grid" id="grid"></div>
+<footer>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+  <p>To connect: Open the profile and send a DM or use the contact in their bio</p>
+</footer>
+<script>
+const trainers = [
+  {u:"ruslana_fitness",d:"Ruslana PT & Yoga",c:"pt",l:"halifax"},
+  {u:"melissaechandler",d:"Melissa Chandler Health Coach",c:"pt",l:"halifax"},
+  {u:"coachcleroux",d:"Dylan Cleroux Fitness",c:"pt",l:"halifax"},
+  {u:"danielleburstonfitness",d:"Danielle PT & Online",c:"online",l:"halifax"},
+  {u:"hynickkyle",d:"Kyle Hynick Fitness Creator",c:"online",l:"halifax"},
+  {u:"novafitnesspt",d:"Nova Fitness Private Training",c:"pt",l:"halifax"},
+  {u:"oneupfitnesshfx",d:"OneUp Fitness",c:"pt",l:"halifax"},
+  {u:"airalifeandfitness",d:"AIRA Life & Fitness",c:"pt",l:"halifax"},
+  {u:"evolvefitnesshalifax",d:"Evolve Fitness Halifax",c:"studio",l:"halifax"},
+  {u:"fitnessfx",d:"Fitness FX Halifax Gym",c:"studio",l:"halifax"},
+  {u:"eastcoast_strengthcoach",d:"Aaron McDonald Strength",c:"strength",l:"halifax"},
+  {u:"halifaxstrengthunit",d:"Halifax Strength Unit",c:"strength",l:"halifax"},
+  {u:"ironstonestrength",d:"Ironstone Strength",c:"crossfit",l:"halifax"},
+  {u:"crossfit_kaos",d:"Kaos CrossFit Halifax",c:"crossfit",l:"halifax"},
+  {u:"crossfit.basinview",d:"CrossFit Basinview",c:"crossfit",l:"other"},
+  {u:"crossfit_dartmouth",d:"CrossFit Dartmouth",c:"crossfit",l:"dartmouth"},
+  {u:"nsweightlifting",d:"Weightlifting Nova Scotia",c:"strength",l:"halifax"},
+  {u:"novascotiapowerlifting",d:"NS Powerlifting",c:"strength",l:"halifax"},
+  {u:"novascotiaabba",d:"NSABBA Bodybuilding",c:"bodybuilding",l:"halifax"},
+  {u:"halifaxyogaofficial",d:"Halifax Yoga Official",c:"yoga",l:"halifax"},
+  {u:"shyyoga",d:"Shanti Yoga",c:"yoga",l:"halifax"},
+  {u:"oxygenhrm",d:"Oxygen Yoga & Fitness HRM",c:"yoga",l:"dartmouth"},
+  {u:"aantarik_yoga",d:"Devjani Sinha Aantarik Yoga",c:"yoga",l:"halifax"},
+  {u:"rstudiosns",d:"R Studios FITNESS",c:"studio",l:"halifax"},
+  {u:"pilates_halifax",d:"Precision Pilates Halifax",c:"studio",l:"halifax"},
+  {u:"thepilatesbarrehalifax",d:"The Pilates Barre Halifax",c:"studio",l:"halifax"},
+  {u:"thespacehalifax",d:"The Space Halifax Pilates",c:"studio",l:"halifax"},
+  {u:"qrulesboxing",d:"Queensberry Rules Boxing",c:"boxing",l:"halifax"},
+  {u:"titansmma_hfx",d:"Titans MMA Renzo Gracie",c:"boxing",l:"halifax"},
+  {u:"fightzone_teamtrue",d:"FightZone TeamTrue",c:"boxing",l:"halifax"},
+  {u:"halifaxhit",d:"30 Minute Hit Halifax",c:"boxing",l:"halifax"},
+  {u:"primaltraininghalifax",d:"Primal Training Halifax",c:"pt",l:"halifax"},
+  {u:"sophkenny1",d:"Sophie Hawkes Body Coach",c:"pt",l:"halifax"},
+  {u:"anytimefitnesssouthhalifax",d:"Anytime Fitness South Halifax",c:"studio",l:"halifax"},
+  {u:"regymenhalifaxjh",d:"REGYMEN Fitness Halifax",c:"studio",l:"halifax"},
+  {u:"proedgetraining",d:"Proedge Elite Training",c:"studio",l:"other"}
+];
+const seen = new Set();
+const unique = trainers.filter(t => { if (seen.has(t.u)) return false; seen.add(t.u); return true; });
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+function getLocClass(l) { const map = {'halifax':'loc-halifax','dartmouth':'loc-dartmouth'}; return map[l] || 'other'; }
+function getLocLabel(l) { const map = {'halifax':'Halifax','dartmouth':'Dartmouth','other':'Other'}; return map[l] || 'Halifax'; }
+function getCatLabel(c) { const map = {pt:'Personal Trainer',yoga:'Yoga / Pilates',boxing:'Boxing / MMA',crossfit:'CrossFit',studio:'Studio / Gym',nutrition:'Nutrition',online:'Online Coach',bodybuilding:'Bodybuilding',stretch:'Stretch / Mobility',dance:'Dance / Barre',calisthenics:'Calisthenics',cycling:'Cycling / Spin',strength:'Strength & Conditioning',swimming:'Swimming',other:'Other'}; return map[c] || c; }
+function renderCards(list) { grid.innerHTML = ''; list.forEach((t, i) => { const card = document.createElement('div'); card.className = 'card'; card.innerHTML = `<div class="num">#${i+1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`; grid.appendChild(card); }); stats.textContent = `Showing ${list.length} of ${unique.length} profiles across Halifax`; }
+function filterCards() { const q = document.getElementById('search').value.toLowerCase(); const cat = document.getElementById('catFilter').value; const loc = document.getElementById('locFilter').value; const filtered = unique.filter(t => { if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false; if (cat && t.c !== cat) return false; if (loc && t.l !== loc) return false; return true; }); renderCards(filtered); }
+renderCards(unique);
+</script>
+</body>
+</html>

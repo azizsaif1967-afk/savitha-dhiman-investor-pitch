@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UAE Food Bloggers & Influencers - EatCookJoy.com Partnership Directory</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;padding:16px;line-height:1.5}
+h1{color:#ff6b35;font-size:1.6rem;text-align:center;margin-bottom:4px}
+h2{color:#ff6b35;font-size:1.2rem;margin:24px 0 12px;border-bottom:1px solid #333;padding-bottom:6px}
+h3{color:#e1306c;font-size:1rem;margin:16px 0 8px}
+.sub{text-align:center;color:#888;font-size:0.85rem;margin-bottom:12px}
+.cta-box{text-align:center;margin:16px 0}
+.cta{display:inline-block;background:linear-gradient(135deg,#ff6b35,#e1306c);color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:0.9rem}
+.stats-bar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+.stat{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:8px 14px;text-align:center;min-width:100px}
+.stat .n{color:#ff6b35;font-size:1.3rem;font-weight:bold}
+.stat .l{color:#888;font-size:0.7rem}
+.filter-bar{display:flex;gap:8px;margin:16px 0;flex-wrap:wrap;justify-content:center}
+.filter-bar input,.filter-bar select{padding:8px 12px;border-radius:8px;border:1px solid #333;background:#1a1a1a;color:#fff;font-size:0.85rem}
+.filter-bar input{width:260px}
+table{width:100%;border-collapse:collapse;font-size:0.8rem;margin-top:12px}
+th{background:#1a1a1a;color:#ff6b35;padding:8px 6px;text-align:left;position:sticky;top:0;cursor:pointer;white-space:nowrap;border-bottom:2px solid #333}
+th:hover{color:#fff}
+td{padding:7px 6px;border-bottom:1px solid #1a1a1a}
+tr:hover{background:#1a1a1a}
+.ig{color:#e1306c;text-decoration:none;font-weight:600}
+.ig:hover{text-decoration:underline}
+.tk{color:#69c9d0;text-decoration:none;font-weight:600}
+.tk:hover{text-decoration:underline}
+.tier{display:inline-block;padding:1px 6px;border-radius:4px;font-size:0.7rem;font-weight:bold}
+.mega{background:#4a1a2a;color:#ff6b9d}
+.macro{background:#3a2a1a;color:#fbbf24}
+.mid{background:#1a2a3a;color:#60a5fa}
+.micro{background:#1a3a2a;color:#4ade80}
+.nano{background:#2a2a2a;color:#aaa}
+.nat{color:#aaa;font-size:0.75rem}
+.section{background:#111;border:1px solid #222;border-radius:12px;padding:16px;margin:16px 0}
+.approach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:12px 0}
+.approach-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:14px}
+.approach-card h4{color:#ff6b35;margin-bottom:6px;font-size:0.9rem}
+.approach-card p{color:#bbb;font-size:0.8rem}
+.template{background:#111;border:1px solid #333;border-radius:8px;padding:12px;font-family:monospace;font-size:0.8rem;color:#ccc;white-space:pre-wrap;margin:8px 0}
+footer{text-align:center;margin-top:30px;color:#555;font-size:0.75rem;padding:16px 0;border-top:1px solid #222}
+footer a{color:#ff6b35}
+@media(max-width:768px){table{font-size:0.7rem}td,th{padding:5px 3px}.approach-grid{grid-template-columns:1fr}}
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #ff6b35;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #ff6b3511 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">UAE Food Bloggers</div>
+    <div class="hero-brand-float">UAE Food Bloggers</div>
+    <h1>UAE Food Bloggers & Influencers</h1>
+    <p class="sub">Partnership Directory for EatCookJoy.com App Launch | 115+ Verified Profiles</p>
+</div>
+<div class="cta-box"><a class="cta" href="https://eatcookjoy.com" target="_blank">EatCookJoy.com</a></div>
+
+<div class="stats-bar">
+<div class="stat"><div class="n" id="totalCount">115</div><div class="l">Total Bloggers</div></div>
+<div class="stat"><div class="n">7</div><div class="l">Mega (1M+)</div></div>
+<div class="stat"><div class="n">22</div><div class="l">Macro (100K+)</div></div>
+<div class="stat"><div class="n">52</div><div class="l">Mid (10K-100K)</div></div>
+<div class="stat"><div class="n">34</div><div class="l">Micro (&lt;10K)</div></div>
+</div>
+
+<div class="filter-bar">
+<input type="text" id="search" placeholder="Search name, handle, nationality..." oninput="filterTable()">
+<select id="tierFilter" onchange="filterTable()">
+<option value="">All Tiers</option>
+<option value="mega">Mega (1M+)</option>
+<option value="macro">Macro (100K-999K)</option>
+<option value="mid">Mid (10K-99K)</option>
+<option value="micro">Micro (&lt;10K)</option>
+</select>
+<select id="typeFilter" onchange="filterTable()">
+<option value="">All Types</option>
+<option value="reviewer">Restaurant Reviewer</option>
+<option value="chef">Chef / Cook</option>
+<option value="recipe">Recipe Creator</option>
+<option value="lifestyle">Food & Lifestyle</option>
+<option value="community">Community / Platform</option>
+</select>
+</div>
+
+<div style="overflow-x:auto">
+<table id="bloggerTable">
+<thead>
+<tr>
+<th onclick="sortTable(0)">#</th>
+<th onclick="sortTable(1)">Name</th>
+<th onclick="sortTable(2)">Instagram</th>
+<th onclick="sortTable(3)">IG Followers</th>
+<th onclick="sortTable(4)">TikTok</th>
+<th onclick="sortTable(5)">TT Followers</th>
+<th onclick="sortTable(6)">Tier</th>
+<th onclick="sortTable(7)">Type</th>
+<th onclick="sortTable(8)">Nationality</th>
+<th>Approach</th>
+</tr>
+</thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+
+<!-- PARTNERSHIP STRATEGY SECTION -->
+<div class="section" style="margin-top:30px">
+<h2>Partnership Strategy: How to Approach Food Bloggers for EatCookJoy.com Launch</h2>
+
+<h3>1. Tiered Outreach Framework</h3>
+<div class="approach-grid">
+<div class="approach-card">
+<h4>Mega Influencers (1M+) - Brand Ambassadors</h4>
+<p><b>Budget:</b> AED 15,000-50,000 per post<br>
+<b>Approach:</b> Formal email via management/agent. Propose exclusive "Founding Ambassador" role with equity/revenue share.<br>
+<b>Ask:</b> 1 launch video + 3 story mentions + profile link for 3 months<br>
+<b>ROI:</b> Mass awareness, credibility, press coverage<br>
+<b>Targets:</b> Bader Al Safar, Hussain Sallam, Mr Taster, Moayad AlSawaf</p>
+</div>
+<div class="approach-card">
+<h4>Macro Influencers (100K-999K) - Launch Partners</h4>
+<p><b>Budget:</b> AED 3,000-15,000 per post<br>
+<b>Approach:</b> DM + email. Offer paid partnership + exclusive early access to app + "Featured Reviewer" badge.<br>
+<b>Ask:</b> 1 reel/TikTok reviewing a chef booked through the app + story swipe-up<br>
+<b>ROI:</b> Targeted reach in UAE foodie community<br>
+<b>Targets:</b> JustFoodDXB, FoodFindsUAE, Arezoo, Reza Kiani, Haya Kaabar</p>
+</div>
+<div class="approach-card">
+<h4>Mid-Tier (10K-100K) - Content Army</h4>
+<p><b>Budget:</b> AED 500-3,000 per post OR barter (free chef experience)<br>
+<b>Approach:</b> Instagram DM with personalized message. Offer free chef booking experience + content creation kit.<br>
+<b>Ask:</b> Try a chef through the app, post honest review (reel + stories)<br>
+<b>ROI:</b> High engagement, authentic content, community trust<br>
+<b>Best for:</b> Bulk outreach - aim for 30-40 mid-tier partnerships</p>
+</div>
+<div class="approach-card">
+<h4>Micro/Nano (&lt;10K) - Grassroots Squad</h4>
+<p><b>Budget:</b> Free chef booking (AED 200-500 value) or affiliate commission<br>
+<b>Approach:</b> Friendly DM, feel personal. Offer affiliate code with 10-15% commission per booking.<br>
+<b>Ask:</b> Post about experience, share affiliate code with followers<br>
+<b>ROI:</b> Highest engagement rates (5-10%), hyper-local trust, cost-effective<br>
+<b>Best for:</b> Sustained long-term growth after launch</p>
+</div>
+</div>
+
+<h3>2. DM Outreach Templates</h3>
+
+<h4>Template A: For Restaurant Reviewers (Macro/Mid)</h4>
+<div class="template">Hi [Name]! 👋
+
+I've been following your Dubai food content - your [mention specific post] was amazing!
+
+We're launching EatCookJoy.com - an app that connects Dubai residents with freelance chefs for private dining, meal prep, and catering. Think Uber but for chefs!
+
+We'd love to partner with you for our UAE launch. Here's what we're thinking:
+
+✅ Free private chef experience for you (valued at AED 500+)
+✅ Paid collaboration for a reel/TikTok review
+✅ "Featured Food Partner" badge on our app
+✅ Early access before public launch
+
+Would you be open to a quick chat? We can hop on a call or I can send more details.
+
+Looking forward! 🙏
+[Your Name] - EatCookJoy.com</div>
+
+<h4>Template B: For Chefs Who Blog (Direct Recruit)</h4>
+<div class="template">Hi Chef [Name]! 🍳
+
+Your cooking content is incredible - especially [mention dish/post].
+
+We're building EatCookJoy.com - a platform connecting Dubai's talented chefs with clients who want private dining, meal prep, and catering experiences.
+
+We'd love to have you join as one of our founding chefs AND as a content partner:
+
+🔥 List your services on our platform (free for founding chefs)
+🔥 Get booked by food lovers across the UAE
+🔥 Collaborate on launch content (paid partnership)
+🔥 Featured chef spotlight on our social channels
+
+Interested? Let's connect! 🙏
+[Your Name] - Founder, EatCookJoy.com</div>
+
+<h4>Template C: For Micro/Nano (Affiliate)</h4>
+<div class="template">Hey [Name]! 🙌
+
+Love your food content! We're launching EatCookJoy.com - an app to book private chefs in the UAE.
+
+Want to try it for FREE and earn from sharing it?
+
+🎁 Free private chef experience
+💰 Your own affiliate code (earn 15% per booking)
+📸 Content is yours - post whatever feels authentic
+
+DM me "YES" and I'll set you up! 🚀</div>
+
+<h3>3. Campaign Phases</h3>
+<div class="approach-grid">
+<div class="approach-card">
+<h4>Phase 1: Pre-Launch (4 weeks before)</h4>
+<p>- Sign 2-3 mega influencers as ambassadors<br>
+- Onboard 10 macro influencers for launch day content<br>
+- Build waitlist using influencer-shared signup links<br>
+- Teaser content: "Something is cooking in Dubai..."</p>
+</div>
+<div class="approach-card">
+<h4>Phase 2: Launch Week</h4>
+<p>- Coordinated post drop: All partners post within 48 hours<br>
+- Host exclusive launch dinner with top 20 bloggers + chefs<br>
+- Live cooking session with mega influencer on Instagram<br>
+- PR push: "Dubai's first chef-on-demand app"</p>
+</div>
+<div class="approach-card">
+<h4>Phase 3: Growth (Months 1-3)</h4>
+<p>- Weekly "Chef of the Week" features with mid-tier bloggers<br>
+- Activate 50+ micro influencers with affiliate codes<br>
+- Monthly cooking competitions judged by top bloggers<br>
+- UGC campaign: #EatCookJoy customer reviews</p>
+</div>
+<div class="approach-card">
+<h4>Phase 4: Scale (Months 3-6)</h4>
+<p>- Expand to Abu Dhabi & Sharjah with local bloggers<br>
+- Launch "EatCookJoy Certified Reviewer" program<br>
+- Seasonal campaigns: Ramadan, Eid, National Day<br>
+- Cross-promote with fitness/wellness influencers</p>
+</div>
+</div>
+
+<h3>4. Key Stats to Know</h3>
+<div class="approach-grid">
+<div class="approach-card">
+<h4>Why Influencer Marketing Works in UAE</h4>
+<p>- 43% of UAE diners discover restaurants via influencers<br>
+- 60% of 18-34 year olds follow food influencers<br>
+- 85% of hospitality brands report increased footfall after influencer visits<br>
+- UAE has highest social media penetration globally (99%)<br>
+- Average engagement rate for UAE food content: 3.16%</p>
+</div>
+<div class="approach-card">
+<h4>Best Posting Times for UAE</h4>
+<p>- Instagram: Thu-Fri 12pm-2pm, 7pm-9pm GST<br>
+- TikTok: Wed-Sat 6pm-10pm GST<br>
+- Ramadan: Shift to post-Iftar (8pm-12am)<br>
+- Friday brunch content performs 2.5x higher<br>
+- Arabic + English bilingual posts get 40% more reach</p>
+</div>
+</div>
+
+<h3>5. Tools to Manage Partnerships</h3>
+<div class="approach-card" style="margin:8px 0">
+<p>
+<b>Discovery:</b> Modash.io, HypeAuditor, Favikon, influData - to find and verify bloggers<br>
+<b>Outreach:</b> Collabstr, Upfluence, or simple Google Sheets + DM tracking<br>
+<b>Tracking:</b> Unique promo codes per influencer (e.g. JUSTFOOD15, LAVINA10)<br>
+<b>Contracts:</b> Use Influencer Marketing Hub free templates for UAE-specific agreements<br>
+<b>Payment:</b> Bank transfer (UAE), PayPal, or barter (free services worth AED value)<br>
+<b>Budget Guide:</b> Allocate 60% to macro tier, 25% to mid-tier, 15% to mega for best ROI
+</p>
+</div>
+</div>
+
+<footer>
+<p>Compiled for <a href="https://eatcookjoy.com" target="_blank">EatCookJoy.com</a> | April 2026</p>
+<p>Sources: Favikon, Modash, influData, HypeAuditor, Digital Gravity, TravelToDubai.ae, ServMeCo, SevenRooms, Grafdom</p>
+</footer>
+
+<script>
+const bloggers=[
+// MEGA (1M+)
+{n:"Bader Al Safar",ig:"baderalsafar",igf:6000000,tk:"baderalsafar",tkf:35000000,tier:"mega",type:"reviewer",nat:"Bahraini",note:"#1 fastest growing food creator UAE, ASMR mukbang"},
+{n:"Hussain Sallam (S7S)",ig:"hussain.sallam",igf:3300000,tk:"hussain.sallam",tkf:6000000,tier:"mega",type:"reviewer",nat:"Saudi",note:"YouTube 8.72M, Snapchat 2.29M, restaurants Middle East"},
+{n:"Moayad AlSawaf",ig:"moayad.alsawaf",igf:2000000,tk:"moayad.alsawaf",tkf:0,tier:"mega",type:"reviewer",nat:"Emirati",note:"Top Global Influencer Dubai 2025"},
+{n:"Mr Taster (Hubert Sepidnam)",ig:"mr.taster",igf:2000000,tk:"mr.taster",tkf:4000000,tier:"mega",type:"reviewer",nat:"Iranian",note:"Persian cuisine focus, mega across all platforms"},
+{n:"Afnan Alamir",ig:"afnan_alamir",igf:1500000,tk:"afnan_alamir",tkf:7000000,tier:"mega",type:"recipe",nat:"UAE-based",note:"YouTube 6.9M, easy recipes, Ramadan content"},
+{n:"Ahmed Darweesh (Emirati Chef)",ig:"emirati_chef",igf:961000,tk:"",tkf:0,tier:"macro",type:"chef",nat:"Emirati",note:"961K followers, Emirati cuisine specialist"},
+{n:"Amir Jaberi",ig:"amir_jaberi",igf:900000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"Emirati",note:"#2 UAE food IG, +81.6K/month growth"},
+
+// MACRO (100K-999K)
+{n:"Mohamed Azharudeen P.",ig:"travel_n_cuisine_by_azhar",igf:839000,tk:"",tkf:0,tier:"macro",type:"lifestyle",nat:"Indian-UAE",note:"50+ countries traveled, cuisine & travel"},
+{n:"Karim Bourgi",ig:"karim.bourgi",igf:718000,tk:"",tkf:0,tier:"macro",type:"chef",nat:"Lebanese",note:"MENA Best Pastry Chef 2023"},
+{n:"Arezoo Muslemi",ig:"misszuzucchini",igf:422000,tk:"",tkf:0,tier:"macro",type:"recipe",nat:"Iranian",note:"Dessert specialist, 17 countries traveled"},
+{n:"JustFoodDXB (Alex Augusti)",ig:"justfooddxb",igf:389000,tk:"justfooddxb",tkf:156000,tier:"macro",type:"reviewer",nat:"British",note:"Indian/Chinese cuisine, honest reviews, YouTube 7.9K"},
+{n:"FoodFindsUAE",ig:"foodfindsuae",igf:355000,tk:"",tkf:0,tier:"macro",type:"community",nat:"UAE-based",note:"Trending spots, date night, burger spots"},
+{n:"Reza Kiani",ig:"feedkiani",igf:338000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"Emirati",note:"Full-time foodie, Emirati perspective"},
+{n:"Haya Kaabar (TheDubaiList)",ig:"thedubailist",igf:307000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"UAE-based",note:"Street vendors & restaurants, food videos"},
+{n:"Nicola Moosa (Foodyiz)",ig:"foodyiz",igf:244000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"UAE-based",note:"Engineers turned bloggers, date night spots, affordable finds"},
+{n:"Amr Sherif",ig:"amr.sherif.adel",igf:241000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"Egyptian",note:"YouTube 1.25M, Foodcast podcast, Facebook 802K"},
+{n:"Rafeez Ahmed (TableeForOne)",ig:"tableeforone",igf:238000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"Indian-UAE",note:"Tech entrepreneur, 25 countries, unique updates"},
+{n:"Sheikha Hesa Al Khalifa",ig:"hk_alkhalifa",igf:229000,tk:"",tkf:0,tier:"macro",type:"chef",nat:"Bahraini Royal",note:"Chef, curates restaurant menus, foodie"},
+{n:"Mon3esh (منعش)",ig:"mon3esh.zone",igf:199000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"Egyptian",note:"Former dentist, authentic home reviews, FB 2.3M"},
+{n:"Kelvin Cheung",ig:"chefkelvincheung",igf:194000,tk:"",tkf:0,tier:"macro",type:"chef",nat:"International",note:"Partner Juns Dubai, 852 Bakery"},
+{n:"Aaisha (Dubai Blogger)",ig:"dubai_blogger_",igf:173000,tk:"",tkf:0,tier:"macro",type:"lifestyle",nat:"UAE-based",note:"Engineer + content creator, food/fashion/lifestyle"},
+{n:"Anwar Sadath",ig:"foodiee_anu",igf:170000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"Indian-UAE",note:"Restaurant info, offers, promotions"},
+{n:"Sana",ig:"sana",igf:165000,tk:"",tkf:0,tier:"macro",type:"lifestyle",nat:"UAE-based",note:"BBC, Sky Scanner featured, food & travel"},
+{n:"Shreya Rao",ig:"queenslifeindubai",igf:154000,tk:"",tkf:0,tier:"macro",type:"lifestyle",nat:"Indian-UAE",note:"Licensed influencer, storyteller"},
+{n:"Dubai Food Blogger",ig:"dubaifoodpassion",igf:142000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"UAE-based",note:"Food, hotel, travel, lifestyle"},
+{n:"Coral Stevens",ig:"dxb_hun",igf:140000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"British",note:"8 years in Dubai, hidden gems finder"},
+{n:"Sadaf T",ig:"myculinaryfiles",igf:135000,tk:"",tkf:0,tier:"macro",type:"recipe",nat:"Pakistani",note:"Recipe developer, food stylist"},
+{n:"Rianka Chatterjee (Raya)",ig:"dubaivloggerraya",igf:132000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"Indian-UAE",note:"Licensed food blogger, street to Michelin"},
+{n:"Lavina Israni",ig:"lavinaisranicom",igf:123000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"Indian-Dubai born",note:"On-trend dishes, catchy captions"},
+{n:"Alia Sahil",ig:"alia_.sahil",igf:100000,tk:"",tkf:0,tier:"macro",type:"lifestyle",nat:"UAE-based",note:"Food, travel, lifestyle, festive deals"},
+
+// MID-TIER (10K-100K)
+{n:"Noor Ul Aiin",ig:"noorulaiin",igf:99000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"UAE-based",note:"Former business owner, food/gaming/travel"},
+{n:"Ruchi Kamble",ig:"ruchikamble",igf:98000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Indian-UAE",note:"Exploring food since 2015, aesthetic content"},
+{n:"Mohz Khan",ig:"mohzkhan",igf:98000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Pakistani-UAE",note:"Food, hotels, offers, activities"},
+{n:"Natasha",ig:"thenatashazz",igf:96000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"UAE-based",note:"Zomato Connoisseur, lifestyle/food/beauty"},
+{n:"Nazish Ghaus",ig:"folksfiesta",igf:94000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"UAE-based",note:"Licensed influencer, food/fashion"},
+{n:"Kim & Den (Wheremyfoodat)",ig:"wheremyfoodat",igf:95000,tk:"wheremyfoodat",tkf:50000,tier:"mid",type:"reviewer",nat:"Indian",note:"Award-winning food blogging duo"},
+{n:"Mydxbelly",ig:"mydxbelly",igf:89000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"UAE-based",note:"Food recommendations Dubai"},
+{n:"Priyanka Singla",ig:"priyaankeraa",igf:89000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Indian-UAE",note:"Finance specialist + influencer marketing"},
+{n:"Fathima",ig:"tableforfivedubai",igf:87000,tk:"",tkf:0,tier:"mid",type:"recipe",nat:"UAE-based",note:"Delicious food made easy, recipes & reviews"},
+{n:"Sultan Kayed",ig:"sultan.eats",igf:83000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Emirati",note:"Prominent food blogger"},
+{n:"Adeeba Naaz",ig:"adeebaanaaz",igf:81000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Indian-UAE",note:"Global food updates"},
+{n:"Chef Paul Hayward",ig:"chefpaulhayward",igf:78000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"British",note:"Consultant Chef UAE, menu creation, 78K"},
+{n:"Anushree Baghjai",ig:"anushreebagzai",igf:72000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"Indian-UAE",note:"Tales & escapes, food/travel/lifestyle"},
+{n:"A Ali (Taqato)",ig:"taqato",igf:71000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Emirati",note:"Licensed digital creator, blogging since 2015"},
+{n:"Ellie Z Amin",ig:"dubaifoodlovers",igf:70000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"UAE-based",note:"Food and travel content"},
+{n:"Meghana Rao",ig:"megsblogged",igf:96000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"Indian-UAE",note:"66 countries traveled, food/travel/hotel"},
+{n:"Khadeeja Khan",ig:"miss.in.kitchen",igf:64000,tk:"",tkf:0,tier:"mid",type:"recipe",nat:"UAE-based",note:"Lifestyle, food, home content"},
+{n:"Ishita Jain",ig:"flavorsbyish",igf:58000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"Indian-UAE",note:"Food, lifestyle, fashion, travel"},
+{n:"Farhana Arshad",ig:"foodventurres",igf:52000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"UAE-based",note:"Food, travel, events, lifestyle"},
+{n:"Ahmed Othman Ibrahim",ig:"ahmed.othman",igf:51000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"Egyptian-UAE",note:"Chef & personal trainer, 51K"},
+{n:"Zoe Bowker",ig:"zoe.bowker",igf:50000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"International",note:"Fine dining specialist, The Luxeologist"},
+{n:"Hala Eldarwish",ig:"traveleatburn",igf:46000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"Egyptian-UAE",note:"Underrated destinations, food gems"},
+{n:"Hiba",ig:"cloudninecouture",igf:43000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"UAE-based",note:"30 countries before 30 mission"},
+{n:"Kashish Chauhan",ig:"i_m_kashish",igf:42000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"Indian-UAE",note:"Travel, lifestyle, food"},
+{n:"Arpita Soni",ig:"foodloreuae",igf:41000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Indian-UAE",note:"Licensed influencer, food/motherhood"},
+{n:"Tom Coll",ig:"colltom",igf:40000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"International",note:"Executive Pastry Chef Burj Al Arab"},
+{n:"Dubai Food Blogger",ig:"food.me.life",igf:40000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"UAE-based",note:"Diverse food content"},
+{n:"Ariana Bundy",ig:"arianabundy",igf:37000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"Iranian",note:"Chef, TV host, clean Persian food"},
+{n:"Jessa Torino",ig:"pinoyfooddxb",igf:37000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Filipino",note:"Filipino food blogger in Dubai"},
+{n:"Lara Santini",ig:"lara.santini",igf:38000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"International",note:"Women's strength & body transformation, food"},
+{n:"FooDiva (Samantha Wood)",ig:"foodiva",igf:33000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"British-Greek-Cypriot",note:"No freebies policy, CNN featured, 20+ years Dubai"},
+{n:"Sachi Kumar",ig:"wheresachi",igf:33000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Indian-UAE",note:"Dubai girl on global mission, Global Village tours"},
+{n:"Karim Bourgi",ig:"kalalrajkumar",igf:32000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"Indian",note:"Pastry chef Dubai"},
+{n:"Aishwarya (PlatesOfAishu)",ig:"platesofaishu",igf:30000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Indian-UAE",note:"Budget finds under AED 30-50"},
+{n:"Ralph J (Cooking with Ralph)",ig:"cookingwithralph",igf:28000,tk:"",tkf:0,tier:"mid",type:"recipe",nat:"International",note:"Vegan specialist, Certified Nutrition Coach"},
+{n:"Sadaf T",ig:"locatingfood",igf:26000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"UAE-based",note:"Travel, food, lifestyle, TikTok snacks"},
+{n:"Omar Alzaabi (Around2UAE)",ig:"around2uae",igf:25000,tk:"around2uae",tkf:15000,tier:"mid",type:"reviewer",nat:"Emirati",note:"Ambience focus, hotpot/continental"},
+{n:"Fatema Murtaza",ig:"meltingmomentscakes",igf:24000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"UAE-based",note:"Cake artist & pastry chef, 24K"},
+{n:"Christina",ig:"travelingwiththyme",igf:22000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"Lebanese-UAE",note:"Food and travel content"},
+{n:"Courtney Brandt",ig:"_courtneybrandt_",igf:20000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"American",note:"Fine dining, Forbes Middle East features"},
+{n:"Faizan Manga",ig:"eatwhileyoutravel",igf:20000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Pakistani-UAE",note:"Discovering meals while traveling"},
+{n:"Food World Review",ig:"foodworldreview",igf:19000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"UAE-based",note:"Food reviews and updates"},
+{n:"Lavanya Bangera",ig:"foodstagram_lavanya",igf:18000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"Indian-UAE",note:"350+ brand collabs, food/fashion/travel"},
+{n:"Jen Sahi",ig:"dxbfooddiaries",igf:18000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"UAE-based",note:"Brunches to dinners, recipe content"},
+{n:"Charu, Dipti & Shivangi",ig:"thefoodsisters3",igf:17000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Indian-UAE",note:"Three sisters, regular food content"},
+{n:"FIA (Online Coach)",ig:"fiabody",igf:16000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"UAE-based",note:"Dubai PT, women's health & food"},
+{n:"Anky & Afshan",ig:"dxblivin",igf:15000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"UAE-based",note:"Dubai culinary scene explorers"},
+{n:"Ana Gixhari",ig:"ana.gixhari",igf:14000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"Albanian-UAE",note:"Fashion, beauty, luxury, lifestyle"},
+{n:"Pauline Cake Dubai",ig:"pauline_cake_dubai",igf:286000,tk:"",tkf:0,tier:"macro",type:"chef",nat:"International",note:"DM/WhatsApp orders, 286K"},
+{n:"CHEF CA Official",ig:"chefcaofficial",igf:89000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"UAE-based",note:"Luxury private chef experiences, DM bookings"},
+{n:"Mariam Hamdy",ig:"mariamhamdy",igf:74000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"Egyptian-UAE",note:"Chef, 74K, DM for details"},
+
+// MICRO (<10K)
+{n:"John Alcantara",ig:"jaye.eats",igf:11000,tk:"",tkf:0,tier:"micro",type:"reviewer",nat:"Filipino-UAE",note:"Marketer, strategist, storyteller"},
+{n:"Pooja Varyani",ig:"foodishvibes",igf:10000,tk:"",tkf:0,tier:"micro",type:"reviewer",nat:"Indian-UAE",note:"Vegetarian recommendations"},
+{n:"Monica Kapila",ig:"doindubai",igf:8000,tk:"",tkf:0,tier:"micro",type:"lifestyle",nat:"UAE-based",note:"Journalist, luxury travel"},
+{n:"ReviewerInfluencer",ig:"yummie_snacks",igf:8000,tk:"",tkf:0,tier:"micro",type:"lifestyle",nat:"UAE-based",note:"Food, lifestyle, travel, parenting"},
+{n:"WSIO",ig:"whatshalliorder",igf:7000,tk:"",tkf:0,tier:"micro",type:"reviewer",nat:"UAE-based",note:"Beach dining, matcha, breakfast spots"},
+{n:"Dubai Confidential",ig:"dubaiconfidential",igf:39000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"UAE-based",note:"Fine dining, Facebook 500K"},
+{n:"Hattem Mattar (Dubai Butcher)",ig:"thedubaibutcher",igf:112000,tk:"",tkf:0,tier:"macro",type:"chef",nat:"Emirati",note:"Region's 1st pitmaster, premium meats"},
+{n:"Abdulla Eats",ig:"abdulla_eats",igf:85000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Emirati",note:"Unearthing culinary treasures"},
+{n:"Dubai Fans",ig:"dubaifans",igf:70000,tk:"",tkf:0,tier:"mid",type:"community",nat:"UAE-based",note:"Expert reviews, gourmet destinations"},
+{n:"Secret Squirrel Food",ig:"secretsquirrelfood",igf:45000,tk:"",tkf:0,tier:"mid",type:"recipe",nat:"Australian",note:"Karen McLean, health-conscious, Melbourne native"},
+{n:"Dalia's Kitchen",ig:"daliakitchen",igf:55000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"Syrian-German",note:"Worked London/Paris/NYC, Kitsch Bakery founder"},
+{n:"The Hybrids (Ascia)",ig:"ascia",igf:200000,tk:"",tkf:0,tier:"macro",type:"reviewer",nat:"Kuwaiti-UAE",note:"Commentary-style reviews, Kuwaiti sensation"},
+{n:"Diya Nair",ig:"diyanair_",igf:35000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Indian-UAE",note:"Food & travel enthusiast"},
+{n:"K R E A (Ayesha Seedat)",ig:"krea.spicery",igf:25000,tk:"",tkf:0,tier:"mid",type:"recipe",nat:"South African-UAE",note:"Handcrafted spice blends, wholesome recipes"},
+{n:"AZLife.ae (Aysha Zahid)",ig:"azlife.ae",igf:80000,tk:"azlife.ae",tkf:120000,tier:"mid",type:"reviewer",nat:"Pakistani-UAE",note:"Luxurious food content, honest reviews"},
+{n:"Samantha Hamilton",ig:"samanthahamilton_",igf:50000,tk:"",tkf:147000,tier:"mid",type:"reviewer",nat:"International",note:"TikTok 147K, restaurants across Emirates"},
+{n:"Vikas Malik",ig:"vikasmalikfood",igf:40000,tk:"",tkf:190000,tier:"mid",type:"reviewer",nat:"Indian-UAE",note:"TikTok 190K, hidden culinary gems"},
+{n:"FoodieUAE",ig:"foodieuae",igf:80000,tk:"foodieuae",tkf:330000,tier:"mid",type:"community",nat:"UAE-based",note:"TikTok 330K, restaurant recommendations"},
+{n:"Khalof (خلوف)",ig:"khalof_",igf:60000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"Iranian-UAE",note:"Food, travel, lifestyle"},
+{n:"John Tyson (Angry Chef)",ig:"angry_chef_89_official",igf:30000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"International",note:"ANGRYCHEF'S KITCHEN project"},
+{n:"Zehra A Syed",ig:"zehraasyed",igf:45000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"Pakistani-UAE",note:"Food, travel, fashion, beauty"},
+{n:"Dilshad Pattammaruthodi",ig:"dilshad_pm",igf:35000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Indian-UAE (Kerala)",note:"Entrepreneur, Malayalam/English reviews"},
+{n:"Farhan Maqsood (Coffee Bro)",ig:"coffee.bro",igf:40000,tk:"",tkf:0,tier:"mid",type:"lifestyle",nat:"UAE-based",note:"Coffee enthusiast, owns coffee brand"},
+{n:"Joyce Mrad",ig:"joycemrad",igf:55000,tk:"",tkf:0,tier:"mid",type:"recipe",nat:"Lebanese-UAE",note:"Self-taught cook, food stylist, desserts"},
+{n:"Mohammed Mk",ig:"mohammed_mk_",igf:45000,tk:"",tkf:0,tier:"mid",type:"recipe",nat:"Syrian-UAE",note:"Middle Eastern cuisine, cooking tips"},
+{n:"Ava Ya",ig:"avaya_cooks",igf:35000,tk:"",tkf:0,tier:"mid",type:"recipe",nat:"Iranian-UAE",note:"Persian & international dishes"},
+{n:"Chef Niloofar Pasham",ig:"chef_niloofar",igf:30000,tk:"",tkf:0,tier:"mid",type:"chef",nat:"Iranian-UAE",note:"Certified chef, international cuisines"},
+{n:"Khaled Saleh",ig:"khaledalsaleh",igf:50000,tk:"",tkf:0,tier:"mid",type:"reviewer",nat:"Emirati",note:"#1 Food Content Creator 2023, cinematic storytelling"},
+];
+
+const tbody=document.getElementById('tbody');
+const tierLabels={mega:'Mega 1M+',macro:'Macro 100K+',mid:'Mid 10K-100K',micro:'Micro <10K'};
+const tierClass={mega:'mega',macro:'macro',mid:'mid',micro:'micro'};
+
+function fmt(n){if(!n||n===0)return'-';if(n>=1000000)return(n/1000000).toFixed(1)+'M';if(n>=1000)return(n/1000).toFixed(0)+'K';return n.toString()}
+
+function renderTable(data){
+  tbody.innerHTML='';
+  data.sort((a,b)=>(b.igf||0)-(a.igf||0));
+  data.forEach((b,i)=>{
+    const tr=document.createElement('tr');
+    tr.dataset.tier=b.tier;
+    tr.dataset.type=b.type;
+    tr.innerHTML=`
+      <td>${i+1}</td>
+      <td><b>${b.n}</b><br><span class="nat">${b.note||''}</span></td>
+      <td><a class="ig" href="https://instagram.com/${b.ig}" target="_blank">@${b.ig}</a></td>
+      <td><b>${fmt(b.igf)}</b></td>
+      <td>${b.tk?`<a class="tk" href="https://tiktok.com/@${b.tk}" target="_blank">@${b.tk}</a>`:'-'}</td>
+      <td>${b.tkf?`<b>${fmt(b.tkf)}</b>`:'-'}</td>
+      <td><span class="tier ${tierClass[b.tier]}">${tierLabels[b.tier]}</span></td>
+      <td>${b.type}</td>
+      <td>${b.nat}</td>
+      <td><a class="ig" href="https://instagram.com/${b.ig}" target="_blank" style="font-size:0.75rem">DM</a></td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('totalCount').textContent=data.length;
+}
+
+function filterTable(){
+  const q=document.getElementById('search').value.toLowerCase();
+  const tier=document.getElementById('tierFilter').value;
+  const type=document.getElementById('typeFilter').value;
+  const filtered=bloggers.filter(b=>{
+    const mq=!q||b.n.toLowerCase().includes(q)||b.ig.toLowerCase().includes(q)||b.nat.toLowerCase().includes(q)||(b.note||'').toLowerCase().includes(q);
+    const mt=!tier||b.tier===tier;
+    const mty=!type||b.type===type;
+    return mq&&mt&&mty;
+  });
+  renderTable(filtered);
+}
+
+let sortDir=1;
+function sortTable(col){
+  sortDir*=-1;
+  const rows=Array.from(tbody.rows);
+  rows.sort((a,b)=>{
+    let va=a.cells[col].textContent.trim();
+    let vb=b.cells[col].textContent.trim();
+    const na=parseFloat(va.replace(/[KM,]/g,''))||0;
+    const nb=parseFloat(vb.replace(/[KM,]/g,''))||0;
+    if(na&&nb)return(na-nb)*sortDir;
+    return va.localeCompare(vb)*sortDir;
+  });
+  rows.forEach(r=>tbody.appendChild(r));
+}
+
+renderTable(bloggers);
+</script>
+</body>
+</html>

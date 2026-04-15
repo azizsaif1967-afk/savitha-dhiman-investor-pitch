@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martial Arts Instructors &amp; Gyms Across Canada - Instagram Directory</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0a0a0a;color:#e0e0e0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+  a{text-decoration:none;color:inherit}
+
+  header{text-align:center;padding:48px 24px 32px;background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 100%);border-bottom:2px solid #e1306c}
+  header h1{font-size:2rem;font-weight:700;background:linear-gradient(90deg,#e1306c,#405de6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+  header p{color:#999;font-size:1.05rem}
+
+  .controls{max-width:1200px;margin:0 auto;padding:24px 24px 0;display:flex;flex-wrap:wrap;gap:12px}
+  .controls input,.controls select{background:#1a1a1a;border:1px solid #333;color:#e0e0e0;padding:10px 16px;border-radius:8px;font-size:.95rem;outline:none;transition:border .2s}
+  .controls input:focus,.controls select:focus{border-color:#e1306c}
+  .controls input{flex:1 1 260px}
+  .controls select{flex:0 1 200px;cursor:pointer}
+
+  .stats{max-width:1200px;margin:0 auto;padding:16px 24px 0;font-size:.9rem;color:#777}
+
+  .grid{max-width:1200px;margin:0 auto;padding:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;flex:1}
+
+  .card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;transition:transform .2s,border-color .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-3px);border-color:#e1306c;box-shadow:0 8px 24px rgba(225,48,108,.15)}
+
+  .card-top{display:flex;align-items:center;gap:12px}
+  .avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:#fff;flex-shrink:0;text-transform:uppercase}
+  .card-handle{font-weight:600;color:#e1306c;font-size:1rem}
+  .card-desc{color:#bbb;font-size:.9rem;line-height:1.45;flex:1}
+
+  .card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+  .tag{padding:4px 10px;border-radius:20px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+  .tag-type{background:rgba(64,93,230,.2);color:#7b93f5;border:1px solid rgba(64,93,230,.3)}
+
+  /* City colors */
+  .tag-toronto{background:rgba(225,48,108,.15);color:#f06292;border:1px solid rgba(225,48,108,.25)}
+  .tag-vancouver{background:rgba(0,200,150,.15);color:#4dd0a8;border:1px solid rgba(0,200,150,.25)}
+  .tag-montreal{background:rgba(156,39,176,.15);color:#ce93d8;border:1px solid rgba(156,39,176,.25)}
+  .tag-calgary{background:rgba(255,152,0,.15);color:#ffb74d;border:1px solid rgba(255,152,0,.25)}
+  .tag-edmonton{background:rgba(33,150,243,.15);color:#64b5f6;border:1px solid rgba(33,150,243,.25)}
+  .tag-ottawa{background:rgba(76,175,80,.15);color:#81c784;border:1px solid rgba(76,175,80,.25)}
+  .tag-winnipeg{background:rgba(255,235,59,.15);color:#fff176;border:1px solid rgba(255,235,59,.25)}
+  .tag-halifax{background:rgba(0,188,212,.15);color:#4dd0e1;border:1px solid rgba(0,188,212,.25)}
+  .tag-victoria{background:rgba(121,85,72,.15);color:#bcaaa4;border:1px solid rgba(121,85,72,.25)}
+  .tag-nanaimo{background:rgba(255,87,34,.15);color:#ff8a65;border:1px solid rgba(255,87,34,.25)}
+
+  .ig-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#e1306c,#405de6);color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;font-weight:600;transition:opacity .2s;margin-top:8px;align-self:flex-start}
+  .ig-btn:hover{opacity:.85}
+  .ig-btn svg{width:18px;height:18px;fill:#fff}
+
+  .no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:#666;font-size:1.1rem}
+
+  footer{text-align:center;padding:32px 24px;color:#555;font-size:.85rem;border-top:1px solid #1a1a1a;margin-top:auto}
+  footer span{color:#e1306c}
+
+  @media(max-width:600px){
+    header h1{font-size:1.4rem}
+    .grid{grid-template-columns:1fr;padding:16px}
+    .controls{padding:16px 16px 0}
+  }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Martial Arts Instructors &amp; Gyms Across Canada</h1>
+  <p>Boxing, MMA, Muay Thai, BJJ &amp; more | Connect via Instagram DM</p>
+</header>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Search by name, handle, or description...">
+  <select id="categoryFilter">
+    <option value="">All Martial Arts</option>
+    <option value="boxing">Boxing</option>
+    <option value="mma">MMA</option>
+    <option value="muay-thai">Muay Thai</option>
+    <option value="bjj">BJJ</option>
+    <option value="kickboxing">Kickboxing</option>
+    <option value="karate">Karate</option>
+    <option value="taekwondo">Taekwondo</option>
+    <option value="judo">Judo</option>
+    <option value="wrestling">Wrestling</option>
+    <option value="self-defense">Self Defense</option>
+    <option value="multi-discipline">Multi-Discipline</option>
+  </select>
+  <select id="cityFilter">
+    <option value="">All Cities</option>
+    <option value="toronto">Toronto</option>
+    <option value="vancouver">Vancouver</option>
+    <option value="montreal">Montreal</option>
+    <option value="calgary">Calgary</option>
+    <option value="edmonton">Edmonton</option>
+    <option value="ottawa">Ottawa</option>
+    <option value="winnipeg">Winnipeg</option>
+    <option value="halifax">Halifax</option>
+    <option value="victoria">Victoria</option>
+    <option value="nanaimo">Nanaimo</option>
+  </select>
+</div>
+
+<div class="stats" id="stats"></div>
+<div class="grid" id="grid"></div>
+
+<footer>
+  <span>GroupFit App Compatible</span> | Martial Arts Across Canada
+</footer>
+
+<script>
+const profiles = [
+  {handle:"vancouverelitemma",desc:"Vancouver Elite MMA - Mixed martial arts (1.6K)",type:"mma",city:"vancouver"},
+  {handle:"121.mma",desc:"One To One MMA - Boxing, kickboxing, no-gi & MMA, East York",type:"mma",city:"toronto"},
+  {handle:"universalmma",desc:"Universal MMA - Muay Thai, kickboxing, boxing & BJJ, North Van (3.6K)",type:"multi-discipline",city:"vancouver"},
+  {handle:"canadianfightingcenter",desc:"Canadian Fighting Center - Winnipeg's #1 MMA training (10K)",type:"multi-discipline",city:"winnipeg"},
+  {handle:"dmtyyz",desc:"Diamond Muay Thai + Boxing Toronto",type:"muay-thai",city:"toronto"},
+  {handle:"revmma",desc:"Rev MMA - Toronto's leader in MMA & fitness",type:"mma",city:"toronto"},
+  {handle:"grantmma",desc:"Grant's MMA - Boxing, Muay Thai & BJJ classes, North York",type:"multi-discipline",city:"toronto"},
+  {handle:"xtremecouture_to",desc:"Xtreme Couture Toronto - Elite fighting & fitness",type:"mma",city:"toronto"},
+  {handle:"openmatmma",desc:"OpenMat MMA - Toronto's best MMA gym",type:"mma",city:"toronto"},
+  {handle:"blacklionthaiboxmma",desc:"Black Lion Thai Box MMA - Muay Thai & MMA, Toronto",type:"muay-thai",city:"toronto"},
+  {handle:"tkmtoronto",desc:"TKMT Toronto Kickboxing & Muay Thai",type:"muay-thai",city:"toronto"},
+  {handle:"sbgscarborough",desc:"SBG Scarborough - Top-rated MMA, BJJ & Muay Thai",type:"multi-discipline",city:"toronto"},
+  {handle:"budocanada",desc:"Budo Canada - BJJ, Muay Thai & Boxing fitness",type:"multi-discipline",city:"toronto"},
+  {handle:"10thplanetetobicoke",desc:"10th Planet Etobicoke - BJJ & Muay Thai",type:"bjj",city:"toronto"},
+  {handle:"lionsmma",desc:"Lions MMA Vancouver - World class instruction since 2001",type:"multi-discipline",city:"vancouver"},
+  {handle:"fkpmmavancouver",desc:"Franco Kickboxing Pankration - 40+ years martial arts",type:"kickboxing",city:"vancouver"},
+  {handle:"diazcombatsports",desc:"Diaz Combat Sports - 18,000 sq ft, 250+ classes/week, Vancouver",type:"multi-discipline",city:"vancouver"},
+  {handle:"pttvancity",desc:"Pacific Top Team Vancity - BJJ & Muay Thai, Vancouver",type:"bjj",city:"vancouver"},
+  {handle:"cjmartialartsnanaimo",desc:"CJ Martial Arts - Muay Thai & fitness, Nanaimo",type:"muay-thai",city:"nanaimo"},
+  {handle:"h2ommamtl",desc:"H2O MMA Montreal - BJJ, Boxing, Muay Thai, Judo & Wrestling",type:"multi-discipline",city:"montreal"},
+  {handle:"triikiboxing",desc:"Tristar Gym Montreal - World-famous MMA training center",type:"mma",city:"montreal"},
+  {handle:"lfglabscalgary",desc:"LFG Labs Calgary - Biggest MMA gym, boxing & BJJ",type:"mma",city:"calgary"},
+  {handle:"kingdommma_yeg",desc:"Kingdom MMA Edmonton - Muay Thai, BJJ & Boxing",type:"multi-discipline",city:"edmonton"},
+  {handle:"wolfhousemma",desc:"Wolfhouse MMA - Mixed martial arts training",type:"mma",city:"edmonton"},
+  {handle:"jake_leestriking",desc:"Jake Peacock - Striking coach & MMA (208K)",type:"boxing",city:"toronto"},
+  {handle:"georgesstpierre",desc:"Georges St-Pierre - MMA legend, Canadian icon (5.8M)",type:"mma",city:"montreal"},
+  {handle:"thenotoriousmma_can",desc:"MMA Canada - Community & events",type:"mma",city:"toronto"},
+  {handle:"torontomartialarts",desc:"Toronto Martial Arts - Multi-discipline training",type:"multi-discipline",city:"toronto"},
+  {handle:"ottawabjj",desc:"Ottawa BJJ Academy - Brazilian Jiu-Jitsu classes",type:"bjj",city:"ottawa"},
+  {handle:"halifaxboxingclub",desc:"Halifax Boxing Club - Community boxing gym",type:"boxing",city:"halifax"},
+  {handle:"calgarymma",desc:"Calgary MMA - Training center & community",type:"mma",city:"calgary"},
+  {handle:"edmontonboxing",desc:"Edmonton Boxing Club - Amateur & pro boxing",type:"boxing",city:"edmonton"},
+  {handle:"vancouverboxingclub",desc:"Vancouver Boxing Club - All levels welcome",type:"boxing",city:"vancouver"},
+  {handle:"montrealboxing",desc:"Montreal Boxing Academy - Training & competition",type:"boxing",city:"montreal"},
+  {handle:"winnipegmma",desc:"Winnipeg MMA - Mixed martial arts training",type:"mma",city:"winnipeg"},
+  {handle:"victoriabjj",desc:"Victoria BJJ Academy - Jiu-Jitsu on the island",type:"bjj",city:"victoria"},
+  {handle:"ottawakickboxing",desc:"Ottawa Kickboxing Club - Cardio kickboxing & sparring",type:"kickboxing",city:"ottawa"},
+  {handle:"torontokarate",desc:"Toronto Karate Academy - Traditional & sport karate",type:"karate",city:"toronto"},
+  {handle:"judocanadaofficial",desc:"Judo Canada - National federation & community",type:"judo",city:"montreal"},
+  {handle:"tkdcanada",desc:"Taekwondo Canada - National team & clubs",type:"taekwondo",city:"toronto"},
+  {handle:"canadianwrestling",desc:"Wrestling Canada - National wrestling community",type:"wrestling",city:"ottawa"},
+  {handle:"selfdefensecanada",desc:"Self Defense Canada - Personal safety training",type:"self-defense",city:"toronto"},
+  {handle:"kravinstitute",desc:"Krav Maga Institute - Self defense, Toronto",type:"self-defense",city:"toronto"},
+  {handle:"montrealmartialarts",desc:"Montreal Martial Arts Academy - Multi-discipline",type:"multi-discipline",city:"montreal"},
+  {handle:"calgarybjj",desc:"Calgary BJJ - Brazilian Jiu-Jitsu academy",type:"bjj",city:"calgary"},
+  {handle:"edmontonmuaythai",desc:"Edmonton Muay Thai - Authentic Thai boxing",type:"muay-thai",city:"edmonton"},
+  {handle:"vancouvermuaythai",desc:"Vancouver Muay Thai - Traditional training",type:"muay-thai",city:"vancouver"},
+  {handle:"torontobjj",desc:"Toronto BJJ Academy - Competition & training",type:"bjj",city:"toronto"},
+  {handle:"ottawamma",desc:"Ottawa MMA & Fitness - Training for all levels",type:"mma",city:"ottawa"},
+  {handle:"halifaxmma",desc:"Halifax MMA - East coast martial arts",type:"mma",city:"halifax"}
+];
+
+const typeLabels={boxing:"Boxing",mma:"MMA","muay-thai":"Muay Thai",bjj:"BJJ",kickboxing:"Kickboxing",karate:"Karate",taekwondo:"Taekwondo",judo:"Judo",wrestling:"Wrestling","self-defense":"Self Defense","multi-discipline":"Multi-Discipline"};
+const cityLabels={toronto:"Toronto",vancouver:"Vancouver",montreal:"Montreal",calgary:"Calgary",edmonton:"Edmonton",ottawa:"Ottawa",winnipeg:"Winnipeg",halifax:"Halifax",victoria:"Victoria",nanaimo:"Nanaimo"};
+const cityColors={toronto:"#f06292",vancouver:"#4dd0a8",montreal:"#ce93d8",calgary:"#ffb74d",edmonton:"#64b5f6",ottawa:"#81c784",winnipeg:"#fff176",halifax:"#4dd0e1",victoria:"#bcaaa4",nanaimo:"#ff8a65"};
+
+const igSvg=`<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>`;
+
+function getInitials(handle){return handle.replace(/[^a-zA-Z]/g,'').substring(0,2).toUpperCase()}
+
+function render(){
+  const q=document.getElementById('search').value.toLowerCase().trim();
+  const cat=document.getElementById('categoryFilter').value;
+  const city=document.getElementById('cityFilter').value;
+  const seen=new Set();
+  const filtered=profiles.filter(p=>{
+    if(seen.has(p.handle))return false;
+    seen.add(p.handle);
+    if(cat&&p.type!==cat)return false;
+    if(city&&p.city!==city)return false;
+    if(q&&!p.handle.toLowerCase().includes(q)&&!p.desc.toLowerCase().includes(q))return false;
+    return true;
+  });
+
+  document.getElementById('stats').textContent=`Showing ${filtered.length} of ${profiles.length} profiles`;
+
+  const grid=document.getElementById('grid');
+  if(!filtered.length){
+    grid.innerHTML='<div class="no-results">No profiles found matching your filters.</div>';
+    return;
+  }
+
+  grid.innerHTML=filtered.map(p=>{
+    const col=cityColors[p.city]||'#888';
+    return `<div class="card">
+      <div class="card-top">
+        <div class="avatar" style="background:${col}55;color:${col}">${getInitials(p.handle)}</div>
+        <div class="card-handle">@${p.handle}</div>
+      </div>
+      <div class="card-desc">${p.desc}</div>
+      <div class="card-tags">
+        <span class="tag tag-type">${typeLabels[p.type]||p.type}</span>
+        <span class="tag tag-${p.city}">${cityLabels[p.city]||p.city}</span>
+      </div>
+      <a href="https://instagram.com/${p.handle}" target="_blank" rel="noopener" class="ig-btn">${igSvg} Follow on Instagram</a>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('search').addEventListener('input',render);
+document.getElementById('categoryFilter').addEventListener('change',render);
+document.getElementById('cityFilter').addEventListener('change',render);
+render();
+</script>
+</body>
+</html>

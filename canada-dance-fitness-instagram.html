@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dance Fitness Instructors Across Canada - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.loc-toronto { background: #166534; color: #4ade80; }
+  .tag.loc-vancouver { background: #1e3a5f; color: #60a5fa; }
+  .tag.loc-montreal { background: #5b21b6; color: #c4b5fd; }
+  .tag.loc-calgary { background: #92400e; color: #fbbf24; }
+  .tag.loc-edmonton { background: #7c2d12; color: #fb923c; }
+  .tag.loc-ottawa { background: #164e63; color: #67e8f9; }
+  .tag.loc-winnipeg { background: #4a044e; color: #e879f9; }
+  .tag.loc-halifax { background: #1e3a5f; color: #93c5fd; }
+  .tag.loc-canada { background: #1a3a2a; color: #6ee7b7; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Canada Dance</div>
+    <div class="hero-brand-float">Canada Dance</div>
+    <h1>Dance Fitness Instructors Across Canada</h1>
+    <p class="subtitle">Instagram profiles | No website required - connect via DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, specialty, or city..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="zumba">Zumba</option>
+    <option value="hip-hop">Hip-Hop</option>
+    <option value="barre">Barre</option>
+    <option value="salsa">Salsa</option>
+    <option value="afrobeats">Afrobeats</option>
+    <option value="bollywood">Bollywood</option>
+    <option value="cardio-dance">Cardio Dance</option>
+    <option value="soca">Soca/Caribbean</option>
+    <option value="belly-dance">Belly Dance</option>
+    <option value="kpop">K-Pop</option>
+    <option value="pole-aerial">Pole/Aerial</option>
+    <option value="multi-style">Multi-Style</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Cities</option>
+    <option value="toronto">Toronto</option>
+    <option value="vancouver">Vancouver</option>
+    <option value="montreal">Montreal</option>
+    <option value="calgary">Calgary</option>
+    <option value="edmonton">Edmonton</option>
+    <option value="ottawa">Ottawa</option>
+    <option value="winnipeg">Winnipeg</option>
+    <option value="halifax">Halifax</option>
+    <option value="mississauga">Mississauga</option>
+    <option value="barrie">Barrie</option>
+    <option value="canada">Canada-wide</option>
+  </select>
+</div>
+<div class="grid" id="grid"></div>
+<footer>
+  <p>GroupFit App Compatible | Dance Fitness Across Canada</p>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+</footer>
+<script>
+const trainers = [
+  {u:"grace_zumba.canada",d:"Grace - Zumba instructor, global dance community (37K)",c:"zumba",l:"toronto"},
+  {u:"mynameiskatezumba",d:"Kate A - Star Readers' Choice Diamond Winner Zumba (6.1K)",c:"zumba",l:"toronto"},
+  {u:"zumba.con.nelcy",d:"Nelcy Pozo - Zumba instructor at Shape Fitness",c:"zumba",l:"toronto"},
+  {u:"popizumbatoronto",d:"Popi Spyridis - Zumba instructor & wedding dance specialist since 2012",c:"zumba",l:"toronto"},
+  {u:"zumba_monica",d:"Monica Inacio - Toronto-based Zumba instructor (3.5K)",c:"zumba",l:"toronto"},
+  {u:"zumba.on.zoom",d:"Cathy Lee - Online Zumba classes Mon/Wed/Sat",c:"zumba",l:"toronto"},
+  {u:"zumbachoreostoronto",d:"Zumba Choreos Toronto - Instructor community",c:"zumba",l:"toronto"},
+  {u:"shinefitco",d:"SHINE FIT - Toronto dance fitness studio at Yonge & Bloor (5K+)",c:"hip-hop",l:"toronto"},
+  {u:"jesstakimotofitness",d:"Jess Takimoto - Owner of SHINE FIT, body confidence advocate",c:"hip-hop",l:"toronto"},
+  {u:"socacize",d:"Socacize Fitness Inc. - Caribbean & African dance fitness (14K)",c:"soca",l:"toronto"},
+  {u:"socacize_mississauga",d:"Socacize Mississauga - Caribbean dance fitness franchise",c:"soca",l:"mississauga"},
+  {u:"ele.vated.fitness",d:"Elevate Fitness - Soca & dancehall step fitness, Scarborough",c:"soca",l:"toronto"},
+  {u:"torontodancehallcollective",d:"Toronto Dancehall Collective - Coalition of dancehall pros",c:"soca",l:"toronto"},
+  {u:"torontodancesalsa",d:"Aleks Saiyan - Canada's largest Salsa school (3.9K)",c:"salsa",l:"toronto"},
+  {u:"melissa.gamal",d:"Melissa Gamal - Bellydance instructor, international (139K)",c:"belly-dance",l:"toronto"},
+  {u:"ya_amar_dance",d:"Ya Amar - Belly dance classes & entertainment (21K)",c:"belly-dance",l:"toronto"},
+  {u:"rpmdancecrew",d:"R.P.M K-Pop Dance Crew - Founded 2014, 24 members (43K)",c:"kpop",l:"toronto"},
+  {u:"dancelifexkpop",d:"DanceLife X K-POP - Official K-Pop division, 619 Yonge St",c:"kpop",l:"toronto"},
+  {u:"fusioncardiotoronto",d:"Sumera - Bollywood/Caribbean/Latin fusion workouts",c:"bollywood",l:"toronto"},
+  {u:"bhangra.fitness",d:"Bhangra Fitness - Serving the GTA since 2019",c:"bollywood",l:"toronto"},
+  {u:"barrecollective.to",d:"Toronto Barre Collective - Movement instructors & community (3.6K)",c:"barre",l:"toronto"},
+  {u:"bodybarre",d:"Body Barre Fitness - Training studio, Vaughan ON",c:"barre",l:"toronto"},
+  {u:"zumbavancouver",d:"Denise Galay - First Zumba group in Vancouver since 2007",c:"zumba",l:"vancouver"},
+  {u:"formationstudio_",d:"Formation Studio - Vancouver's original dance-fitness studio (13K)",c:"cardio-dance",l:"vancouver"},
+  {u:"popqueencardio",d:"Jared - Pop music dance fitness, trained dancer (3.7K)",c:"cardio-dance",l:"vancouver"},
+  {u:"afrobeats_van",d:"Afrobeats Vancouver - Dance events & community",c:"afrobeats",l:"vancouver"},
+  {u:"barrefitness",d:"Barre Fitness - Canada's original barre workout (5.2K)",c:"barre",l:"vancouver"},
+  {u:"avafitness_studios",d:"AVA Fitness - Pole dance & aerial studio, Vancouver",c:"pole-aerial",l:"vancouver"},
+  {u:"afrovybzcanada",d:"AfroVybz - Loic Reyel's Afro Dance school (90K), founded 2018",c:"afrobeats",l:"montreal"},
+  {u:"latingroovemtl",d:"Latin Groove MTL - Award-winning, 120+ weekly classes (10K+)",c:"salsa",l:"montreal"},
+  {u:"powerbhangra",d:"Power Bhangra - Weekly bhangra classes & choreography workshops",c:"bollywood",l:"montreal"},
+  {u:"mtl.bhangra.fitness",d:"Montreal Bhangra Fitness - Dance workout community",c:"bollywood",l:"montreal"},
+  {u:"jhoomlay",d:"Jhoomlay - Montreal Bollywood dance: Bhangra, Folk, Classical",c:"bollywood",l:"montreal"},
+  {u:"zumbacalgary",d:"Zumba Calgary - Community page (360 followers)",c:"zumba",l:"calgary"},
+  {u:"paolams_zumba",d:"Paola - Zumba instructor in Calgary",c:"zumba",l:"calgary"},
+  {u:"zumbamagicyyc",d:"Zumba Magic YYC - Calgary community",c:"zumba",l:"calgary"},
+  {u:"celinaneilson",d:"Celina Neilson - Zumba instructor (1.4K)",c:"zumba",l:"calgary"},
+  {u:"pulsestudioscalgary",d:"Pulse Studios - Calgary's only hip hop & streetdance studio (11K)",c:"hip-hop",l:"calgary"},
+  {u:"robynraewilson",d:"Robyn Wilson - Jazzercise North Calgary owner & instructor",c:"multi-style",l:"calgary"},
+  {u:"barrewestyyc",d:"Barre West Calgary - Barre fitness studio",c:"barre",l:"calgary"},
+  {u:"movezdancefit",d:"MoveZ Dance Fitness - Beginner-friendly dance/fitness/yoga (4.5K)",c:"cardio-dance",l:"edmonton"},
+  {u:"salsaddictionyeg",d:"Salsaddiction Edmonton - Latin dance community",c:"salsa",l:"edmonton"},
+  {u:"etown.salsa.studio",d:"Etown Salsa Studio - Edmonton Latin dance",c:"salsa",l:"edmonton"},
+  {u:"broadwayworkout",d:"Broadway Workout - Dance cardio to Broadway songs, 6 Ottawa locations",c:"cardio-dance",l:"ottawa"},
+  {u:"flvrfitt",d:"Phoebe Genus - Afrobeats dance fitness & cultural wellness (1.3K)",c:"afrobeats",l:"ottawa"},
+  {u:"studioxottawa",d:"Studio X Ottawa - Salsa, bachata, konpa & fitness (2K)",c:"salsa",l:"ottawa"},
+  {u:"3sixtydanceandfitness",d:"3Sixty Dance & Fitness - Pole/aerial/dance studio (2.1K)",c:"pole-aerial",l:"ottawa"},
+  {u:"zumbafitnesswithcaroline",d:"Caroline - Dance instructor & choreographer, Winnipeg",c:"zumba",l:"winnipeg"},
+  {u:"hazelzumbafitness",d:"Hazel - Winnipeg fitness instructor (2.3K)",c:"zumba",l:"winnipeg"},
+  {u:"stilettostudioinc",d:"Jessica - 2x Canadian Pro Pole Champion, heels dance (2.9K)",c:"pole-aerial",l:"winnipeg"},
+  {u:"voguefitcanada",d:"Tara Meyer - Cirque Du Soleil artist, 9x pole champion (2.7K)",c:"pole-aerial",l:"winnipeg"},
+  {u:"bobkatfitnesshfx",d:"Bobi & Kat - Zumba/Strong Nation/HIIT/Pound instructors",c:"zumba",l:"halifax"},
+  {u:"zumbafitnesshalifax",d:"Zumba Fitness Halifax - Community dance fitness",c:"zumba",l:"halifax"},
+  {u:"theheelscollective",d:"Shannon - Heels dance studio, inclusive adult classes (1.8K)",c:"multi-style",l:"barrie"},
+  {u:"brassbellesmississauga",d:"Brass Belles - Pole/aerial silks/hoop/chair classes",c:"pole-aerial",l:"mississauga"},
+  {u:"remydosreis",d:"RemyFit - International Zumba Presenter (102K), Zumba Next Rising finalist",c:"zumba",l:"canada"},
+  {u:"zumboom.ca",d:"Pamela Castillo - Certified Zumba instructor",c:"zumba",l:"canada"},
+  {u:"dancefitcanada",d:"DanceFit Canada - Community page",c:"cardio-dance",l:"canada"},
+  {u:"bollywooddanceschool.ca",d:"Bollywood Dance School - Global org in Canada/UK/Australia (9.2K)",c:"bollywood",l:"canada"},
+  {u:"dancebollywood.canada",d:"Dance Bollywood Canada - Adults & kids classes (8.2K)",c:"bollywood",l:"canada"},
+  {u:"bollycurves",d:"BollyCurves - Bollywood Dance + Yoga Therapy + Fitness",c:"bollywood",l:"canada"},
+  {u:"afrobeatfit",d:"Afro Dance Fitness & Wellness (4.9K)",c:"afrobeats",l:"canada"},
+  {u:"socafit",d:"SocaFit - Caribbean Dance + Fitness (4.3K)",c:"soca",l:"canada"},
+  {u:"dancehall_fit",d:"Dancehall Fit - Caribbean dance to dancehall/reggae/soca",c:"soca",l:"canada"},
+  {u:"salsafitofficial",d:"SS Dance Studio - Salsa Fit instructor & choreographer (1.3K)",c:"salsa",l:"canada"},
+  {u:"meet_you_at_the_barre",d:"Jen Brown - Barre & strength for midlife women (31K)",c:"barre",l:"canada"},
+  {u:"openbarrevirtual",d:"Andrea - Virtual barre & strength fitness instructor",c:"barre",l:"canada"},
+  {u:"cony_zumba_canada",d:"Constanza Ureta - Certified Zumba instructor & PT from Chile",c:"zumba",l:"canada"},
+  {u:"curlygurlfitness",d:"Marquitta Foster - Xtreme Hip Hop, twerk fitness & booty bootcamp",c:"hip-hop",l:"canada"},
+  {u:"inspiredanceacademy.ca",d:"Inspire Dance Academy - Bollywood/Contemporary/HipHop across Canada",c:"bollywood",l:"canada"}
+];
+const seen = new Set();
+const unique = trainers.filter(t => { if (seen.has(t.u)) return false; seen.add(t.u); return true; });
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+function getLocClass(l) { const map = {'toronto':'loc-toronto','vancouver':'loc-vancouver','montreal':'loc-montreal','calgary':'loc-calgary','edmonton':'loc-edmonton','ottawa':'loc-ottawa','winnipeg':'loc-winnipeg','halifax':'loc-halifax','mississauga':'loc-toronto','barrie':'loc-toronto','canada':'loc-canada'}; return map[l] || ''; }
+function getLocLabel(l) { const map = {'toronto':'Toronto','vancouver':'Vancouver','montreal':'Montreal','calgary':'Calgary','edmonton':'Edmonton','ottawa':'Ottawa','winnipeg':'Winnipeg','halifax':'Halifax','mississauga':'Mississauga','barrie':'Barrie','canada':'Canada-wide'}; return map[l] || l; }
+function getCatLabel(c) { const map = {'zumba':'Zumba','hip-hop':'Hip-Hop','barre':'Barre','salsa':'Salsa','afrobeats':'Afrobeats','bollywood':'Bollywood','cardio-dance':'Cardio Dance','multi-style':'Multi-Style','soca':'Soca/Caribbean','belly-dance':'Belly Dance','kpop':'K-Pop','pole-aerial':'Pole/Aerial'}; return map[c] || c; }
+function renderCards(list) { grid.innerHTML = ''; list.forEach((t, i) => { const card = document.createElement('div'); card.className = 'card'; card.innerHTML = `<div class="num">#${i+1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`; grid.appendChild(card); }); stats.textContent = `Showing ${list.length} of ${unique.length} profiles across Canada`; }
+function filterCards() { const q = document.getElementById('search').value.toLowerCase(); const cat = document.getElementById('catFilter').value; const loc = document.getElementById('locFilter').value; const filtered = unique.filter(t => { if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false; if (cat && t.c !== cat) return false; if (loc && t.l !== loc) return false; return true; }); renderCards(filtered); }
+renderCards(unique);
+</script>
+</body>
+</html>

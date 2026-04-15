@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Trainers & Fitness Coaches in UAE - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.dubai { background: #1a3a2a; color: #4ade80; }
+  .tag.abudhabi { background: #1a2a3a; color: #60a5fa; }
+  .tag.other { background: #3a2a1a; color: #fbbf24; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">UAE Fitness</div>
+    <div class="hero-brand-float">UAE Fitness</div>
+    <h1>Personal Trainers & Fitness Coaches - UAE</h1>
+    <p class="subtitle">Instagram profiles | No website required - connect via DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, specialty, or location..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="pt">Personal Trainer</option>
+    <option value="yoga">Yoga / Pilates</option>
+    <option value="boxing">Boxing / MMA</option>
+    <option value="crossfit">CrossFit</option>
+    <option value="swimming">Swimming</option>
+    <option value="bodybuilding">Bodybuilding / IFBB</option>
+    <option value="online">Online Coach</option>
+    <option value="nutrition">Nutrition</option>
+    <option value="studio">Studio / Gym</option>
+    <option value="stretch">Stretch / Mobility</option>
+    <option value="dance">Dance / Zumba</option>
+    <option value="calisthenics">Calisthenics</option>
+    <option value="other">Other</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Locations</option>
+    <option value="dubai">Dubai</option>
+    <option value="abudhabi">Abu Dhabi</option>
+    <option value="sharjah">Sharjah / Ajman</option>
+    <option value="other">Other UAE</option>
+  </select>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+  <p>To connect: Open the profile and send a DM or use the contact in their bio</p>
+</footer>
+
+<script>
+const trainers = [
+  // ===== PERSONAL TRAINERS - DUBAI =====
+  {u:"maribel.fitness",d:"Fitness trainer & coach helping women, Dubai",c:"pt",l:"dubai"},
+  {u:"garyphelanfitness",d:"1:1 Personal Training, muscle building & fat loss",c:"pt",l:"dubai"},
+  {u:"bojana_vucic",d:"Home & Gym PT, Masters in Sport & PE, trains anywhere",c:"pt",l:"dubai"},
+  {u:"cristiaran",d:"Dubai personal trainer, 41K followers",c:"pt",l:"dubai"},
+  {u:"nikki_coachdxb",d:"Helps new moms rebuild strength, Zumba & kickboxing",c:"pt",l:"dubai"},
+  {u:"dxb_fit_pt",d:"Bachelor Physical Education, Level 3 certified PT",c:"pt",l:"dubai"},
+  {u:"kasia.romanowicz",d:"Female coach helping busy women drop 5-15kg",c:"pt",l:"dubai"},
+  {u:"henryrdean",d:"PT for CEOs & Executives in Dubai",c:"pt",l:"dubai"},
+  {u:"mhmdkh2",d:"Personal trainer/coach, helps men & women lose fat, 40K followers",c:"pt",l:"dubai"},
+  {u:"cintiapadim",d:"Dubai PT, BJJ training & online coaching",c:"pt",l:"dubai"},
+  {u:"coach_najeh",d:"Transformation & lifestyle coach, online coaching",c:"pt",l:"dubai"},
+  {u:"nikki_fitnesscoach",d:"Personal trainer Dubai, 11K followers",c:"pt",l:"dubai"},
+  {u:"olgakazzak",d:"Fitness coach, Miss Middle East 2024, 12+ years experience",c:"pt",l:"dubai"},
+  {u:"gabriel_calderonn",d:"Personal Trainer Dubai",c:"pt",l:"dubai"},
+  {u:"ash_pt_dubai",d:"UK-based PT operating in Dubai, BSc Sport Science",c:"pt",l:"dubai"},
+  {u:"inna_fitness_dxb",d:"IFBB Fitness Bikini 2025 winner, 17K followers",c:"pt",l:"dubai"},
+  {u:"tarekelzamek",d:"Dubai PT - Mr Lifestyle",c:"pt",l:"dubai"},
+  {u:"ryan_north_fitness",d:"Dubai PT & online coach, BSc Sport & Exercise Science",c:"online",l:"dubai"},
+  {u:"fiabody",d:"Online coach helping women with PCOS & diabetes get fit, 16K",c:"online",l:"dubai"},
+  {u:"justina_fitness_coach",d:"Online fitness coach & PT, IFBB athlete, 10K",c:"online",l:"dubai"},
+  {u:"reversefit_ness",d:"Online coach, CSCS certified, women's health focus",c:"online",l:"dubai"},
+  {u:"getfitwithnadir",d:"Online fitness coach in Dubai",c:"online",l:"dubai"},
+  {u:"befitandstrongfitness",d:"Evidence-based fitness coach Dubai",c:"pt",l:"dubai"},
+  {u:"ibralean",d:"Certified PT helping with sustainable fitness goals",c:"pt",l:"dubai"},
+  {u:"mustafa_thebull_ahmed",d:"S&C Coach, movement specialist, 278K followers",c:"pt",l:"dubai"},
+  {u:"thebodycoach_anwer",d:"ACE-Certified trainer & nutrition expert",c:"nutrition",l:"dubai"},
+  {u:"ralphfarah",d:"IFBB PRO Prep Coach & Sports Nutritionist, 11 years exp",c:"bodybuilding",l:"dubai"},
+  {u:"salmasrn",d:"PT & Nutrition Coach Dubai",c:"nutrition",l:"dubai"},
+  {u:"masha.from.russia_",d:"Fitness & health coach, online & offline, Dubai",c:"pt",l:"dubai"},
+  {u:"coach_anya_",d:"Female PT helping busy women with weight loss & nutrition",c:"pt",l:"dubai"},
+  {u:"coachedbyrob",d:"Rob Donker, fitness & wellness coach Dubai",c:"pt",l:"dubai"},
+  {u:"asankadedunu",d:"Sports Physiotherapist & Fitness Coach, Wellness Dynamic Dubai",c:"pt",l:"dubai"},
+  {u:"wellness_coach_dubai",d:"Wellness Coach Dubai UAE",c:"other",l:"dubai"},
+  {u:"dubailifecoach_",d:"Dubai Life Coach Lee Levy, wellness coaching since 2006",c:"other",l:"dubai"},
+  {u:"healwithsuha",d:"Reiki Therapist & Wellness Coach Dubai",c:"other",l:"dubai"},
+  {u:"personal_coach_dubai",d:"Roberto Alexandru, bodybuilder & multiple champion PT",c:"bodybuilding",l:"dubai"},
+  {u:"cafyfabio_official",d:"VIP Personal Trainer, IFBB Pro Mr. Olympia, 158K",c:"bodybuilding",l:"dubai"},
+  {u:"myprivategymdubai",d:"Personal Trainer Dubai - private gym",c:"pt",l:"dubai"},
+  {u:"mypersonaltrainer",d:"Michael English, 30 years experience, private PT Dubai",c:"pt",l:"dubai"},
+  {u:"personal_trainers_dubai",d:"PTD Fitness helping busy professionals, 15K",c:"studio",l:"dubai"},
+
+  // ===== STRENGTH & CONDITIONING =====
+  {u:"david_gaspar_coach",d:"Strength & Conditioning Coach, 14+ years, Dubai",c:"pt",l:"dubai"},
+  {u:"mariokrnetic",d:"Strength coach Dubai",c:"pt",l:"dubai"},
+  {u:"coachnic_",d:"Coach Nic, Dubai",c:"pt",l:"dubai"},
+  {u:"ralligan.fitness",d:"Level 4 Strength & Conditioning, 1-on-1 coaching",c:"pt",l:"dubai"},
+  {u:"pawel_physique_pt",d:"Nutrition & fitness coach, EU Championship titles",c:"pt",l:"dubai"},
+  {u:"dindatrainer",d:"ISSA-certified S&C Coach, DFT founder",c:"pt",l:"dubai"},
+  {u:"markonjero05",d:"Danilo Markovic, strength coach Dubai",c:"pt",l:"dubai"},
+
+  // ===== TRANSFORMATION & FAT LOSS =====
+  {u:"carlomilofitness",d:"Body transformation coach, 1000+ clients, SHRED IN 12",c:"pt",l:"dubai"},
+  {u:"coachritamedlej",d:"Holistic coach for mind & body transformation",c:"pt",l:"dubai"},
+  {u:"formelacoach",d:"Mindset & fitness coach 40+, certified life & fitness",c:"pt",l:"dubai"},
+  {u:"lara.santini",d:"Women's strength & body transformation coach, 38K",c:"pt",l:"dubai"},
+  {u:"roardubai",d:"3x Olympian Sarah Lindsay & UK transformation coach",c:"studio",l:"dubai"},
+  {u:"coach_hanma_",d:"Chanuka, PT Dubai, IFBB competition experience",c:"pt",l:"dubai"},
+  {u:"embikini",d:"Emma Rooney, fat loss coach for busy people",c:"online",l:"dubai"},
+  {u:"the_results_guy",d:"Dan Mather, over 40s fat loss & strength coach",c:"pt",l:"dubai"},
+  {u:"jamiekfitness",d:"Online coach, fat loss specialist, 3000+ transformations",c:"online",l:"dubai"},
+  {u:"prriya_rai",d:"Founder of TRANSFORMX, weight loss & lifestyle",c:"pt",l:"dubai"},
+  {u:"coach_naushad_dubai",d:"NASM certified weight loss, nutrition coach & PT",c:"nutrition",l:"dubai"},
+  {u:"gainsbydre_",d:"Natural bodybuilder & transformation coach",c:"bodybuilding",l:"dubai"},
+
+  // ===== BODYBUILDING & IFBB =====
+  {u:"maherhabboush",d:"Bodybuilding coach, 427K followers, Dubai Muscle Beach winner",c:"bodybuilding",l:"dubai"},
+  {u:"rawadeidd",d:"Hybrid Performance Online Coach, 29K followers",c:"bodybuilding",l:"dubai"},
+  {u:"dubinasfitness",d:"IFBB PT & Online Coach, 20 years exp, 40 pro wins",c:"bodybuilding",l:"dubai"},
+  {u:"ravinkolbe",d:"NPC Classic Physique, IFBB champion, PT at WHGym Dubai",c:"bodybuilding",l:"dubai"},
+  {u:"ifesfitworld",d:"IFBB PRO, 1:1 online coaching & nutrition",c:"bodybuilding",l:"dubai"},
+  {u:"alexwoodsonfitness",d:"IFBB Pro, PT Dubai",c:"bodybuilding",l:"dubai"},
+  {u:"dy.fit",d:"Daniel Yates, physique coach",c:"bodybuilding",l:"dubai"},
+
+  // ===== BOXING & MMA =====
+  {u:"aleexdm",d:"Alex, UFC Gym UAE",c:"boxing",l:"dubai"},
+  {u:"mitic_stefan",d:"Boxing Coach Dubai",c:"boxing",l:"dubai"},
+  {u:"baha__coach",d:"Boxing, kickboxing, MMA & grappling, beginner to pro",c:"boxing",l:"dubai"},
+  {u:"dubai_personalcoach",d:"Kickboxing/boxing/MMA PT Dubai",c:"boxing",l:"dubai"},
+  {u:"boxing_coach_dubai",d:"M A, Personal trainer & boxing coach",c:"boxing",l:"dubai"},
+  {u:"michael_boxing_coach",d:"Boxing coach Dubai, personal training",c:"boxing",l:"dubai"},
+  {u:"cheveloff",d:"Boxing coach Dubai, judge, referee & cutman",c:"boxing",l:"dubai"},
+  {u:"bxng_af",d:"Franck Atangana Boxing",c:"boxing",l:"dubai"},
+  {u:"boxing_academy_dubai",d:"Professional boxing coach, European Championship medalist",c:"boxing",l:"dubai"},
+  {u:"boxingtrainerdubai",d:"Boxing trainer, Marina/JBR area",c:"boxing",l:"dubai"},
+  {u:"mmalive.gymdubai",d:"MMA Live Gym, MMA/Kickboxing/BJJ/Muay Thai",c:"boxing",l:"dubai"},
+  {u:"971mma",d:"Top-ranked MMA academy in Dubai",c:"boxing",l:"dubai"},
+  {u:"mariusvarlan_ro",d:"Coach Marius Varlan, martial arts Dubai",c:"boxing",l:"dubai"},
+  {u:"champbelts",d:"Martial Arts Club Dubai, Kickboxing/Muay Thai/Boxing",c:"boxing",l:"dubai"},
+  {u:"falconsmmadxb",d:"BJJ, Kickboxing, MMA programs Dubai",c:"boxing",l:"dubai"},
+  {u:"neromma",d:"Strength & fatloss coach, MMA Pro, Dubai",c:"boxing",l:"dubai"},
+  {u:"heroesacademy.ae",d:"Kickboxing/BJJ/Boxing/Muay Thai/MMA Dubai",c:"boxing",l:"dubai"},
+  {u:"kocrossbox",d:"Boxing & CrossFit Gym Dubai Marina",c:"boxing",l:"dubai"},
+  {u:"ghostmuaythaigym_dubai",d:"Ghost Muaythai Gym, private Thai training",c:"boxing",l:"dubai"},
+  {u:"magnumfitnessbeach",d:"Dubai's only outdoor MMA gym, private & group",c:"boxing",l:"dubai"},
+
+  // ===== YOGA =====
+  {u:"inflexible_yogini",d:"Leslie dela Cruz, Dubai yoga teacher",c:"yoga",l:"dubai"},
+  {u:"diana_yoga",d:"Yoga & mindful movement teacher, prenatal/postnatal",c:"yoga",l:"dubai"},
+  {u:"nitaiyoga",d:"Yoga instructor, 25K followers, private yoga & Thai massage",c:"yoga",l:"dubai"},
+  {u:"depodestabarbara",d:"Italian yoga instructor in Dubai, wellness retreats",c:"yoga",l:"dubai"},
+  {u:"mishybabe",d:"Yoga & Pilates instructor Dubai",c:"yoga",l:"dubai"},
+  {u:"yash.yoga",d:"Yoga instructor, 862K followers, Guinness World Record",c:"yoga",l:"dubai"},
+  {u:"karmayogadubai",d:"Award-winning yoga academy Dubai Marina",c:"yoga",l:"dubai"},
+  {u:"108yogadubai",d:"Yoga studio Dubai",c:"yoga",l:"dubai"},
+  {u:"hwhstudiodubai",d:"HWH Studio Dubai, yoga & wellness",c:"yoga",l:"dubai"},
+  {u:"ecoyogasanctuary",d:"Eco Yoga Sanctuary Dubai",c:"yoga",l:"dubai"},
+  {u:"maarakafitness",d:"Jihad Miski, calisthenics/yoga/flexibility/handstands",c:"yoga",l:"dubai"},
+
+  // ===== PILATES =====
+  {u:"pilates.academy.dubai",d:"Global Pilates training center, 38K followers",c:"yoga",l:"dubai"},
+  {u:"pilatesgirldxb",d:"Classical Pilates instructor Dubai & online",c:"yoga",l:"dubai"},
+  {u:"odysseybylouise",d:"Certified Pilates & Total Barre instructor",c:"yoga",l:"dubai"},
+  {u:"pilateswithizzy",d:"1:1 Private Pilates Dubai, L3 instructor",c:"yoga",l:"dubai"},
+  {u:"pilates_with_cris",d:"Pilates Instructor Dubai",c:"yoga",l:"dubai"},
+  {u:"11pilates_dubai",d:"Boutique Reformer & Mat Pilates, Dubai Marina",c:"yoga",l:"dubai"},
+  {u:"realpilates",d:"STOTT PILATES Studio, JLT/Jumeirah/Meydan",c:"yoga",l:"dubai"},
+  {u:"artofpilates_dubai",d:"Reformer Pilates studio, Cayan Tower Marina",c:"yoga",l:"dubai"},
+  {u:"itsacultpilates",d:"Nisrine, Pilates instructor Dubai",c:"yoga",l:"dubai"},
+
+  // ===== CROSSFIT =====
+  {u:"elevate_crossfit_dxb",d:"CrossFit Box in Dubai Investment Park",c:"crossfit",l:"dubai"},
+  {u:"lvlupcrossfit_dxb",d:"CrossFit affiliate UAE, classes 7 days/week",c:"crossfit",l:"dubai"},
+  {u:"dxbfitnesschamp",d:"Dubai Fitness Championship",c:"crossfit",l:"dubai"},
+  {u:"crossfitalioth",d:"CrossFit Alioth Dubai",c:"crossfit",l:"dubai"},
+  {u:"crossfitcircle.dxb",d:"CrossFit Circle Dubai",c:"crossfit",l:"dubai"},
+  {u:"fadyfitness",d:"Certified PT: CrossFit, Kick Boxing, Martial Arts, Diet",c:"crossfit",l:"dubai"},
+  {u:"uaecrossfit",d:"UAE CrossFit community",c:"crossfit",l:"dubai"},
+  {u:"iconic_fitness_dxb",d:"Iconic Fitness Dubai",c:"crossfit",l:"dubai"},
+  {u:"chalktrainingground",d:"Hyrox/CrossFit/Lifting, Palm Jumeirah",c:"crossfit",l:"dubai"},
+
+  // ===== SWIMMING =====
+  {u:"swimmingcoach_dubai",d:"Swim Lessons with Nik, Dubai",c:"swimming",l:"dubai"},
+  {u:"m.nemerr",d:"Dubai Swim Coach & Personal Trainer",c:"swimming",l:"dubai"},
+  {u:"coachsportdxb",d:"Professional sports coaching, swimming for all ages",c:"swimming",l:"dubai"},
+  {u:"coach_lisa_dubai",d:"British swim coach, baby swim/learn to swim/squads",c:"swimming",l:"dubai"},
+  {u:"swimmingwithtomas",d:"Swimming Coach Dubai",c:"swimming",l:"dubai"},
+  {u:"lseperformance",d:"Elite Swimming Performance Dubai, online & in-person",c:"swimming",l:"dubai"},
+
+  // ===== CALISTHENICS =====
+  {u:"dubaicalisthenic",d:"Dubai Calisthenics community",c:"calisthenics",l:"dubai"},
+  {u:"gravitydxb",d:"Dubai's 1st Calisthenics & Parkour Gym",c:"calisthenics",l:"dubai"},
+  {u:"eryc_ortiz",d:"4x World champion calisthenics, PT & online coaching",c:"calisthenics",l:"dubai"},
+  {u:"zachwadefit",d:"Zach Wade, online coach Dubai, calisthenics",c:"calisthenics",l:"dubai"},
+  {u:"coach_arshaque",d:"Calisthenics coach UAE",c:"calisthenics",l:"dubai"},
+  {u:"my365fit",d:"Calisthenics VIP coaching, workshops & events",c:"calisthenics",l:"dubai"},
+  {u:"dojocali",d:"Dojo Calisthenics Gym",c:"calisthenics",l:"dubai"},
+
+  // ===== STRETCH & MOBILITY =====
+  {u:"stretchprodubai",d:"Premium assisted stretching, open daily 8AM-10PM",c:"stretch",l:"dubai"},
+  {u:"thestretchmobilitycoach",d:"Move like you did 10 years ago",c:"stretch",l:"dubai"},
+  {u:"stretch.com_dubai",d:"Stretching & Recovery Studio, Dubai Marina",c:"stretch",l:"dubai"},
+  {u:"necommeilfaut",d:"Polina Nuss, stretching coach Dubai",c:"stretch",l:"dubai"},
+  {u:"zizo.pt",d:"Mobility & Stretch Coach Dubai",c:"stretch",l:"dubai"},
+  {u:"mikkikeeling",d:"1:1 Strength, stretch & mobility coaching, 10K",c:"stretch",l:"dubai"},
+  {u:"kate_zayatss",d:"Stretching coach Dubai",c:"stretch",l:"dubai"},
+  {u:"stretchstudiouae",d:"Stretch Studio UAE",c:"stretch",l:"dubai"},
+
+  // ===== DANCE & ZUMBA =====
+  {u:"chuchizumba",d:"Licensed Zumba instructor Dubai, online & in-person",c:"dance",l:"dubai"},
+  {u:"im_zorrotrained",d:"Certified Zumba instructor, dance fitness & choreographer",c:"dance",l:"dubai"},
+  {u:"karla_fitnessx",d:"Karla Richards, fitness coach Dubai",c:"dance",l:"dubai"},
+  {u:"ajdancefit",d:"AJ DanceFit",c:"dance",l:"dubai"},
+
+  // ===== GYMS & STUDIOS - DUBAI =====
+  {u:"trainersgymdubai",d:"Gym in Dubai Silicon Oasis, world champion trainers",c:"studio",l:"dubai"},
+  {u:"fitnesszonedxb",d:"Fitness Zone JLT, bodybuilding/crossfit/martial arts",c:"studio",l:"dubai"},
+  {u:"themarinagym",d:"24-hour gym Dubai Marina, expert trainers & recovery",c:"studio",l:"dubai"},
+  {u:"ultimateperformancedxb",d:"Ultimate Performance DIFC & Marina",c:"studio",l:"dubai"},
+  {u:"defeatfitnessjlt",d:"Pilates/strength/TRX/yoga, JLT",c:"studio",l:"dubai"},
+  {u:"fidelityfitnessdubai",d:"Fidelity Fitness Club JLT",c:"studio",l:"dubai"},
+  {u:"fortiusdubaifemale",d:"Female PT, individual & group, pre/postnatal workouts",c:"studio",l:"dubai"},
+  {u:"strongladiesgym",d:"Women-only gym Dubai",c:"studio",l:"dubai"},
+  {u:"eaglegym_dubai",d:"Eagle Gym Dubai",c:"studio",l:"dubai"},
+  {u:"desert.barbell",d:"Desert Barbell Strength Gym, powerlifting",c:"studio",l:"dubai"},
+  {u:"f45_training_palmjumeirah",d:"F45 Palm Jumeirah, functional training & HIIT",c:"studio",l:"dubai"},
+  {u:"f45_training_dubaimarina",d:"F45 Dubai Marina, functional training & HIIT",c:"studio",l:"dubai"},
+
+  // ===== OTHER COACHES - DUBAI =====
+  {u:"ahmed.othman",d:"Personal trainer Dubai, 51K followers",c:"pt",l:"dubai"},
+  {u:"tennisdubai",d:"Maria, Tennis Coach Dubai, 30+ years, WTA background",c:"other",l:"dubai"},
+  {u:"the_sportperformancecoach",d:"Amir Fazeli, strength coach for lifters & grapplers",c:"pt",l:"dubai"},
+  {u:"diegoliftskilos",d:"Juan Diego, Weightlifting/Powerlifting Coach Dubai",c:"pt",l:"dubai"},
+  {u:"coachariank",d:"Arian Khamesi, elite online powerlifting coach",c:"pt",l:"dubai"},
+  {u:"woodsmanfitness",d:"Woodsman Fitness, beach fitness brand",c:"other",l:"dubai"},
+  {u:"emmabonoli",d:"Emma Bonoli, personal trainer Dubai",c:"pt",l:"dubai"},
+  {u:"huda.fit",d:"Coach Huda, fitness trainer",c:"pt",l:"dubai"},
+  {u:"genova_training",d:"Genova Training Institute Dubai",c:"studio",l:"dubai"},
+  {u:"posebyfeyi",d:"Feyi Oyebode, bodybuilding posing coach, 464K",c:"bodybuilding",l:"dubai"},
+
+  // ===== ABU DHABI =====
+  {u:"chrischalfoun",d:"IFBB certified PT, 12 years exp, 104K followers",c:"pt",l:"abudhabi"},
+  {u:"neilfit_",d:"Personal Trainer Abu Dhabi",c:"pt",l:"abudhabi"},
+  {u:"chribir",d:"Certified trainer Abu Dhabi, DM for PT sessions",c:"pt",l:"abudhabi"},
+  {u:"your_pt_uae_",d:"Anna Litovchenko, online & in-person coaching since 2017",c:"pt",l:"abudhabi"},
+  {u:"dov.la",d:"Vladimir Vukovic, 8+ years coaching, calisthenics",c:"pt",l:"abudhabi"},
+  {u:"elina.fitness",d:"Internationally certified fitness coach, 51K, DM for coaching",c:"pt",l:"abudhabi"},
+  {u:"coach_sandrita_strong_women",d:"Sport Science degree, 15 years exp, PT & online",c:"pt",l:"abudhabi"},
+  {u:"mmamdouhmma",d:"Pro MMA Fighter & Certified PT, helps 40+ transform",c:"boxing",l:"abudhabi"},
+  {u:"fitnesscoach_abudhabi",d:"Gerald Gruen, personal trainer Abu Dhabi",c:"pt",l:"abudhabi"},
+  {u:"eliteptae",d:"James Canning, Elite Fitness private PT Abu Dhabi",c:"pt",l:"abudhabi"},
+  {u:"coach.karim.mohsen",d:"Expert body building coach, 10+ years, 20K",c:"bodybuilding",l:"abudhabi"},
+  {u:"bodyabs.ae",d:"Body Abs Fitness Center, 7 branches Abu Dhabi",c:"studio",l:"abudhabi"},
+  {u:"rpmgym.uae",d:"RPM Gym Abu Dhabi, mixed & ladies sections",c:"studio",l:"abudhabi"},
+
+  // ===== SHARJAH / AJMAN =====
+  {u:"slimfitgym.ajman",d:"Personal training, CrossFit, bodybuilding, Ajman",c:"studio",l:"sharjah"},
+  {u:"curstypt",d:"Personal trainer for women 40+, Sharjah",c:"pt",l:"sharjah"},
+  {u:"maxgymjurf",d:"Certified trainers, PT, CrossFit, Ajman",c:"studio",l:"sharjah"},
+  {u:"universefitnessajman",d:"Expert trainers & personalized workouts, Ajman",c:"studio",l:"sharjah"},
+  {u:"trainwithsushildxb",d:"Personal Trainer Sharjah",c:"pt",l:"sharjah"},
+  {u:"fitness180_slc",d:"Fitness 180 Sharjah",c:"studio",l:"sharjah"},
+  {u:"extremefitshj.co",d:"Extreme Fitness Center Sharjah",c:"studio",l:"sharjah"},
+
+  // ===== OTHER UAE =====
+  {u:"fitlabfitness_fujairah",d:"FitLab Fitness, Fujairah Trade Centre",c:"studio",l:"other"},
+  {u:"peak_gym_fujairah",d:"Peak Gym Fujairah",c:"studio",l:"other"},
+  {u:"uformuae",d:"Gym chain across UAE, Fujairah & Al Ain",c:"studio",l:"other"},
+  {u:"pt_al_ain",d:"Personal Trainer Al Ain, Wihan",c:"pt",l:"other"},
+  {u:"slimfitrak",d:"Slim Fit Ladies Fitness, RAK",c:"studio",l:"other"},
+  {u:"rakgym.uae",d:"RAK Gym, Ras al-Khaimah",c:"studio",l:"other"},
+  {u:"ktl.gym",d:"KTL Gym RAK, smart equipment/pool/sauna",c:"studio",l:"other"},
+
+  // ===== NUTRITION FOCUSED =====
+  {u:"fitlov_uae",d:"Personal trainers on-demand, UAE app",c:"studio",l:"dubai"},
+
+  // ===== ARABIC COACHES =====
+  {u:"bario_4",d:"Coach Barry, personal trainer, 32K followers",c:"pt",l:"dubai"},
+  {u:"housam_coach",d:"Housam, PT & Nutritionist, 19K followers",c:"nutrition",l:"dubai"},
+  {u:"yazan_fitt",d:"Yazan Al Sufyani, personal trainer",c:"pt",l:"dubai"},
+  {u:"inx6l",d:"Coach Nada, IBS Academy diploma, GCSS certified",c:"pt",l:"dubai"},
+  {u:"taifit.01",d:"Coach Taif Ali, women's fitness coach",c:"pt",l:"dubai"},
+  {u:"fatin__fitness",d:"Fatin Faisal, fitness trainer & center",c:"pt",l:"dubai"},
+  {u:"coach_huwaida",d:"Certified PT, body sculpting & sports nutrition",c:"pt",l:"dubai"},
+  {u:"personal_coach80",d:"Personal coach, training programs & nutrition",c:"pt",l:"dubai"},
+
+  // ===== ADDITIONAL PROFILES =====
+  {u:"evolvex_coaching",d:"Evolvex Coaching platform Dubai",c:"online",l:"dubai"},
+  {u:"personal_trainer_othman",d:"Top Dubai fitness influencer",c:"pt",l:"dubai"},
+  {u:"smart_life_gym",d:"Smart Life Gym, top fitness account Dubai",c:"studio",l:"dubai"},
+  {u:"freddy_thecoach",d:"Freddy The Coach, Dubai fitness influencer",c:"pt",l:"dubai"},
+  {u:"coach.fares.najm",d:"Coach Fares Najm, personal trainer Sharjah area",c:"pt",l:"sharjah"},
+  {u:"powerliftinguae",d:"UAE Powerlifting Committee, IPF affiliate",c:"other",l:"dubai"},
+  {u:"pavelkrotov",d:"Kettlebell coach, build lean & strong clients",c:"pt",l:"dubai"},
+  {u:"feat_energy_",d:"Benoit Roels, functional training, StrongFirst KB instructor",c:"pt",l:"dubai"},
+  {u:"kylianortegaperez",d:"Kylian Ortega, Posing Coach IFBB",c:"bodybuilding",l:"dubai"},
+];
+
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+
+function renderCards(list) {
+  grid.innerHTML = '';
+  list.forEach((t, i) => {
+    const locClass = t.l === 'dubai' ? 'dubai' : t.l === 'abudhabi' ? 'abudhabi' : 'other';
+    const locLabel = t.l === 'dubai' ? 'Dubai' : t.l === 'abudhabi' ? 'Abu Dhabi' : t.l === 'sharjah' ? 'Sharjah/Ajman' : 'Other UAE';
+    const catLabels = {pt:'Personal Trainer',yoga:'Yoga/Pilates',boxing:'Boxing/MMA',crossfit:'CrossFit',swimming:'Swimming',bodybuilding:'Bodybuilding',online:'Online Coach',nutrition:'Nutrition',studio:'Studio/Gym',stretch:'Stretch/Mobility',dance:'Dance/Zumba',calisthenics:'Calisthenics',other:'Other'};
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="num">#${i+1}</div>
+      <a href="https://www.instagram.com/${t.u}/" target="_blank" rel="noopener">@${t.u}</a>
+      <div class="desc">${t.d}</div>
+      <div class="tags">
+        <span class="tag ${locClass}">${locLabel}</span>
+        <span class="tag">${catLabels[t.c] || t.c}</span>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  stats.textContent = `Showing ${list.length} of ${trainers.length} profiles`;
+}
+
+function filterCards() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const cat = document.getElementById('catFilter').value;
+  const loc = document.getElementById('locFilter').value;
+  const filtered = trainers.filter(t => {
+    const matchQ = !q || t.u.toLowerCase().includes(q) || t.d.toLowerCase().includes(q);
+    const matchCat = !cat || t.c === cat;
+    const matchLoc = !loc || t.l === loc;
+    return matchQ && matchCat && matchLoc;
+  });
+  renderCards(filtered);
+}
+
+renderCards(trainers);
+</script>
+</body>
+</html>

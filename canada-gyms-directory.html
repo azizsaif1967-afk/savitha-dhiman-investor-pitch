@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gyms & Fitness Centres Across Canada - Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.toronto { background: #1a3a2a; color: #4ade80; }
+  .tag.vancouver { background: #1a2a3a; color: #60a5fa; }
+  .tag.montreal { background: #2a1a3a; color: #c084fc; }
+  .tag.calgary { background: #3a2a1a; color: #fb923c; }
+  .tag.edmonton { background: #3a3a1a; color: #fde047; }
+  .tag.ottawa { background: #3a1a2a; color: #f472b6; }
+  .tag.winnipeg { background: #1a3a3a; color: #67e8f9; }
+  .tag.halifax { background: #1a2a2a; color: #5eead4; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Canada Gyms</div>
+    <div class="hero-brand-float">Canada Gyms</div>
+    <h1>Gyms & Fitness Centres Across Canada - Directory</h1>
+    <p class="subtitle">Instagram profiles & websites | Connect via DM or visit</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, city, or type..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="commercial">Commercial Gym</option>
+    <option value="boutique">Boutique / Studio</option>
+    <option value="crossfit">CrossFit</option>
+    <option value="powerlifting">Powerlifting / Strength</option>
+    <option value="women">Women's Gym</option>
+    <option value="24hr">24-Hour Gym</option>
+    <option value="martial">Martial Arts / Boxing</option>
+    <option value="yoga">Yoga / Dance / Pole</option>
+    <option value="climbing">Climbing</option>
+    <option value="community">Community / Recreation</option>
+    <option value="other">Other</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Cities</option>
+    <option value="toronto">Toronto & GTA</option>
+    <option value="vancouver">Vancouver & Area</option>
+    <option value="montreal">Montreal</option>
+    <option value="calgary">Calgary</option>
+    <option value="edmonton">Edmonton</option>
+    <option value="ottawa">Ottawa</option>
+    <option value="winnipeg">Winnipeg</option>
+    <option value="halifax">Halifax</option>
+    <option value="victoria">Victoria</option>
+    <option value="kelowna">Kelowna</option>
+    <option value="saskatoon">Saskatoon</option>
+    <option value="regina">Regina</option>
+    <option value="quebeccity">Quebec City</option>
+    <option value="london">London ON</option>
+    <option value="windsor">Windsor ON</option>
+    <option value="kitchener">Kitchener-Waterloo</option>
+    <option value="kingston">Kingston</option>
+    <option value="barrie">Barrie</option>
+    <option value="stjohns">St. John's</option>
+    <option value="fredericton">Fredericton</option>
+    <option value="charlottetown">Charlottetown</option>
+    <option value="whitehorse">Whitehorse</option>
+    <option value="yellowknife">Yellowknife</option>
+    <option value="other">Other</option>
+  </select>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+  <p>To connect: Open the profile and send a DM or visit their website</p>
+</footer>
+
+<script>
+const gyms = [
+  // ===== TORONTO & GTA =====
+  {u:"fortisfitness",d:"Fortis Fitness - Powerlifting & Strength Gym, Dundas West",c:"powerlifting",l:"toronto"},
+  {u:"bangfitness",d:"Bang Fitness - Boutique Gym, Queen West",c:"boutique",l:"toronto"},
+  {u:"totumlifescience",d:"Totum Life Science - Luxury Fitness, Yorkville",c:"boutique",l:"toronto"},
+  {u:"theadelaideclub",d:"Adelaide Club - Luxury Gym, Financial District",c:"boutique",l:"toronto"},
+  {u:"equinox",d:"Equinox - Luxury Fitness, Bay St / Yorkville",c:"boutique",l:"toronto"},
+  {u:"sweatandtonic",d:"Sweat and Tonic - Boutique Wellness, Bay & Dundas",c:"boutique",l:"toronto"},
+  {u:"alteaactive",d:"Altea Active - Luxury Wellness Club, King West",c:"boutique",l:"toronto"},
+  {u:"ridecycleclub",d:"Ride Cycle Club - Cycling Studio, Multiple Locations",c:"boutique",l:"toronto"},
+  {u:"barrys",d:"Barry's - Boutique Fitness, Downtown Toronto",c:"boutique",l:"toronto"},
+  {u:"crossfitcolosseum",d:"CrossFit Colosseum - East End",c:"crossfit",l:"toronto"},
+  {u:"crossfitykv",d:"CrossFit YKV - Yorkville",c:"crossfit",l:"toronto"},
+  {u:"torquebarbell",d:"Torque Barbell - Powerlifting Gym",c:"powerlifting",l:"toronto"},
+  {u:"boulderz",d:"Boulderz Climbing Centre - Toronto / Etobicoke",c:"climbing",l:"toronto"},
+  {u:"basecampclimbing",d:"Basecamp Climbing - Toronto",c:"climbing",l:"toronto"},
+  {u:"hubclimbing",d:"Hub Climbing - Markham",c:"climbing",l:"toronto"},
+  {u:"rockoasis",d:"Rock Oasis - Climbing, North Toronto",c:"climbing",l:"toronto"},
+  {u:"goodlifefitness",d:"GoodLife Fitness - National Chain, 40+ GTA Locations",c:"commercial",l:"toronto"},
+  {u:"planetfitnessca",d:"Planet Fitness Canada - Budget Gym, Multiple GTA Locations",c:"commercial",l:"toronto"},
+  {u:"fit4less_canada",d:"Fit4Less - Budget Gym by GoodLife, Multiple GTA Locations",c:"commercial",l:"toronto"},
+  {u:"movatiathletic",d:"Movati Athletic - Full-Service, Mississauga/Oakville/Burlington",c:"commercial",l:"toronto"},
+  {u:"ymcagta",d:"YMCA of Greater Toronto - Community, Multiple Locations",c:"community",l:"toronto"},
+  {u:"orangetheory",d:"Orangetheory Fitness - HIIT Studio, Multiple GTA Locations",c:"boutique",l:"toronto"},
+  {u:"f45_training",d:"F45 Training - Functional HIIT, Multiple GTA Locations",c:"boutique",l:"toronto"},
+  {u:"studiolagree",d:"Studio Lagree - Boutique Fitness, Multiple Locations",c:"boutique",l:"toronto"},
+  {u:"oneacademytoronto",d:"ONE Academy - MMA & Martial Arts, Downtown",c:"martial",l:"toronto"},
+  {u:"bolomma",d:"Bolo MMA & Fitness - Martial Arts",c:"martial",l:"toronto"},
+  {u:"shesfit",d:"She's Fit! - Women's Gym, Multiple Locations",c:"women",l:"toronto"},
+  {u:"kensingtonfitness",d:"Kensington Fitness Club - Boutique, Kensington Market",c:"boutique",l:"toronto"},
+  {u:"honefitness",d:"Hone Fitness - North York",c:"commercial",l:"toronto"},
+  {u:"grecofitness",d:"Greco Fitness - Kickboxing & Fitness",c:"martial",l:"toronto"},
+  {u:"crunchfitness",d:"Crunch Fitness - Commercial, Multiple Toronto Locations",c:"commercial",l:"toronto"},
+
+  // ===== VANCOUVER =====
+  {u:"rep1fitness",d:"Rep1 Fitness - Personal Training Studio",c:"boutique",l:"vancouver"},
+  {u:"turnfit.ca",d:"TurnFit Personal Trainers - Vancouver",c:"boutique",l:"vancouver"},
+  {u:"krakentraining",d:"Kraken Fitness - Burnaby",c:"boutique",l:"vancouver"},
+  {u:"foundationburnaby",d:"Foundation Fitness Studio - Burnaby",c:"boutique",l:"vancouver"},
+  {u:"dynastygym",d:"Dynasty Gym - CrossFit, Vancouver",c:"crossfit",l:"vancouver"},
+  {u:"604_athletics",d:"604 Athletics / CrossFit 604",c:"crossfit",l:"vancouver"},
+  {u:"crossfitlions",d:"CrossFit Lions - North Vancouver",c:"crossfit",l:"vancouver"},
+  {u:"crossfitbc",d:"CrossFit BC - Vancouver",c:"crossfit",l:"vancouver"},
+  {u:"contendersboxingstudio",d:"Contenders Boxing Studio - Vancouver",c:"martial",l:"vancouver"},
+  {u:"monarcboxing",d:"Monarc Boxing + Fitness - Vancouver",c:"martial",l:"vancouver"},
+  {u:"allcityathletics",d:"All City Athletic Club - Boxing, Vancouver",c:"martial",l:"vancouver"},
+  {u:"hardcorebarbellvancouver",d:"Hardcore Barbell Vancouver - Powerlifting",c:"powerlifting",l:"vancouver"},
+  {u:"thebarvancouver_",d:"The Bar Strength & Conditioning",c:"powerlifting",l:"vancouver"},
+  {u:"ironthronesc",d:"Iron Throne Strength Gym - Surrey",c:"powerlifting",l:"vancouver"},
+  {u:"avafitness_studios",d:"AVA Fitness - Pole Dance Studio",c:"yoga",l:"vancouver"},
+  {u:"tantrafitness",d:"Tantra Fitness / Be 1 Fitness - Dance Studio",c:"yoga",l:"vancouver"},
+  {u:"haboriveclimbing",d:"Hive Climbing & Fitness - Bouldering Gym",c:"climbing",l:"vancouver"},
+  {u:"calisthenicsvancouver",d:"Calisthenics Vancouver - Outdoor Fitness",c:"other",l:"vancouver"},
+  {u:"blkboxgymrichmond",d:"BLK BOX GYM - Richmond",c:"boutique",l:"vancouver"},
+  {u:"f45_training_vancouver_central",d:"F45 Vancouver Central",c:"boutique",l:"vancouver"},
+
+  // ===== MONTREAL =====
+  {u:"fitnessfactorymtl",d:"Fitness Factory Montreal",c:"commercial",l:"montreal"},
+  {u:"progymmontreal",d:"Pro Gym Montreal",c:"commercial",l:"montreal"},
+  {u:"montrealpowerhouse",d:"Montreal Powerhouse - Strength Gym",c:"powerlifting",l:"montreal"},
+  {u:"crossfitmontreal",d:"CrossFit Montreal",c:"crossfit",l:"montreal"},
+  {u:"crossfityul",d:"CrossFit YUL",c:"crossfit",l:"montreal"},
+  {u:"crossfitplateau_",d:"Abattoir CrossFit Plateau",c:"crossfit",l:"montreal"},
+  {u:"pandaboxing_mtl",d:"Panda Boxing Montreal",c:"martial",l:"montreal"},
+  {u:"underdog.gym",d:"Underdog Boxing Gym Montreal",c:"martial",l:"montreal"},
+  {u:"sbtboxing",d:"SBT Boxing Gym Montreal",c:"martial",l:"montreal"},
+  {u:"allezup",d:"Allez Up - Climbing Gym Montreal",c:"climbing",l:"montreal"},
+  {u:"blocshop",d:"Bloc Shop - Bouldering Gym Montreal",c:"climbing",l:"montreal"},
+  {u:"nautilusplus",d:"Nautilus Plus - QC Chain, Multiple Locations",c:"commercial",l:"montreal"},
+  {u:"econofitness",d:"Econofitness - Budget Gym, Multiple QC Locations",c:"commercial",l:"montreal"},
+  {u:"monstergym",d:"Monster Gym - West Island",c:"commercial",l:"montreal"},
+  {u:"klub20",d:"Klub 20 - West Island Gym",c:"commercial",l:"montreal"},
+  {u:"report_fitness",d:"Report HIIT & Calisthenics Gym",c:"boutique",l:"montreal"},
+
+  // ===== CALGARY =====
+  {u:"gymvmt",d:"GYMVMT Fitness Club - AB Chain, 13 Locations",c:"commercial",l:"calgary"},
+  {u:"goldsgymcalgary",d:"Gold's Gym Calgary - Locally Owned",c:"commercial",l:"calgary"},
+  {u:"worldgymcalgary",d:"World Gym Calgary - 2 Locations",c:"commercial",l:"calgary"},
+  {u:"crossfitcalgary",d:"CrossFit Calgary - est. 2006",c:"crossfit",l:"calgary"},
+  {u:"crossfitsunalta",d:"CrossFit Sunalta - Inner City Box",c:"crossfit",l:"calgary"},
+  {u:"yycxfit",d:"YYC CrossFit",c:"crossfit",l:"calgary"},
+  {u:"calgarybarbell",d:"Calgary Barbell - Powerlifting Programs, 61K Followers",c:"powerlifting",l:"calgary"},
+  {u:"thestrengthedge",d:"The Strength Edge - Powerlifting / Strongman 24hr",c:"powerlifting",l:"calgary"},
+  {u:"kings.fitness",d:"Kings Fitness - 24/7, 3 Locations",c:"24hr",l:"calgary"},
+  {u:"ragefitnessyyc",d:"Rage Fitness - Personal Training Studio",c:"boutique",l:"calgary"},
+  {u:"oneforallfitnessyyc",d:"One For All Fitness - 24/7 Gym",c:"24hr",l:"calgary"},
+  {u:"therealmfitness",d:"The Realm Fitness - Independent Gym",c:"commercial",l:"calgary"},
+  {u:"sbgcalgary",d:"Straight Blast Gym Calgary - BJJ / Martial Arts",c:"martial",l:"calgary"},
+  {u:"legacyboxingyyc",d:"Legacy Boxing - Calgary's Elite",c:"martial",l:"calgary"},
+  {u:"evolved.calgary",d:"Evolved Strength - Personal Training",c:"boutique",l:"calgary"},
+  {u:"iron24calgary",d:"Iron 24 Fitness + Recovery - 24hr",c:"24hr",l:"calgary"},
+
+  // ===== EDMONTON =====
+  {u:"evolve_strength",d:"Evolve Strength - 8 Locations Across Canada",c:"commercial",l:"edmonton"},
+  {u:"goldsgymedmonton",d:"Gold's Gym Edmonton - 24/7",c:"commercial",l:"edmonton"},
+  {u:"iron.nation.west.edmonton",d:"Iron Nation West Edmonton - 30,000 sqft",c:"commercial",l:"edmonton"},
+  {u:"archetypelife",d:"Archetype - Premium Gym, ICE District",c:"boutique",l:"edmonton"},
+  {u:"panthergymyeg",d:"Panther Gym - Boxing/Yoga Edmonton",c:"martial",l:"edmonton"},
+  {u:"crossfit_armoury",d:"CrossFit Armoury - Edmonton",c:"crossfit",l:"edmonton"},
+  {u:"manmadesc",d:"Man-Made Strength & Conditioning / CrossFit",c:"crossfit",l:"edmonton"},
+  {u:"united_strength_yeg",d:"United Strength & Power - Powerlifting",c:"powerlifting",l:"edmonton"},
+  {u:"methodbarbell",d:"Method Barbell - Olympic Weightlifting",c:"powerlifting",l:"edmonton"},
+  {u:"highdeffitness",d:"High Definition Fitness - 24/7, PT",c:"24hr",l:"edmonton"},
+  {u:"svacclub",d:"SVAC - Sturgeon Valley Athletic Club, St Albert",c:"commercial",l:"edmonton"},
+  {u:"chopshopphysiques",d:"Chop Shop Physiques - 24hr, Sherwood Park",c:"24hr",l:"edmonton"},
+
+  // ===== OTTAWA =====
+  {u:"freeformfitness",d:"Freeform Fitness - 4 Locations (Kanata/Glebe/Hintonburg)",c:"boutique",l:"ottawa"},
+  {u:"customstrengthgym",d:"Custom Strength - Hintonburg",c:"boutique",l:"ottawa"},
+  {u:"crossfitbytown",d:"CrossFit Bytown - Ottawa",c:"crossfit",l:"ottawa"},
+  {u:"crossfitncr",d:"CrossFit NCR - Ottawa",c:"crossfit",l:"ottawa"},
+  {u:"crossfityow",d:"CrossFit YOW - Ottawa",c:"crossfit",l:"ottawa"},
+  {u:"1855athletics",d:"1855 Athletics - CrossFit/HYROX/Olympic Weightlifting",c:"crossfit",l:"ottawa"},
+  {u:"therigboxing",d:"The Rig Boxing & Strength Training",c:"martial",l:"ottawa"},
+  {u:"beaverboxingclub",d:"Beaver Boxing Club - est. 1943",c:"martial",l:"ottawa"},
+  {u:"altitudegym",d:"Altitude Gym - Climbing, Ottawa/Gatineau",c:"climbing",l:"ottawa"},
+  {u:"undergroundusc",d:"Underground Strength & Conditioning",c:"powerlifting",l:"ottawa"},
+  {u:"elginfitnessottawa",d:"Elgin Fitness - Independent Full-Service",c:"commercial",l:"ottawa"},
+
+  // ===== WINNIPEG =====
+  {u:"altea.winnipeg",d:"Altea Active Winnipeg - Premium Wellness Club",c:"boutique",l:"winnipeg"},
+  {u:"brickhousegym247",d:"Brickhouse Gym 24/7 - Independent, 3 Locations",c:"24hr",l:"winnipeg"},
+  {u:"shapeswpg",d:"Shapes Fitness Centre - 6 Locations, Women's + Co-Ed",c:"women",l:"winnipeg"},
+  {u:"rehfitcentre",d:"Reh-Fit Centre - Fitness/Rehab Centre",c:"community",l:"winnipeg"},
+  {u:"prairiecrossfit",d:"Prairie CrossFit - Winnipeg",c:"crossfit",l:"winnipeg"},
+  {u:"crossfitauctus",d:"CrossFit Auctus - Winnipeg",c:"crossfit",l:"winnipeg"},
+  {u:"unitedboxingwpg",d:"United Boxing Club - Winnipeg",c:"martial",l:"winnipeg"},
+  {u:"craftboxingwinnipeg",d:"CRAFT Boxing Winnipeg",c:"martial",l:"winnipeg"},
+  {u:"crunchkenaston",d:"Crunch Fitness Kenaston - Winnipeg",c:"commercial",l:"winnipeg"},
+
+  // ===== HALIFAX =====
+  {u:"fitnessfx",d:"Fitness FX - Halifax Gym, est. 1997",c:"commercial",l:"halifax"},
+  {u:"blendedathletics",d:"Blended Athletics - Functional Fitness/HYROX",c:"boutique",l:"halifax"},
+  {u:"ironstonestrength",d:"Ironstone Strength - CrossFit/S&C Halifax",c:"crossfit",l:"halifax"},
+  {u:"crossfit_kaos",d:"Kaos CrossFit Halifax",c:"crossfit",l:"halifax"},
+  {u:"crossfit_dartmouth",d:"CrossFit Dartmouth",c:"crossfit",l:"halifax"},
+  {u:"evolvefitnesshalifax",d:"Evolve Fitness Halifax - Boot Camp/PT, 4 Locations",c:"boutique",l:"halifax"},
+  {u:"cgchalifax",d:"Canada Games Centre - Municipal Recreation",c:"community",l:"halifax"},
+  {u:"rstudiosns",d:"R Studios FITNESS - 5 Locations, 14K Followers",c:"boutique",l:"halifax"},
+  {u:"titansmma_hfx",d:"Titans MMA / Renzo Gracie Halifax",c:"martial",l:"halifax"},
+
+  // ===== VICTORIA =====
+  {u:"forge_training",d:"Forge Training - S&C, 9000 sqft Victoria",c:"powerlifting",l:"victoria"},
+  {u:"annexvictoria",d:"Annex Fitness - Boutique Studio Victoria",c:"boutique",l:"victoria"},
+  {u:"bpmfitnesscentre",d:"BPM Fitness Centre - HYROX-Licensed Gym",c:"boutique",l:"victoria"},
+  {u:"cfviccity",d:"CrossFit Vic City - Victoria",c:"crossfit",l:"victoria"},
+  {u:"crossfit_zone_",d:"CrossFit Zone - Victoria",c:"crossfit",l:"victoria"},
+  {u:"truthgymgallery",d:"Truth Gym Gallery - 24/7 Powerlifting Gym",c:"powerlifting",l:"victoria"},
+  {u:"sparboxingfitness",d:"Spar Boxing + Fitness - Victoria",c:"martial",l:"victoria"},
+  {u:"victoriaboxingclub",d:"Victoria Boxing Club",c:"martial",l:"victoria"},
+
+  // ===== KELOWNA =====
+  {u:"global_fitnesskelowna",d:"Global Fitness & Racquet Centre - Full-Service",c:"commercial",l:"kelowna"},
+  {u:"worldgymkelowna",d:"World Gym West Kelowna",c:"commercial",l:"kelowna"},
+  {u:"therealmfitnesskelowna",d:"The Realm Fitness Kelowna - 24/7",c:"24hr",l:"kelowna"},
+  {u:"crossfitokanagan",d:"CrossFit Okanagan - Kelowna",c:"crossfit",l:"kelowna"},
+  {u:"communityathletics",d:"Community Athletics - Kelowna",c:"crossfit",l:"kelowna"},
+  {u:"kelownaboxingclub",d:"Kelowna Boxing Club",c:"martial",l:"kelowna"},
+  {u:"aestheticnationgymkelowna",d:"Aesthetic Nation Gym Kelowna",c:"commercial",l:"kelowna"},
+  {u:"ironenergygym",d:"Iron Energy Gym - West Kelowna",c:"commercial",l:"kelowna"},
+
+  // ===== SASKATOON =====
+  {u:"motionfitnessyxe",d:"Motion Fitness - Local Chain, Multiple Locations",c:"commercial",l:"saskatoon"},
+  {u:"fitnessfocussaskatoon",d:"Fitness Focus Saskatoon - Boutique",c:"boutique",l:"saskatoon"},
+  {u:"risestrengthlab",d:"Rise Strength Lab - 24/7 Strength Gym",c:"powerlifting",l:"saskatoon"},
+  {u:"crossfitcl.150",d:"CrossFit CL 150 - Saskatoon",c:"crossfit",l:"saskatoon"},
+  {u:"crossfit_306",d:"CrossFit 306 - Saskatoon",c:"crossfit",l:"saskatoon"},
+  {u:"bridgecitybarbellyxe",d:"Bridge City Barbell - Saskatoon",c:"powerlifting",l:"saskatoon"},
+
+  // ===== REGINA =====
+  {u:"evolutionfitnessyqr",d:"Evolution Fitness Regina - 3 Locations",c:"commercial",l:"regina"},
+  {u:"trenchfitness",d:"Trench Fitness - 24/7 Gym Regina",c:"24hr",l:"regina"},
+  {u:"brickhouse.yqr",d:"Brickhouse Gym Regina - 24/7",c:"24hr",l:"regina"},
+  {u:"adrenaline_training",d:"Adrenaline Strength & Conditioning - 24/7",c:"powerlifting",l:"regina"},
+  {u:"crossfitregina",d:"CrossFit Regina",c:"crossfit",l:"regina"},
+
+  // ===== QUEBEC CITY =====
+  {u:"energiecardio",d:"Energie Cardio - QC Chain, Multiple Locations",c:"commercial",l:"quebeccity"},
+  {u:"crossfit.quebec.city",d:"CrossFit Quebec City",c:"crossfit",l:"quebeccity"},
+  {u:"worldgymquebec",d:"World Gym Quebec",c:"commercial",l:"quebeccity"},
+  {u:"megafitnessgym24h",d:"Mega Fitness Gym 24h",c:"24hr",l:"quebeccity"},
+  {u:"nova_gym",d:"Nova Gym - MMA Centre Quebec",c:"martial",l:"quebeccity"},
+
+  // ===== LONDON ON =====
+  {u:"dw.fitnesscentre",d:"Damian Warner Fitness Centre - London ON",c:"commercial",l:"london"},
+  {u:"westlondoncrossfit",d:"West London CrossFit",c:"crossfit",l:"london"},
+  {u:"forest_city_crossfit",d:"Forest City CrossFit - London ON",c:"crossfit",l:"london"},
+  {u:"crossfitlondonon",d:"CrossFit London ON",c:"crossfit",l:"london"},
+  {u:"bushidoboxingldn",d:"Bushido Boxing - London ON",c:"martial",l:"london"},
+  {u:"ontariomuscle",d:"Ontario Muscle - Bodybuilding Gym",c:"powerlifting",l:"london"},
+
+  // ===== WINDSOR ON =====
+  {u:"truefitnesswindsor",d:"True Fitness Windsor",c:"commercial",l:"windsor"},
+  {u:"vitraininggym",d:"Vi Personal Training Studio - Windsor",c:"boutique",l:"windsor"},
+  {u:"liftwindsor",d:"LIFT Personal Training Inc - Windsor",c:"boutique",l:"windsor"},
+  {u:"windsorcrossfit",d:"Windsor CrossFit",c:"crossfit",l:"windsor"},
+  {u:"alllevelcrossfit",d:"All Level CrossFit - Windsor",c:"crossfit",l:"windsor"},
+  {u:"windsorthaiboxing",d:"Windsor Thai Boxing",c:"martial",l:"windsor"},
+  {u:"bordercityboxingclub",d:"Border City Boxing Club - Windsor",c:"martial",l:"windsor"},
+
+  // ===== KITCHENER-WATERLOO =====
+  {u:"crossfitkitchener",d:"CrossFit Kitchener",c:"crossfit",l:"kitchener"},
+  {u:"crossfitwaterloo",d:"CrossFit Waterloo",c:"crossfit",l:"kitchener"},
+  {u:"irongritfitness",d:"Iron Grit Fitness - Strength, Kitchener",c:"powerlifting",l:"kitchener"},
+  {u:"catalystfitnesskw",d:"Catalyst Fitness KW",c:"boutique",l:"kitchener"},
+
+  // ===== ST. JOHN'S =====
+  {u:"reps.fitness",d:"REPS Fitness & Conditioning - 24/7, 16,000 sqft",c:"24hr",l:"stjohns"},
+  {u:"jkconditioning",d:"JKConditioning - Private Fitness Community",c:"boutique",l:"stjohns"},
+  {u:"hw_barbell_club",d:"Heavy Weights Barbell Club - Powerlifting",c:"powerlifting",l:"stjohns"},
+  {u:"crossfit709",d:"CrossFit 709 - St. John's",c:"crossfit",l:"stjohns"},
+
+  // ===== FREDERICTON =====
+  {u:"fullbodyfitnessfredericton",d:"Full Body Fitness Fredericton",c:"commercial",l:"fredericton"},
+  {u:"yorkcountytraining",d:"York County CrossFit - Fredericton",c:"crossfit",l:"fredericton"},
+  {u:"magineathletics",d:"Magine Athletics - Fredericton",c:"commercial",l:"fredericton"},
+
+  // ===== CHARLOTTETOWN =====
+  {u:"spatotalfitnesscentre",d:"Spa Total Fitness Centre - Pool, Courts, Full-Service",c:"commercial",l:"charlottetown"},
+  {u:"kineticfitness902",d:"Kinetic Fitness - Charlottetown",c:"commercial",l:"charlottetown"},
+  {u:"naturallyfitpei",d:"Naturally Fit PEI - Old-School Gym",c:"commercial",l:"charlottetown"},
+  {u:"hustleathletictraining",d:"Hustle Athletic Training - 24/7",c:"24hr",l:"charlottetown"},
+
+  // ===== WHITEHORSE =====
+  {u:"betterbodieswhitehorse",d:"Better Bodies - 14,000 sqft Gym, Whitehorse",c:"commercial",l:"whitehorse"},
+  {u:"yukonbalance",d:"Balance Health & Fitness - Whitehorse",c:"commercial",l:"whitehorse"},
+
+  // ===== YELLOWKNIFE =====
+  {u:"anytimefitnessyk",d:"Anytime Fitness Yellowknife - 24/7",c:"24hr",l:"yellowknife"},
+  {u:"stanleyboxingfitness",d:"Stanley Boxing & Fitness - Yellowknife",c:"martial",l:"yellowknife"},
+  {u:"breakawayfitnessyk",d:"Break Away Fitness - Yellowknife",c:"boutique",l:"yellowknife"},
+
+  // ===== BARRIE =====
+  {u:"crossfitbarrie",d:"CrossFit Barrie",c:"crossfit",l:"barrie"},
+  {u:"ironempirefitness",d:"Iron Empire Fitness - Barrie",c:"commercial",l:"barrie"},
+
+  // ===== KINGSTON =====
+  {u:"crossfitkingston",d:"CrossFit Kingston",c:"crossfit",l:"kingston"},
+  {u:"ironcorekingston",d:"Iron Core Kingston - Strength",c:"powerlifting",l:"kingston"}
+];
+
+// Deduplicate by username
+const seen = new Set();
+const unique = gyms.filter(t => {
+  if (seen.has(t.u)) return false;
+  seen.add(t.u);
+  return true;
+});
+
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+
+function getLocClass(l) {
+  const colored = ['toronto','vancouver','montreal','calgary','edmonton','ottawa','winnipeg','halifax'];
+  return colored.includes(l) ? l : 'other';
+}
+function getLocLabel(l) {
+  const map = {toronto:'Toronto & GTA',vancouver:'Vancouver',montreal:'Montreal',calgary:'Calgary',edmonton:'Edmonton',ottawa:'Ottawa',winnipeg:'Winnipeg',halifax:'Halifax',victoria:'Victoria',kelowna:'Kelowna',saskatoon:'Saskatoon',regina:'Regina',quebeccity:'Quebec City',london:'London ON',windsor:'Windsor ON',kitchener:'Kitchener-Waterloo',kingston:'Kingston',barrie:'Barrie',stjohns:"St. John's",fredericton:'Fredericton',charlottetown:'Charlottetown',whitehorse:'Whitehorse',yellowknife:'Yellowknife'};
+  return map[l] || l;
+}
+function getCatLabel(c) {
+  const map = {commercial:'Commercial Gym',boutique:'Boutique / Studio',crossfit:'CrossFit',powerlifting:'Powerlifting / Strength',women:"Women's Gym",'24hr':'24-Hour Gym',martial:'Martial Arts / Boxing',yoga:'Yoga / Dance / Pole',climbing:'Climbing',community:'Community / Recreation',other:'Other'};
+  return map[c] || c;
+}
+
+function renderCards(list) {
+  grid.innerHTML = '';
+  list.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<div class="num">#${i + 1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`;
+    grid.appendChild(card);
+  });
+  stats.textContent = `Showing ${list.length} of ${unique.length} gyms & fitness centres across Canada`;
+}
+
+function filterCards() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const cat = document.getElementById('catFilter').value;
+  const loc = document.getElementById('locFilter').value;
+  const filtered = unique.filter(t => {
+    if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false;
+    if (cat && t.c !== cat) return false;
+    if (loc && t.l !== loc) return false;
+    return true;
+  });
+  renderCards(filtered);
+}
+
+renderCards(unique);
+</script>
+</body>
+</html>

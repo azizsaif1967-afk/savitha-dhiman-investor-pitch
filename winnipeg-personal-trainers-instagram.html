@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Trainers & Fitness Coaches in Winnipeg - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.loc-winnipeg { background: #166534; color: #4ade80; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Winnipeg Fitness</div>
+    <div class="hero-brand-float">Winnipeg Fitness</div>
+    <h1>Personal Trainers & Fitness Coaches - Winnipeg</h1>
+    <p class="subtitle">Instagram profiles | No website required - connect via DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, specialty, or location..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="pt">Personal Trainer</option>
+    <option value="yoga">Yoga / Pilates</option>
+    <option value="boxing">Boxing / MMA</option>
+    <option value="crossfit">CrossFit</option>
+    <option value="studio">Studio / Gym</option>
+    <option value="nutrition">Nutrition</option>
+    <option value="online">Online Coach</option>
+    <option value="bodybuilding">Bodybuilding</option>
+    <option value="stretch">Stretch / Mobility</option>
+    <option value="dance">Dance / Barre</option>
+    <option value="calisthenics">Calisthenics</option>
+    <option value="cycling">Cycling / Spin</option>
+    <option value="strength">Strength & Conditioning</option>
+    <option value="swimming">Swimming</option>
+    <option value="other">Other</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Locations</option>
+    <option value="winnipeg">Winnipeg</option>
+    <option value="other">Other</option>
+  </select>
+</div>
+<div class="grid" id="grid"></div>
+<footer>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+  <p>To connect: Open the profile and send a DM or use the contact in their bio</p>
+</footer>
+<script>
+const trainers = [
+  {u:"kaylamfit",d:"Kayla PT Winnipeg",c:"pt",l:"winnipeg"},
+  {u:"dmytritrainer",d:"Dmytri PT Winnipeg",c:"pt",l:"winnipeg"},
+  {u:"lisa_reutcky_coaching",d:"Lisa Reutcky Coaching",c:"pt",l:"winnipeg"},
+  {u:"awakenpersonaltraining",d:"Melisa Ross Awaken PT",c:"pt",l:"winnipeg"},
+  {u:"qptfitnesscoaching",d:"QPT Fitness Fat Loss Coach",c:"pt",l:"winnipeg"},
+  {u:"rj_padua",d:"RJ Padua Nutrition Fitness",c:"pt",l:"winnipeg"},
+  {u:"podaimaperformance",d:"Podaima Performance",c:"pt",l:"winnipeg"},
+  {u:"rebeccaliftss",d:"Rebecca Franklin Training",c:"pt",l:"winnipeg"},
+  {u:"paultaylortoptrainer",d:"Paul Taylor Top Trainer",c:"pt",l:"winnipeg"},
+  {u:"kurtis.t",d:"Kurtis Tallaire Head Coach",c:"pt",l:"winnipeg"},
+  {u:"alteaactive.winnipeg",d:"Altea Active Winnipeg",c:"studio",l:"winnipeg"},
+  {u:"brickhousegym247",d:"Brickhouse Gym 24/7",c:"studio",l:"winnipeg"},
+  {u:"brassperformance",d:"Brass Performance",c:"studio",l:"winnipeg"},
+  {u:"blueskyfitnessstudio",d:"Blue Sky Fitness Senior",c:"studio",l:"winnipeg"},
+  {u:"vivacity_fitness_",d:"Vivacity Fitness",c:"studio",l:"winnipeg"},
+  {u:"movement.fp",d:"Movement Fitness & Performance",c:"studio",l:"winnipeg"},
+  {u:"winnipeghealthcoaching",d:"Infinity Nutrition & Health",c:"nutrition",l:"winnipeg"},
+  {u:"nutrition.winnipeg",d:"Winnipeg Functional Nutrition",c:"nutrition",l:"winnipeg"},
+  {u:"yogapublic2.0",d:"Yoga Public Downtown",c:"yoga",l:"winnipeg"},
+  {u:"yogacentrewinnipeg",d:"Yoga Centre Winnipeg",c:"yoga",l:"winnipeg"},
+  {u:"saltstudiohotyoga",d:"Salt Studio Hot Yoga",c:"yoga",l:"winnipeg"},
+  {u:"roguevinyasa",d:"Rogue Vinyasa Yoga",c:"yoga",l:"winnipeg"},
+  {u:"samtheyogi",d:"Sam Manchulenko Yoga",c:"yoga",l:"winnipeg"},
+  {u:"ashleydawnjensen",d:"Ashley Jensen Yoga",c:"yoga",l:"winnipeg"},
+  {u:"_yogi_tani",d:"Tanya Voth Yoga",c:"yoga",l:"winnipeg"},
+  {u:"southstudio.yoga",d:"South Studio Yoga",c:"yoga",l:"winnipeg"},
+  {u:"prairiecrossfit",d:"Prairie CrossFit",c:"crossfit",l:"winnipeg"},
+  {u:"crossfitauctus",d:"CrossFit Auctus",c:"crossfit",l:"winnipeg"},
+  {u:"crossfitwpggymnastics",d:"CrossFit Winnipeg Gymnastics",c:"crossfit",l:"winnipeg"},
+  {u:"corydonstrength",d:"Corydon Strength",c:"crossfit",l:"winnipeg"},
+  {u:"431_coachmeg",d:"Megan Giesbrecht CF 431",c:"crossfit",l:"winnipeg"},
+  {u:"undefeated_performance",d:"Undefeated Health & Performance",c:"crossfit",l:"winnipeg"},
+  {u:"sublime_sc",d:"Sublime S&C",c:"strength",l:"winnipeg"},
+  {u:"truestrengthwpg",d:"TRUE Strength + Conditioning",c:"strength",l:"winnipeg"},
+  {u:"hercules_wpg",d:"Hercules Weightlifting WPG",c:"strength",l:"winnipeg"},
+  {u:"d.j_guzda",d:"DJ Guzda Steel Mace & Kettlebell",c:"strength",l:"winnipeg"},
+  {u:"dakotaweightlifting",d:"Dakota Weightlifting",c:"strength",l:"winnipeg"},
+  {u:"unitedboxingwpg",d:"United Boxing Club",c:"boxing",l:"winnipeg"},
+  {u:"craftboxingwinnipeg",d:"CRAFT Boxing Winnipeg",c:"boxing",l:"winnipeg"},
+  {u:"underdogboxingacademy_",d:"Underdog Boxing Academy",c:"boxing",l:"winnipeg"},
+  {u:"panamboxing",d:"Pan Am Boxing Club",c:"boxing",l:"winnipeg"},
+  {u:"canadianfightingcenter",d:"Canadian Fighting Center",c:"boxing",l:"winnipeg"},
+  {u:"boxing_leaf",d:"Boxing Training Winnipeg",c:"boxing",l:"winnipeg"},
+  {u:"boxingmanitoba",d:"Boxing Manitoba",c:"boxing",l:"winnipeg"},
+  {u:"winnipeg_kb",d:"Trisha Sammons Muay Thai",c:"boxing",l:"winnipeg"},
+  {u:"kwestmuaythai",d:"Kwest Muay Thai & Jiu-Jitsu",c:"boxing",l:"winnipeg"},
+  {u:"wammacanada",d:"WAMMA Manitoba MMA",c:"boxing",l:"winnipeg"},
+  {u:"clubpilatestuxedo",d:"Club Pilates Tuxedo",c:"studio",l:"winnipeg"},
+  {u:"clubpilatesstvital",d:"Club Pilates St Vital",c:"studio",l:"winnipeg"},
+  {u:"pilatesmanitoba",d:"Pilates Manitoba",c:"studio",l:"winnipeg"},
+  {u:"formfitnesswpg",d:"Form Fitness WPG Barre",c:"dance",l:"winnipeg"},
+  {u:"fifty5fitness",d:"Fifty 5 Fitness Barre",c:"dance",l:"winnipeg"},
+  {u:"thefitual",d:"The Fitual Lagree/Barre",c:"dance",l:"winnipeg"},
+  {u:"polebarreandfitness",d:"Pole and Barre Fitness",c:"dance",l:"winnipeg"},
+  {u:"dropindancewpg",d:"Drop In Dance Winnipeg",c:"dance",l:"winnipeg"},
+  {u:"f45_training_tuxedo",d:"F45 Tuxedo Winnipeg",c:"studio",l:"winnipeg"},
+  {u:"karmazinaanna",d:"Anna Karmazina Aerial/Stretch",c:"stretch",l:"winnipeg"},
+  {u:"neromusclesmart",d:"Melle Nero Athlete",c:"bodybuilding",l:"winnipeg"},
+  {u:"westsideirontrainingandtherapy",d:"Westside Iron Training",c:"bodybuilding",l:"winnipeg"},
+  {u:"wnbfwinnipeg",d:"WNBF Canada Winnipeg",c:"bodybuilding",l:"winnipeg"}
+];
+const seen = new Set();
+const unique = trainers.filter(t => { if (seen.has(t.u)) return false; seen.add(t.u); return true; });
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+function getLocClass(l) { const map = {'winnipeg':'loc-winnipeg'}; return map[l] || 'other'; }
+function getLocLabel(l) { const map = {'winnipeg':'Winnipeg','other':'Other'}; return map[l] || 'Winnipeg'; }
+function getCatLabel(c) { const map = {pt:'Personal Trainer',yoga:'Yoga / Pilates',boxing:'Boxing / MMA',crossfit:'CrossFit',studio:'Studio / Gym',nutrition:'Nutrition',online:'Online Coach',bodybuilding:'Bodybuilding',stretch:'Stretch / Mobility',dance:'Dance / Barre',calisthenics:'Calisthenics',cycling:'Cycling / Spin',strength:'Strength & Conditioning',swimming:'Swimming',other:'Other'}; return map[c] || c; }
+function renderCards(list) { grid.innerHTML = ''; list.forEach((t, i) => { const card = document.createElement('div'); card.className = 'card'; card.innerHTML = `<div class="num">#${i+1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`; grid.appendChild(card); }); stats.textContent = `Showing ${list.length} of ${unique.length} profiles across Winnipeg`; }
+function filterCards() { const q = document.getElementById('search').value.toLowerCase(); const cat = document.getElementById('catFilter').value; const loc = document.getElementById('locFilter').value; const filtered = unique.filter(t => { if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false; if (cat && t.c !== cat) return false; if (loc && t.l !== loc) return false; return true; }); renderCards(filtered); }
+renderCards(unique);
+</script>
+</body>
+</html>

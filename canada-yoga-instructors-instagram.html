@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoga Instructors & Studios Across Canada - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.loc-toronto { background: #7f1d1d; color: #fca5a5; }
+  .tag.loc-vancouver { background: #1e3a5f; color: #60a5fa; }
+  .tag.loc-montreal { background: #4a1d6e; color: #c084fc; }
+  .tag.loc-calgary { background: #166534; color: #4ade80; }
+  .tag.loc-edmonton { background: #713f12; color: #fbbf24; }
+  .tag.loc-ottawa { background: #1e3a3a; color: #5eead4; }
+  .tag.loc-winnipeg { background: #4a2c1a; color: #fb923c; }
+  .tag.loc-halifax { background: #1a3a1a; color: #86efac; }
+  .tag.loc-victoria { background: #3b1a4a; color: #d8b4fe; }
+  .tag.loc-kelowna { background: #1a2e4a; color: #7dd3fc; }
+  .tag.loc-saskatoon { background: #3a2a1a; color: #fcd34d; }
+  .tag.loc-regina { background: #2a1a3a; color: #c4b5fd; }
+  .tag.loc-quebec-city { background: #1a3a2a; color: #6ee7b7; }
+  .tag.loc-whistler { background: #1a2a3a; color: #93c5fd; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Canada Yoga</div>
+    <div class="hero-brand-float">Canada Yoga</div>
+    <h1>Yoga Instructors & Studios Across Canada - Instagram Directory</h1>
+    <p class="subtitle">Find yoga teachers & studios | Connect via Instagram DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, handle, or description..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Yoga Types</option>
+    <option value="vinyasa">Vinyasa</option>
+    <option value="hatha">Hatha</option>
+    <option value="ashtanga">Ashtanga</option>
+    <option value="hot-yoga">Hot Yoga</option>
+    <option value="yin">Yin</option>
+    <option value="kundalini">Kundalini</option>
+    <option value="power">Power</option>
+    <option value="restorative">Restorative</option>
+    <option value="aerial">Aerial</option>
+    <option value="prenatal">Prenatal</option>
+    <option value="iyengar">Iyengar</option>
+    <option value="multi-style">Multi-Style</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Cities</option>
+    <option value="toronto">Toronto</option>
+    <option value="vancouver">Vancouver</option>
+    <option value="montreal">Montreal</option>
+    <option value="calgary">Calgary</option>
+    <option value="edmonton">Edmonton</option>
+    <option value="ottawa">Ottawa</option>
+    <option value="winnipeg">Winnipeg</option>
+    <option value="halifax">Halifax</option>
+    <option value="victoria">Victoria</option>
+    <option value="kelowna">Kelowna</option>
+    <option value="saskatoon">Saskatoon</option>
+    <option value="regina">Regina</option>
+    <option value="quebec-city">Quebec City</option>
+    <option value="whistler">Whistler</option>
+  </select>
+</div>
+<div class="grid" id="grid"></div>
+<footer>
+  <p>GroupFit App Compatible | Yoga Instructors Across Canada</p>
+  <p>All links go directly to Instagram profiles | Connect via DM</p>
+</footer>
+<script>
+const profiles = [
+  {u:"torontoyogaco",d:"Toronto Yoga Co - Yoga, Pilates & Reformer classes",c:"multi-style",l:"toronto"},
+  {u:"yogatreestudios",d:"Yoga Tree Studios - Since 2007, downtown Toronto & Richmond Hill (21K followers)",c:"multi-style",l:"toronto"},
+  {u:"yogaconference",d:"Toronto Yoga Conference & Show - Canada's largest yoga event",c:"multi-style",l:"toronto"},
+  {u:"wellwithmelo",d:"Mel - E-RYT 500, Ayurveda specialist & Private Yoga",c:"vinyasa",l:"toronto"},
+  {u:"jafferyoga",d:"Jaffer Hussain - Toronto Yoga Teacher, Business of Yoga",c:"vinyasa",l:"toronto"},
+  {u:"angelayazbek1",d:"Angela Yazbek - Yoga Teacher, Writer & Podcaster",c:"multi-style",l:"toronto"},
+  {u:"kimc.heal",d:"Kim C - Sound Healing, Aerial Yoga & Nutritionist",c:"aerial",l:"toronto"},
+  {u:"fringinto",d:"Astrid Moulin - French-Canadian Yoga Teacher & Community",c:"vinyasa",l:"toronto"},
+  {u:"behotyogatoronto",d:"BeHot Yoga Toronto - Award-winning hot yoga studio 20+ years",c:"hot-yoga",l:"toronto"},
+  {u:"pyctorontowest",d:"PYC Toronto West - Hot Vinyasa Power Yoga",c:"hot-yoga",l:"toronto"},
+  {u:"mulayogato",d:"Mula Yoga Toronto - 200-Hour Teacher Training",c:"multi-style",l:"toronto"},
+  {u:"asanavanessa",d:"Vanessa - Body positivity & active flexibility yoga",c:"vinyasa",l:"toronto"},
+  {u:"iamyogapilates",d:"IAM Yoga Pilates - Downtown Toronto studio, Merrithew-trained",c:"multi-style",l:"toronto"},
+  {u:"marcustongyoga",d:"Marcus Tong - Yoga at Equinox & yYoga (16K followers)",c:"vinyasa",l:"vancouver"},
+  {u:"anayoga.ca",d:"Ana - E-RYT 500, Yoga Therapist & Faculty trainer (9.7K)",c:"vinyasa",l:"vancouver"},
+  {u:"camleeyoga",d:"Cam Lee - Vancouver Content Creator & Yoga Teacher (47K)",c:"vinyasa",l:"vancouver"},
+  {u:"ashtangayogavancouver",d:"Ashtanga Yoga Vancouver - Mysore-style, teacher Fiona Stang (6.4K)",c:"ashtanga",l:"vancouver"},
+  {u:"realeyoga",d:"Amanda Reale - Yoga Teacher in Vancouver BC",c:"vinyasa",l:"vancouver"},
+  {u:"aya.yoga.vancouver",d:"Aya Yoga Vancouver - Japanese-Canadian yoga teacher",c:"vinyasa",l:"vancouver"},
+  {u:"oneyogavan",d:"One Yoga Vancouver - Yoga Studio & Community (9.9K)",c:"multi-style",l:"vancouver"},
+  {u:"allmethodstudio",d:"ALL Studio - Mat & Reformer Pilates + Yoga, Railtown Vancouver",c:"multi-style",l:"vancouver"},
+  {u:"oneyogavictoria",d:"One Yoga Victoria - Yoga Studio & Community",c:"multi-style",l:"victoria"},
+  {u:"yogacarawhistler",d:"Yogacara - Yoga in the heart of Whistler Village (2.1K)",c:"vinyasa",l:"whistler"},
+  {u:"ashtangayogavictoria",d:"Ashtanga Yoga Victoria - Authentic school rooted in lineage (3.6K)",c:"ashtanga",l:"victoria"},
+  {u:"mettayogayyc",d:"Metta Yoga Calgary - Hot yoga & community classes (3.3K)",c:"hot-yoga",l:"calgary"},
+  {u:"yoganovastudio",d:"Yoga Nova Studio YYC - 3519 14 St SW Calgary (7.5K)",c:"multi-style",l:"calgary"},
+  {u:"yogalifestudios",d:"Yogalife Studios - Calgary & Edmonton locations (7.2K)",c:"multi-style",l:"calgary"},
+  {u:"yoga.with",d:"Greg - E-RYT 500 Calgary-based teacher (8.9K)",c:"vinyasa",l:"calgary"},
+  {u:"yogasong_hayeon",d:"Hayeon Song - Fitness for 40+, yoga & wellness, Montreal",c:"hatha",l:"montreal"},
+  {u:"canadayogastudio",d:"Canada Yoga Studio - National yoga community (2.3K)",c:"multi-style",l:"montreal"},
+  {u:"modoyoga",d:"Modo Yoga - North America's premier eco-friendly hot yoga brand",c:"hot-yoga",l:"toronto"},
+  {u:"soulspeakyoga",d:"Soulspeak Studio - Boutique hot yoga, pilates & fitness, Ottawa",c:"hot-yoga",l:"ottawa"},
+  {u:"yogawithin_yeg",d:"Yoga Within Edmonton - Family-owned since 2007",c:"multi-style",l:"edmonton"},
+  {u:"innerfivestudios",d:"Inner Five Studios - In-person & online yoga, Edmonton",c:"multi-style",l:"edmonton"},
+  {u:"oxygenyogafitness",d:"Oxygen Yoga & Fitness - Franchise across Canada",c:"hot-yoga",l:"vancouver"},
+  {u:"yoga_with_kassandra",d:"Kassandra Reinhardt - Yin yoga flows & relaxation (150K+)",c:"yin",l:"ottawa"},
+  {u:"yogafitnez",d:"YogaFitNez - Canada's top yoga account (839K followers)",c:"multi-style",l:"toronto"},
+  {u:"stretchitapp",d:"StretchIt App - Flexibility & yoga stretching (658K)",c:"multi-style",l:"vancouver"},
+  {u:"davidrobsonyoga",d:"David Robson - Ashtanga yoga master teacher (535K)",c:"ashtanga",l:"toronto"},
+  {u:"downwarddogyoga",d:"Downward Dog Yoga - Popular Canadian yoga brand",c:"multi-style",l:"toronto"},
+  {u:"val_menardyoga",d:"Val\u00e9rie M\u00e9nard - Bilingual yoga teacher",c:"vinyasa",l:"montreal"},
+  {u:"balancenotion",d:"Balance Notion - Yoga & wellness community",c:"vinyasa",l:"vancouver"},
+  {u:"emyjade.g",d:"Emy Jade - Yoga teacher & wellness advocate",c:"vinyasa",l:"montreal"},
+  {u:"alexandracos_",d:"Alexandra - Yoga & movement teacher",c:"vinyasa",l:"toronto"},
+  {u:"ameliakyoga",d:"Amelia K - Certified yoga instructor & teacher trainer",c:"multi-style",l:"vancouver"},
+  {u:"getfityogagirl",d:"Get Fit Yoga Girl - Fitness & yoga content",c:"power",l:"toronto"},
+  {u:"miranda.avidyogi",d:"Miranda - Passionate yogi & teacher",c:"vinyasa",l:"calgary"},
+  {u:"chloevictoria86",d:"Chloe Victoria - Yoga & mindfulness teacher",c:"restorative",l:"vancouver"},
+  {u:"samanthashakiraclarke",d:"Samantha Clarke - Yoga teacher & wellness",c:"vinyasa",l:"toronto"},
+  {u:"yogacentrewinnipeg",d:"Yoga Centre Winnipeg - Ashtanga, Iyengar & Vinyasa since 1980s",c:"multi-style",l:"winnipeg"},
+  {u:"yogapublicwpg",d:"Yoga Public Winnipeg - Fort Garry Hotel downtown studio",c:"vinyasa",l:"winnipeg"},
+  {u:"yogabarrewinipeg",d:"Yoga Barre Winnipeg - Spin, stretch & flow",c:"multi-style",l:"winnipeg"},
+  {u:"clubyogaottawa",d:"Club Yoga Ottawa - Kundalini & Hatha yoga",c:"kundalini",l:"ottawa"},
+  {u:"yasminyogamontreal",d:"Yasmin Yoga Centre - Therapeutic yoga & Ayurveda, Old Montreal",c:"restorative",l:"montreal"},
+  {u:"wanderlustyogamtl",d:"Wanderlust Yoga Montreal - Industrial loft with live music",c:"vinyasa",l:"montreal"},
+  {u:"bodhitreeyogaregina",d:"Bodhi Tree Yoga Regina - Yoga therapy for chronic pain",c:"restorative",l:"regina"},
+  {u:"yogamalaregina",d:"Yoga Mala Regina - Ashtanga, Vinyasa, Moksha & Pilates",c:"multi-style",l:"regina"},
+  {u:"yogasantosha",d:"Yoga Santosha Calgary - Community-focused studio",c:"multi-style",l:"calgary"},
+  {u:"theyogastudiocalgary",d:"The Yoga Studio Calgary - All levels welcome",c:"multi-style",l:"calgary"},
+  {u:"pilatesprocessvancouver",d:"Pilates Process Vancouver - Yoga & Pilates teacher training",c:"multi-style",l:"vancouver"},
+  {u:"bikramyogavancouver",d:"Bikram Yoga Vancouver - Hot 26 & 2 practice",c:"hot-yoga",l:"vancouver"},
+  {u:"sempervivayoga",d:"Semperviva Yoga Vancouver - Multiple locations",c:"multi-style",l:"vancouver"},
+  {u:"yogainthevillage",d:"Yoga in the Village - Halifax community yoga",c:"hatha",l:"halifax"},
+  {u:"mokshayogahalifax",d:"Moksha Yoga Halifax - Hot yoga community",c:"hot-yoga",l:"halifax"},
+  {u:"yogaedmonton",d:"Yoga Edmonton - Local yoga community hub",c:"multi-style",l:"edmonton"},
+  {u:"yogakelowna",d:"Yoga Kelowna - Okanagan yoga community",c:"vinyasa",l:"kelowna"},
+  {u:"saskatoonyoga",d:"Saskatoon Yoga - Local studio community",c:"multi-style",l:"saskatoon"},
+  {u:"quebeccityyoga",d:"Quebec City Yoga - Studio Yoga Ste-Foy",c:"hatha",l:"quebec-city"},
+  {u:"kundaliniyogatoronto",d:"Kundalini Yoga Toronto - Meditation & breathwork",c:"kundalini",l:"toronto"},
+  {u:"prenatalyogacanada",d:"Prenatal Yoga Canada - Safe pregnancy yoga",c:"prenatal",l:"toronto"}
+];
+const seen = new Set();
+const unique = profiles.filter(t => { if (seen.has(t.u)) return false; seen.add(t.u); return true; });
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+function getLocClass(l) {
+  const map = {'toronto':'loc-toronto','vancouver':'loc-vancouver','montreal':'loc-montreal','calgary':'loc-calgary','edmonton':'loc-edmonton','ottawa':'loc-ottawa','winnipeg':'loc-winnipeg','halifax':'loc-halifax','victoria':'loc-victoria','kelowna':'loc-kelowna','saskatoon':'loc-saskatoon','regina':'loc-regina','quebec-city':'loc-quebec-city','whistler':'loc-whistler'};
+  return map[l] || '';
+}
+function getLocLabel(l) {
+  const map = {'toronto':'Toronto','vancouver':'Vancouver','montreal':'Montreal','calgary':'Calgary','edmonton':'Edmonton','ottawa':'Ottawa','winnipeg':'Winnipeg','halifax':'Halifax','victoria':'Victoria','kelowna':'Kelowna','saskatoon':'Saskatoon','regina':'Regina','quebec-city':'Quebec City','whistler':'Whistler'};
+  return map[l] || l;
+}
+function getCatLabel(c) {
+  const map = {'vinyasa':'Vinyasa','hatha':'Hatha','ashtanga':'Ashtanga','hot-yoga':'Hot Yoga','yin':'Yin','kundalini':'Kundalini','power':'Power','restorative':'Restorative','aerial':'Aerial','prenatal':'Prenatal','iyengar':'Iyengar','multi-style':'Multi-Style'};
+  return map[c] || c;
+}
+function renderCards(list) {
+  grid.innerHTML = '';
+  list.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<div class="num">#${i+1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`;
+    grid.appendChild(card);
+  });
+  stats.textContent = `Showing ${list.length} of ${unique.length} yoga instructors & studios across Canada`;
+}
+function filterCards() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const cat = document.getElementById('catFilter').value;
+  const loc = document.getElementById('locFilter').value;
+  const filtered = unique.filter(t => {
+    if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false;
+    if (cat && t.c !== cat) return false;
+    if (loc && t.l !== loc) return false;
+    return true;
+  });
+  renderCards(filtered);
+}
+renderCards(unique);
+</script>
+</body>
+</html>

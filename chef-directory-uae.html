@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chef Directory UAE — 100+ Professional Chef Profiles</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #e0e0e0; }
+.header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px; text-align: center; border-bottom: 3px solid #e94560; }
+.header h1 { font-size: 2.5em; color: #fff; margin-bottom: 10px; }
+.header h1 span { color: #e94560; }
+.header p { color: #aaa; font-size: 1.1em; }
+.stats-bar { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; padding: 20px; background: #111; border-bottom: 1px solid #222; }
+.stat { text-align: center; padding: 15px 25px; background: #1a1a2e; border-radius: 10px; min-width: 140px; }
+.stat .num { font-size: 2em; font-weight: bold; color: #e94560; }
+.stat .label { font-size: 0.85em; color: #888; margin-top: 5px; }
+.section { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
+.section-title { font-size: 1.8em; color: #e94560; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #222; }
+.section-title span { color: #fff; font-size: 0.6em; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #111; border-radius: 10px; overflow: hidden; }
+th { background: #e94560; color: #fff; padding: 12px 10px; text-align: left; font-size: 0.85em; position: sticky; top: 0; }
+td { padding: 10px; border-bottom: 1px solid #1a1a1a; font-size: 0.85em; vertical-align: top; }
+tr:hover { background: #1a1a2e; }
+tr:nth-child(even) { background: #0d0d0d; }
+a { color: #4ea8de; text-decoration: none; }
+a:hover { color: #e94560; text-decoration: underline; }
+.badge { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 0.75em; font-weight: bold; margin: 2px; }
+.michelin { background: #c0392b; color: #fff; }
+.five-star { background: #f39c12; color: #000; }
+.four-star { background: #2980b9; color: #fff; }
+.three-star { background: #27ae60; color: #fff; }
+.private { background: #8e44ad; color: #fff; }
+.influencer { background: #e74c3c; color: #fff; }
+.cuisine-tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7em; background: #1a1a2e; color: #4ea8de; border: 1px solid #2a2a4e; margin: 1px; }
+.contact-info { font-size: 0.8em; color: #aaa; }
+.contact-info a { color: #4ea8de; }
+.filter-bar { background: #111; padding: 15px 20px; text-align: center; border-bottom: 1px solid #222; }
+.filter-bar input { padding: 10px 20px; width: 400px; max-width: 90%; border-radius: 25px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 1em; }
+.filter-bar input::placeholder { color: #666; }
+.social-links a { margin-right: 5px; }
+.footer { text-align: center; padding: 30px; background: #111; color: #666; border-top: 1px solid #222; margin-top: 40px; }
+@media (max-width: 768px) {
+  .header h1 { font-size: 1.5em; }
+  table { font-size: 0.75em; }
+  td, th { padding: 6px 4px; }
+  .stats-bar { gap: 10px; }
+  .stat { min-width: 100px; padding: 10px; }
+}
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e94560;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e9456011 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e94560 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+<div class="header hero-brand-section">
+<div class="hero-brand-glow">Chef Directory UAE</div>
+<div class="hero-brand-float">Chef Directory UAE</div>
+<h1>🍽️ <span>Chef Directory</span> — UAE & Middle East</h1>
+<p>100+ Professional Chef Profiles | Michelin ⭐ | 5-Star Hotels | Private & Freelance Chefs</p>
+<p style="margin-top:8px; color:#e94560;">Compiled April 2026 | For EatCookJoy Partnership Outreach</p>
+<div class="stats-bar">
+<div class="stat"><div class="num">112</div><div class="label">Total Chefs</div></div>
+<div class="stat"><div class="num">21</div><div class="label">Michelin Star</div></div>
+<div class="stat"><div class="num">35</div><div class="label">5-Star Hotel</div></div>
+<div class="stat"><div class="num">18</div><div class="label">Private/Freelance</div></div>
+<div class="stat"><div class="num">20+</div><div class="label">Nationalities</div></div>
+<div class="stat"><div class="num">15+</div><div class="label">Cuisine Types</div></div>
+</div>
+
+<div class="filter-bar">
+<input type="text" id="searchBox" placeholder="🔍 Search by name, cuisine, nationality, hotel, type..." onkeyup="filterTable()">
+</div>
+
+<!-- ═══════════════ SECTION 1: MICHELIN STAR CHEFS ═══════════════ -->
+<div class="section">
+<h2 class="section-title">⭐ Michelin Star Chefs in Dubai <span>(21 Chefs)</span></h2>
+<table id="michelinTable">
+<thead>
+<tr>
+<th>#</th>
+<th>Chef Name</th>
+<th>Nationality</th>
+<th>Type</th>
+<th>Restaurant</th>
+<th>Cuisine</th>
+<th>Stars</th>
+<th>Location</th>
+<th>Experience</th>
+<th>Social / Contact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Himanshu Saini</strong></td>
+<td>Indian</td>
+<td>Executive Chef</td>
+<td>Trèsind Studio</td>
+<td><span class="cuisine-tag">Indian</span> <span class="cuisine-tag">Fine Dining</span></td>
+<td><span class="badge michelin">⭐⭐⭐ 3 Michelin</span></td>
+<td>St Regis Gardens, Palm Jumeirah, Dubai</td>
+<td>15+ yrs | Best Chef UAE Award | 3 Knives Award | Trained under Manish Mehrotra</td>
+<td class="social-links"><a href="https://instagram.com/chefhimanshusaini" target="_blank">📸 @chefhimanshusaini (45K)</a><br><a href="https://tresindstudio.com" target="_blank">🌐 Website</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Björn Frantzén</strong></td>
+<td>Swedish</td>
+<td>Chef-Owner</td>
+<td>FZN by Björn Frantzén</td>
+<td><span class="cuisine-tag">Modern</span> <span class="cuisine-tag">Nordic</span></td>
+<td><span class="badge michelin">⭐⭐⭐ 3 Michelin</span></td>
+<td>Palm Islands, Dubai</td>
+<td>20+ yrs | World's only chef with 3 restaurants holding 3 Michelin stars each</td>
+<td class="social-links"><a href="https://instagram.com/bjaboransen" target="_blank">📸 Instagram</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Niko Romito</strong></td>
+<td>Italian</td>
+<td>Chef-Owner</td>
+<td>Il Ristorante – Niko Romito</td>
+<td><span class="cuisine-tag">Italian</span> <span class="cuisine-tag">Fine Dining</span></td>
+<td><span class="badge michelin">⭐⭐ 2 Michelin</span></td>
+<td>Bvlgari Resort Dubai, Jumeirah</td>
+<td>25+ yrs | 3 Michelin stars at Reale in Italy</td>
+<td class="social-links"><a href="https://instagram.com/nikoromito" target="_blank">📸 Instagram</a><br><a href="https://bulgarihotels.com" target="_blank">🌐 Website</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Yannick Alléno</strong></td>
+<td>French</td>
+<td>Celebrity Chef</td>
+<td>STAY by Yannick Alléno</td>
+<td><span class="cuisine-tag">French</span> <span class="cuisine-tag">Modern</span></td>
+<td><span class="badge michelin">⭐⭐ 2 Michelin</span></td>
+<td>One&Only The Palm, Dubai</td>
+<td>30+ yrs | 16 Michelin stars total globally | Former Ledoyen Paris</td>
+<td class="social-links"><a href="https://instagram.com/yannickalleno" target="_blank">📸 Instagram</a><br><a href="https://oneandonlyresorts.com" target="_blank">🌐 Website</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Tetsuya Wakuda</strong></td>
+<td>Japanese</td>
+<td>Chef-Owner</td>
+<td>Sagetsu by Tetsuya</td>
+<td><span class="cuisine-tag">Japanese</span> <span class="cuisine-tag">Kaiseki</span></td>
+<td><span class="badge michelin">⭐⭐ 2 Michelin</span></td>
+<td>Za'abeel, Dubai</td>
+<td>35+ yrs | Waku Ghin Singapore | Tetsuya's Sydney</td>
+<td class="social-links"><a href="https://instagram.com/tikibar_tet" target="_blank">📸 Instagram</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Vineet Bhatia</strong></td>
+<td>Indian</td>
+<td>Celebrity Chef</td>
+<td>Indego by Vineet / Indya by Vineet</td>
+<td><span class="cuisine-tag">Indian</span> <span class="cuisine-tag">Modern Fusion</span></td>
+<td><span class="badge michelin">⭐ Michelin (London)</span></td>
+<td>Grosvenor House / Le Royal Meridien, Dubai Marina</td>
+<td>30+ yrs | First Indian chef to receive a Michelin star</td>
+<td class="social-links"><a href="https://instagram.com/indegobyvineet" target="_blank">📸 @indegobyvineet</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Solemann Haddad</strong></td>
+<td>Emirati</td>
+<td>Chef-Owner</td>
+<td>Moonrise</td>
+<td><span class="cuisine-tag">Contemporary</span> <span class="cuisine-tag">Tasting Menu</span></td>
+<td><span class="badge michelin">⭐ 1 Michelin</span></td>
+<td>Eden House, Al Satwa, Dubai</td>
+<td>Young Chef | Michelin Young Chef Award 2023</td>
+<td class="social-links"><a href="https://instagram.com/solemann.xyz" target="_blank">📸 @solemann.xyz</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Heston Blumenthal</strong></td>
+<td>British</td>
+<td>Celebrity Chef</td>
+<td>Dinner by Heston Blumenthal</td>
+<td><span class="cuisine-tag">British</span> <span class="cuisine-tag">Historical</span></td>
+<td><span class="badge michelin">⭐ 1 Michelin</span></td>
+<td>Atlantis The Royal, Palm Islands, Dubai</td>
+<td>30+ yrs | The Fat Duck (3 Michelin) | OBE</td>
+<td class="social-links"><a href="https://instagram.com/hestonblumenthal" target="_blank">📸 Instagram</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Mohamad Orfali</strong></td>
+<td>Syrian</td>
+<td>Chef-Owner</td>
+<td>Orfali Bros</td>
+<td><span class="cuisine-tag">Contemporary</span> <span class="cuisine-tag">Levantine</span></td>
+<td><span class="badge michelin">⭐ 1 Michelin</span></td>
+<td>Wasl 51, Jumeirah, Dubai</td>
+<td>15+ yrs | Best Restaurant in MENA 2023 | Co-founded with brothers Wassim & Omar</td>
+<td class="social-links"><a href="https://instagram.com/m.orfali" target="_blank">📸 @m.orfali</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>José Avillez</strong></td>
+<td>Portuguese</td>
+<td>Celebrity Chef</td>
+<td>Tasca by José Avillez</td>
+<td><span class="cuisine-tag">Portuguese</span></td>
+<td><span class="badge michelin">⭐ 1 Michelin</span></td>
+<td>Mandarin Oriental Jumeirah, Dubai</td>
+<td>25+ yrs | 2 Michelin stars at Belcanto, Lisbon</td>
+<td class="social-links"><a href="https://instagram.com/joseavillez" target="_blank">📸 Instagram</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Anne-Sophie Pic</strong></td>
+<td>French</td>
+<td>Celebrity Chef</td>
+<td>La Dame de Pic Dubai</td>
+<td><span class="cuisine-tag">French</span> <span class="cuisine-tag">Fine Dining</span></td>
+<td><span class="badge michelin">⭐ 1 Michelin</span></td>
+<td>The Link, Za'abeel, Dubai</td>
+<td>25+ yrs | 3 Michelin stars at Maison Pic, France</td>
+<td class="social-links"><a href="https://instagram.com/annesophiepic" target="_blank">📸 Instagram</a><br><a href="https://ladamedepicdubai.com" target="_blank">🌐 Website</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>Neha Mishra</strong></td>
+<td>Indian</td>
+<td>Chef-Owner</td>
+<td>Kinoya</td>
+<td><span class="cuisine-tag">Japanese Ramen</span> <span class="cuisine-tag">Izakaya</span></td>
+<td><span class="badge michelin">🏅 Bib Gourmand</span></td>
+<td>Onyx Tower, The Greens, Dubai</td>
+<td>12+ yrs | Indian-born ramen specialist</td>
+<td class="social-links"><a href="https://instagram.com/astoryoffood" target="_blank">📸 @astoryoffood</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>Pierre Gagnaire</strong></td>
+<td>French</td>
+<td>Celebrity Chef</td>
+<td>Pierre's TT</td>
+<td><span class="cuisine-tag">French</span> <span class="cuisine-tag">Modern Gastronomy</span></td>
+<td><span class="badge michelin">⭐⭐⭐ 3 Michelin (Paris)</span></td>
+<td>Dubai</td>
+<td>40+ yrs | Also at Fouquet's Abu Dhabi, Louvre Abu Dhabi</td>
+<td class="social-links"><a href="https://instagram.com/pierregagnaire" target="_blank">📸 Instagram</a><br><a href="https://pierresdubai.com" target="_blank">🌐 Website</a></td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>Nobu Matsuhisa</strong></td>
+<td>Japanese</td>
+<td>Celebrity Chef</td>
+<td>Nobu Dubai</td>
+<td><span class="cuisine-tag">Japanese</span> <span class="cuisine-tag">Peruvian Fusion</span></td>
+<td><span class="badge michelin">⭐ Michelin (Multiple)</span></td>
+<td>Atlantis The Palm, Dubai</td>
+<td>45+ yrs | 57+ restaurants globally | Started as a dishwasher in Tokyo</td>
+<td class="social-links"><a href="https://instagram.com/therealnobu" target="_blank">📸 @therealnobu</a></td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>Vikas Khanna</strong></td>
+<td>Indian</td>
+<td>Celebrity Chef</td>
+<td>Kinara / Ellora</td>
+<td><span class="cuisine-tag">Indian</span> <span class="cuisine-tag">Modern</span></td>
+<td><span class="badge michelin">⭐ Michelin (Junoon NYC)</span></td>
+<td>JA Lake View Hotel / JA Beach Hotel, Dubai</td>
+<td>25+ yrs | TV personality | Author | Filmmaker</td>
+<td class="social-links"><a href="https://instagram.com/vikaborz" target="_blank">📸 Instagram</a><br><a href="https://instagram.com/kinaradxb" target="_blank">📸 @kinaradxb</a></td>
+</tr>
+<tr>
+<td>16</td>
+<td><strong>Rohit Ghai</strong></td>
+<td>Indian</td>
+<td>Chef-Owner</td>
+<td>Kutir Dubai</td>
+<td><span class="cuisine-tag">Indian</span> <span class="cuisine-tag">Fine Dining</span></td>
+<td><span class="badge michelin">⭐ Michelin (London)</span></td>
+<td>Dubai</td>
+<td>20+ yrs | Trained at Jamavar London (1 Michelin)</td>
+<td class="social-links"><a href="https://instagram.com/rohit_ghai" target="_blank">📸 Instagram</a></td>
+</tr>
+<tr>
+<td>17</td>
+<td><strong>Vivek Singh</strong></td>
+<td>Indian</td>
+<td>Chef-Owner</td>
+<td>Cinnamon Club Dubai</td>
+<td><span class="cuisine-tag">Indian</span> <span class="cuisine-tag">Modern British-Indian</span></td>
+<td><span class="badge michelin">⭐ Michelin-recognized</span></td>
+<td>Park Hyatt Dubai</td>
+<td>25+ yrs | Cinnamon Club London iconic institution</td>
+<td class="social-links"><a href="https://instagram.com/chefviveksingh" target="_blank">📸 Instagram</a></td>
+</tr>
+<tr>
+<td>18</td>
+<td><strong>Nicolas Isnard</strong></td>
+<td>French</td>
+<td>Executive Chef</td>
+<td>Bord Eau</td>
+<td><span class="cuisine-tag">French</span> <span class="cuisine-tag">Contemporary</span></td>
+<td><span class="badge michelin">⭐ Michelin-acclaimed</span></td>
+<td>Shangri-La Qaryat Al Beri, Abu Dhabi</td>
+<td>20+ yrs | Globally acclaimed French cuisine</td>
+<td class="social-links"><a href="https://shangri-la.com/abudhabi" target="_blank">🌐 Website</a></td>
+</tr>
+<tr>
+<td>19</td>
+<td><strong>Takashi Namekata</strong></td>
+<td>Japanese</td>
+<td>Head Chef</td>
+<td>TAKAHISA</td>
+<td><span class="cuisine-tag">Japanese</span> <span class="cuisine-tag">Kaiseki</span></td>
+<td><span class="badge michelin">🏅 Michelin Guide 2025</span></td>
+<td>Dubai</td>
+<td>15+ yrs | Tokyo Ukai Group (7 consecutive Michelin Guide Tokyo years)</td>
+<td class="social-links"><a href="https://takahisa.ae" target="_blank">🌐 Website</a></td>
+</tr>
+<tr>
+<td>20</td>
+<td><strong>Gregoire Berger</strong></td>
+<td>French</td>
+<td>Chef-Owner</td>
+<td>Kraken</td>
+<td><span class="cuisine-tag">Modern Fine Dining</span></td>
+<td><span class="badge michelin">⭐ Michelin-recognized</span></td>
+<td>Al Wasl Road, Dubai</td>
+<td>15+ yrs | Award-winning Dubai chef</td>
+<td class="social-links"><a href="https://instagram.com/chefgregoireberger" target="_blank">📸 @chefgregoireberger</a></td>
+</tr>
+<tr>
+<td>21</td>
+<td><strong>Hadrien Villedieu</strong></td>
+<td>French</td>
+<td>Head Chef</td>
+<td>Chez Wam</td>
+<td><span class="cuisine-tag">French</span> <span class="cuisine-tag">Global Fusion</span></td>
+<td><span class="badge michelin">⭐ Michelin-recognized</span></td>
+<td>St Regis Gardens, Palm Jumeirah</td>
+<td>12+ yrs</td>
+<td class="social-links"><a href="https://instagram.com/hadrienvilledieu" target="_blank">📸 @hadrienvilledieu</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- ═══════════════ SECTION 2: 5-STAR HOTEL EXECUTIVE CHEFS ═══════════════ -->
+<div class="section">
+<h2 class="section-title">🏨 5-Star Hotel Executive Chefs <span>(35 Chefs)</span></h2>
+<table id="hotelTable">
+<thead>
+<tr>
+<th>#</th>
+<th>Chef Name</th>
+<th>Nationality</th>
+<th>Position</th>
+<th>Hotel / Restaurant</th>
+<th>Cuisine</th>
+<th>Rating</th>
+<th>Location</th>
+<th>Experience</th>
+<th>Profile Links</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>22</td><td><strong>Hamid Raddawi</strong></td><td>Lebanese</td><td>Executive Chef</td><td>Marriott Hotel Al Jaddaf</td><td><span class="cuisine-tag">International</span> <span class="cuisine-tag">Arabic</span></td><td><span class="badge five-star">5⭐</span></td><td>Al Jaddaf, Dubai</td><td>15+ yrs | Newly appointed 2025</td><td><a href="https://hotelandcatering.com/news/marriott-hotel-al-jaddaf-appoints-hamid-raddawi-as-executive-chef" target="_blank">🌐 Profile</a></td></tr>
+<tr><td>23</td><td><strong>Hussam Eddie Kredeih</strong></td><td>Lebanese</td><td>Executive Chef</td><td>Abu Dhabi National Hotels / Compass ME</td><td><span class="cuisine-tag">International</span> <span class="cuisine-tag">Mediterranean</span></td><td><span class="badge five-star">5⭐</span></td><td>Abu Dhabi, UAE</td><td>22+ yrs in UAE hotels</td><td><a href="https://www.linkedin.com/in/hussam-eddie-kredeih-b69780203/" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>24</td><td><strong>Mohamed Rabiie</strong></td><td>Egyptian</td><td>Head Chef</td><td>Fine Dining & Catering</td><td><span class="cuisine-tag">Fine Dining</span> <span class="cuisine-tag">International</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, UAE</td><td>19+ yrs | Fine dining, casual dining, large-scale events</td><td><a href="https://www.linkedin.com/in/mohamed-rabiie-a8470a144/" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>25</td><td><strong>Velat Sari</strong></td><td>Turkish</td><td>Corporate Executive Chef</td><td>Nusr-Et Steakhouse (Salt Bae chain)</td><td><span class="cuisine-tag">Steak</span> <span class="cuisine-tag">Turkish</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, Abu Dhabi & Qatar</td><td>15+ yrs | Multiple Nusr-Et locations</td><td><a href="https://www.linkedin.com/in/velat-sari-358a6a1b4/" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>26</td><td><strong>Mahmoud Bayoumi</strong></td><td>Egyptian</td><td>Head Chef</td><td>IHG Hotels & Resorts</td><td><span class="cuisine-tag">International</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, UAE</td><td>15+ yrs</td><td><a href="https://www.linkedin.com/in/mahmoud-bayoumi-b89b42a0/" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>27</td><td><strong>Jehan Palmero</strong></td><td>Filipino</td><td>Executive Chef</td><td>Hattan Investments LLC</td><td><span class="cuisine-tag">International</span> <span class="cuisine-tag">Asian</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, UAE</td><td>18+ yrs</td><td><a href="https://www.linkedin.com/in/jehan-palmero-b3a37279/" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>28</td><td><strong>Xavier Diego</strong></td><td>Spanish</td><td>Executive Sous Chef</td><td>Lock Stock & Barrel (4 outlets)</td><td><span class="cuisine-tag">International</span> <span class="cuisine-tag">Bar Food</span></td><td><span class="badge four-star">4⭐</span></td><td>Dubai & Abu Dhabi</td><td>12+ yrs</td><td><a href="https://www.linkedin.com/in/-xavier-diego/" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>29</td><td><strong>Sandeep Ail</strong></td><td>Indian</td><td>Executive Chef</td><td>Super Eats Investment LLC</td><td><span class="cuisine-tag">Indian</span> <span class="cuisine-tag">International</span></td><td><span class="badge four-star">4⭐</span></td><td>Dubai, UAE</td><td>15+ yrs | 500+ connections</td><td><a href="https://www.linkedin.com/in/chef-sandeep-ail/" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>30</td><td><strong>Asad Ali</strong></td><td>Pakistani</td><td>Chef</td><td>The Elite Health Club</td><td><span class="cuisine-tag">Pakistani</span> <span class="cuisine-tag">Continental</span></td><td><span class="badge four-star">4⭐</span></td><td>Dubai, UAE</td><td>10+ yrs</td><td><a href="https://www.linkedin.com/in/chef-asad-ali-a1135543/" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>31</td><td><strong>Ritu Limbu</strong></td><td>Nepali</td><td>Chef</td><td>Chef Middle East</td><td><span class="cuisine-tag">International</span></td><td><span class="badge four-star">4⭐</span></td><td>Dubai, UAE</td><td>10+ yrs</td><td><a href="https://www.linkedin.com/in/ritu-limbu-43968826a/" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>32</td><td><strong>Vikas Milhoutra</strong></td><td>Indian</td><td>Executive Chef</td><td>Taj Dubai</td><td><span class="cuisine-tag">Indian</span> <span class="cuisine-tag">International</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, UAE</td><td>30 yrs | Oversees culinary operations at Taj Dubai</td><td><a href="https://linkedin.com" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>33</td><td><strong>Tom Coll</strong></td><td>British</td><td>Executive Pastry Chef</td><td>Jumeirah Burj Al Arab</td><td><span class="cuisine-tag">Pastry</span> <span class="cuisine-tag">French Patisserie</span></td><td><span class="badge five-star">5⭐ Iconic</span></td><td>Burj Al Arab, Dubai</td><td>15+ yrs | Elevated Burj Al Arab pastry since 2019 | LA LISTE recognized</td><td><a href="https://instagram.com/tomcollpastry" target="_blank">📸 Instagram</a></td></tr>
+<tr><td>34</td><td><strong>Kevin Roehrig</strong></td><td>French</td><td>Executive Chef</td><td>Jumeirah Mina Al Salam</td><td><span class="cuisine-tag">French</span> <span class="cuisine-tag">International</span></td><td><span class="badge five-star">5⭐</span></td><td>Madinat Jumeirah, Dubai</td><td>20+ yrs | Chef Power List 2024</td><td>💼 LinkedIn</td></tr>
+<tr><td>35</td><td><strong>Christophe Devoille</strong></td><td>French</td><td>Executive Pastry Chef</td><td>Atlantis The Royal</td><td><span class="cuisine-tag">Pastry</span> <span class="cuisine-tag">French</span></td><td><span class="badge five-star">5⭐ Ultra-Luxury</span></td><td>Palm Jumeirah, Dubai</td><td>20+ yrs | Decade working with Alain Ducasse</td><td><a href="https://thebestchefawards.com/2024/12/16/foodmission-2024-christophe-devoille-atlantis-the-royal-dubai-uae/" target="_blank">🌐 Profile</a></td></tr>
+<tr><td>36</td><td><strong>Mohammad Zeeshan</strong></td><td>Indian</td><td>Executive Chef</td><td>Trèsind Dubai</td><td><span class="cuisine-tag">Indian</span> <span class="cuisine-tag">Fine Dining</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai</td><td>15+ yrs | Pro Chef of the Year 2024</td><td>💼 LinkedIn</td></tr>
+<tr><td>37</td><td><strong>Akshaya Dhar</strong></td><td>Indian</td><td>Executive Sous Chef</td><td>Emirates Flight Catering</td><td><span class="cuisine-tag">International</span> <span class="cuisine-tag">Multi-Cuisine</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, UAE</td><td>12+ yrs</td><td><a href="https://www.linkedin.com/in/akshaya-dhar-a3936b18b/" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>38</td><td><strong>Alan Corcoran</strong></td><td>Irish</td><td>Executive Chef</td><td>Emirates Flight Catering</td><td><span class="cuisine-tag">International</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, UAE</td><td>20+ yrs | Best 30 Chefs ME 2025</td><td>💼 LinkedIn</td></tr>
+<tr><td>39</td><td><strong>Alper Adiller</strong></td><td>Turkish</td><td>Executive Chef</td><td>Rixos Al Mairid</td><td><span class="cuisine-tag">Turkish</span> <span class="cuisine-tag">International</span></td><td><span class="badge five-star">5⭐</span></td><td>Ras Al Khaimah, UAE</td><td>18+ yrs | Best 30 Chefs ME 2025</td><td>💼 LinkedIn</td></tr>
+<tr><td>40</td><td><strong>Clive Micallef</strong></td><td>Maltese</td><td>Executive Chef</td><td>Marriott Marquis Dubai (Jewel of the Creek)</td><td><span class="cuisine-tag">International</span> <span class="cuisine-tag">Mediterranean</span></td><td><span class="badge five-star">5⭐</span></td><td>Business Bay, Dubai</td><td>20+ yrs | Best 30 Chefs ME 2025</td><td>💼 LinkedIn</td></tr>
+<tr><td>41</td><td><strong>Akshay Batra</strong></td><td>Indian</td><td>Executive Pastry Chef</td><td>Sofitel Dubai The Palm</td><td><span class="cuisine-tag">Pastry</span> <span class="cuisine-tag">Indian Fusion</span></td><td><span class="badge five-star">5⭐</span></td><td>Palm Jumeirah, Dubai</td><td>15+ yrs | India, USA & UAE experience | Award-winning</td><td>💼 LinkedIn</td></tr>
+<tr><td>42</td><td><strong>Beatrice Segoni</strong></td><td>Italian</td><td>Head Chef</td><td>Pierchic</td><td><span class="cuisine-tag">Italian</span> <span class="cuisine-tag">Seafood</span></td><td><span class="badge five-star">5⭐</span></td><td>Al Qasr, Madinat Jumeirah, Dubai</td><td>14+ yrs | Borgo San Jacopo, Florence</td><td><a href="https://instagram.com/beatricesegoni" target="_blank">📸 Instagram</a></td></tr>
+<tr><td>43</td><td><strong>Francesco Guarracino</strong></td><td>Italian</td><td>Group Executive Chef</td><td>Roberto's Dubai</td><td><span class="cuisine-tag">Italian</span> <span class="cuisine-tag">Fine Dining</span></td><td><span class="badge five-star">5⭐</span></td><td>DIFC, Dubai</td><td>20+ yrs | CCO & table side cooking specialist</td><td><a href="https://instagram.com/giuseppepezzellachef" target="_blank">📸 Instagram (13K)</a><br><a href="https://touch-dubai.com/francesco-guarracino" target="_blank">🌐 Profile</a></td></tr>
+<tr><td>44</td><td><strong>Marco Genovese</strong></td><td>Italian</td><td>Head Chef</td><td>Cinque at FIVE Palm Jumeirah</td><td><span class="cuisine-tag">Italian</span> <span class="cuisine-tag">Amalfi Coast</span></td><td><span class="badge five-star">5⭐</span></td><td>Palm Jumeirah, Dubai</td><td>15+ yrs</td><td><a href="https://palmjumeirah.fivehotelsandresorts.com/eat-drink/cinque/" target="_blank">🌐 Website</a></td></tr>
+<tr><td>45</td><td><strong>Hisao Ueda</strong></td><td>Japanese</td><td>Head Sushi Chef</td><td>Various Dubai Japanese restaurants</td><td><span class="cuisine-tag">Japanese</span> <span class="cuisine-tag">Sushi</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, UAE (since 2011)</td><td>20+ yrs | Born Hokkaido | Kaiseki trained 7 yrs</td><td>📸 Instagram</td></tr>
+<tr><td>46</td><td><strong>Akinori "Aki" Tanigawa</strong></td><td>Japanese</td><td>Head Chef</td><td>Dubai Japanese Restaurant</td><td><span class="cuisine-tag">Japanese</span> <span class="cuisine-tag">Kaiseki</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, UAE</td><td>30+ yrs | Kaiseki mastery</td><td>🌐 Restaurant site</td></tr>
+<tr><td>47</td><td><strong>Daihachiro Ebata</strong></td><td>Japanese</td><td>Sushi Head Chef</td><td>Dubai Japanese Restaurant</td><td><span class="cuisine-tag">Japanese</span> <span class="cuisine-tag">Sushi Omakase</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, UAE</td><td>15+ yrs | 5 yrs Sushi Wakon, Kyoto</td><td>🌐 Restaurant site</td></tr>
+<tr><td>48</td><td><strong>Ali El Bourji</strong></td><td>Lebanese</td><td>Executive Chef</td><td>Ayamna, Atlantis The Palm</td><td><span class="cuisine-tag">Lebanese</span> <span class="cuisine-tag">Arabic</span></td><td><span class="badge five-star">5⭐</span></td><td>Atlantis, Palm Jumeirah, Dubai</td><td>15+ yrs | Modern Lebanese fine dining</td><td>🌐 Atlantis site</td></tr>
+<tr><td>49</td><td><strong>Carmen Rueda Hernandez</strong></td><td>Spanish</td><td>Pastry Chef</td><td>3 Fils / Brix</td><td><span class="cuisine-tag">Pastry</span> <span class="cuisine-tag">Avant-Garde</span></td><td><span class="badge michelin">🏆 Best Pastry MENA 2025</span></td><td>Jumeirah Fishing Harbour, Dubai</td><td>12+ yrs | The Fat Duck (UK) | El Bulli (Spain) | Silk Road dessert menu</td><td>📸 Instagram</td></tr>
+<tr><td>50</td><td><strong>Syifani Fortuna Azzahra</strong></td><td>Indonesian</td><td>Pastry Chef</td><td>EMAAR Arabian Ranches</td><td><span class="cuisine-tag">Pastry</span></td><td><span class="badge five-star">5⭐</span></td><td>Arabian Ranches, Dubai</td><td>10+ yrs | Female Chef of the Year 2025</td><td>💼 LinkedIn</td></tr>
+<tr><td>51</td><td><strong>Abdul Muneer</strong></td><td>Indian</td><td>Senior Chef de Partie (Pastry)</td><td>Wyndham Garden Ajman Corniche</td><td><span class="cuisine-tag">Pastry</span></td><td><span class="badge four-star">4⭐</span></td><td>Ajman, UAE</td><td>10+ yrs | Pastry Chef of the Year 2025</td><td>💼 LinkedIn</td></tr>
+<tr><td>52</td><td><strong>Mulyatna S.</strong></td><td>Indonesian</td><td>Executive Pastry Chef</td><td>Erth Abu Dhabi</td><td><span class="cuisine-tag">Pastry</span> <span class="cuisine-tag">International</span></td><td><span class="badge five-star">5⭐</span></td><td>Abu Dhabi, UAE</td><td>20 yrs | Luxury hotel pastry specialist</td><td>💼 LinkedIn</td></tr>
+<tr><td>53</td><td><strong>Adhi Pramono</strong></td><td>Indonesian</td><td>Head Pastry Chef</td><td>Nobu Restaurants</td><td><span class="cuisine-tag">Pastry</span> <span class="cuisine-tag">Japanese Fusion</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, UAE</td><td>15+ yrs</td><td><a href="https://www.linkedin.com/in/adhi-pramono-3391b044/" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>54</td><td><strong>Mathieu Balbino</strong></td><td>French</td><td>Chef de Cuisine</td><td>Pierre's TT (Pierre Gagnaire)</td><td><span class="cuisine-tag">French</span> <span class="cuisine-tag">Modern Gastronomy</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai, UAE</td><td>12+ yrs | Works alongside Pierre Gagnaire</td><td><a href="https://pierresdubai.com" target="_blank">🌐 Website</a></td></tr>
+<tr><td>55</td><td><strong>AJ (Chef)</strong></td><td>—</td><td>Executive Pastry Chef</td><td>NH Collection Dubai The Palm</td><td><span class="cuisine-tag">Pastry</span></td><td><span class="badge five-star">5⭐</span></td><td>Palm Jumeirah, Dubai</td><td>20 yrs | Chef Power List 2024</td><td>💼 LinkedIn</td></tr>
+<tr><td>56</td><td><strong>Meera Alnaqbi</strong></td><td>Emirati</td><td>Chef-Entrepreneur</td><td>Healthy Food Business</td><td><span class="cuisine-tag">Healthy</span> <span class="cuisine-tag">Emirati</span></td><td><span class="badge four-star">4⭐</span></td><td>Sharjah, UAE</td><td>10+ yrs | Emirati food advocate</td><td><a href="https://www.linkedin.com/in/meera-alnaqbi-43830914b/" target="_blank">💼 LinkedIn</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ═══════════════ SECTION 3: CELEBRITY & RESTAURANT CHEFS ═══════════════ -->
+<div class="section">
+<h2 class="section-title">🌟 Celebrity & Restaurant Owner Chefs <span>(20 Chefs)</span></h2>
+<table id="celebTable">
+<thead>
+<tr>
+<th>#</th>
+<th>Chef Name</th>
+<th>Nationality</th>
+<th>Type</th>
+<th>Restaurant(s) in Dubai</th>
+<th>Cuisine</th>
+<th>Rating</th>
+<th>Location</th>
+<th>Experience & Bio</th>
+<th>Social / Contact</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>57</td><td><strong>Gordon Ramsay</strong></td><td>British</td><td>Celebrity Chef</td><td>Gordon Ramsay's Hell's Kitchen / Bread Street Kitchen</td><td><span class="cuisine-tag">French</span> <span class="cuisine-tag">British</span></td><td><span class="badge michelin">⭐⭐⭐ 3 Michelin (London)</span></td><td>Atlantis / Caesars Palace, Dubai</td><td>35+ yrs | OBE | Hell's Kitchen host | Studio Ramsay founder | 7 Michelin stars total</td><td><a href="https://instagram.com/gordongram" target="_blank">📸 @gordongram</a></td></tr>
+<tr><td>58</td><td><strong>Nusret Gökçe (Salt Bae)</strong></td><td>Turkish</td><td>Chef-Owner</td><td>Nusr-Et Steakhouse</td><td><span class="cuisine-tag">Steak</span> <span class="cuisine-tag">Turkish</span></td><td><span class="badge five-star">5⭐</span></td><td>Four Seasons, Jumeirah Beach, Dubai</td><td>15+ yrs | Viral sensation 2017 | 50M+ social followers</td><td><a href="https://instagram.com/nusr_et" target="_blank">📸 @nusr_et</a></td></tr>
+<tr><td>59</td><td><strong>Burak Özdemir (CZN Burak)</strong></td><td>Turkish</td><td>Chef-Owner</td><td>CZNBurak Dubai</td><td><span class="cuisine-tag">Turkish</span> <span class="cuisine-tag">Ottoman</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai (Multiple locations)</td><td>Born 1994 | 70M+ followers | Hatay Civilizations Table chain</td><td><a href="https://instagram.com/cznburak" target="_blank">📸 @cznburak</a></td></tr>
+<tr><td>60</td><td><strong>Akira Back</strong></td><td>Korean-American</td><td>Celebrity Chef</td><td>Akira Back Dubai</td><td><span class="cuisine-tag">Japanese</span> <span class="cuisine-tag">Korean Fusion</span></td><td><span class="badge michelin">⭐ 1 Michelin (DOSA)</span></td><td>W Dubai, The Palm</td><td>25+ yrs | Former professional snowboarder | 25+ restaurants globally</td><td><a href="https://instagram.com/chefakiraback" target="_blank">📸 @chefakiraback</a></td></tr>
+<tr><td>61</td><td><strong>Reif Othman</strong></td><td>Singaporean</td><td>Chef-Owner</td><td>Reif Kushiyaki</td><td><span class="cuisine-tag">Japanese</span> <span class="cuisine-tag">Kushiyaki</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai</td><td>15+ yrs | Former finance broker turned award-winning chef</td><td><a href="https://instagram.com/reifo.kee" target="_blank">📸 @reifo.kee</a><br><a href="https://reifkushiyaki.com" target="_blank">🌐 Website</a></td></tr>
+<tr><td>62</td><td><strong>Daniel Boulud</strong></td><td>French</td><td>Celebrity Chef</td><td>Brasserie Boulud</td><td><span class="cuisine-tag">French</span> <span class="cuisine-tag">Middle Eastern Touch</span></td><td><span class="badge michelin">⭐⭐ 2 Michelin (NYC)</span></td><td>Sofitel Dubai The Obelisk</td><td>35+ yrs | International culinary empire</td><td><a href="https://instagram.com/danielboulud" target="_blank">📸 @danielboulud</a></td></tr>
+<tr><td>63</td><td><strong>Kelvin Cheung</strong></td><td>Canadian-Indian</td><td>Chef-Owner</td><td>Jun's Dubai</td><td><span class="cuisine-tag">Third-Culture</span> <span class="cuisine-tag">Fusion</span></td><td><span class="badge four-star">4⭐</span></td><td>Sheikh Mohammed bin Rashid Blvd, Dubai</td><td>15+ yrs | Multi-cultural cuisine pioneer</td><td><a href="https://instagram.com/chefkelvincheung" target="_blank">📸 @chefkelvincheung</a></td></tr>
+<tr><td>64</td><td><strong>Gabriela Chamorro</strong></td><td>Nicaraguan</td><td>Chef-Owner</td><td>Girl and the Goose</td><td><span class="cuisine-tag">Central American</span> <span class="cuisine-tag">Nicaraguan</span></td><td><span class="badge four-star">4⭐</span></td><td>Anantara Downtown, Dubai</td><td>12+ yrs | Pioneering Central American cuisine in UAE</td><td><a href="https://instagram.com/chefgabrielachamorro" target="_blank">📸 @chefgabrielachamorro</a></td></tr>
+<tr><td>65</td><td><strong>Penelope Diaz</strong></td><td>Peruvian</td><td>Chef-Owner</td><td>Fusion Ceviche</td><td><span class="cuisine-tag">Peruvian</span> <span class="cuisine-tag">Latin</span></td><td><span class="badge four-star">4⭐</span></td><td>Cluster Q, JLT, Dubai</td><td>12+ yrs</td><td><a href="https://instagram.com/chef_penelope_diaz" target="_blank">📸 @chef_penelope_diaz</a></td></tr>
+<tr><td>66</td><td><strong>Salam Daqqaq</strong></td><td>Palestinian</td><td>Chef-Owner</td><td>Bait Maryam / Sufret Maryam</td><td><span class="cuisine-tag">Levantine</span> <span class="cuisine-tag">Arabic</span></td><td><span class="badge four-star">4⭐</span></td><td>JLT & Wasl 51, Dubai</td><td>15+ yrs | Authentic home-style Levantine</td><td><a href="https://instagram.com/bait.maryam" target="_blank">📸 @bait.maryam</a></td></tr>
+<tr><td>67</td><td><strong>Mehmet Gürs</strong></td><td>Finnish-Turkish</td><td>Celebrity Chef</td><td>Arrazuna Dubai</td><td><span class="cuisine-tag">Turkish</span> <span class="cuisine-tag">Finnish Fusion</span></td><td><span class="badge five-star">5⭐</span></td><td>Dubai</td><td>25+ yrs | Formerly Mikla Istanbul | US trained</td><td><a href="https://instagram.com/gursmehmet" target="_blank">📸 @gursmehmet</a></td></tr>
+<tr><td>68</td><td><strong>Nouel Catis</strong></td><td>Filipino</td><td>Pastry Chef-Entrepreneur</td><td>Snaap DXB / Consultant</td><td><span class="cuisine-tag">Pastry</span> <span class="cuisine-tag">Chocolate</span></td><td><span class="badge five-star">5⭐ Burj Al Arab Alumni</span></td><td>Downtown Dubai</td><td>20+ yrs | Creator of viral Dubai Chocolate Bar | First Filipino pastry chef at Burj Al Arab (2004) | Etihad Airways in-flight chef</td><td><a href="https://facebook.com/chefnouel" target="_blank">📘 @chefnouel</a></td></tr>
+<tr><td>69</td><td><strong>Ranveer Brar</strong></td><td>Indian</td><td>Celebrity Chef</td><td>Kashkan Dubai</td><td><span class="cuisine-tag">Indian</span> <span class="cuisine-tag">North Indian</span></td><td><span class="badge four-star">4⭐</span></td><td>Dubai</td><td>25+ yrs | TV personality | Author | "Honest food" philosophy</td><td><a href="https://instagram.com/ranveerbrar" target="_blank">📸 @ranveerbrar</a></td></tr>
+<tr><td>70</td><td><strong>Jason Atherton</strong></td><td>British</td><td>Celebrity Chef</td><td>Multiple concepts</td><td><span class="cuisine-tag">British</span> <span class="cuisine-tag">International</span></td><td><span class="badge michelin">⭐ Michelin (Pollen Street)</span></td><td>Dubai</td><td>30+ yrs | Global culinary empire | TV personality</td><td><a href="https://instagram.com/jaborausen" target="_blank">📸 Instagram</a></td></tr>
+<tr><td>71</td><td><strong>Mich Turner</strong></td><td>British</td><td>Pastry Chef</td><td>Little Venice Cake Company</td><td><span class="cuisine-tag">Pastry</span> <span class="cuisine-tag">Couture Cakes</span></td><td><span class="badge five-star">5⭐ Atlantis The Royal</span></td><td>Atlantis The Royal, Dubai</td><td>25+ yrs | MBE | Created Prince William's cake for Expo 2020 | "Queen of Couture Cakes"</td><td><a href="https://instagram.com/michturnerlvcc" target="_blank">📸 @michturnerlvcc</a></td></tr>
+<tr><td>72</td><td><strong>Eric Lanlard</strong></td><td>French</td><td>Pastry Chef</td><td>London-based / Dubai events</td><td><span class="cuisine-tag">Pastry</span> <span class="cuisine-tag">Patisserie</span></td><td><span class="badge five-star">5⭐</span></td><td>London & Dubai</td><td>25+ yrs | Great British Bake Off judge | Award-winning</td><td><a href="https://instagram.com/eric_lanlard" target="_blank">📸 @eric_lanlard</a></td></tr>
+<tr><td>73</td><td><strong>Lamees AttarBashi</strong></td><td>Iraqi-Emirati</td><td>TV Chef</td><td>Chef School / TV</td><td><span class="cuisine-tag">Middle Eastern</span> <span class="cuisine-tag">Modern Arabic</span></td><td><span class="badge four-star">4⭐</span></td><td>Dubai, UAE</td><td>15+ yrs | MBA Engineer turned TV Chef | ICCA Dubai diploma</td><td>📸 Instagram</td></tr>
+<tr><td>74</td><td><strong>Yusra Ahmed</strong></td><td>Emirati</td><td>Private Chef</td><td>Certified Private Chef</td><td><span class="cuisine-tag">Emirati</span> <span class="cuisine-tag">International</span></td><td><span class="badge four-star">4⭐</span></td><td>Abu Dhabi, UAE</td><td>10+ yrs | Certified private chef</td><td><a href="https://instagram.com/chef_yusra" target="_blank">📸 @chef_yusra (512 followers)</a></td></tr>
+<tr><td>75</td><td><strong>Issam Rhachi</strong></td><td>Moroccan</td><td>Head Chef & Influencer</td><td>TFAYA (Park Hyatt Marrakech)</td><td><span class="cuisine-tag">Moroccan</span></td><td><span class="badge five-star">5⭐</span></td><td>Marrakech / Dubai events</td><td>12+ yrs | Food influencer</td><td><a href="https://instagram.com/issamrhachi" target="_blank">📸 @issamrhachi</a></td></tr>
+<tr><td>76</td><td><strong>Osman Merhi</strong></td><td>Saudi</td><td>Executive Chef & Ops Manager</td><td>Venor (3 branches)</td><td><span class="cuisine-tag">Lebanese</span> <span class="cuisine-tag">Arabic</span></td><td><span class="badge four-star">4⭐</span></td><td>Saudi Arabia / UAE events</td><td>15+ yrs</td><td><a href="https://instagram.com/venor_riyadh" target="_blank">📸 @venor_riyadh</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ═══════════════ SECTION 4: PRIVATE & FREELANCE CHEFS ═══════════════ -->
+<div class="section">
+<h2 class="section-title">👨‍🍳 Private & Freelance Chefs <span>(18 Chefs)</span></h2>
+<table id="privateTable">
+<thead>
+<tr>
+<th>#</th>
+<th>Chef Name</th>
+<th>Nationality</th>
+<th>Specialization</th>
+<th>Cuisine</th>
+<th>Rating</th>
+<th>Experience</th>
+<th>Location / Address</th>
+<th>Contact & Social</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>77</td><td><strong>Jeffrey Pearson</strong></td><td>American</td><td>Private Chef / Fine Dining</td><td><span class="cuisine-tag">Michelin-level</span> <span class="cuisine-tag">International</span></td><td><span class="badge private">⭐ 4.9 Private</span></td><td>29+ yrs | Luxury 5-star hotels & restaurants</td><td>The Binary Tower, Business Bay, Dubai, UAE (also Maldives)</td><td>📞 (917) 776-8203<br>📧 Jpfinefoods@gmail.com<br><a href="https://instagram.com/chefjeffreyjpfinefoods" target="_blank">📸 @chefjeffreyjpfinefoods</a><br><a href="https://personalchefdubai.com" target="_blank">🌐 personalchefdubai.com</a><br><a href="https://linkedin.com/in/jeffrey-pearson-private-chef-nyc" target="_blank">💼 LinkedIn</a></td></tr>
+<tr><td>78</td><td><strong>Luca Napoleone</strong></td><td>Italian</td><td>Private Chef (VVIPs/UHNWIs)</td><td><span class="cuisine-tag">Italian</span> <span class="cuisine-tag">Fine Dining</span></td><td><span class="badge private">⭐ Elite</span></td><td>15+ yrs | Dubai's Elite | Founder @privatechefsatelier</td><td>Dubai, UAE</td><td><a href="https://instagram.com/privatechefdubai" target="_blank">📸 @privatechefdubai (18K)</a><br>DM to book</td></tr>
+<tr><td>79</td><td><strong>CHEF CA</strong></td><td>—</td><td>Luxury Private Chef</td><td><span class="cuisine-tag">International</span> <span class="cuisine-tag">Luxury</span></td><td><span class="badge private">⭐ Premium</span></td><td>12+ yrs | Luxury private dining</td><td>Dubai, UAE</td><td><a href="https://instagram.com/chefcaofficial" target="_blank">📸 @chefcaofficial (89K)</a><br>DM For Bookings</td></tr>
+<tr><td>80</td><td><strong>Alexandros Pavlopoulos</strong></td><td>Greek</td><td>Private Chef</td><td><span class="cuisine-tag">Greek</span> <span class="cuisine-tag">Mediterranean</span></td><td><span class="badge private">⭐ Premium</span></td><td>15+ yrs | Greece & Dubai based</td><td>Dubai & Greece</td><td><a href="https://instagram.com/chefsperxos" target="_blank">📸 @chefsperxos (275K)</a></td></tr>
+<tr><td>81</td><td><strong>Teresa (The Gastronomista)</strong></td><td>Spanish</td><td>Private Chef / Supper Club</td><td><span class="cuisine-tag">Spanish</span> <span class="cuisine-tag">European</span></td><td><span class="badge private">⭐ Private</span></td><td>10+ yrs | Chef graduate with pastry training</td><td>Dubai, UAE</td><td><a href="https://instagram.com/thegastronomista" target="_blank">📸 @thegastronomista (6.8K)</a></td></tr>
+<tr><td>82</td><td><strong>Chef Eyad</strong></td><td>Arab</td><td>Private Chef</td><td><span class="cuisine-tag">Arabic</span> <span class="cuisine-tag">International</span></td><td><span class="badge private">⭐ Private</span></td><td>10+ yrs</td><td>Dubai, UAE</td><td><a href="https://instagram.com/chefeyad.dubai" target="_blank">📸 @chefeyad.dubai (37K)</a></td></tr>
+<tr><td>83</td><td><strong>Mandana Shabani</strong></td><td>Iranian</td><td>Private Chef (TakeAChef)</td><td><span class="cuisine-tag">Persian</span> <span class="cuisine-tag">International</span></td><td><span class="badge private">⭐ 4.9/5 (51 services)</span></td><td>10+ yrs</td><td>Dubai, UAE</td><td><a href="https://takeachef.com/en-ae/private-chef/dubai" target="_blank">🌐 TakeAChef Profile</a></td></tr>
+<tr><td>84</td><td><strong>Chef Francy</strong></td><td>—</td><td>Private Chef (TakeAChef)</td><td><span class="cuisine-tag">International</span></td><td><span class="badge private">⭐ 5.0/5 (43 services)</span></td><td>10+ yrs | Perfect rating</td><td>Dubai, UAE</td><td><a href="https://takeachef.com/en-ae/private-chef/dubai" target="_blank">🌐 TakeAChef Profile</a></td></tr>
+<tr><td>85</td><td><strong>Lucian Dunn</strong></td><td>—</td><td>Private Chef (TakeAChef)</td><td><span class="cuisine-tag">International</span></td><td><span class="badge private">⭐ 4.7/5 (124 services)</span></td><td>12+ yrs | Most experienced on platform</td><td>Dubai, UAE</td><td><a href="https://takeachef.com/en-ae/private-chef/dubai" target="_blank">🌐 TakeAChef Profile</a></td></tr>
+<tr><td>86</td><td><strong>Mauro Altea</strong></td><td>Italian</td><td>Private Chef (TakeAChef)</td><td><span class="cuisine-tag">Italian</span></td><td><span class="badge private">⭐ 4.9/5 (12 services)</span></td><td>10+ yrs</td><td>Dubai, UAE</td><td><a href="https://takeachef.com/en-ae/private-chef/dubai" target="_blank">🌐 TakeAChef Profile</a></td></tr>
+<tr><td>87</td><td><strong>Hilal Ceylan</strong></td><td>Turkish</td><td>Private Chef (TakeAChef)</td><td><span class="cuisine-tag">Turkish</span> <span class="cuisine-tag">Mediterranean</span></td><td><span class="badge private">⭐ 4.8/5 (14 services)</span></td><td>10+ yrs</td><td>Dubai, UAE</td><td><a href="https://takeachef.com/en-ae/private-chef/dubai" target="_blank">🌐 TakeAChef Profile</a></td></tr>
+<tr><td>88</td><td><strong>Abdelrhman Abdellatif</strong></td><td>Egyptian</td><td>Private Chef (TakeAChef)</td><td><span class="cuisine-tag">Egyptian</span> <span class="cuisine-tag">Arabic</span></td><td><span class="badge private">⭐ 4.5/5 (74 services)</span></td><td>12+ yrs</td><td>Dubai, UAE</td><td><a href="https://takeachef.com/en-ae/private-chef/dubai" target="_blank">🌐 TakeAChef Profile</a></td></tr>
+<tr><td>89</td><td><strong>Vanessa Bayma</strong></td><td>Brazilian</td><td>Private Chef (TakeAChef)</td><td><span class="cuisine-tag">Brazilian</span> <span class="cuisine-tag">Latin</span></td><td><span class="badge private">⭐ 4.7/5 (56 services)</span></td><td>10+ yrs</td><td>Dubai, UAE</td><td><a href="https://takeachef.com/en-ae/private-chef/dubai" target="_blank">🌐 TakeAChef Profile</a></td></tr>
+<tr><td>90</td><td><strong>Chef Boudi</strong></td><td>Arab</td><td>Private Chef (EAZ Chef)</td><td><span class="cuisine-tag">Oriental</span> <span class="cuisine-tag">Mediterranean</span> <span class="cuisine-tag">International</span></td><td><span class="badge private">⭐ 5-Star Hotel Trained</span></td><td>17 yrs | 5-star hotels, Royal families, TV cooking programs</td><td>Dubai, UAE</td><td>📞 +971 50 717 1248<br>📧 contact@eazchef.com<br><a href="https://eazchef.com/chef-boudi/" target="_blank">🌐 EAZ Chef Profile</a><br><a href="https://instagram.com/eazchefuae" target="_blank">📸 @eazchefuae</a></td></tr>
+<tr><td>91</td><td><strong>Chef Ryan</strong></td><td>British</td><td>Private Chef (EAZ Chef)</td><td><span class="cuisine-tag">American</span> <span class="cuisine-tag">European</span> <span class="cuisine-tag">International</span></td><td><span class="badge private">⭐ Private</span></td><td>12+ yrs | Culturally diverse background</td><td>Dubai, UAE</td><td>📞 +971 50 717 1249<br>📧 info@eazchef.com<br><a href="https://eazchef.com/chef-ryan/" target="_blank">🌐 EAZ Chef Profile</a></td></tr>
+<tr><td>92</td><td><strong>Chef Mido</strong></td><td>Egyptian</td><td>Private Chef (EAZ Chef)</td><td><span class="cuisine-tag">Indian</span> <span class="cuisine-tag">Arabic</span> <span class="cuisine-tag">Mexican</span> <span class="cuisine-tag">Italian</span></td><td><span class="badge private">⭐ 5-Star Hotel Alumni</span></td><td>15+ yrs in top hotels | Menu development specialist</td><td>Dubai, UAE</td><td>📞 +971 50 717 1248<br><a href="https://eazchef.com/chef-mido-2/" target="_blank">🌐 EAZ Chef Profile</a></td></tr>
+<tr><td>93</td><td><strong>Chef H</strong></td><td>—</td><td>Private Chef (EAZ Chef)</td><td><span class="cuisine-tag">French</span> <span class="cuisine-tag">Italian</span> <span class="cuisine-tag">International</span></td><td><span class="badge private">⭐ Luxury Hotel Alumni</span></td><td>11+ yrs | Four Seasons, Marriott, Address Hotels, Emaar Hospitality</td><td>Dubai, UAE</td><td>📞 +971 50 717 1249<br><a href="https://eazchef.com/chef-h/" target="_blank">🌐 EAZ Chef Profile</a></td></tr>
+<tr><td>94</td><td><strong>Andrea K</strong></td><td>—</td><td>Private Chef</td><td><span class="cuisine-tag">International</span></td><td><span class="badge private">⭐ Private</span></td><td>10+ yrs</td><td>Dubai, UAE</td><td><a href="https://facebook.com/ChefAndreaK" target="_blank">📘 Facebook</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ═══════════════ SECTION 5: FOOD INFLUENCER CHEFS ═══════════════ -->
+<div class="section">
+<h2 class="section-title">📱 Chef Influencers & Food Content Creators <span>(18 Profiles)</span></h2>
+<table id="influencerTable">
+<thead>
+<tr>
+<th>#</th>
+<th>Name</th>
+<th>Nationality</th>
+<th>Platform</th>
+<th>Followers</th>
+<th>Cuisine / Focus</th>
+<th>Location</th>
+<th>Bio / Experience</th>
+<th>Links</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>95</td><td><strong>Assia Kitchen</strong></td><td>Arab</td><td>Instagram / YouTube / TikTok</td><td>1.3M+ (IG) | 6.9M (YT) | 7M (TT)</td><td><span class="cuisine-tag">Middle Eastern</span> <span class="cuisine-tag">Arabic</span></td><td>UAE</td><td>Top cooking influencer in UAE | Score: 9,317</td><td><a href="https://instagram.com/assiakitchen" target="_blank">📸 @assiakitchen</a></td></tr>
+<tr><td>96</td><td><strong>Mr Taster</strong></td><td>Persian</td><td>Instagram / YouTube</td><td>4M+</td><td><span class="cuisine-tag">Street Food</span> <span class="cuisine-tag">International</span></td><td>Dubai, UAE</td><td>Persian food explorer | Score: 8,905</td><td>📸 Instagram</td></tr>
+<tr><td>97</td><td><strong>Afnan Alamir</strong></td><td>Arab</td><td>TikTok / YouTube</td><td>7M (TT) | 6.9M (YT)</td><td><span class="cuisine-tag">Middle Eastern</span></td><td>UAE</td><td>Top food influencer UAE | Score: 9,317</td><td>📸 Instagram</td></tr>
+<tr><td>98</td><td><strong>Giuseppe Pezzella</strong></td><td>Italian</td><td>Instagram</td><td>13K</td><td><span class="cuisine-tag">Italian</span> <span class="cuisine-tag">Fine Dining</span></td><td>Italy & UAE</td><td>Group Executive Chef</td><td><a href="https://instagram.com/giuseppepezzellachef" target="_blank">📸 @giuseppepezzellachef (13K)</a></td></tr>
+<tr><td>99</td><td><strong>Niloofar Pasham</strong></td><td>Iranian</td><td>Instagram</td><td>—</td><td><span class="cuisine-tag">International</span> <span class="cuisine-tag">Persian</span></td><td>Dubai, UAE</td><td>Certified chef | Diverse international cuisines | Score: 8,513</td><td>📸 Instagram</td></tr>
+<tr><td>100</td><td><strong>John Tyson (Angry Chef)</strong></td><td>British</td><td>Instagram</td><td>—</td><td><span class="cuisine-tag">International</span> <span class="cuisine-tag">Traditional</span></td><td>UAE</td><td>Food content creator | Score: 8,632</td><td><a href="https://instagram.com/angry_chef_89_official" target="_blank">📸 @angry_chef_89_official</a></td></tr>
+<tr><td>101</td><td><strong>Joyce Mrad</strong></td><td>Lebanese</td><td>Instagram</td><td>—</td><td><span class="cuisine-tag">Desserts</span> <span class="cuisine-tag">Pastries</span></td><td>Dubai</td><td>Pastry & dessert specialist | Score: 8,669</td><td>📸 Instagram</td></tr>
+<tr><td>102</td><td><strong>Dalia Dogmoch</strong></td><td>Lebanese</td><td>Instagram</td><td>95K</td><td><span class="cuisine-tag">Middle Eastern</span></td><td>UAE</td><td>Chef & cookbook author | @daliaskitchen</td><td><a href="https://instagram.com/daliaskitchen" target="_blank">📸 @daliaskitchen (95K)</a></td></tr>
+<tr><td>103</td><td><strong>Sally Fouad</strong></td><td>Egyptian</td><td>Instagram / TV</td><td>—</td><td><span class="cuisine-tag">Egyptian</span> <span class="cuisine-tag">Healthy</span></td><td>Egypt / UAE</td><td>Chef, nutritionist, TV presenter | "Safara Sally" host | German nutrition cert</td><td><a href="https://instagram.com/sally_fou2ad" target="_blank">📸 @sally_fou2ad</a></td></tr>
+<tr><td>104</td><td><strong>Alaa El Sherbiny</strong></td><td>Egyptian</td><td>Instagram</td><td>—</td><td><span class="cuisine-tag">Egyptian</span> <span class="cuisine-tag">Modern Arabic</span></td><td>Egypt / Dubai</td><td>Son of famous Chef El Sherbiny | Social media personality</td><td><a href="https://instagram.com/alaaelsherbinyofficial" target="_blank">📸 @alaaelsherbinyofficial</a></td></tr>
+<tr><td>105</td><td><strong>Kamal Mouzawak</strong></td><td>Lebanese</td><td>Instagram</td><td>—</td><td><span class="cuisine-tag">Local/Sustainable</span></td><td>Beirut / Dubai</td><td>Restaurateur & food activist | Souk el-Tayeb founder</td><td><a href="https://instagram.com/kamalmouzawak" target="_blank">📸 @kamalmouzawak</a></td></tr>
+<tr><td>106</td><td><strong>Mahdi Bourgi</strong></td><td>Lebanese</td><td>Instagram</td><td>—</td><td><span class="cuisine-tag">Lebanese Pastry</span></td><td>Dubai, UAE</td><td>Chef Pâtissier | Lebanese confectionery specialist</td><td>📸 Instagram</td></tr>
+<tr><td>107</td><td><strong>Mika Tolkachev</strong></td><td>Russian</td><td>TakeAChef</td><td>—</td><td><span class="cuisine-tag">International</span></td><td>Dubai, UAE</td><td>⭐ 4.7/5 (39 services) on TakeAChef</td><td><a href="https://takeachef.com/en-ae" target="_blank">🌐 TakeAChef</a></td></tr>
+<tr><td>108</td><td><strong>Goga Jikia</strong></td><td>Georgian</td><td>TakeAChef</td><td>—</td><td><span class="cuisine-tag">Georgian</span> <span class="cuisine-tag">International</span></td><td>Dubai, UAE</td><td>⭐ 4.3/5 (32 services) on TakeAChef</td><td><a href="https://takeachef.com/en-ae" target="_blank">🌐 TakeAChef</a></td></tr>
+<tr><td>109</td><td><strong>Phillis Kagundu</strong></td><td>Kenyan</td><td>TakeAChef</td><td>—</td><td><span class="cuisine-tag">African</span> <span class="cuisine-tag">International</span></td><td>Dubai, UAE</td><td>⭐ 4.2/5 (31 services) on TakeAChef</td><td><a href="https://takeachef.com/en-ae" target="_blank">🌐 TakeAChef</a></td></tr>
+<tr><td>110</td><td><strong>Andrei Lanovetskii</strong></td><td>Russian</td><td>TakeAChef</td><td>—</td><td><span class="cuisine-tag">Russian</span> <span class="cuisine-tag">European</span></td><td>Dubai, UAE</td><td>⭐ 4.3/5 (26 services) on TakeAChef</td><td><a href="https://takeachef.com/en-ae" target="_blank">🌐 TakeAChef</a></td></tr>
+<tr><td>111</td><td><strong>Adele Wankou</strong></td><td>Cameroonian</td><td>TakeAChef</td><td>—</td><td><span class="cuisine-tag">African</span> <span class="cuisine-tag">French</span></td><td>Dubai, UAE</td><td>⭐ 4.4/5 (20 services) on TakeAChef</td><td><a href="https://takeachef.com/en-ae" target="_blank">🌐 TakeAChef</a></td></tr>
+<tr><td>112</td><td><strong>René Frank</strong></td><td>German</td><td>Award Winner</td><td>—</td><td><span class="cuisine-tag">Pastry</span> <span class="cuisine-tag">Dessert</span></td><td>Germany / Dubai events</td><td>Best Chef Pastry Award 2024 | Coda Berlin</td><td>📸 Instagram</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ═══════════════ RECRUITMENT PLATFORMS ═══════════════ -->
+<div class="section">
+<h2 class="section-title">🔗 Chef Recruitment Platforms & Agencies</h2>
+<table>
+<thead>
+<tr><th>Platform</th><th>Type</th><th>Contact</th><th>Link</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>EAZ Chef</strong></td><td>Private Chef Booking</td><td>📞 +971 50 717 1248 / +971 50 717 1249<br>📧 contact@eazchef.com</td><td><a href="https://eazchef.com" target="_blank">eazchef.com</a></td><td>4 chefs on roster | Dubai-based</td></tr>
+<tr><td><strong>TakeAChef</strong></td><td>Private Chef Marketplace</td><td>Via platform</td><td><a href="https://takeachef.com/en-ae" target="_blank">takeachef.com/en-ae</a></td><td>600+ chefs in Dubai | From 305 AED/person</td></tr>
+<tr><td><strong>InstaChef</strong></td><td>Personal Chef App</td><td>Via app / website form</td><td><a href="https://instachef.ae" target="_blank">instachef.ae</a></td><td>8 cuisine types | Free first trial | iOS & Android</td></tr>
+<tr><td><strong>JP Private Chef Services</strong></td><td>Private Fine Dining</td><td>📞 (917) 776-8203<br>📧 Jpfinefoods@gmail.com</td><td><a href="https://personalchefdubai.com" target="_blank">personalchefdubai.com</a></td><td>Chef Jeffrey | 29+ yrs | Michelin level</td></tr>
+<tr><td><strong>Elite Butlers</strong></td><td>Chef Staffing Agency</td><td>Via website</td><td><a href="https://elitebutlers.ae/private-chef/" target="_blank">elitebutlers.ae</a></td><td>Dubai's #1 chef staffing | Full-time & HNWI chefs</td></tr>
+<tr><td><strong>D-Ocean Household Staffing</strong></td><td>Private Chef Agency</td><td>Via website</td><td><a href="https://doceanhouseholdstaffing.com" target="_blank">doceanhouseholdstaffing.com</a></td><td>GCC-wide | Dubai, Abu Dhabi, Saudi, Qatar</td></tr>
+<tr><td><strong>Silver Swan Recruitment</strong></td><td>Recruitment Agency</td><td>Via website</td><td><a href="https://silverswanrecruitment.com/uae/" target="_blank">silverswanrecruitment.com</a></td><td>Private staffing | Chefs, PAs, butlers</td></tr>
+<tr><td><strong>Harper Fine Dining Recruitment</strong></td><td>Fine Dining Recruitment</td><td>Via WhatsApp</td><td><a href="https://hfdrecruitment.com/locations/dubai/" target="_blank">hfdrecruitment.com</a></td><td>Private chef Dubai placements</td></tr>
+<tr><td><strong>Hosco</strong></td><td>Hospitality Jobs</td><td>Via platform</td><td><a href="https://hosco.com" target="_blank">hosco.com</a></td><td>1.5M+ hospitality professionals</td></tr>
+<tr><td><strong>Bayt.com</strong></td><td>Job Board</td><td>Via platform</td><td><a href="https://bayt.com/en/uae/jobs/chef-jobs/" target="_blank">bayt.com chef jobs</a></td><td>CV search available | UAE-wide</td></tr>
+<tr><td><strong>Dubizzle</strong></td><td>Classifieds / Jobs</td><td>Via platform</td><td><a href="https://dubai.dubizzle.com/jobs-wanted/cook-chef/" target="_blank">dubizzle.com</a></td><td>Chef CVs posted directly | WhatsApp contacts</td></tr>
+<tr><td><strong>CatererGlobal</strong></td><td>Hospitality Jobs</td><td>Via platform</td><td><a href="https://catererglobal.com/jobs/chefs/in-united-arab-emirates" target="_blank">catererglobal.com</a></td><td>UAE chef positions</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="footer">
+<p>📋 <strong>Chef Directory UAE & Middle East</strong> — Compiled April 2026 for EatCookJoy</p>
+<p>112 Chef Profiles | 20+ Nationalities | 15+ Cuisine Types | Michelin ⭐ to Freelance</p>
+<p style="margin-top:10px; font-size:0.8em;">Sources: Michelin Guide Dubai, Wikipedia, LinkedIn, Instagram, TakeAChef, EAZ Chef, Favikon, Hotelier Middle East, Hozpitality Awards, The Best Chef Awards, Curly Tales, What's On, Visit Dubai, and more.</p>
+</div>
+
+<script>
+function filterTable() {
+  const query = document.getElementById('searchBox').value.toLowerCase();
+  const tables = document.querySelectorAll('table');
+  tables.forEach(table => {
+    const rows = table.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+      const text = row.textContent.toLowerCase();
+      row.style.display = text.includes(query) ? '' : 'none';
+    });
+  });
+}
+</script>
+
+</body>
+</html>

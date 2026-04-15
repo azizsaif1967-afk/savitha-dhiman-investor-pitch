@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Trainers & Fitness Coaches in Montreal - Instagram Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; color: #e1306c; margin-bottom: 5px; font-size: 1.8rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.9rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c); padding: 12px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 1rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; transition: all 0.2s; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225,48,108,0.2); }
+  .card .num { color: #555; font-size: 0.75rem; margin-bottom: 4px; }
+  .card a { color: #e1306c; text-decoration: none; font-weight: 600; font-size: 1rem; }
+  .card a:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+  .card .tags { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.loc-montreal { background: #166534; color: #4ade80; }
+  .tag.loc-laval { background: #1e3a5f; color: #60a5fa; }
+  .tag.loc-longueuil { background: #581c87; color: #c084fc; }
+  .tag.loc-westisland { background: #854d0e; color: #fbbf24; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+
+<div class="hero-brand-section">
+    <div class="hero-brand-glow">Montreal Fitness</div>
+    <div class="hero-brand-float">Montreal Fitness</div>
+    <h1>Personal Trainers & Fitness Coaches - Montreal</h1>
+    <p class="subtitle">Instagram profiles | No website required - connect via DM</p>
+</div>
+<div class="stats" id="stats">Loading...</div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name, specialty, or location..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="pt">Personal Trainer</option>
+    <option value="yoga">Yoga / Pilates</option>
+    <option value="boxing">Boxing / MMA</option>
+    <option value="crossfit">CrossFit</option>
+    <option value="studio">Studio / Gym</option>
+    <option value="nutrition">Nutrition</option>
+    <option value="online">Online Coach</option>
+    <option value="bodybuilding">Bodybuilding</option>
+    <option value="stretch">Stretch / Mobility</option>
+    <option value="dance">Dance / Barre</option>
+    <option value="calisthenics">Calisthenics</option>
+    <option value="cycling">Cycling / Spin</option>
+    <option value="strength">Strength & Conditioning</option>
+    <option value="swimming">Swimming</option>
+    <option value="other">Other</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Locations</option>
+    <option value="montreal">Montreal</option>
+    <option value="laval">Laval</option>
+    <option value="longueuil">Longueuil</option>
+    <option value="westisland">West Island</option>
+    <option value="other">Other</option>
+  </select>
+</div>
+<div class="grid" id="grid"></div>
+<footer>
+  <p>Generated on April 2026 | All links go directly to Instagram profiles</p>
+  <p>To connect: Open the profile and send a DM or use the contact in their bio</p>
+</footer>
+<script>
+const trainers = [
+  {u:"bakfit",d:"Personal Trainer & Coach Montreal",c:"pt",l:"montreal"},
+  {u:"dtranfitness",d:"Daniel - Montreal PT",c:"pt",l:"montreal"},
+  {u:"thessiane",d:"Thessiane Mbaingo",c:"pt",l:"montreal"},
+  {u:"danathetrainermtl",d:"Dana Frade CPT",c:"pt",l:"montreal"},
+  {u:"mofitnessmtl",d:"Mose Arsenal",c:"pt",l:"montreal"},
+  {u:"trainwithvic_",d:"Vic - Fat Loss & Hormonal Health",c:"pt",l:"laval"},
+  {u:"liam__lifts_",d:"Liam Bitton NASM PT",c:"pt",l:"montreal"},
+  {u:"mirebout",d:"Mireille Boutin NASM PT",c:"pt",l:"montreal"},
+  {u:"pumpfitnessmtl",d:"Val Desjardins",c:"pt",l:"montreal"},
+  {u:"hayasfit",d:"Personal Trainer Laval/MTL",c:"pt",l:"laval"},
+  {u:"trainwithmeag",d:"Meaghan Kennedy",c:"online",l:"montreal"},
+  {u:"felinca_muscle",d:"Fitness Coach Montreal",c:"pt",l:"montreal"},
+  {u:"rbcoachinginc",d:"RB Coaching Inc",c:"pt",l:"montreal"},
+  {u:"joeltwellness",d:"Joel Tessier",c:"pt",l:"montreal"},
+  {u:"jennybeemtl",d:"JennyBeeMtl",c:"pt",l:"montreal"},
+  {u:"elitecoachingpt",d:"Elite Coaching Montreal",c:"pt",l:"montreal"},
+  {u:"jonchaimberg",d:"Jon Chaimberg APC Gym",c:"pt",l:"montreal"},
+  {u:"bshactive",d:"BSH Active Linda Benjamin",c:"pt",l:"montreal"},
+  {u:"fitfomo",d:"FitFomo Laura Bromberg",c:"online",l:"montreal"},
+  {u:"fitnessfactorymtl",d:"Fitness Factory Montreal",c:"studio",l:"montreal"},
+  {u:"progymmontreal",d:"Pro Gym Montreal",c:"studio",l:"montreal"},
+  {u:"spartrainingmtl",d:"S.P.A.R. Training MTL",c:"strength",l:"montreal"},
+  {u:"str11vefitness",d:"Strive 11 Fitness",c:"studio",l:"montreal"},
+  {u:"escapefitnessnow",d:"Now Alliance Performance",c:"studio",l:"montreal"},
+  {u:"epix_bootcamp",d:"EPIX Training",c:"studio",l:"montreal"},
+  {u:"unitraining.ca",d:"U.N.I. Training",c:"studio",l:"montreal"},
+  {u:"montrealpowerhouse",d:"Montreal Powerhouse",c:"strength",l:"montreal"},
+  {u:"monstergym",d:"Monster Gym",c:"studio",l:"westisland"},
+  {u:"klub20",d:"Klub 20 West Island Gym",c:"studio",l:"westisland"},
+  {u:"f45_fairviewwestisland",d:"F45 Fairview West Island",c:"studio",l:"westisland"},
+  {u:"mongymwestisland",d:"Mon Gym West Island",c:"studio",l:"westisland"},
+  {u:"zgym_longueuil",d:"Z Gym Longueuil",c:"studio",l:"longueuil"},
+  {u:"electroforme_longueuil",d:"Electroforme Longueuil",c:"studio",l:"longueuil"},
+  {u:"crossfitmontreal",d:"CrossFit Montreal",c:"crossfit",l:"montreal"},
+  {u:"pro1.montreal",d:"CrossFit PRO1 Montreal",c:"crossfit",l:"montreal"},
+  {u:"crossfityul",d:"CrossFit YUL",c:"crossfit",l:"montreal"},
+  {u:"crossfitplateau_",d:"Abattoir CrossFit Plateau",c:"crossfit",l:"montreal"},
+  {u:"uptcrossfit",d:"UPT CrossFit",c:"crossfit",l:"montreal"},
+  {u:"cfpulsemtl",d:"CrossFit Pulse Montreal",c:"crossfit",l:"montreal"},
+  {u:"crossfitguerriers",d:"CrossFit Guerriers",c:"crossfit",l:"montreal"},
+  {u:"crossfitwonderland",d:"CrossFit Wonderland",c:"crossfit",l:"montreal"},
+  {u:"pandaboxing_mtl",d:"Panda Boxing",c:"boxing",l:"montreal"},
+  {u:"frankboxingcoach",d:"Francois Hache Lacombe",c:"boxing",l:"montreal"},
+  {u:"sbtboxing",d:"SBT Boxing Gym",c:"boxing",l:"montreal"},
+  {u:"underdog.gym",d:"Underdog Boxing Gym",c:"boxing",l:"montreal"},
+  {u:"victorytrainingcentermtl",d:"Victory Training Center",c:"boxing",l:"montreal"},
+  {u:"boxxing.studio",d:"MTL Boxing",c:"boxing",l:"montreal"},
+  {u:"viking.boxing.club",d:"Club de Boxe Viking",c:"boxing",l:"montreal"},
+  {u:"streetboxingmontreal",d:"Street Boxing Montreal",c:"boxing",l:"montreal"},
+  {u:"blussomyoga",d:"Milorie - Yoga Instructor",c:"yoga",l:"montreal"},
+  {u:"ashtangayogamontreal",d:"Ashtanga Yoga Montreal",c:"yoga",l:"montreal"},
+  {u:"lunayogamtl",d:"Luna Yoga",c:"yoga",l:"montreal"},
+  {u:"centreyogaiyengarmontreal",d:"Centre Yoga Iyengar",c:"yoga",l:"montreal"},
+  {u:"naadayoga",d:"Naada Yoga",c:"yoga",l:"montreal"},
+  {u:"fyrayogamontreal",d:"Fyra Yoga Montreal",c:"yoga",l:"montreal"},
+  {u:"modoyogamontreal",d:"Modo Yoga Montreal",c:"yoga",l:"montreal"},
+  {u:"modoyogawestisland",d:"Modo Yoga West Island",c:"yoga",l:"westisland"},
+  {u:"rosewooxx",d:"Rose Woo Pilates",c:"yoga",l:"montreal"},
+  {u:"pilatikapilatesoldport",d:"Pilatika Pilates Old Montreal",c:"yoga",l:"montreal"},
+  {u:"sashateed",d:"Sasha Pilates",c:"yoga",l:"montreal"},
+  {u:"kpilatesstudiomontreal",d:"K Pilates Studio",c:"yoga",l:"westisland"},
+  {u:"rozepilates",d:"Roze Pilates",c:"yoga",l:"montreal"},
+  {u:"mtlpilateslab",d:"MTL Pilates Lab",c:"yoga",l:"montreal"},
+  {u:"studio.pilatesclub",d:"Pilates Club",c:"yoga",l:"montreal"},
+  {u:"lachromebarre",d:"La Chrome Barre",c:"dance",l:"montreal"},
+  {u:"blackswanstudio.mtl",d:"Studio Black Swan",c:"dance",l:"montreal"},
+  {u:"rachiejo",d:"Rachel - Health Nutrition Coach",c:"nutrition",l:"montreal"},
+  {u:"burn.by.han",d:"Hannah Carpin Nutrition",c:"nutrition",l:"montreal"},
+  {u:"ocnutritioncoaching",d:"OC Nutrition Coaching",c:"nutrition",l:"montreal"},
+  {u:"zeinamoves",d:"Zeina Nutritionist",c:"nutrition",l:"montreal"},
+  {u:"calisthenicsmontreal",d:"Calisthenics Montreal",c:"calisthenics",l:"montreal"},
+  {u:"prostretch.mtl",d:"Pro Stretch MTL",c:"stretch",l:"montreal"},
+  {u:"mobilitymtl",d:"Mobility Montreal",c:"stretch",l:"montreal"},
+  {u:"report_fitness",d:"Report HIIT & Calisthenics",c:"calisthenics",l:"montreal"},
+  {u:"montreal_summum_classic",d:"Montreal Summum Classic",c:"bodybuilding",l:"montreal"},
+  {u:"fitlogclassic",d:"FITLOG Classic",c:"bodybuilding",l:"montreal"},
+  {u:"swimfactorymtl",d:"SwimFactory MTL",c:"swimming",l:"montreal"},
+  {u:"swimmontreal",d:"Institut de natation de Montreal",c:"swimming",l:"montreal"},
+  {u:"swammontreal",d:"SWAM Montreal",c:"swimming",l:"montreal"},
+  {u:"lifecyclespinstudio",d:"LIFECycle Spin Studio",c:"cycling",l:"montreal"}
+];
+const seen = new Set();
+const unique = trainers.filter(t => { if (seen.has(t.u)) return false; seen.add(t.u); return true; });
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+function getLocClass(l) { const map = {'montreal':'loc-montreal','laval':'loc-laval','longueuil':'loc-longueuil','westisland':'loc-westisland'}; return map[l] || 'other'; }
+function getLocLabel(l) { const map = {'montreal':'Montreal','laval':'Laval','longueuil':'Longueuil','westisland':'West Island','other':'Other'}; return map[l] || 'Montreal'; }
+function getCatLabel(c) { const map = {pt:'Personal Trainer',yoga:'Yoga / Pilates',boxing:'Boxing / MMA',crossfit:'CrossFit',studio:'Studio / Gym',nutrition:'Nutrition',online:'Online Coach',bodybuilding:'Bodybuilding',stretch:'Stretch / Mobility',dance:'Dance / Barre',calisthenics:'Calisthenics',cycling:'Cycling / Spin',strength:'Strength & Conditioning',swimming:'Swimming',other:'Other'}; return map[c] || c; }
+function renderCards(list) { grid.innerHTML = ''; list.forEach((t, i) => { const card = document.createElement('div'); card.className = 'card'; card.innerHTML = `<div class="num">#${i+1}</div><a href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a><div class="desc">${t.d}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag">${getCatLabel(t.c)}</span></div>`; grid.appendChild(card); }); stats.textContent = `Showing ${list.length} of ${unique.length} profiles across Montreal`; }
+function filterCards() { const q = document.getElementById('search').value.toLowerCase(); const cat = document.getElementById('catFilter').value; const loc = document.getElementById('locFilter').value; const filtered = unique.filter(t => { if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q)) return false; if (cat && t.c !== cat) return false; if (loc && t.l !== loc) return false; return true; }); renderCards(filtered); }
+renderCards(unique);
+</script>
+</body>
+</html>

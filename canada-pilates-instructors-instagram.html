@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilates Instructors & Studios Across Canada - Instagram Directory</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#f0f0f0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+
+header{text-align:center;padding:50px 20px 30px;background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 100%);border-bottom:1px solid #2a2a2a}
+header h1{font-size:2.2rem;font-weight:700;margin-bottom:10px;background:linear-gradient(135deg,#e1306c,#405de6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+header p{color:#999;font-size:1.05rem;max-width:600px;margin:0 auto}
+
+.controls{max-width:1200px;margin:30px auto 10px;padding:0 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.controls input[type="text"]{flex:1;min-width:220px;padding:12px 18px;border-radius:10px;border:1px solid #333;background:#1a1a1a;color:#f0f0f0;font-size:1rem;outline:none;transition:border-color .3s}
+.controls input[type="text"]:focus{border-color:#e1306c}
+.controls select{padding:12px 16px;border-radius:10px;border:1px solid #333;background:#1a1a1a;color:#f0f0f0;font-size:.95rem;outline:none;cursor:pointer;transition:border-color .3s}
+.controls select:focus{border-color:#405de6}
+
+.stats{text-align:center;padding:8px 20px;color:#777;font-size:.9rem}
+
+.grid{max-width:1200px;margin:20px auto;padding:0 20px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+
+.card{background:#1a1a1a;border-radius:14px;padding:24px;border:1px solid #2a2a2a;transition:transform .25s,border-color .25s,box-shadow .25s;display:flex;flex-direction:column;gap:12px}
+.card:hover{transform:translateY(-4px);border-color:#e1306c;box-shadow:0 8px 30px rgba(225,48,108,.15)}
+.card-header{display:flex;align-items:center;gap:14px}
+.card-avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.3rem;color:#fff;flex-shrink:0}
+.card-handle{font-weight:600;font-size:1.05rem;color:#f0f0f0;word-break:break-word}
+.card-handle span{color:#e1306c}
+.card-desc{color:#bbb;font-size:.92rem;line-height:1.5;flex-grow:1}
+.card-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{padding:5px 12px;border-radius:20px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.tag-category{background:rgba(225,48,108,.15);color:#e1306c;border:1px solid rgba(225,48,108,.25)}
+.tag-city{background:rgba(64,93,230,.15);color:#8ea4f0;border:1px solid rgba(64,93,230,.25)}
+.card-link{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:10px;background:linear-gradient(135deg,#e1306c,#c13584);color:#fff;font-weight:600;font-size:.9rem;transition:opacity .25s;align-self:flex-start}
+.card-link:hover{opacity:.85}
+.card-link svg{width:18px;height:18px;fill:#fff}
+
+.no-results{text-align:center;padding:60px 20px;color:#666;font-size:1.1rem;display:none}
+
+footer{margin-top:auto;text-align:center;padding:30px 20px;border-top:1px solid #2a2a2a;color:#666;font-size:.85rem}
+footer span{color:#e1306c}
+
+@media(max-width:600px){
+  header h1{font-size:1.5rem}
+  .grid{grid-template-columns:1fr}
+  .controls{flex-direction:column}
+  .controls input[type="text"],.controls select{width:100%}
+}
+
+
+/* ===== FLOATING BRAND HERO ===== */
+.hero-brand-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111827 40%, #1a1a2e 60%, #0a0a0a 100%);
+    padding: 60px 20px 35px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 3px solid #e1306c;
+}
+.hero-brand-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, #e1306c11 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-brand-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+.hero-brand-float {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e1306c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: brandFloat 4s ease-in-out infinite;
+}
+.hero-brand-section h1 {
+    position: relative;
+    z-index: 1;
+}
+.hero-brand-section .subtitle,
+.hero-brand-section .sub {
+    position: relative;
+    z-index: 1;
+}
+@keyframes brandFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Pilates Instructors &amp; Studios Across Canada</h1>
+  <p>Reformer, Mat, Barre &amp; Classical Pilates | Connect via Instagram DM</p>
+</header>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Search by name, handle, or description...">
+  <select id="categoryFilter">
+    <option value="">All Categories</option>
+    <option value="reformer">Reformer</option>
+    <option value="mat">Mat</option>
+    <option value="clinical">Clinical</option>
+    <option value="barre">Barre</option>
+    <option value="prenatal">Prenatal</option>
+    <option value="classical">Classical</option>
+    <option value="contemporary">Contemporary</option>
+    <option value="multi-style">Multi-Style</option>
+  </select>
+  <select id="cityFilter">
+    <option value="">All Cities</option>
+    <option value="toronto">Toronto</option>
+    <option value="vancouver">Vancouver</option>
+    <option value="montreal">Montreal</option>
+    <option value="calgary">Calgary</option>
+    <option value="edmonton">Edmonton</option>
+    <option value="ottawa">Ottawa</option>
+    <option value="winnipeg">Winnipeg</option>
+    <option value="halifax">Halifax</option>
+    <option value="victoria">Victoria</option>
+    <option value="kelowna">Kelowna</option>
+    <option value="saskatoon">Saskatoon</option>
+    <option value="regina">Regina</option>
+    <option value="hamilton">Hamilton</option>
+    <option value="fredericton">Fredericton</option>
+    <option value="oakville">Oakville</option>
+    <option value="london-on">London ON</option>
+    <option value="canada">Canada-wide</option>
+  </select>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<div class="grid" id="grid"></div>
+
+<div class="no-results" id="noResults">No studios or instructors match your filters.</div>
+
+<footer>
+  <span>GroupFit App Compatible</span> | Pilates Across Canada
+</footer>
+
+<script>
+const profiles = [
+  {handle:"workoutwithdem",desc:"Demi Lykos - Mat & Reformer Strength Pilates Instructor (113K)",category:"reformer",city:"toronto"},
+  {handle:"imprintpilates",desc:"Anita Ivic - OG Private Pilates Studio, 25+ years, trains Olympians",category:"reformer",city:"toronto"},
+  {handle:"slivingstudios",desc:"S Living Studios - Reformer Pilates, 3 locations (Yonge & Eglinton, Scarborough, N York)",category:"reformer",city:"toronto"},
+  {handle:"nicedaypilates",desc:"Jennifer Winter - Toronto's first Black-owned Pilates studio, Corktown",category:"reformer",city:"toronto"},
+  {handle:"bodyharmonicspilates",desc:"Margot McKinnon - Pilates studios & teacher training since 1998",category:"reformer",city:"toronto"},
+  {handle:"courtneymillerpilates",desc:"Courtney Miller - CEO Pilates Republic, Global Educator (53K)",category:"reformer",city:"toronto"},
+  {handle:"pilalice.toronto",desc:"Alice Han - STOTT Pilates Instructor, Merrithew certified",category:"reformer",city:"toronto"},
+  {handle:"rachel.pilates",desc:"Rachel Seo - Pilates Manager & Teacher Trainer at Equinox Toronto",category:"reformer",city:"toronto"},
+  {handle:"brittanymurphyforreal",desc:"Brittany Murphy - Pilates Instructor, Mentor, Founder Fine Tune Pilates",category:"reformer",city:"toronto"},
+  {handle:"finetunepilates",desc:"Fine Tune Pilates - Toronto studio by Brittany Murphy",category:"reformer",city:"toronto"},
+  {handle:"aim.fitness",desc:"AIM Fitness - Personal Trainer & Pilates Instructor, Lifestyle Therapist",category:"mat",city:"toronto"},
+  {handle:"mypilatesstudioto",desc:"My Pilates Studio TO - Fully certified instructors",category:"reformer",city:"toronto"},
+  {handle:"torontopilates.socialclub",desc:"Toronto Pilates & Social Club - Community-focused pilates",category:"reformer",city:"toronto"},
+  {handle:"muse_movement",desc:"Muse Movement - Voted Toronto's Best Pilates, Trinity Bellwoods",category:"reformer",city:"toronto"},
+  {handle:"pilates4physio",desc:"Damian Wyard - Registered physiotherapist & STOTT rehab instructor",category:"clinical",city:"toronto"},
+  {handle:"iamyogapilates",desc:"IAM Yoga Pilates - Downtown Toronto, hot yoga & reformer",category:"reformer",city:"toronto"},
+  {handle:"andreitalevin",desc:"Andreita Levin - Yoga & Pilates, prenatal specialist (141K)",category:"prenatal",city:"toronto"},
+  {handle:"barrecollective.to",desc:"Toronto Barre Collective - Barre, yoga, pilates & strength",category:"barre",city:"toronto"},
+  {handle:"upbeat.barre",desc:"UpBeat Barre - Barre & Pilates classes & instructor training (10K)",category:"barre",city:"toronto"},
+  {handle:"rachelsfitpilates",desc:"Rachel - Pilates instructor in Ontario",category:"reformer",city:"toronto"},
+  {handle:"thegirlwiththepilatesmat",desc:"Rachel Lawrence - Mat Pilates instructor",category:"mat",city:"toronto"},
+  {handle:"reformpilates.ca",desc:"Reform Pilates - Forest Hill's favourite studio",category:"reformer",city:"toronto"},
+  {handle:"bodybarre",desc:"Body Barre Fitness - Training studio, Vaughan ON",category:"barre",city:"toronto"},
+  {handle:"sculpt.pilates.and.barre",desc:"Sculpt Pilates & Barre - Classes & training",category:"barre",city:"toronto"},
+  {handle:"merrithewstudio",desc:"STOTT Pilates Studio - Toronto, full apparatus training",category:"classical",city:"toronto"},
+  {handle:"thebellemethod",desc:"The Belle Method - Pre/postnatal fitness & Pilates (554K)",category:"prenatal",city:"toronto"},
+  {handle:"trainormovementco",desc:"Trainor Movement Co - East Vancouver, STOTT certified, instructor training",category:"reformer",city:"vancouver"},
+  {handle:"khalisa_jmawji",desc:"Khalisa - Certified Pilates Instructor, Empowering Women",category:"reformer",city:"vancouver"},
+  {handle:"caitlinbrownpilates",desc:"Caitlin Brown - Union Pilates & Core Community instructor",category:"reformer",city:"vancouver"},
+  {handle:"vancouverpilatescentre",desc:"Vancouver Pilates Centre - Canada's original Pilates studio since 1985",category:"reformer",city:"vancouver"},
+  {handle:"pilatesonrosemont",desc:"Jenny Fung - STOTT certified, private home studio",category:"reformer",city:"vancouver"},
+  {handle:"mvmtbymillie",desc:"Millie - STOTT Pilates Certified, Vancouver classes",category:"mat",city:"vancouver"},
+  {handle:"corecommunity",desc:"Core Community Pilates - Kitsilano & Main St equipment studios",category:"reformer",city:"vancouver"},
+  {handle:"formbodylab",desc:"FORM Body Lab - Yaletown Clinical Pilates, physio, prenatal",category:"clinical",city:"vancouver"},
+  {handle:"kahlenamovement",desc:"Kahlena Movement - Voted #1 Pilates in North Vancouver, prenatal",category:"prenatal",city:"vancouver"},
+  {handle:"winsome.vancouver",desc:"Winsome Pilates - 1:1 & 2:1, kids, prenatal, seniors, Burnaby",category:"prenatal",city:"vancouver"},
+  {handle:"mama.method",desc:"Mama Method by Jen Basa Kazuta - Prenatal & postpartum specialist",category:"prenatal",city:"vancouver"},
+  {handle:"barrefitness",desc:"Barre Fitness - Canada's original barre workout studio",category:"barre",city:"vancouver"},
+  {handle:"barrefitness.ss",desc:"Barre Fitness South Surrey - Barre, pilates, weights & yoga",category:"barre",city:"vancouver"},
+  {handle:"clubpilatesvancouver",desc:"Club Pilates Downtown Vancouver - Reformer studio",category:"reformer",city:"vancouver"},
+  {handle:"divebarreandpilates",desc:"Dive Barre & Pilates Studio, Vancouver",category:"barre",city:"vancouver"},
+  {handle:"movewithdahlia",desc:"Dahlia - Barre & Pilates Instructor (18K)",category:"barre",city:"montreal"},
+  {handle:"rosewooxx",desc:"Rose Woo - Pilates Instructor, reformer & mat (7.2K)",category:"reformer",city:"montreal"},
+  {handle:"sashateed",desc:"Sasha - Pilates instructor (12K)",category:"reformer",city:"montreal"},
+  {handle:"pilatikapilatesoldport",desc:"Pilatika - Old Port's Premier Pilates House",category:"reformer",city:"montreal"},
+  {handle:"kpilatesstudiomontreal",desc:"K Pilates Studio Dorval - Group reformer & private since 2012",category:"reformer",city:"montreal"},
+  {handle:"rozepilates",desc:"Roze Pilates - Old Montreal, pilates, barre & circuit",category:"barre",city:"montreal"},
+  {handle:"mtlpilateslab",desc:"MTL Pilates Lab - Montreal Pilates studio",category:"reformer",city:"montreal"},
+  {handle:"dita_pilates_studio",desc:"Dita Pilates Studio - Private & small group, STOTT certified",category:"reformer",city:"montreal"},
+  {handle:"joiepilates",desc:"Studio Joie - Pilates, Barre & Barre-lates on Crescent St",category:"barre",city:"montreal"},
+  {handle:"studiosetpilates",desc:"Studio Set Pilates - Montreal & Tremblant, BootyBarre",category:"barre",city:"montreal"},
+  {handle:"calgarypilates",desc:"Calgary Pilates Centre - 1:1 & small groups, STOTT, Total Barre, TRX",category:"reformer",city:"calgary"},
+  {handle:"reformedcan",desc:"Reformed Pilates Canada - Heated reformer (Calgary, Edmonton, Airdrie)",category:"reformer",city:"calgary"},
+  {handle:"reformedyyc",desc:"Reformed Pilates Calgary - Local heated reformer classes",category:"reformer",city:"calgary"},
+  {handle:"refine_pilates_method",desc:"Refine Pilates Method - 3600 sq ft, clinical & private pilates",category:"clinical",city:"calgary"},
+  {handle:"studio124pilates",desc:"Studio 124 - Classical Pilates studio, Calgary",category:"classical",city:"calgary"},
+  {handle:"taylormadepilates",desc:"Marilyn Taylor - Romana's Pilates, private home studio S Calgary",category:"classical",city:"calgary"},
+  {handle:"barrewestyyc",desc:"Barre West Calgary - Barre fitness studio",category:"barre",city:"calgary"},
+  {handle:"forumpilatesstudio",desc:"Forum Pilates Studio - West Edmonton (6.4K)",category:"reformer",city:"edmonton"},
+  {handle:"alignpilates_",desc:"ALIGN Pilates Edmonton - Private reformer, individuals or duos",category:"reformer",city:"edmonton"},
+  {handle:"integrationpilatesstudio",desc:"Integration Pilates - Best in Edmonton 5 years running",category:"reformer",city:"edmonton"},
+  {handle:"reshape_pilates_",desc:"Reshape Pilates & Wellness Studio, Edmonton",category:"reformer",city:"edmonton"},
+  {handle:"nicetimepilates",desc:"Nice Time Pilates Edmonton",category:"reformer",city:"edmonton"},
+  {handle:"pilates.space.ottawa",desc:"Pilates Space Ottawa - Premier Fletcher Pilates & teacher training",category:"clinical",city:"ottawa"},
+  {handle:"glebepilates",desc:"Glebe Pilates - Reformer studio on Bank Street, Ottawa",category:"reformer",city:"ottawa"},
+  {handle:"pilatesonbeechwood",desc:"Pilates on Beechwood - Group reformer & private, Ottawa",category:"reformer",city:"ottawa"},
+  {handle:"thematlabottawa",desc:"The Mat Lab Ottawa - Sister studio to Glebe Pilates, 2 locations",category:"mat",city:"ottawa"},
+  {handle:"somapilates.studio",desc:"Soma Pilates - Manotick ON, Ottawa area",category:"reformer",city:"ottawa"},
+  {handle:"shelbournepilates",desc:"Pilates Victoria - Locally owned Shelbourne studio",category:"reformer",city:"victoria"},
+  {handle:"clubpilatesvictoria",desc:"Club Pilates Victoria - Reformer-based group classes",category:"reformer",city:"victoria"},
+  {handle:"danacarterfitness",desc:"Dana Carter - Author, movement educator, Pilates/Barre/Yoga, Victoria",category:"barre",city:"victoria"},
+  {handle:"clubpilateskelowna",desc:"Club Pilates Kelowna - Reformer pilates classes",category:"reformer",city:"kelowna"},
+  {handle:"niftypilates",desc:"Nifty Pilates - Kelowna reformer studio",category:"reformer",city:"kelowna"},
+  {handle:"pilatesmanitoba",desc:"Pilates Manitoba - Medical & Fitness Pilates, Fascia & Physio",category:"clinical",city:"winnipeg"},
+  {handle:"pilatesdowntown",desc:"Linda - Boutique pilates with barre & TRX, Edmonton St Winnipeg",category:"reformer",city:"winnipeg"},
+  {handle:"clubpilatestuxedo",desc:"Club Pilates Tuxedo - Reformer pilates, Winnipeg",category:"reformer",city:"winnipeg"},
+  {handle:"pilates_halifax",desc:"Precision Pilates Halifax - Only classical Pilates in NS (2.1K)",category:"classical",city:"halifax"},
+  {handle:"thepilatesbarrehalifax",desc:"The Pilates Barre Halifax - Pilates & barre (4.3K)",category:"barre",city:"halifax"},
+  {handle:"saskatoonpilates",desc:"Saskatoon Pilates Centre - Original Saskatchewan studio, 25+ years",category:"reformer",city:"saskatoon"},
+  {handle:"pilates.withregina",desc:"Regina Dupont - Personalized 1-on-1, in-person & virtual",category:"mat",city:"regina"},
+  {handle:"pilateswithregina",desc:"Regina Chow - STOTT certified, private/duet/group sessions",category:"reformer",city:"regina"},
+  {handle:"flowhousemovement",desc:"Flow House Pilates Studio - Pilates, yoga & mindful movement, Hamilton",category:"mat",city:"hamilton"},
+  {handle:"uppilatesstudioinc",desc:"U Pilates Studio Inc - Contemporary Pilates, Hamilton",category:"contemporary",city:"hamilton"},
+  {handle:"studiopilates_hamilton",desc:"Studio Pilates Hamilton - Reformer classes",category:"reformer",city:"hamilton"},
+  {handle:"ultimate.hpy",desc:"Ultimate Hot Pilates & Yoga - Stoney Creek & Hamilton Mountain",category:"mat",city:"hamilton"},
+  {handle:"pilates_fredericton",desc:"Precision Pilates Fredericton - First classical studio east of Montreal",category:"classical",city:"fredericton"},
+  {handle:"sonia.m_pilates",desc:"Sonia - Certified Mat & Equipment Instructor (140K), at-home workouts",category:"mat",city:"canada"},
+  {handle:"barrebybates",desc:"Carly Bateman - Online/in-person barre & pilates",category:"barre",city:"canada"}
+];
+
+const cityLabels={toronto:"Toronto",vancouver:"Vancouver",montreal:"Montreal",calgary:"Calgary",edmonton:"Edmonton",ottawa:"Ottawa",winnipeg:"Winnipeg",halifax:"Halifax",victoria:"Victoria",kelowna:"Kelowna",saskatoon:"Saskatoon",regina:"Regina",hamilton:"Hamilton",fredericton:"Fredericton",oakville:"Oakville","london-on":"London ON",canada:"Canada-wide"};
+const categoryColors={"reformer":"#e1306c","mat":"#405de6","clinical":"#34a853","barre":"#f77737","prenatal":"#a855f7","classical":"#06b6d4","contemporary":"#eab308","multi-style":"#ec4899"};
+
+function avatarColor(handle){
+  let h=0;for(let i=0;i<handle.length;i++)h=handle.charCodeAt(i)+((h<<5)-h);
+  return `hsl(${Math.abs(h)%360},55%,45%)`;
+}
+
+function createCard(p){
+  const card=document.createElement("div");
+  card.className="card";
+  card.dataset.handle=p.handle;
+  card.dataset.category=p.category;
+  card.dataset.city=p.city;
+  card.dataset.search=(p.handle+" "+p.desc+" "+p.category+" "+(cityLabels[p.city]||p.city)).toLowerCase();
+
+  const initial=p.handle.charAt(0).toUpperCase();
+  card.innerHTML=`
+    <div class="card-header">
+      <div class="card-avatar" style="background:${avatarColor(p.handle)}">${initial}</div>
+      <div class="card-handle"><span>@</span>${p.handle}</div>
+    </div>
+    <div class="card-desc">${p.desc}</div>
+    <div class="card-tags">
+      <span class="tag tag-category" style="background:${categoryColors[p.category]||'#e1306c'}22;color:${categoryColors[p.category]||'#e1306c'};border-color:${categoryColors[p.category]||'#e1306c'}44">${p.category}</span>
+      <span class="tag tag-city">${cityLabels[p.city]||p.city}</span>
+    </div>
+    <a class="card-link" href="https://instagram.com/${p.handle}" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      View on Instagram
+    </a>`;
+  return card;
+}
+
+const grid=document.getElementById("grid");
+const noResults=document.getElementById("noResults");
+const statsEl=document.getElementById("stats");
+const searchInput=document.getElementById("search");
+const categoryFilter=document.getElementById("categoryFilter");
+const cityFilter=document.getElementById("cityFilter");
+
+// Deduplicate by handle
+const seen=new Set();
+const uniqueProfiles=profiles.filter(p=>{
+  const key=p.handle.toLowerCase();
+  if(seen.has(key))return false;
+  seen.add(key);return true;
+});
+
+// Render all cards
+uniqueProfiles.forEach(p=>grid.appendChild(createCard(p)));
+
+function filterCards(){
+  const q=searchInput.value.toLowerCase().trim();
+  const cat=categoryFilter.value;
+  const city=cityFilter.value;
+  let visible=0;
+  grid.querySelectorAll(".card").forEach(card=>{
+    const matchSearch=!q||card.dataset.search.includes(q);
+    const matchCat=!cat||card.dataset.category===cat;
+    const matchCity=!city||card.dataset.city===city;
+    const show=matchSearch&&matchCat&&matchCity;
+    card.style.display=show?"":"none";
+    if(show)visible++;
+  });
+  noResults.style.display=visible===0?"block":"none";
+  statsEl.textContent=`Showing ${visible} of ${uniqueProfiles.length} studios & instructors`;
+}
+
+searchInput.addEventListener("input",filterCards);
+categoryFilter.addEventListener("change",filterCards);
+cityFilter.addEventListener("change",filterCards);
+filterCards();
+</script>
+</body>
+</html>
