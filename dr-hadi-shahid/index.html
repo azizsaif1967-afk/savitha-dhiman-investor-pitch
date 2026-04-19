@@ -314,6 +314,100 @@
   .sources li{break-inside:avoid;padding:8px 0;border-bottom:1px dotted #d2c295;font-size:14.5px}
   .sources li b{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;color:var(--gold-deep);display:block;text-transform:uppercase;margin-bottom:2px}
 
+  /* ============ Video gallery ============ */
+  .video-hero{
+    position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--gold);box-shadow:var(--shadow);overflow:hidden
+  }
+  .video-hero img{width:100%;height:100%;object-fit:cover;display:block}
+  .video-hero::before{
+    content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.45) 100%)
+  }
+  .video-hero .play{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:92px;height:92px;border-radius:50%;
+    background:rgba(184,137,42,.95);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 0 8px rgba(255,255,255,.18),0 20px 40px rgba(0,0,0,.5);
+    transition:transform .25s ease, background .25s ease;border:2px solid #fff
+  }
+  .video-hero:hover .play{transform:translate(-50%,-50%) scale(1.08);background:#fff;color:var(--navy-deep)}
+  .video-hero .play svg{width:36px;height:36px;fill:#fff;margin-left:4px}
+  .video-hero:hover .play svg{fill:var(--navy-deep)}
+  .video-hero .badge{
+    position:absolute;top:18px;left:18px;background:rgba(15,39,64,.8);color:#fff;padding:6px 12px;
+    font-family:'Cinzel',serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--gold-light)
+  }
+  .video-hero .cap{
+    position:absolute;left:0;right:0;bottom:0;padding:24px 28px;color:#fff;
+    background:linear-gradient(180deg,transparent,rgba(8,26,46,.95))
+  }
+  .video-hero .cap h4{font-family:'Cormorant Garamond',serif;font-size:26px;margin:0 0 4px;color:#fff}
+  .video-hero .cap p{margin:0;color:#e7d9ac;font-size:14px;font-style:italic}
+  .video-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+  @media (max-width:860px){.video-mini-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.video-mini-grid{grid-template-columns:1fr}}
+  .video-mini{
+    position:relative;aspect-ratio:16/9;border:1px solid var(--rule);background:#fffdf6;
+    box-shadow:var(--shadow);overflow:hidden;display:flex;align-items:flex-end;padding:14px;
+    color:#fff;text-align:left;
+  }
+  .video-mini::before{
+    content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,39,64,.1) 0%,rgba(15,39,64,.85) 100%)
+  }
+  .video-mini img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .video-mini > *{position:relative;z-index:2}
+  .video-mini .mp{width:50px;height:50px;border-radius:50%;background:rgba(184,137,42,.95);display:flex;align-items:center;justify-content:center;position:absolute;top:14px;right:14px;border:2px solid #fff}
+  .video-mini .mp svg{width:18px;height:18px;fill:#fff;margin-left:2px}
+  .video-mini b{font-family:'Cormorant Garamond',serif;font-size:18px;color:#fff}
+
+  /* ============ Photo gallery ============ */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(12,1fr);gap:14px;
+  }
+  .gallery-tile{
+    background:#fffdf6;border:1px solid var(--rule);padding:10px;box-shadow:var(--shadow);
+    position:relative;overflow:hidden;transition:transform .2s
+  }
+  .gallery-tile:hover{transform:translateY(-3px)}
+  .gallery-tile::before{
+    content:"";position:absolute;top:6px;left:6px;right:6px;bottom:6px;border:1px solid var(--gold-light);pointer-events:none;z-index:2
+  }
+  .gallery-tile img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center top}
+  .gallery-tile.span-6 img{aspect-ratio:16/10}
+  .gallery-tile.span-4 img{aspect-ratio:4/3}
+  .gallery-tile.span-3 img{aspect-ratio:1/1}
+  .gallery-tile .plate{
+    padding:10px 8px 4px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:#3a3a3a;font-size:13.5px
+  }
+  .gallery-tile .plate b{font-style:normal;color:var(--navy-deep);display:block;font-size:15px;letter-spacing:.01em}
+  .gallery-tile.span-12{grid-column:span 12}
+  .gallery-tile.span-6{grid-column:span 6}
+  .gallery-tile.span-4{grid-column:span 4}
+  .gallery-tile.span-3{grid-column:span 3}
+  .gallery-tile.span-2{grid-column:span 2}
+  @media (max-width:860px){
+    .gallery-tile.span-6,.gallery-tile.span-4,.gallery-tile.span-3,.gallery-tile.span-2{grid-column:span 6}
+  }
+  @media (max-width:520px){
+    .gallery-tile.span-6,.gallery-tile.span-4,.gallery-tile.span-3,.gallery-tile.span-2{grid-column:span 12}
+  }
+
+  /* ============ Enhanced Stats / At a Glance ============ */
+  .stats{position:relative;padding:80px 24px}
+  .stats::before{
+    content:"";position:absolute;inset:0;background:
+      radial-gradient(ellipse at 20% 40%, rgba(184,137,42,.2), transparent 55%),
+      radial-gradient(ellipse at 80% 60%, rgba(214,183,101,.15), transparent 55%);
+    pointer-events:none
+  }
+  .stats-grid{position:relative;z-index:2}
+  .stat{
+    padding:28px 20px;border:1px solid rgba(214,183,101,.28);background:rgba(255,255,255,.035);
+    backdrop-filter:blur(2px);transition:all .25s ease;
+  }
+  .stat:hover{background:rgba(214,183,101,.1);border-color:var(--gold-light);transform:translateY(-4px)}
+  .stat .icn{width:44px;height:44px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;border:1px solid var(--gold-light);border-radius:50%;color:var(--gold-light)}
+  .stat .icn svg{width:22px;height:22px;fill:currentColor}
+
   /* ============ Live Feeds ============ */
   .feed-h{
     font-family:'Cinzel',serif;letter-spacing:.24em;text-transform:uppercase;font-size:13px;
@@ -452,6 +546,8 @@
         <li><a href="#service">Service</a></li>
         <li><a href="#offices">Offices</a></li>
         <li><a href="#media">Media</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#gallery">Photos</a></li>
         <li><a href="#feeds">Live Feeds</a></li>
         <li><a href="#directory">Directory</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -472,7 +568,9 @@
     <a href="#alliance"><i>❖</i>Alliance</a>
     <a href="#offices"><i>⌂</i>Offices</a>
     <a href="#media"><i>◉</i>Media &amp; Social</a>
-    <a href="#feeds"><i>▶</i>Live Feeds</a>
+    <a href="#videos"><i>▶</i>Videos</a>
+    <a href="#gallery"><i>▤</i>Photos</a>
+    <a href="#feeds"><i>⚡</i>Live Feeds</a>
     <a href="#sources"><i>§</i>Sources</a>
     <a href="#directory"><i>☰</i>Full Directory</a>
     <a href="#contact"><i>✉</i>Contact</a>
@@ -540,10 +638,22 @@
 <!-- Stats -->
 <section class="stats" id="stats">
   <div class="stats-grid">
-    <div class="stat"><b>50+</b><span>Years of Experience</span></div>
-    <div class="stat"><b>1976</b><span>Firm Established</span></div>
-    <div class="stat"><b>04</b><span>UAE Offices</span></div>
-    <div class="stat"><b>95+</b><span>Countries via Alliance</span></div>
+    <div class="stat">
+      <div class="icn"><svg viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 11 11A11 11 0 0 0 12 1Zm0 20a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm.5-15h-1v7l5.3 3.3.7-1.2-5-3Z"/></svg></div>
+      <b>50+</b><span>Years of Experience</span>
+    </div>
+    <div class="stat">
+      <div class="icn"><svg viewBox="0 0 24 24"><path d="M12 2 1 9l11 7 9-5.7V17h2V9L12 2Zm0 9L3.8 9 12 4.2 20.2 9 12 11Zm-7 3.3v3.3c0 1.2 3.2 3.4 7 3.4s7-2.2 7-3.4v-3.3l-7 4.5Z"/></svg></div>
+      <b>1976</b><span>Firm Established</span>
+    </div>
+    <div class="stat">
+      <div class="icn"><svg viewBox="0 0 24 24"><path d="M12 2 2 12h3v9h6v-6h2v6h6v-9h3L12 2Z"/></svg></div>
+      <b>04</b><span>UAE Offices</span>
+    </div>
+    <div class="stat">
+      <div class="icn"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.9 9H17a15.9 15.9 0 0 0-1.2-5.7A8 8 0 0 1 19.9 11ZM12 4a14.4 14.4 0 0 1 3 7h-6a14.4 14.4 0 0 1 3-7ZM4.1 13H7a15.9 15.9 0 0 0 1.2 5.7A8 8 0 0 1 4.1 13ZM7 11H4.1a8 8 0 0 1 4.1-5.7A15.9 15.9 0 0 0 7 11Zm5 9a14.4 14.4 0 0 1-3-7h6a14.4 14.4 0 0 1-3 7Zm3.8-1.3A15.9 15.9 0 0 0 17 13h2.9a8 8 0 0 1-4.1 5.7Z"/></svg></div>
+      <b>95+</b><span>Countries via Alliance</span>
+    </div>
   </div>
 </section>
 
@@ -942,6 +1052,108 @@
   </div>
 </section>
 
+<!-- ============ VIDEOS & PUBLIC SPEECHES ============ -->
+<section id="videos" style="background:linear-gradient(180deg,#0f2740,#081a2e);color:#f4ead0">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="ornament" style="color:var(--gold-light)"><span style="background:var(--gold-light)"></span><b>Videos &amp; Public Speeches</b><span style="background:var(--gold-light)"></span></div>
+      <h2 style="color:#fff">On Screen &amp; Behind the Podium</h2>
+      <p style="color:#d8c9a0">Televised appearances, panel discussions, and featured interviews.</p>
+    </div>
+
+    <!-- Featured: Sharjah TV Ramadan Majlis -->
+    <a class="video-hero" href="https://maraya.sba.net.ae/episode/139333" target="_blank" rel="noopener" title="Watch on Maraya — Sharjah Broadcasting Authority">
+      <img src="./photos/sharjahtv-poster.jpg" alt="Dr. Hadi Shahid on Sharjah TV — The Ramadan Majlis, Faith, Morals and the Path of Islam">
+      <span class="badge">Sharjah TV · Maraya · March 2026</span>
+      <span class="play" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg>
+      </span>
+      <div class="cap">
+        <h4>The Ramadan Majlis — Faith, Morals &amp; the Path of Islam</h4>
+        <p>Dr. Hadi Shahid in panel discussion · Sharjah Broadcasting Authority · 5 March 2026</p>
+      </div>
+    </a>
+
+    <!-- Additional video references -->
+    <div class="video-mini-grid">
+      <a class="video-mini" href="https://maraya.sba.net.ae/ar/title/570" target="_blank" rel="noopener">
+        <img src="./photos/sharjahtv-poster.jpg" alt="Ramadan Majlis Season 2">
+        <span class="mp"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+        <b>Ramadan Majlis · Season 2</b>
+      </a>
+      <a class="video-mini" href="https://www.linkedin.com/posts/dr-a-hadi-shahid-64314055_drhadishahid-pbcdubai-dubaichamberofcommerce-activity-7121054752783708160-Rgf2" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#b8892a,#0f2740)">
+        <span class="mp"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+        <b>PBC Dubai Award Ceremony</b>
+      </a>
+      <a class="video-mini" href="https://www.linkedin.com/company/alliott-hadi-shahid-chartered-accountants-official-page/posts/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#0f2740,#1c3b5e)">
+        <span class="mp"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+        <b>Corporate Tax &amp; VAT Webinars</b>
+      </a>
+    </div>
+
+    <p class="feed-note" style="color:#d8c9a0">
+      More video material (seminar recordings, interview clips, YouTube uploads) can be embedded here — share the URLs and they will render directly on the page.
+    </p>
+  </div>
+</section>
+
+<!-- ============ PHOTO GALLERY ============ -->
+<section id="gallery" style="background:linear-gradient(180deg,#fbf8f0,#efe6d2)">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="ornament"><span></span><b>Photo Gallery</b><span></span></div>
+      <h2>Moments &amp; Milestones</h2>
+      <p>A curated gallery of Dr. Hadi Shahid and the Alliott Hadi Shahid firm — from public appearances, the Alliott Global Alliance, and the firm’s UAE &amp; Pakistan offices.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-tile span-6">
+        <img src="./portrait.jpg" alt="Dr. A. Hadi Shahid — Official firm portrait">
+        <div class="plate"><b>Dr. A. Hadi Shahid</b>Official firm portrait · Alliott Hadi Shahid</div>
+      </div>
+      <div class="gallery-tile span-6">
+        <img src="./photos/sharjahtv-poster.jpg" alt="Dr. Hadi Shahid on Sharjah TV Ramadan Majlis">
+        <div class="plate"><b>On Sharjah TV · Ramadan Majlis</b>Panel discussion, March 2026</div>
+      </div>
+
+      <div class="gallery-tile span-12">
+        <img src="./photos/slider-1.jpg" alt="Abu Dhabi skyline">
+        <div class="plate"><b>Abu Dhabi · Head Office Vicinity</b>Corniche Road &amp; Liwa Street</div>
+      </div>
+
+      <div class="gallery-tile span-3">
+        <img src="./photos/partner-qaiser.jpg" alt="Dr. Syed Qaiser Anis">
+        <div class="plate"><b>Dr. Syed Qaiser Anis</b>Managing Partner</div>
+      </div>
+      <div class="gallery-tile span-3">
+        <img src="./photos/partner-imran.jpg" alt="Mr. Syed Imran Ahmed">
+        <div class="plate"><b>Mr. Syed Imran Ahmed</b>Partner</div>
+      </div>
+      <div class="gallery-tile span-3">
+        <img src="./photos/partner-samir.jpg" alt="Mr. Samir Ahmed Shahid">
+        <div class="plate"><b>Mr. Samir Ahmed Shahid</b>Partner</div>
+      </div>
+      <div class="gallery-tile span-3">
+        <img src="./photos/partner-zaheer.jpg" alt="Mr. Zaheer Kaiser Anis">
+        <div class="plate"><b>Mr. Zaheer Kaiser Anis</b>Partner</div>
+      </div>
+      <div class="gallery-tile span-6">
+        <img src="./photos/partner-sarmad.jpg" alt="Mr. Sarmad Shahid">
+        <div class="plate"><b>Mr. Sarmad Shahid</b>Partner · Licensed Auditor &amp; CPA</div>
+      </div>
+      <div class="gallery-tile span-6" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fffdf6;padding:30px">
+        <img src="./photos/logo-firm.png" alt="Alliott Hadi Shahid firm logo" style="max-height:110px;width:auto;aspect-ratio:auto;object-fit:contain;margin-bottom:16px">
+        <img src="./photos/logo-aga.png" alt="Alliott Global Alliance logo" style="max-height:70px;width:auto;aspect-ratio:auto;object-fit:contain">
+        <div class="plate" style="margin-top:12px"><b>Brand Marks</b>Alliott Hadi Shahid &amp; Alliott Global Alliance</div>
+      </div>
+    </div>
+
+    <p class="feed-note">
+      <b>More photos</b> are displayed live in the Instagram, LinkedIn and Facebook embeds below (each embedded post includes its image and gallery). A self-updating 20-photo grid from <a href="https://www.instagram.com/alliotthadishahid/" target="_blank" rel="noopener">@alliotthadishahid</a> can be connected via LightWidget or SnapWidget on request.
+    </p>
+  </div>
+</section>
+
 <!-- ============ LIVE FEEDS ============ -->
 <section id="feeds" style="background:linear-gradient(180deg,#fbf8f0,#efe6d2)">
   <div class="wrap">
@@ -1077,12 +1289,12 @@
     <!-- Social / Profiles -->
     <h3 class="dir-h" style="margin-top:50px">✦ Personal &amp; Professional Profiles</h3>
     <div class="dir-grid">
-      <a class="dir-tile" href="https://www.linkedin.com/in/dr-a-hadi-shahid-64314055/" target="_blank" rel="noopener"><div class="thumb" style="background:#0a66c2"><span style="font-size:28px">in</span></div><b>LinkedIn · Personal</b><p>Dr. A. Hadi Shahid</p></a>
-      <a class="dir-tile" href="https://www.linkedin.com/company/alliott-hadi-shahid-chartered-accountants-official-page" target="_blank" rel="noopener"><div class="thumb" style="background:#004182"><span style="font-size:28px">in</span></div><b>LinkedIn · Firm</b><p>Alliott Hadi Shahid (Official)</p></a>
-      <a class="dir-tile" href="https://www.linkedin.com/company/alliott-hadi-shahid-official-page" target="_blank" rel="noopener"><div class="thumb" style="background:#0a66c2"><span style="font-size:28px">in</span></div><b>LinkedIn · Alternate</b><p>Alliott Hadi Shahid (Page)</p></a>
-      <a class="dir-tile" href="https://www.instagram.com/alliotthadishahid/" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7)"><span style="font-size:26px">◉</span></div><b>Instagram</b><p>@alliotthadishahid</p></a>
-      <a class="dir-tile" href="https://www.facebook.com/AlliotthadishahidCA/" target="_blank" rel="noopener"><div class="thumb" style="background:#1877f2"><span style="font-size:30px;font-weight:bold">f</span></div><b>Facebook</b><p>Alliott Hadi Shahid CA</p></a>
-      <a class="dir-tile" href="https://www.alliottglobal.com/directory-search/members/hadi-shahid/" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#0f2740,#b8892a)"><span>AGA</span></div><b>Alliott Global</b><p>Member Directory</p></a>
+      <a class="dir-tile" href="https://www.linkedin.com/in/dr-a-hadi-shahid-64314055/" target="_blank" rel="noopener"><div class="thumb" style="background:#0a66c2"><svg viewBox="0 0 24 24" width="40" height="40" fill="#fff"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.01 2.5 2.5 0 0 1 0-5.01ZM3 9h4v12H3V9Zm6 0h3.8v1.64h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.09V21h-4v-5.54c0-1.32-.03-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94V21H9V9Z"/></svg></div><b>LinkedIn · Personal</b><p>Dr. A. Hadi Shahid</p></a>
+      <a class="dir-tile" href="https://www.linkedin.com/company/alliott-hadi-shahid-chartered-accountants-official-page" target="_blank" rel="noopener"><div class="thumb" style="background:#004182"><svg viewBox="0 0 24 24" width="40" height="40" fill="#fff"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.01 2.5 2.5 0 0 1 0-5.01ZM3 9h4v12H3V9Zm6 0h3.8v1.64h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.09V21h-4v-5.54c0-1.32-.03-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94V21H9V9Z"/></svg></div><b>LinkedIn · Firm</b><p>Alliott Hadi Shahid (Official)</p></a>
+      <a class="dir-tile" href="https://www.linkedin.com/company/alliott-hadi-shahid-official-page" target="_blank" rel="noopener"><div class="thumb" style="background:#0a66c2"><svg viewBox="0 0 24 24" width="40" height="40" fill="#fff"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.01 2.5 2.5 0 0 1 0-5.01ZM3 9h4v12H3V9Zm6 0h3.8v1.64h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.09V21h-4v-5.54c0-1.32-.03-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94V21H9V9Z"/></svg></div><b>LinkedIn · Alternate</b><p>Alliott Hadi Shahid (Page)</p></a>
+      <a class="dir-tile" href="https://www.instagram.com/alliotthadishahid/" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7)"><svg viewBox="0 0 24 24" width="40" height="40" fill="#fff"><path d="M12 2.2c3.2 0 3.58 0 4.85.07 1.17.05 1.81.25 2.23.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.37 1.06.42 2.23.07 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.81-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.06.37-2.23.42-1.27.07-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.81-.25-2.23-.42a3.71 3.71 0 0 1-1.38-.9 3.71 3.71 0 0 1-.9-1.38c-.17-.42-.37-1.06-.42-2.23C2.2 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.81.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.06-.37 2.23-.42C8.42 2.2 8.8 2.2 12 2.2Zm0 3.3A6.5 6.5 0 1 0 18.5 12 6.5 6.5 0 0 0 12 5.5Zm0 2.2A4.3 4.3 0 1 1 7.7 12 4.3 4.3 0 0 1 12 7.7Zm5.15-2.55a1.15 1.15 0 1 1-1.15 1.15 1.15 1.15 0 0 1 1.15-1.15Z"/></svg></div><b>Instagram</b><p>@alliotthadishahid</p></a>
+      <a class="dir-tile" href="https://www.facebook.com/AlliotthadishahidCA/" target="_blank" rel="noopener"><div class="thumb" style="background:#1877f2"><svg viewBox="0 0 24 24" width="40" height="40" fill="#fff"><path d="M22 12a10 10 0 1 0-11.56 9.88v-7H7.9V12h2.53V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.57V12h2.77l-.44 2.89h-2.33v7A10 10 0 0 0 22 12Z"/></svg></div><b>Facebook</b><p>Alliott Hadi Shahid CA</p></a>
+      <a class="dir-tile" href="https://www.alliottglobal.com/directory-search/members/hadi-shahid/" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#0f2740,#b8892a)"><svg viewBox="0 0 24 24" width="40" height="40" fill="#fff"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.9 9H17a15.9 15.9 0 0 0-1.2-5.7A8 8 0 0 1 19.9 11ZM12 4a14.4 14.4 0 0 1 3 7h-6a14.4 14.4 0 0 1 3-7ZM4.1 13H7a15.9 15.9 0 0 0 1.2 5.7A8 8 0 0 1 4.1 13ZM7 11H4.1a8 8 0 0 1 4.1-5.7A15.9 15.9 0 0 0 7 11Zm5 9a14.4 14.4 0 0 1-3-7h6a14.4 14.4 0 0 1-3 7Zm3.8-1.3A15.9 15.9 0 0 0 17 13h2.9a8 8 0 0 1-4.1 5.7Z"/></svg></div><b>Alliott Global</b><p>Member Directory</p></a>
     </div>
 
     <!-- Websites -->
@@ -1105,18 +1317,18 @@
     <!-- Contact -->
     <h3 class="dir-h" style="margin-top:50px">✦ Contact &amp; Office Channels</h3>
     <div class="dir-grid">
-      <a class="dir-tile" href="mailto:hadishahid@alliottuae.com"><div class="thumb" style="background:linear-gradient(135deg,#b8892a,#8a6418)"><span>✉</span></div><b>Direct Email</b><p>hadishahid@alliottuae.com</p></a>
-      <a class="dir-tile" href="mailto:info@alliottuae.com"><div class="thumb" style="background:linear-gradient(135deg,#8a6418,#d6b765)"><span>✉</span></div><b>General Email</b><p>info@alliottuae.com</p></a>
-      <a class="dir-tile" href="https://wa.me/97142227355" target="_blank" rel="noopener"><div class="thumb" style="background:#25D366"><span>W</span></div><b>WhatsApp · Dubai</b><p>+971 4 222 7355</p></a>
-      <a class="dir-tile" href="tel:+97142227355"><div class="thumb" style="background:linear-gradient(135deg,#0f2740,#b8892a)"><span>☎</span></div><b>Dubai Office</b><p>+971 4 222 7355</p></a>
-      <a class="dir-tile" href="tel:+97126222300"><div class="thumb" style="background:linear-gradient(135deg,#0f2740,#d6b765)"><span>☎</span></div><b>Abu Dhabi HQ</b><p>+971 2 622 2300</p></a>
-      <a class="dir-tile" href="tel:+97165482266"><div class="thumb" style="background:linear-gradient(135deg,#1c3b5e,#b8892a)"><span>☎</span></div><b>Sharjah Office</b><p>+971 6 548 2266</p></a>
-      <a class="dir-tile" href="tel:+97137645670"><div class="thumb" style="background:linear-gradient(135deg,#0b2540,#8a6418)"><span>☎</span></div><b>Al Ain Office</b><p>+971 3 764 5670</p></a>
-      <a class="dir-tile" href="tel:+922135215703"><div class="thumb" style="background:linear-gradient(135deg,#01411c,#d6b765)"><span>☎</span></div><b>Karachi Office</b><p>+92 21 3521 5703</p></a>
-      <a class="dir-tile" href="https://g.page/alliottuae?share" target="_blank" rel="noopener"><div class="thumb" style="background:#34a853"><span>📍</span></div><b>Map · Abu Dhabi HQ</b><p>Google Maps</p></a>
-      <a class="dir-tile" href="https://goo.gl/maps/REpXoeVJ5de4LiWy7" target="_blank" rel="noopener"><div class="thumb" style="background:#ea4335"><span>📍</span></div><b>Map · Dubai</b><p>Google Maps</p></a>
-      <a class="dir-tile" href="mailto:alliott@emirates.net.ae"><div class="thumb" style="background:linear-gradient(135deg,#b8892a,#d6b765)"><span>✉</span></div><b>Abu Dhabi Email</b><p>alliott@emirates.net.ae</p></a>
-      <a class="dir-tile" href="mailto:alliotdb@emirates.net.ae"><div class="thumb" style="background:linear-gradient(135deg,#d6b765,#8a6418)"><span>✉</span></div><b>Dubai Email</b><p>alliotdb@emirates.net.ae</p></a>
+      <a class="dir-tile" href="mailto:hadishahid@alliottuae.com"><div class="thumb" style="background:linear-gradient(135deg,#b8892a,#8a6418)"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg></div><b>Direct Email</b><p>hadishahid@alliottuae.com</p></a>
+      <a class="dir-tile" href="mailto:info@alliottuae.com"><div class="thumb" style="background:linear-gradient(135deg,#8a6418,#d6b765)"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg></div><b>General Email</b><p>info@alliottuae.com</p></a>
+      <a class="dir-tile" href="https://wa.me/97142227355" target="_blank" rel="noopener"><div class="thumb" style="background:#25D366"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.05 0C5.5 0 .2 5.3.2 11.85c0 2.09.55 4.13 1.6 5.93L0 24l6.38-1.67a11.86 11.86 0 0 0 5.67 1.44h.01c6.55 0 11.85-5.3 11.85-11.85 0-3.17-1.23-6.15-3.39-8.44ZM17.63 16.3c-.3-.15-1.8-.89-2.08-.99-.28-.1-.48-.15-.69.15-.2.3-.79.99-.97 1.19-.18.2-.36.22-.66.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.51-1.79-1.69-2.09-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.69-1.66-.94-2.28-.25-.6-.5-.52-.69-.53l-.59-.01c-.2 0-.52.07-.79.37-.28.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.09 3.18 5.07 4.46.71.3 1.27.48 1.7.62.71.22 1.36.19 1.87.12.57-.09 1.8-.73 2.05-1.44.25-.71.25-1.31.17-1.44-.07-.13-.27-.2-.57-.35Z"/></svg></div><b>WhatsApp · Dubai</b><p>+971 4 222 7355</p></a>
+      <a class="dir-tile" href="tel:+97142227355"><div class="thumb" style="background:linear-gradient(135deg,#0f2740,#b8892a)"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24 11.36 11.36 0 0 0 3.54.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.54 1 1 0 0 1-.24 1.05l-2.21 2.2Z"/></svg></div><b>Dubai Office</b><p>+971 4 222 7355</p></a>
+      <a class="dir-tile" href="tel:+97126222300"><div class="thumb" style="background:linear-gradient(135deg,#0f2740,#d6b765)"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24 11.36 11.36 0 0 0 3.54.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.54 1 1 0 0 1-.24 1.05l-2.21 2.2Z"/></svg></div><b>Abu Dhabi HQ</b><p>+971 2 622 2300</p></a>
+      <a class="dir-tile" href="tel:+97165482266"><div class="thumb" style="background:linear-gradient(135deg,#1c3b5e,#b8892a)"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24 11.36 11.36 0 0 0 3.54.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.54 1 1 0 0 1-.24 1.05l-2.21 2.2Z"/></svg></div><b>Sharjah Office</b><p>+971 6 548 2266</p></a>
+      <a class="dir-tile" href="tel:+97137645670"><div class="thumb" style="background:linear-gradient(135deg,#0b2540,#8a6418)"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24 11.36 11.36 0 0 0 3.54.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.54 1 1 0 0 1-.24 1.05l-2.21 2.2Z"/></svg></div><b>Al Ain Office</b><p>+971 3 764 5670</p></a>
+      <a class="dir-tile" href="tel:+922135215703"><div class="thumb" style="background:linear-gradient(135deg,#01411c,#d6b765)"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24 11.36 11.36 0 0 0 3.54.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.54 1 1 0 0 1-.24 1.05l-2.21 2.2Z"/></svg></div><b>Karachi Office</b><p>+92 21 3521 5703</p></a>
+      <a class="dir-tile" href="https://g.page/alliottuae?share" target="_blank" rel="noopener"><div class="thumb" style="background:#34a853"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 7 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8Zm0 11a3 3 0 1 1 3-3 3 3 0 0 1-3 3Z"/></svg></div><b>Map · Abu Dhabi HQ</b><p>Google Maps</p></a>
+      <a class="dir-tile" href="https://goo.gl/maps/REpXoeVJ5de4LiWy7" target="_blank" rel="noopener"><div class="thumb" style="background:#ea4335"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 7 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8Zm0 11a3 3 0 1 1 3-3 3 3 0 0 1-3 3Z"/></svg></div><b>Map · Dubai</b><p>Google Maps</p></a>
+      <a class="dir-tile" href="mailto:alliott@emirates.net.ae"><div class="thumb" style="background:linear-gradient(135deg,#b8892a,#d6b765)"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg></div><b>Abu Dhabi Email</b><p>alliott@emirates.net.ae</p></a>
+      <a class="dir-tile" href="mailto:alliotdb@emirates.net.ae"><div class="thumb" style="background:linear-gradient(135deg,#d6b765,#8a6418)"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg></div><b>Dubai Email</b><p>alliotdb@emirates.net.ae</p></a>
     </div>
 
     <div class="ornament-div" style="color:var(--gold-light)"><span style="background:linear-gradient(90deg,transparent,var(--gold-light),transparent)"></span><b>✦</b><span style="background:linear-gradient(90deg,transparent,var(--gold-light),transparent)"></span></div>

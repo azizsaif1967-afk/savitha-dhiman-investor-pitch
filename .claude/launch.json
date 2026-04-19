@@ -1,0 +1,36 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "aziz-story",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "aziz-saif-story", "-l", "8090"],
+      "port": 8090
+    },
+    {
+      "name": "recipe-website",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "recipe-website", "-l", "8091"],
+      "port": 8091
+    }
+    ,
+    {
+      "name": "zainab-profile",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "zainab-ghadiyali-profile", "-l", "8092"],
+      "port": 8092
+    },
+    {
+      "name": "savitha-pitch",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "savitha-dhiman-investor-pitch", "-l", "8093"],
+      "port": 8093
+    },
+    {
+      "name": "hadi-shahid",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "dr-hadi-shahid", "-l", "8094"],
+      "port": 8094
+    }
+  ]
+}
