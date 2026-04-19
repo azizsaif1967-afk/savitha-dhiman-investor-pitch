@@ -31,6 +31,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", "dr-hadi-shahid", "-l", "8094"],
       "port": 8094
+    },
+    {
+      "name": "kakal",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", ".", "-l", "8095"],
+      "port": 8095
     }
   ]
 }
