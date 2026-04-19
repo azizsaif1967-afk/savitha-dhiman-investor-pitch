@@ -314,34 +314,65 @@
   .sources li{break-inside:avoid;padding:8px 0;border-bottom:1px dotted #d2c295;font-size:14.5px}
   .sources li b{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;color:var(--gold-deep);display:block;text-transform:uppercase;margin-bottom:2px}
 
-  /* ============ Video gallery ============ */
-  .video-hero{
-    position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--gold);box-shadow:var(--shadow);overflow:hidden
+  /* ============ Video feature (side-by-side) ============ */
+  .video-feature{
+    display:grid;grid-template-columns:1.35fr 1fr;gap:0;
+    background:#fffdf6;border:1px solid var(--gold);box-shadow:var(--shadow);
+    text-decoration:none;color:inherit;overflow:hidden;align-items:stretch;
   }
-  .video-hero img{width:100%;height:100%;object-fit:cover;display:block}
-  .video-hero::before{
-    content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.45) 100%)
+  @media (max-width:900px){.video-feature{grid-template-columns:1fr}}
+  .video-feature .thumb{
+    position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;
   }
-  .video-hero .play{
+  .video-feature .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .video-feature .thumb::before{
+    content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.45));pointer-events:none
+  }
+  .video-feature .play{
     position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    width:92px;height:92px;border-radius:50%;
+    width:96px;height:96px;border-radius:50%;
     background:rgba(184,137,42,.95);display:flex;align-items:center;justify-content:center;
-    box-shadow:0 0 0 8px rgba(255,255,255,.18),0 20px 40px rgba(0,0,0,.5);
-    transition:transform .25s ease, background .25s ease;border:2px solid #fff
+    box-shadow:0 0 0 10px rgba(255,255,255,.2),0 20px 40px rgba(0,0,0,.5);
+    transition:all .25s ease;border:3px solid #fff
   }
-  .video-hero:hover .play{transform:translate(-50%,-50%) scale(1.08);background:#fff;color:var(--navy-deep)}
-  .video-hero .play svg{width:36px;height:36px;fill:#fff;margin-left:4px}
-  .video-hero:hover .play svg{fill:var(--navy-deep)}
-  .video-hero .badge{
-    position:absolute;top:18px;left:18px;background:rgba(15,39,64,.8);color:#fff;padding:6px 12px;
-    font-family:'Cinzel',serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--gold-light)
+  .video-feature:hover .play{transform:translate(-50%,-50%) scale(1.1);background:#fff}
+  .video-feature .play svg{width:38px;height:38px;fill:#fff;margin-left:5px}
+  .video-feature:hover .play svg{fill:var(--navy-deep)}
+  .video-feature .badge{
+    position:absolute;top:16px;left:16px;background:rgba(15,39,64,.88);color:#fff;padding:7px 14px;
+    font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+    border:1px solid var(--gold-light);white-space:nowrap;
   }
-  .video-hero .cap{
-    position:absolute;left:0;right:0;bottom:0;padding:24px 28px;color:#fff;
-    background:linear-gradient(180deg,transparent,rgba(8,26,46,.95))
+  .video-feature .info{
+    padding:36px 36px;display:flex;flex-direction:column;justify-content:center;gap:14px;
+    background:linear-gradient(160deg,#fffdf6 0%,#f2e9d0 100%);
   }
-  .video-hero .cap h4{font-family:'Cormorant Garamond',serif;font-size:26px;margin:0 0 4px;color:#fff}
-  .video-hero .cap p{margin:0;color:#e7d9ac;font-size:14px;font-style:italic}
+  .video-feature .info .kicker{
+    font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-deep);
+  }
+  .video-feature .info h4{
+    font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.15;margin:0;color:var(--navy-deep);font-weight:600
+  }
+  .video-feature .info h4 em{font-style:italic;color:var(--gold-deep);font-weight:500}
+  .video-feature .info .meta{
+    display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 2px;
+  }
+  .video-feature .info .meta span{
+    background:#fff;border:1px solid var(--rule);padding:6px 12px;
+    font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--navy-deep);
+    white-space:nowrap;
+  }
+  .video-feature .info .desc{
+    font-size:15.5px;color:#3a3a3a;margin:0;line-height:1.6;
+  }
+  .video-feature .info .cta{
+    display:inline-flex;align-items:center;gap:10px;margin-top:10px;
+    background:var(--navy);color:#f8e9bc;padding:14px 22px;
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    border:1px solid var(--gold);width:max-content;
+  }
+  .video-feature:hover .info .cta{background:var(--gold);color:#fff}
+  .video-feature .info .cta svg{width:14px;height:14px;fill:currentColor}
   .video-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
   @media (max-width:860px){.video-mini-grid{grid-template-columns:1fr 1fr}}
   @media (max-width:520px){.video-mini-grid{grid-template-columns:1fr}}
@@ -1062,15 +1093,30 @@
     </div>
 
     <!-- Featured: Sharjah TV Ramadan Majlis -->
-    <a class="video-hero" href="https://maraya.sba.net.ae/episode/139333" target="_blank" rel="noopener" title="Watch on Maraya — Sharjah Broadcasting Authority">
-      <img src="./photos/sharjahtv-poster.jpg" alt="Dr. Hadi Shahid on Sharjah TV — The Ramadan Majlis, Faith, Morals and the Path of Islam">
-      <span class="badge">Sharjah TV · Maraya · March 2026</span>
-      <span class="play" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg>
-      </span>
-      <div class="cap">
-        <h4>The Ramadan Majlis — Faith, Morals &amp; the Path of Islam</h4>
-        <p>Dr. Hadi Shahid in panel discussion · Sharjah Broadcasting Authority · 5 March 2026</p>
+    <a class="video-feature" href="https://maraya.sba.net.ae/episode/139333" target="_blank" rel="noopener" title="Watch on Maraya — Sharjah Broadcasting Authority">
+      <div class="thumb">
+        <img src="./photos/sharjahtv-poster.jpg" alt="Dr. Hadi Shahid on Sharjah TV — The Ramadan Majlis, Faith, Morals and the Path of Islam">
+        <span class="badge">Sharjah TV · Maraya</span>
+        <span class="play" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg>
+        </span>
+      </div>
+      <div class="info">
+        <div class="kicker">Featured Panel Discussion</div>
+        <h4>The Ramadan Majlis — <em>Faith, Morals &amp; the Path of Islam</em></h4>
+        <div class="meta">
+          <span>Sharjah 2 TV</span>
+          <span>Maraya SBA</span>
+          <span>5 March 2026</span>
+          <span>Season 2 · Ep. 5</span>
+        </div>
+        <p class="desc">
+          Dr. A. Hadi Shahid participated as a distinguished panelist in this televised discussion exploring how <b>faith</b> and <b>morals</b> together form the foundation of the Islamic way of life — broadcast by the Sharjah Broadcasting Authority and available on demand on the Maraya streaming platform.
+        </p>
+        <span class="cta">
+          Watch Full Episode
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg>
+        </span>
       </div>
     </a>
 
