@@ -35,7 +35,7 @@
     {
       "name": "kakal",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", ".", "-l", "8095"],
+      "runtimeArgs": ["serve", ".claude/worktrees/romantic-ardinghelli", "-l", "8095"],
       "port": 8095
     }
   ]
