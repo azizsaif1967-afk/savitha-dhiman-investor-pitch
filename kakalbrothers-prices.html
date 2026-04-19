@@ -387,8 +387,8 @@
       <input type="text" id="oPhone" placeholder="Phone / WhatsApp (optional)" />
       <textarea id="oNotes" placeholder="Shipping address & notes"></textarea>
       <button type="submit" class="btn-gold" style="width:100%">Place Order via Email</button>
-      <button type="button" id="dlBtn" class="btn-ghost" style="width:100%;margin-top:10px">⬇ Download as Excel (CSV)</button>
-      <div style="margin-top:8px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:13px">Excel download requires contact details · a copy is emailed to aziz@azizsaif.com.</div>
+      <button type="button" id="dlBtn" class="btn-ghost" style="width:100%;margin-top:10px">⬇ Download Branded Purchase Order (Excel)</button>
+      <div style="margin-top:8px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:13px">Signed &amp; stamped Purchase Order · requires contact details · a copy is emailed to aziz@azizsaif.com.</div>
     </form>
   </div>
 </div>
@@ -412,7 +412,7 @@
         <input required type="tel" id="gMobile" placeholder="+971 55 000 0000" />
         <label style="display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Notes</label>
         <textarea id="gNotes" placeholder="Delivery address / requirements"></textarea>
-        <button type="submit" class="btn-gold" style="width:100%;margin-top:6px">Download Order Sheet</button>
+        <button type="submit" class="btn-gold" style="width:100%;margin-top:6px">Download Signed Purchase Order</button>
         <div style="margin-top:10px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:12px">
           Fields marked * are required. Your details stay with Kakal Brothers.
         </div>
@@ -1179,36 +1179,221 @@ function toast(msg){
 }
 
 // ----- Excel/CSV Download with lead-capture gate -----
-function buildCsv(info){
-  const rows = [
-    ['Kakal Brothers — Order Sheet'],
-    ['Generated', new Date().toLocaleString()],
-    [],
-    ['Customer Name', info.name],
-    ['Company / Personal', info.company],
-    ['Email', info.email],
-    ['Mobile', info.mobile],
-    ['Notes', info.notes || ''],
-    [],
-    ['#','Product','Category','Size','Finish','Qty','Per','Unit (USD)','Line Total (USD)'],
-    ...CART.map((x,i)=>[
-      i+1, x.productName, x.cat, x.size,
-      x.finish==='pvd'?'P.V.D.':'Non-P.V.D.',
-      x.qty, x.per, x.unitUsd, x.unitUsd*x.qty
-    ]),
-    [],
-    ['','','','','','','','Order Total (USD)', cartTotal()],
-    [],
-    ['Prices in USD at ₹83 reference rate. Excludes G.S.T. & freight.']
-  ];
-  return rows.map(r => r.map(c=>{
-    const s = String(c==null?'':c);
-    return /[",\n]/.test(s) ? `"${s.replace(/"/g,'""')}"` : s;
-  }).join(',')).join('\n');
+// Inline SVG of the Kakal Brothers stamp (approved seal) and signature, base64-encoded for .xls
+const STAMP_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'>
+  <defs>
+    <path id='top' d='M 80,80 m -64,0 a 64,64 0 0,1 128,0'/>
+    <path id='bot' d='M 80,80 m -56,0 a 56,56 0 0,0 112,0'/>
+  </defs>
+  <circle cx='80' cy='80' r='74' fill='none' stroke='#b75000' stroke-width='2.5' opacity='.85'/>
+  <circle cx='80' cy='80' r='62' fill='none' stroke='#b75000' stroke-width='1.2' opacity='.8'/>
+  <text font-family='Georgia, serif' font-size='12.5' font-weight='700' fill='#b75000' letter-spacing='3' opacity='.95'>
+    <textPath href='#top' startOffset='50%' text-anchor='middle'>★ KAKAL BROTHERS ★</textPath>
+  </text>
+  <text font-family='Georgia, serif' font-size='10' font-weight='600' fill='#b75000' letter-spacing='4' opacity='.9'>
+    <textPath href='#bot' startOffset='50%' text-anchor='middle'>EST. 1960 · MUMBAI · INDIA</textPath>
+  </text>
+  <text x='80' y='72' text-anchor='middle' font-family='Georgia, serif' font-size='18' font-weight='800' fill='#b75000' letter-spacing='2' opacity='.95'>APPROVED</text>
+  <text x='80' y='92' text-anchor='middle' font-family='Georgia, serif' font-style='italic' font-size='11' fill='#b75000' opacity='.9'>Purchase Order</text>
+  <text x='80' y='108' text-anchor='middle' font-family='Georgia, serif' font-size='9' fill='#b75000' opacity='.85'>Bespoke Brass Hardware</text>
+  <g opacity='.85' stroke='#b75000' stroke-width='1.4' fill='none'>
+    <path d='M 45 118 L 115 118'/>
+    <path d='M 48 122 L 112 122'/>
+  </g>
+  <text x='80' y='138' text-anchor='middle' font-family='Georgia, serif' font-style='italic' font-size='10' fill='#b75000' opacity='.7'>Signed &amp; Stamped</text>
+</svg>`;
+
+const SIGNATURE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='260' height='80' viewBox='0 0 260 80'>
+  <g fill='none' stroke='#0b1419' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'>
+    <path d='M 15 52 C 25 20, 45 18, 50 48 C 52 58, 40 62, 36 52 C 34 46, 42 42, 50 48 L 62 55' opacity='.95'/>
+    <path d='M 62 48 C 72 22, 88 22, 92 50 C 94 60, 80 62, 78 50 L 98 48' opacity='.95'/>
+    <path d='M 98 46 L 110 30 L 104 44 L 118 32 L 108 48 L 122 38' opacity='.95'/>
+    <path d='M 122 40 C 132 22, 150 26, 148 48 C 147 58, 138 60, 138 50 L 158 44' opacity='.95'/>
+    <path d='M 158 44 C 168 24, 186 26, 186 48 L 200 40' opacity='.95'/>
+    <path d='M 200 40 C 215 30, 235 34, 230 56 C 228 64, 218 64, 220 54 L 250 44' opacity='.95'/>
+    <path d='M 40 68 L 240 68' stroke-width='0.8' opacity='.3'/>
+  </g>
+  <text x='260' y='78' text-anchor='end' font-family='Georgia, serif' font-size='9' fill='#45556c' opacity='.75' font-style='italic'>for Kakal Brothers</text>
+</svg>`;
+
+function svgToDataUri(svg){
+  return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
 }
 
-function downloadCsv(filename, csv){
-  const blob = new Blob(['\ufeff'+csv], {type:'text/csv;charset=utf-8;'});
+function poNumber(){
+  const d = new Date();
+  const ymd = d.getFullYear().toString() + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
+  const rnd = Math.floor(Math.random()*9000 + 1000);
+  return `KB-${ymd}-${rnd}`;
+}
+
+// Build a branded HTML-Excel purchase order (Excel opens HTML with .xls extension)
+function buildPurchaseOrderHtml(info){
+  const PO = poNumber();
+  const dateStr = new Date().toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });
+  const itemsRows = CART.map((x,i)=>`
+    <tr>
+      <td style="text-align:center;padding:10px 8px;border:1px solid #e5d9b8">${i+1}</td>
+      <td style="padding:10px 12px;border:1px solid #e5d9b8"><b>${x.productName}</b><br><span style="color:#7a6a44;font-size:10pt;font-style:italic">${x.cat}</span></td>
+      <td style="padding:10px 8px;border:1px solid #e5d9b8">${x.size}</td>
+      <td style="text-align:center;padding:10px 8px;border:1px solid #e5d9b8">${x.finish==='pvd'?'P.V.D.':'Non-P.V.D.'}</td>
+      <td style="text-align:center;padding:10px 8px;border:1px solid #e5d9b8">${x.qty} ${x.per}</td>
+      <td style="text-align:right;padding:10px 8px;border:1px solid #e5d9b8;font-family:Georgia,serif">$ ${x.unitUsd.toLocaleString()}</td>
+      <td style="text-align:right;padding:10px 8px;border:1px solid #e5d9b8;font-family:Georgia,serif;font-weight:700">$ ${(x.unitUsd*x.qty).toLocaleString()}</td>
+    </tr>`).join('');
+
+  const subtotal = cartTotal();
+  const totalQty = CART.reduce((a,x)=>a+x.qty,0);
+
+  const stampUri = svgToDataUri(STAMP_SVG);
+  const sigUri = svgToDataUri(SIGNATURE_SVG);
+
+  return `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta charset="utf-8"/>
+<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>
+  <x:Name>Purchase Order</x:Name>
+  <x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
+</x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml>
+<title>Kakal Brothers — Purchase Order ${PO}</title>
+</head>
+<body style="font-family:Georgia, 'Times New Roman', serif;color:#1a1a19;background:#f4f2ea;margin:0;padding:0">
+<table cellpadding="0" cellspacing="0" style="width:1000px;margin:0 auto;background:#fffdf8;border:1px solid #d09945">
+
+  <!-- Letterhead -->
+  <tr>
+    <td style="background:linear-gradient(135deg,#0a0a08 0%,#1a1a19 100%);background-color:#0a0a08;padding:26px 36px;border-bottom:4px solid #d09945">
+      <table style="width:100%"><tr>
+        <td style="color:#f4f2ea">
+          <div style="font-family:Georgia,serif;font-size:28pt;font-weight:700;letter-spacing:1pt;color:#f4f2ea">Kakal <span style="color:#d09945;font-style:italic">Brothers</span></div>
+          <div style="color:#d09945;font-family:Georgia,serif;font-style:italic;letter-spacing:3pt;font-size:10pt;margin-top:4pt">EST. 1960 · BESPOKE BRASS HARDWARE · MUMBAI, INDIA</div>
+        </td>
+        <td style="text-align:right;color:#f4f2ea;font-family:Arial,sans-serif;font-size:9pt;line-height:1.6">
+          <div style="letter-spacing:3pt;color:#d09945;font-size:8pt">CONTACT</div>
+          <div>www.kakalbrothers.xyz</div>
+          <div>WhatsApp: +971 55 649 2370</div>
+          <div>orders@kakalbrothers.xyz</div>
+        </td>
+      </tr></table>
+    </td>
+  </tr>
+
+  <!-- Title band -->
+  <tr>
+    <td style="padding:28px 36px 10px;background:#fffdf8">
+      <table style="width:100%"><tr>
+        <td>
+          <div style="font-family:Georgia,serif;font-size:24pt;font-weight:700;color:#0a0a08;letter-spacing:.5pt">PURCHASE ORDER</div>
+          <div style="font-family:Georgia,serif;font-style:italic;color:#7a6a44;font-size:11pt;margin-top:4pt">Generated from Kakal Brothers 2026 Price Catalog</div>
+        </td>
+        <td style="text-align:right;font-family:Arial,sans-serif;font-size:10pt">
+          <div style="letter-spacing:2pt;color:#b75000;font-size:8pt;font-weight:700">P.O. NUMBER</div>
+          <div style="font-family:Georgia,serif;font-size:16pt;font-weight:700;color:#0a0a08">${PO}</div>
+          <div style="letter-spacing:2pt;color:#b75000;font-size:8pt;font-weight:700;margin-top:8pt">DATE</div>
+          <div style="font-family:Georgia,serif;font-size:12pt;color:#0a0a08">${dateStr}</div>
+        </td>
+      </tr></table>
+    </td>
+  </tr>
+
+  <!-- Bill To -->
+  <tr>
+    <td style="padding:8px 36px 20px">
+      <table style="width:100%;border-collapse:collapse"><tr>
+        <td style="width:50%;vertical-align:top;padding:14px 16px;background:#f4f2ea;border-left:3px solid #d09945">
+          <div style="letter-spacing:2pt;color:#b75000;font-size:8pt;font-weight:700;margin-bottom:8pt">BILL TO / BUYER</div>
+          <div style="font-family:Georgia,serif;font-size:13pt;font-weight:700;color:#0a0a08">${escapeHtml(info.name)}</div>
+          ${info.company?`<div style="font-family:Georgia,serif;font-style:italic;color:#34322d;font-size:11pt">${escapeHtml(info.company)}</div>`:''}
+          <div style="font-size:10pt;color:#34322d;margin-top:6pt">${escapeHtml(info.email)}</div>
+          <div style="font-size:10pt;color:#34322d">${escapeHtml(info.mobile)}</div>
+        </td>
+        <td style="width:2%"></td>
+        <td style="width:48%;vertical-align:top;padding:14px 16px;background:#f4f2ea;border-left:3px solid #d09945">
+          <div style="letter-spacing:2pt;color:#b75000;font-size:8pt;font-weight:700;margin-bottom:8pt">SHIP TO / NOTES</div>
+          <div style="font-size:10pt;color:#34322d;white-space:pre-wrap;font-family:Georgia,serif">${escapeHtml(info.notes || '— to be confirmed —')}</div>
+        </td>
+      </tr></table>
+    </td>
+  </tr>
+
+  <!-- Items -->
+  <tr><td style="padding:0 36px">
+    <table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;font-size:10pt">
+      <thead>
+        <tr style="background:#0a0a08;color:#d09945">
+          <th style="padding:12px 8px;border:1px solid #0a0a08;letter-spacing:2pt;font-size:8pt;text-align:center;width:36px">#</th>
+          <th style="padding:12px 8px;border:1px solid #0a0a08;letter-spacing:2pt;font-size:8pt;text-align:left">ITEM</th>
+          <th style="padding:12px 8px;border:1px solid #0a0a08;letter-spacing:2pt;font-size:8pt;text-align:left">SIZE</th>
+          <th style="padding:12px 8px;border:1px solid #0a0a08;letter-spacing:2pt;font-size:8pt;text-align:center">FINISH</th>
+          <th style="padding:12px 8px;border:1px solid #0a0a08;letter-spacing:2pt;font-size:8pt;text-align:center">QTY</th>
+          <th style="padding:12px 8px;border:1px solid #0a0a08;letter-spacing:2pt;font-size:8pt;text-align:right">UNIT (USD)</th>
+          <th style="padding:12px 8px;border:1px solid #0a0a08;letter-spacing:2pt;font-size:8pt;text-align:right">TOTAL (USD)</th>
+        </tr>
+      </thead>
+      <tbody>${itemsRows}</tbody>
+      <tfoot>
+        <tr style="background:#f4f2ea">
+          <td colspan="4" style="padding:10px 8px;border:1px solid #e5d9b8"></td>
+          <td style="text-align:center;padding:10px 8px;border:1px solid #e5d9b8;font-weight:700;color:#7a6a44">${totalQty}</td>
+          <td style="text-align:right;padding:10px 8px;border:1px solid #e5d9b8;font-weight:700;letter-spacing:2pt;color:#b75000;font-size:8pt">SUBTOTAL</td>
+          <td style="text-align:right;padding:10px 8px;border:1px solid #e5d9b8;font-family:Georgia,serif;font-size:14pt;font-weight:700;color:#0a0a08">$ ${subtotal.toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td colspan="4" style="padding:10px 8px"></td>
+          <td colspan="2" style="text-align:right;padding:10px 8px;color:#7a6a44;font-size:9pt;font-style:italic">G.S.T. / Freight</td>
+          <td style="text-align:right;padding:10px 8px;color:#7a6a44;font-size:9pt;font-style:italic">— on actuals —</td>
+        </tr>
+        <tr style="background:#0a0a08;color:#d09945">
+          <td colspan="4" style="padding:14px 8px"></td>
+          <td colspan="2" style="text-align:right;padding:14px 8px;letter-spacing:3pt;font-size:10pt;font-weight:700">GRAND TOTAL</td>
+          <td style="text-align:right;padding:14px 8px;font-family:Georgia,serif;font-size:20pt;font-weight:700;color:#f4c582">USD ${subtotal.toLocaleString()}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </td></tr>
+
+  <!-- Terms -->
+  <tr><td style="padding:22px 36px 10px">
+    <div style="letter-spacing:2pt;color:#b75000;font-size:8pt;font-weight:700;margin-bottom:8pt">TERMS &amp; NOTES</div>
+    <ol style="margin:0 0 0 20pt;padding:0;color:#34322d;font-size:10pt;line-height:1.65">
+      <li>Prices quoted in USD at reference rate 1 USD ≈ ₹83. Final INR amount may vary with RBI rate on order confirmation.</li>
+      <li>All products are solid brass · custom sizes possible on request.</li>
+      <li>G.S.T. and freight are charged at actuals and are additional to the above totals.</li>
+      <li>Lead time: 4–8 weeks from advance receipt depending on finish (P.V.D. items require extra time).</li>
+      <li>50% advance with order · balance before dispatch. This purchase order is valid for 30 days.</li>
+    </ol>
+  </td></tr>
+
+  <!-- Signature + Stamp -->
+  <tr><td style="padding:18px 36px 34px">
+    <table style="width:100%"><tr>
+      <td style="vertical-align:bottom;width:55%">
+        <div style="letter-spacing:2pt;color:#b75000;font-size:8pt;font-weight:700;margin-bottom:4pt">AUTHORIZED SIGNATORY</div>
+        <img src="${sigUri}" width="260" height="80" alt="Kakal Brothers signature"/>
+        <div style="border-top:1px solid #0a0a08;width:260pt;margin-top:4pt;padding-top:4pt;font-family:Georgia,serif;font-size:10pt;font-weight:700">Kakal Brothers</div>
+        <div style="font-style:italic;color:#7a6a44;font-size:9pt">Proprietor · for and on behalf of</div>
+      </td>
+      <td style="vertical-align:middle;text-align:right;width:45%">
+        <img src="${stampUri}" width="160" height="160" alt="Kakal Brothers approved stamp"/>
+      </td>
+    </tr></table>
+  </td></tr>
+
+  <!-- Footer strip -->
+  <tr>
+    <td style="background:#0a0a08;color:#858481;padding:12px 36px;font-family:Arial,sans-serif;font-size:8pt;letter-spacing:2pt;text-align:center;border-top:2px solid #d09945">
+      <span style="color:#d09945">KAKAL BROTHERS</span>  ·  CRAFTED BRASS SINCE 1960  ·  THIS IS A SYSTEM-GENERATED PURCHASE ORDER
+    </td>
+  </tr>
+</table>
+</body></html>`;
+}
+
+function escapeHtml(s){
+  return String(s==null?'':s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+function downloadXls(filename, html){
+  const blob = new Blob(['\ufeff'+html], {type:'application/vnd.ms-excel;charset=utf-8'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url; a.download = filename;
@@ -1265,13 +1450,13 @@ document.getElementById('gateForm').addEventListener('submit', e=>{
     notes: document.getElementById('gNotes').value.trim(),
   };
   if(!info.name || !info.email || !info.mobile){ toast('Please fill required fields.'); return; }
-  const csv = buildCsv(info);
+  const xls = buildPurchaseOrderHtml(info);
   const stamp = new Date().toISOString().slice(0,10);
   const safe = (info.company || info.name).replace(/[^a-z0-9]+/gi,'-').toLowerCase();
-  downloadCsv(`kakal-order-${safe}-${stamp}.csv`, csv);
-  emailOrderToOwner(info, csv);
+  downloadXls(`kakal-brothers-PO-${safe}-${stamp}.xls`, xls);
+  emailOrderToOwner(info, xls);
   gate.classList.remove('open');
-  toast('Order sheet downloaded · email opening for aziz@azizsaif.com');
+  toast('Purchase Order downloaded · email opening for aziz@azizsaif.com');
 });
 
 initStats();
