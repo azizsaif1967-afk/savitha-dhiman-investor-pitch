@@ -1,0 +1,7 @@
+# robots.txt — drhadishahid.com
+# Official legacy biography website of Dr. A. Hadi Shahid
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.drhadishahid.com/sitemap.xml
