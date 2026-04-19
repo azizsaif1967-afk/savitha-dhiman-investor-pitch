@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
   :root{
@@ -387,8 +388,8 @@
       <input type="text" id="oPhone" placeholder="Phone / WhatsApp (optional)" />
       <textarea id="oNotes" placeholder="Shipping address & notes"></textarea>
       <button type="submit" class="btn-gold" style="width:100%">Place Order via Email</button>
-      <button type="button" id="dlBtn" class="btn-ghost" style="width:100%;margin-top:10px">⬇ Download Branded Purchase Order (Excel)</button>
-      <div style="margin-top:8px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:13px">Signed &amp; stamped Purchase Order · requires contact details · a copy is emailed to aziz@azizsaif.com.</div>
+      <button type="button" id="dlBtn" class="btn-ghost" style="width:100%;margin-top:10px">⬇ Download Branded Purchase Order (PDF)</button>
+      <div style="margin-top:8px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:13px">Signed &amp; stamped Purchase Order (PDF) · requires contact details · a copy is emailed to aziz@azizsaif.com.</div>
     </form>
   </div>
 </div>
@@ -412,7 +413,7 @@
         <input required type="tel" id="gMobile" placeholder="+971 55 000 0000" />
         <label style="display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Notes</label>
         <textarea id="gNotes" placeholder="Delivery address / requirements"></textarea>
-        <button type="submit" class="btn-gold" style="width:100%;margin-top:6px">Download Signed Purchase Order</button>
+        <button type="submit" class="btn-gold" style="width:100%;margin-top:6px">Download Signed Purchase Order (PDF)</button>
         <div style="margin-top:10px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:12px">
           Fields marked * are required. Your details stay with Kakal Brothers.
         </div>
@@ -827,9 +828,53 @@ const PRODUCTS = [
     {size:'Large / 63mm',np:11160,pv:11360},{size:'Jumbo / 90mm',np:12780,pv:13280}]},
 ];
 
-// ----- Thumbnail generator (elegant SVG with gold gradient & monogram) -----
+// ----- Real product photos pulled from kakalbrothers.xyz (CloudFront CDN) -----
+// Only a subset of our catalog has matching official photos on the live site.
+// For products without a photo, we fall back to the styled SVG placeholder.
+const CF = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663192358277/4JWB3YjvXfJHBmvQD3g294/';
+const OFFICIAL_PHOTO = {
+  // key = product name lowercased, value = CloudFront filename
+  'butterfly':      CF+'butterfly_00f6325b.jpg',
+  'carbon':         CF+'carbon_834143aa.jpg',
+  'carbon (mortise rose)': CF+'carbon_834143aa.jpg',
+  'carbon (cabinet knob)': CF+'carbon_834143aa.jpg',
+  'checkers':       CF+'checkers_29ddc073.jpg',
+  'crescent':       CF+'crescent_47f3681d.jpg',
+  'curve':          CF+'curve_76a5d5a2.jpg',
+  'eclipse':        CF+'eclipse_eb948ca0.jpg',
+  'eclipse (cabinet)': CF+'eclipse_eb948ca0.jpg',
+  'eve':            CF+'eve_e5915a6c.jpg',
+  'eve (cabinet knob)': CF+'eve_e5915a6c.jpg',
+  'florence':       CF+'florence_8b6efcea.jpg',
+  'merc':           CF+'merc_7f46c874.jpg',
+  'mercury':        CF+'merc_7f46c874.jpg',
+  'rocky':          CF+'rocky_3be749f8.jpg',
+  'rocky (cabinet)': CF+'rocky_3be749f8.jpg',
+  'rocky (cabinet knob)': CF+'rocky_3be749f8.jpg',
+  'rocky (knob)':   CF+'rocky_3be749f8.jpg',
+  'sparkle':        CF+'sparkle_93c9977f.jpg',
+  'storm':          CF+'storm_fe95caa4.jpg',
+  'storm (cabinet)':CF+'storm_fe95caa4.jpg',
+  'storm (cabinet knob)': CF+'storm_fe95caa4.jpg',
+  'storm (knob)':   CF+'storm_fe95caa4.jpg',
+  'sublime':        CF+'sublime_df29405d.jpg',
+  'sublime (cabinet)': CF+'sublime_df29405d.jpg',
+  'sublime (cabinet knob)': CF+'sublime_df29405d.jpg',
+  'sunshine':       CF+'sunshine_9babdd96.jpg',
+  'sunshine (cabinet)': CF+'sunshine_9babdd96.jpg',
+};
+
+function officialPhotoFor(p){
+  return OFFICIAL_PHOTO[p.name.toLowerCase()] || null;
+}
+
+// ----- Thumbnail generator (real photo when available, else SVG placeholder) -----
 // Two SVG styles vary by category hash
 function thumb(p){
+  const real = officialPhotoFor(p);
+  if(real){
+    return `<img src="${real}" alt="${p.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>`;
+  }
   const letter = p.name.replace(/[^A-Za-z]/g,'').charAt(0).toUpperCase();
   const seed = [...p.name].reduce((a,c)=>a + c.charCodeAt(0), 0);
   const style = seed % 4;
@@ -1392,13 +1437,36 @@ function escapeHtml(s){
   return String(s==null?'':s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 }
 
-function downloadXls(filename, html){
-  const blob = new Blob(['\ufeff'+html], {type:'application/vnd.ms-excel;charset=utf-8'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = filename;
-  document.body.appendChild(a); a.click();
-  setTimeout(()=>{ document.body.removeChild(a); URL.revokeObjectURL(url); }, 200);
+// Open a popup window with the PO HTML and auto-trigger the browser's
+// native print dialog → user selects "Save as PDF". This yields a
+// perfectly-branded vector PDF with no rendering artefacts.
+function downloadPdf(filename, html){
+  return new Promise((resolve, reject)=>{
+    // Inject a print-friendly page size + title so the saved PDF picks
+    // up the right filename in Chrome/Safari/Firefox "Save as PDF".
+    const printHtml = html.replace('</head>',
+      `<style>
+        @page { size: A4; margin: 12mm; }
+        @media print { body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; } }
+        body { margin:0 }
+      </style>
+      <script>
+        window.addEventListener('load', function(){
+          // give images a tick to paint, then print
+          setTimeout(function(){ window.focus(); window.print(); }, 450);
+        });
+      <\/script>
+      </head>`).replace(/<title>[^<]*<\/title>/i, `<title>${filename.replace(/\.pdf$/,'')}<\/title>`);
+    const w = window.open('', '_blank', 'width=1000,height=900');
+    if(!w){
+      reject(new Error('Pop-up was blocked — please allow pop-ups for this site and try again.'));
+      return;
+    }
+    w.document.open();
+    w.document.write(printHtml);
+    w.document.close();
+    resolve();
+  });
 }
 
 function emailOrderToOwner(info, csv){
@@ -1450,13 +1518,20 @@ document.getElementById('gateForm').addEventListener('submit', e=>{
     notes: document.getElementById('gNotes').value.trim(),
   };
   if(!info.name || !info.email || !info.mobile){ toast('Please fill required fields.'); return; }
-  const xls = buildPurchaseOrderHtml(info);
+  const html = buildPurchaseOrderHtml(info);
   const stamp = new Date().toISOString().slice(0,10);
   const safe = (info.company || info.name).replace(/[^a-z0-9]+/gi,'-').toLowerCase();
-  downloadXls(`kakal-brothers-PO-${safe}-${stamp}.xls`, xls);
-  emailOrderToOwner(info, xls);
   gate.classList.remove('open');
-  toast('Purchase Order downloaded · email opening for aziz@azizsaif.com');
+  toast('Opening print dialog — choose "Save as PDF"…');
+  downloadPdf(`Kakal-Brothers-PO-${safe}-${stamp}.pdf`, html)
+    .then(()=>{
+      emailOrderToOwner(info, html);
+      setTimeout(()=>toast('Tip: in the print dialog, pick "Save as PDF".'), 1200);
+    })
+    .catch(err=>{
+      console.error(err);
+      toast(err.message);
+    });
 });
 
 initStats();
