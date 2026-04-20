@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Elegance Limit Gents Saloon — Muwaileh, Sharjah</title>
+<meta name="description" content="Elegance Limit Gents Saloon — Muwaileh Commercial, Sharjah. Haircuts from AED 40, beard shaping from AED 30, facials, oil baths, manicure & pedicure. Open daily till midnight. Walk-ins welcome." />
+<meta name="theme-color" content="#0b0b0b" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/brand/favicon-192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="assets/brand/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0b0b;
+    --ink-soft:#141414;
+    --ink-card:#171717;
+    --ink-line:#242424;
+    --cream:#f5efe4;
+    --brass:#c9a24e;
+    --brass-soft:#d9b870;
+    --brass-deep:#8a6a2a;
+    --muted:#8a8580;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--cream);
+    background:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .serif{font-family:'Playfair Display',Georgia,serif;font-weight:700;letter-spacing:-.01em}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--brass);font-weight:600;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--brass)}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,11,11,.82);
+    backdrop-filter:saturate(140%) blur(10px);
+    -webkit-backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--ink-line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand img{height:40px;width:auto}
+  nav.links{display:flex;gap:28px}
+  nav.links a{
+    text-decoration:none;font-size:14px;color:var(--cream);opacity:.82;
+    transition:opacity .15s,color .15s;font-weight:500;
+  }
+  nav.links a:hover{opacity:1;color:var(--brass)}
+  .nav-cta{
+    text-decoration:none;padding:10px 18px;border-radius:999px;
+    background:var(--brass);color:#111;font-weight:600;font-size:13px;
+    border:1px solid var(--brass);display:inline-flex;align-items:center;gap:8px;
+    transition:background .15s,transform .15s;
+  }
+  .nav-cta:hover{background:var(--brass-soft);transform:translateY(-1px)}
+  @media (max-width:880px){ nav.links{display:none} }
+  @media (max-width:520px){ .nav-cta span.fulltxt{display:none} .nav-cta::after{content:"Book"} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:92vh;
+    display:grid;align-items:center;
+    overflow:hidden;isolation:isolate;
+    background:#000;
+  }
+  .hero-media{position:absolute;inset:0;z-index:-2}
+  .hero-media video,.hero-media img{
+    width:100%;height:100%;object-fit:cover;object-position:center;
+    filter:contrast(1.04) saturate(.92);
+  }
+  .hero-media::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(1000px 600px at 85% 15%, rgba(201,162,78,.18), transparent 60%),
+      linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.72) 60%,rgba(0,0,0,.88) 100%);
+    z-index:-1;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding:130px 0 90px}
+  .hero h1{
+    font-family:'Playfair Display',serif;font-weight:900;
+    font-size:clamp(40px,6.2vw,76px);line-height:1.02;margin:18px 0 22px;
+    letter-spacing:-.02em;
+  }
+  .hero h1 em{font-style:italic;color:var(--brass);font-weight:700}
+  .hero p.lead{font-size:18px;color:#dcd6c9;max-width:560px;margin:0 0 30px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    text-decoration:none;padding:14px 22px;border-radius:999px;
+    font-weight:600;font-size:14px;letter-spacing:.02em;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:transform .15s,background .15s,border-color .15s,color .15s;
+    cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--brass);color:#111;border:1px solid var(--brass)}
+  .btn-primary:hover{background:var(--brass-soft);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--cream);border:1px solid rgba(245,239,228,.3)}
+  .btn-ghost:hover{border-color:var(--brass);color:var(--brass)}
+  .btn-whatsapp{background:#25d366;color:#0b1f12;border:1px solid #25d366}
+  .btn-whatsapp:hover{background:#2ee474;transform:translateY(-1px)}
+
+  .hero-card{
+    background:rgba(20,20,20,.72);
+    border:1px solid var(--ink-line);
+    border-radius:16px;padding:26px;
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  }
+  .hero-card h3{font-family:'Playfair Display',serif;font-size:22px;margin:0 0 16px;color:var(--cream)}
+  .hero-card .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--ink-line);font-size:13.5px}
+  .hero-card .row:last-child{border-bottom:0}
+  .hero-card .row .day{color:#bdb6a8}
+  .hero-card .row .hrs{color:var(--brass);font-weight:600}
+  .hero-card .row.today{background:rgba(201,162,78,.08);margin:0 -8px;padding:9px 8px;border-radius:6px;border-bottom-color:transparent}
+  .hero-card .row.today .day{color:var(--cream);font-weight:600}
+  .open-now{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(40,180,80,.14);color:#7be39a;
+    border:1px solid rgba(40,180,80,.35);
+    padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;margin-bottom:14px;
+  }
+  .open-now .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.22);animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(74,222,128,.22)}50%{box-shadow:0 0 0 8px rgba(74,222,128,.04)}}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:32px;padding:100px 0 60px}
+    .hero-card{order:2}
+  }
+
+  /* ---------- BADGES STRIP ---------- */
+  .badges{
+    background:var(--cream);color:#1a1710;
+    border-top:1px solid var(--brass-deep);border-bottom:1px solid rgba(138,106,42,.25);
+  }
+  .badges-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:24px 0}
+  .badge{display:flex;align-items:center;gap:12px;justify-content:center;padding:8px 16px;border-right:1px solid rgba(138,106,42,.18)}
+  .badge:last-child{border-right:0}
+  .badge-icon{
+    width:40px;height:40px;border-radius:50%;
+    background:#1a1710;color:var(--brass);
+    display:grid;place-items:center;flex-shrink:0;
+  }
+  .badge-text strong{display:block;font-size:14px;color:#1a1710}
+  .badge-text span{font-size:12px;color:#6b6555}
+  @media (max-width:780px){
+    .badges-inner{grid-template-columns:repeat(2,1fr);gap:4px}
+    .badge{border-right:0;border-bottom:1px solid rgba(138,106,42,.12);padding:12px}
+  }
+
+  /* ---------- SECTION ---------- */
+  section{padding:100px 0}
+  section.tight{padding:70px 0}
+  .section-head{text-align:center;max-width:720px;margin:0 auto 56px}
+  .section-head h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4.5vw,52px);margin:14px 0 14px;line-height:1.05;letter-spacing:-.015em}
+  .section-head p{color:#bdb6a8;font-size:17px;margin:0}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .about-copy h2{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,44px);line-height:1.1;margin:14px 0 20px;letter-spacing:-.015em}
+  .about-copy p{color:#cbc5b7;font-size:16.5px;margin:0 0 16px}
+  .about-quote{color:var(--brass);font-family:'Playfair Display',serif;font-size:22px;font-style:italic;margin-top:22px;padding-left:18px;border-left:2px solid var(--brass)}
+  .about-visual{
+    position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;
+    border:1px solid var(--ink-line);
+  }
+  .about-visual img{width:100%;height:100%;object-fit:cover}
+  .about-visual .stamp{
+    position:absolute;left:22px;bottom:22px;
+    background:rgba(11,11,11,.8);border:1px solid var(--brass);
+    color:var(--brass);padding:10px 16px;border-radius:999px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  }
+  @media (max-width:900px){ .about-grid{grid-template-columns:1fr;gap:36px} }
+
+  /* ---------- SERVICES ---------- */
+  #services{background:linear-gradient(180deg,#0b0b0b,#0f0f0f)}
+  .svc-cats{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .svc-cat{
+    background:var(--ink-card);border:1px solid var(--ink-line);border-radius:14px;
+    padding:28px;position:relative;
+  }
+  .svc-cat-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--ink-line)}
+  .svc-cat-icon{width:44px;height:44px;border-radius:10px;background:#0b0b0b;border:1px solid var(--brass);display:grid;place-items:center;color:var(--brass);flex-shrink:0}
+  .svc-cat-title{font-family:'Playfair Display',serif;font-size:22px;margin:0}
+  .svc-list{list-style:none;margin:0;padding:0}
+  .svc-list li{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    padding:10px 0;border-bottom:1px dashed rgba(42,42,42,.9);
+    font-size:14.5px;
+  }
+  .svc-list li:last-child{border-bottom:0}
+  .svc-list .name{color:#d8d2c4}
+  .svc-list .price{color:var(--brass);font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .svc-list .price small{color:var(--brass-deep);font-size:11px;margin-right:4px;font-weight:500}
+  @media (max-width:780px){ .svc-cats{grid-template-columns:1fr} }
+
+  .offers{
+    margin-top:36px;background:linear-gradient(135deg,rgba(201,162,78,.09),rgba(201,162,78,.02));
+    border:1px solid rgba(201,162,78,.28);border-radius:14px;padding:32px;
+  }
+  .offers h3{font-family:'Playfair Display',serif;font-size:26px;margin:0 0 6px;color:var(--cream)}
+  .offers .sub{color:var(--brass);font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:22px}
+  .offers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .offer{
+    background:rgba(11,11,11,.6);border:1px solid var(--ink-line);border-radius:10px;
+    padding:18px;display:flex;flex-direction:column;gap:8px;position:relative;
+  }
+  .offer .ingredients{color:#cbc5b7;font-size:13.5px;line-height:1.5;flex:1}
+  .offer .plus{color:var(--brass-deep);margin:0 4px}
+  .offer .offer-price{
+    align-self:flex-start;background:var(--brass);color:#111;font-weight:700;
+    padding:6px 12px;border-radius:999px;font-size:14px;font-variant-numeric:tabular-nums;
+  }
+  @media (max-width:880px){ .offers-grid{grid-template-columns:1fr 1fr} }
+  @media (max-width:560px){ .offers-grid{grid-template-columns:1fr} }
+
+  .svc-note{text-align:center;color:#8a8580;font-size:13px;margin-top:28px}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:10px}
+  .g-item{
+    position:relative;overflow:hidden;border-radius:10px;border:1px solid var(--ink-line);
+    background:#111;
+  }
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .g-item:hover img{transform:scale(1.06)}
+  .g-item.tall{grid-row:span 2}
+  .g-item.wide{grid-column:span 2}
+  @media (max-width:900px){
+    .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+    .g-item.wide{grid-column:span 2}
+    .g-item.tall{grid-row:span 2}
+  }
+
+  /* ---------- TIMINGS ---------- */
+  #timings{background:linear-gradient(180deg,#0f0f0f,#0b0b0b)}
+  .timings-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .time-card{
+    background:var(--ink-card);border:1px solid var(--ink-line);border-radius:14px;padding:32px;
+  }
+  .time-card.primary{border-color:var(--brass)}
+  .time-card h3{font-family:'Playfair Display',serif;font-size:24px;margin:0 0 4px}
+  .time-card .sub{color:var(--muted);font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px}
+  .time-card .hours{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+  .time-card .hours .big{font-family:'Playfair Display',serif;font-size:46px;color:var(--brass);line-height:1}
+  .time-card .hours .unit{color:#bdb6a8;font-size:15px}
+  .time-card p{color:#b8b2a4;font-size:14.5px;margin:0}
+  @media (max-width:780px){ .timings-grid{grid-template-columns:1fr} }
+
+  /* ---------- LOCATION ---------- */
+  .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+  .loc-map{border-radius:14px;overflow:hidden;border:1px solid var(--ink-line);min-height:440px}
+  .loc-map iframe{display:block;width:100%;height:100%;min-height:440px;border:0;filter:grayscale(.15) contrast(1.02)}
+  .loc-info{background:var(--ink-card);border:1px solid var(--ink-line);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:18px}
+  .loc-info h3{font-family:'Playfair Display',serif;font-size:26px;margin:0}
+  .loc-row{display:flex;gap:14px;align-items:flex-start}
+  .loc-row .ic{width:38px;height:38px;border-radius:10px;background:#0b0b0b;border:1px solid var(--brass);display:grid;place-items:center;color:var(--brass);flex-shrink:0}
+  .loc-row .lbl{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .loc-row .val{color:var(--cream);font-size:15px;line-height:1.5}
+  @media (max-width:900px){ .loc-grid{grid-template-columns:1fr} }
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{
+    position:relative;isolation:isolate;overflow:hidden;
+    border-top:1px solid var(--ink-line);border-bottom:1px solid var(--ink-line);
+  }
+  .cta-band::before{
+    content:"";position:absolute;inset:0;z-index:-2;
+    background:url('assets/photos/chairs-wide.jpg') center/cover no-repeat;
+    filter:grayscale(.3) contrast(1.05);
+  }
+  .cta-band::after{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:
+      linear-gradient(135deg,rgba(201,162,78,.12),rgba(0,0,0,.85)),
+      linear-gradient(180deg,rgba(11,11,11,.9),rgba(11,11,11,.92));
+  }
+  .cta-inner{text-align:center;padding:90px 0}
+  .cta-inner h2{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,48px);margin:12px 0 14px;letter-spacing:-.015em}
+  .cta-inner p{color:#cbc5b7;font-size:17px;margin:0 auto 28px;max-width:620px}
+  .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#080808;border-top:1px solid var(--ink-line);padding:50px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:32px}
+  .foot-grid h4{font-family:'Playfair Display',serif;font-size:16px;margin:0 0 14px;color:var(--brass);letter-spacing:.02em}
+  .foot-grid a{color:#bdb6a8;text-decoration:none;font-size:14px;display:block;padding:4px 0}
+  .foot-grid a:hover{color:var(--brass)}
+  .foot-grid p{color:#8a8580;font-size:13.5px;margin:0 0 10px;line-height:1.6}
+  .foot-logo img{height:44px;margin-bottom:14px}
+  .foot-bottom{border-top:1px solid var(--ink-line);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12.5px;color:#8a8580}
+  .socials{display:flex;gap:10px}
+  .soc{width:36px;height:36px;border-radius:50%;border:1px solid var(--ink-line);display:grid;place-items:center;color:var(--cream);transition:border-color .15s,color .15s;text-decoration:none}
+  .soc:hover{border-color:var(--brass);color:var(--brass)}
+  @media (max-width:780px){ .foot-grid{grid-template-columns:1fr;gap:28px} }
+
+  /* ---------- HELPERS ---------- */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Elegance Limit Gents Saloon — home">
+      <img src="assets/brand/logo-web.png" alt="Elegance Limit Gents Saloon" />
+    </a>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#offers">Offers</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#timings">Hours</a>
+      <a href="#location">Location</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/971525003482" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+      <span class="fulltxt">Book on WhatsApp</span>
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-media">
+    <video autoplay muted loop playsinline poster="assets/photos/hero-wide.jpg">
+      <source src="assets/videos/hero-loop.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="open-now"><span class="dot"></span> Walk-ins welcome · Open till midnight</span>
+      <div class="eyebrow">Muwaileh Commercial · Sharjah</div>
+      <h1>Elevate your <em>grooming</em> game.</h1>
+      <p class="lead">Six hygienic chairs. Skilled barbers. Classic cuts, beard shaping, hot-towel shaves, facials, and a full menu of men's grooming — at the kind of prices that feel right in the neighbourhood.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#services">See Price List
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#location">Get Directions</a>
+      </div>
+    </div>
+    <aside class="hero-card" aria-label="Weekly hours">
+      <h3>Weekly Hours</h3>
+      <div class="row" id="row-sat"><span class="day">Saturday</span><span class="hrs">10 AM – 12 AM</span></div>
+      <div class="row" id="row-sun"><span class="day">Sunday</span><span class="hrs">10 AM – 12 AM</span></div>
+      <div class="row" id="row-mon"><span class="day">Monday</span><span class="hrs">10 AM – 12 AM</span></div>
+      <div class="row" id="row-tue"><span class="day">Tuesday</span><span class="hrs">10 AM – 12 AM</span></div>
+      <div class="row" id="row-wed"><span class="day">Wednesday</span><span class="hrs">10 AM – 12 AM</span></div>
+      <div class="row" id="row-thu"><span class="day">Thursday</span><span class="hrs">10 AM – 12 AM</span></div>
+      <div class="row" id="row-fri"><span class="day">Friday</span><span class="hrs">2 PM – 12 AM</span></div>
+    </aside>
+  </div>
+</section>
+
+<!-- BADGES -->
+<div class="badges">
+  <div class="wrap badges-inner">
+    <div class="badge">
+      <div class="badge-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M7 10V6a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div class="badge-text"><strong>6 Hygienic Chairs</strong><span>Sterilised tools, every cut</span></div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <div class="badge-text"><strong>Everyone Welcome</strong><span>Gents & kids, all ages</span></div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4M16 2v4M3 10h18M5 6h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/></svg>
+      </div>
+      <div class="badge-text"><strong>Open 7 Days</strong><span>Late walk-ins OK</span></div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="badge-text"><strong>Book on WhatsApp</strong><span>+971 52 500 3482</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <div class="eyebrow">About the Shop</div>
+      <h2>A sharp cut shouldn't be complicated.</h2>
+      <p>Tucked into Muwaileh Commercial on Sheikh Khalifa Bin Zayed Al Nahyan Street, Elegance Limit Gents Saloon is the kind of barbershop the neighbourhood keeps coming back to. We're not a luxury spa or a high-street chain — we're a working men's saloon that takes pride in doing the basics beautifully.</p>
+      <p>Walk in for a classic fade, a straight-razor beard shape, a hot-towel shave, or a facial that leaves your skin feeling new. Our six chairs are sanitised after every sitting, our tools are clean, and our barbers know how to listen before they cut.</p>
+      <div class="about-quote">Elevate your grooming game.</div>
+    </div>
+    <div class="about-visual reveal">
+      <img src="assets/photos/exterior.jpg" alt="Elegance Limit Gents Saloon storefront in Muwaileh, Sharjah — bilingual signage in English and Arabic" loading="lazy">
+      <span class="stamp">Muwaileh · Sharjah · UAE</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center">Services & Price List</div>
+      <h2>The menu</h2>
+      <p>Transparent pricing, exactly as on the shop's wall. All prices in AED. Card & cash accepted.</p>
+    </div>
+
+    <div class="svc-cats">
+      <!-- Cuts & Shaves -->
+      <div class="svc-cat reveal">
+        <div class="svc-cat-head">
+          <div class="svc-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="7" r="3"/><circle cx="6" cy="17" r="3"/><path d="M8.12 8.88 20 3M8.12 15.12 20 21M14 12l6-3M14 12l6 3"/></svg></div>
+          <h3 class="svc-cat-title">Cuts & Shaves</h3>
+        </div>
+        <ul class="svc-list">
+          <li><span class="name">Hair Cut — Men</span><span class="price"><small>AED</small>40</span></li>
+          <li><span class="name">Beard Shaving</span><span class="price"><small>AED</small>30</span></li>
+          <li><span class="name">Hair Cut — Kids</span><span class="price"><small>AED</small>25</span></li>
+          <li><span class="name">Beard Dye</span><span class="price"><small>AED</small>25</span></li>
+        </ul>
+      </div>
+
+      <!-- Colour & Treatment -->
+      <div class="svc-cat reveal">
+        <div class="svc-cat-head">
+          <div class="svc-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 8 10c-2 3-2 6 0 8a5 5 0 0 0 8 0c2-2 2-5 0-8L12 2z"/></svg></div>
+          <h3 class="svc-cat-title">Colour & Treatment</h3>
+        </div>
+        <ul class="svc-list">
+          <li><span class="name">Hair Colouring — Black</span><span class="price"><small>AED</small>50</span></li>
+          <li><span class="name">Hair Coloring</span><span class="price"><small>AED</small>100 / 150 / 200</span></li>
+          <li><span class="name">Hair Protein — Short</span><span class="price"><small>AED</small>200</span></li>
+          <li><span class="name">Hair Protein — Long</span><span class="price"><small>AED</small>300</span></li>
+          <li><span class="name">Hair Straightening</span><span class="price"><small>AED</small>35</span></li>
+          <li><span class="name">Black Mask</span><span class="price"><small>AED</small>20</span></li>
+        </ul>
+      </div>
+
+      <!-- Oil Bath -->
+      <div class="svc-cat reveal">
+        <div class="svc-cat-head">
+          <div class="svc-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M8 6c1 2 3 3 4 3s3-1 4-3M4 12h16M4 12a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4M8 22h8"/></svg></div>
+          <h3 class="svc-cat-title">Oil Bath & Wash</h3>
+        </div>
+        <ul class="svc-list">
+          <li><span class="name">Oil Bath</span><span class="price"><small>AED</small>30</span></li>
+          <li><span class="name">Oil Bath — Black</span><span class="price"><small>AED</small>50</span></li>
+          <li><span class="name">Oil Bath with Steam</span><span class="price"><small>AED</small>50</span></li>
+        </ul>
+      </div>
+
+      <!-- Facial & Skin -->
+      <div class="svc-cat reveal">
+        <div class="svc-cat-head">
+          <div class="svc-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8 15c1.5 1.5 2.5 2 4 2s2.5-.5 4-2"/></svg></div>
+          <h3 class="svc-cat-title">Facial & Skin</h3>
+        </div>
+        <ul class="svc-list">
+          <li><span class="name">Facial</span><span class="price"><small>AED</small>30</span></li>
+          <li><span class="name">Facial with Steam</span><span class="price"><small>AED</small>50</span></li>
+          <li><span class="name">Hydra Facial</span><span class="price"><small>AED</small>150</span></li>
+          <li><span class="name">Mask with Facial</span><span class="price"><small>AED</small>70</span></li>
+          <li><span class="name">Wax — Nose</span><span class="price"><small>AED</small>10</span></li>
+          <li><span class="name">Wax — Full Face</span><span class="price"><small>AED</small>30</span></li>
+        </ul>
+      </div>
+
+      <!-- Manicure & Pedicure -->
+      <div class="svc-cat reveal" style="grid-column:span 2">
+        <div class="svc-cat-head">
+          <div class="svc-cat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 21v-4a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v4"/><path d="M10 9h.01M14 9h.01M12 5v4"/><circle cx="12" cy="12" r="10" opacity=".2"/></svg></div>
+          <h3 class="svc-cat-title">Manicure, Pedicure & Foot Care</h3>
+        </div>
+        <ul class="svc-list" style="display:grid;grid-template-columns:1fr 1fr;gap:0 28px">
+          <li><span class="name">Manicure</span><span class="price"><small>AED</small>50</span></li>
+          <li><span class="name">Pedicure</span><span class="price"><small>AED</small>50</span></li>
+          <li><span class="name">Foot Massage</span><span class="price"><small>AED</small>50</span></li>
+          <li><span class="name">Foot Special</span><span class="price"><small>AED</small>120</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- OFFERS -->
+    <div id="offers" class="offers reveal">
+      <h3>Combo Offers</h3>
+      <div class="sub">Everyday Deals</div>
+      <div class="offers-grid">
+        <div class="offer">
+          <div class="ingredients">Manicure <span class="plus">+</span> Pedicure Treatment</div>
+          <div class="offer-price">AED 70</div>
+        </div>
+        <div class="offer">
+          <div class="ingredients">Hair Cut <span class="plus">+</span> Beard or Shave <span class="plus">+</span> Face & Neck D-Tan</div>
+          <div class="offer-price">AED 50</div>
+        </div>
+        <div class="offer">
+          <div class="ingredients">Hair Cut <span class="plus">+</span> Beard or Shave <span class="plus">+</span> Head Hot-Oil Treatment & Wash</div>
+          <div class="offer-price">AED 50</div>
+        </div>
+        <div class="offer">
+          <div class="ingredients">Hair Cut <span class="plus">+</span> Hair Colour <span class="plus">+</span> Hair Wash & Blow Dry</div>
+          <div class="offer-price">AED 70</div>
+        </div>
+        <div class="offer" style="grid-column:span 2">
+          <div class="ingredients">Hair Cut <span class="plus">+</span> Dandruff Treatment <span class="plus">+</span> Face & Neck D-Tan <span class="plus">+</span> Hair Wash</div>
+          <div class="offer-price">AED 50</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-note">Prices as displayed on the shop's price card. Ask your barber about specials and seasonal offers.</div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center">Inside The Shop</div>
+      <h2>The chairs, the tools, the room</h2>
+      <p>A look around Elegance Limit — six chairs, arched mirrors, and that signature brass & black trim.</p>
+    </div>
+    <div class="gallery">
+      <div class="g-item tall"><img src="assets/photos/chairs-3.jpg" alt="Three barber chairs with arched mirrors and brass trim" loading="lazy"></div>
+      <div class="g-item wide"><img src="assets/photos/chairs-wide.jpg" alt="Wide view of the barbershop interior with four chairs" loading="lazy"></div>
+      <div class="g-item"><img src="assets/photos/wash-basins.jpg" alt="Hair wash basins with round illuminated mirrors" loading="lazy"></div>
+      <div class="g-item"><img src="assets/photos/patterned-tiles.jpg" alt="Barber chair on patterned floor tiles" loading="lazy"></div>
+      <div class="g-item wide"><img src="assets/photos/couch-products.jpg" alt="Waiting area with leather couch and products shelf" loading="lazy"></div>
+      <div class="g-item"><img src="assets/photos/waiting-cabinet.jpg" alt="Leather couch, glass products cabinet, and arched mirrors" loading="lazy"></div>
+      <div class="g-item tall"><img src="assets/photos/brand-banner.jpg" alt="Interior Elegance Limit Gents Saloon banner" loading="lazy"></div>
+      <div class="g-item"><img src="assets/photos/lounge-mirrors.jpg" alt="Barber chairs and arched mirrors with tufted leather couch" loading="lazy"></div>
+      <div class="g-item"><img src="assets/photos/exterior.jpg" alt="Shop exterior with bilingual signage" loading="lazy"></div>
+    </div>
+    <p class="svc-note" style="margin-top:20px">Want to see more cuts? Follow <a href="https://www.instagram.com/elegancelimit/" target="_blank" rel="noopener" style="color:var(--brass)">@elegancelimit</a> on Instagram.</p>
+  </div>
+</section>
+
+<!-- TIMINGS -->
+<section id="timings" class="tight">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center">Opening Hours</div>
+      <h2>Open late, every day</h2>
+      <p>Pop in after work, after dinner, or on the way home. We're open until midnight, seven days a week.</p>
+    </div>
+    <div class="timings-grid">
+      <div class="time-card primary reveal">
+        <h3>Saturday – Thursday</h3>
+        <div class="sub">Six days a week</div>
+        <div class="hours"><span class="big">10 AM</span><span class="unit">to</span><span class="big">12 AM</span></div>
+        <p>Fourteen hours of chair-time, every day. Walk in anytime — we'll fit you in between appointments.</p>
+      </div>
+      <div class="time-card reveal">
+        <h3>Friday</h3>
+        <div class="sub">Jumu'ah schedule</div>
+        <div class="hours"><span class="big">2 PM</span><span class="unit">to</span><span class="big">12 AM</span></div>
+        <p>We open after Jumu'ah prayers and stay open until midnight. Reserved, quieter hours — great for families.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center">Find Us</div>
+      <h2>In the heart of Muwaileh</h2>
+      <p>Ground floor of 5176, Sheikh Khalifa Bin Zayed Al Nahyan Street. Right by Umm Ayman Mosque, easy access from the E11.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-map reveal">
+        <iframe
+          src="https://www.google.com/maps?q=25.305705,55.454985&hl=en&z=17&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Elegance Limit Gents Saloon on Google Maps"></iframe>
+      </div>
+      <div class="loc-info reveal">
+        <h3>Elegance Limit Gents Saloon</h3>
+        <div class="loc-row">
+          <div class="ic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg>
+          </div>
+          <div>
+            <div class="lbl">Address</div>
+            <div class="val">Ground Floor, 5176<br>Sheikh Khalifa Bin Zayed Al Nahyan Street<br>Muwaileh Commercial, Sharjah 61459<br>United Arab Emirates</div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <div class="ic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+          </div>
+          <div>
+            <div class="lbl">Coordinates</div>
+            <div class="val">25.305705°, 55.454985°</div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <div class="ic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18M6 7h12v14H6zM9 3V1h6v2"/></svg>
+          </div>
+          <div>
+            <div class="lbl">Nearby</div>
+            <div class="val">~450 m from Umm Ayman Mosque<br>~400 m from the basketball court</div>
+          </div>
+        </div>
+        <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=25.305705,55.454985" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:6px">
+          Get Directions
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="contact" class="cta-band">
+  <div class="wrap cta-inner">
+    <div class="eyebrow" style="justify-content:center">Ready when you are</div>
+    <h2>Book a chair. Or just walk in.</h2>
+    <p>Send a WhatsApp to reserve a slot, or stop by — six chairs means we almost always have one open.</p>
+    <div class="cta-actions">
+      <a class="btn btn-whatsapp" href="https://wa.me/971525003482?text=Hi%20Elegance%20Limit%2C%20I%27d%20like%20to%20book%20a%20slot." target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        WhatsApp +971 52 500 3482
+      </a>
+      <a class="btn btn-ghost" href="tel:+971525003482">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call the shop
+      </a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/elegancelimit/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+        @elegancelimit
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><img src="assets/brand/logo-web.png" alt="Elegance Limit Gents Saloon"></div>
+        <p>A neighbourhood gents saloon in Muwaileh Commercial, Sharjah. Classic cuts, clean chairs, fair prices. Walk-ins welcome every day.</p>
+        <div class="socials" style="margin-top:14px">
+          <a class="soc" href="https://www.instagram.com/elegancelimit/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+          </a>
+          <a class="soc" href="https://wa.me/971525003482" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          </a>
+          <a class="soc" href="tel:+971525003482" aria-label="Call">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <p style="margin:0">Ground Floor, 5176<br>Sheikh Khalifa Bin Zayed<br>Al Nahyan Street<br>Muwaileh Commercial<br>Sharjah 61459, UAE</p>
+      </div>
+      <div>
+        <h4>Shortcuts</h4>
+        <a href="#services">Services & Prices</a>
+        <a href="#offers">Combo Offers</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#timings">Opening Hours</a>
+        <a href="#location">Location & Directions</a>
+        <a href="https://wa.me/971525003482" target="_blank" rel="noopener">Book on WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© <span id="yr"></span> Elegance Limit Gents Saloon · All rights reserved.</div>
+      <div>Muwaileh Commercial · Sharjah · UAE</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Highlight today in hero hours card
+  (function(){
+    const ids = ['row-sun','row-mon','row-tue','row-wed','row-thu','row-fri','row-sat'];
+    const today = new Date().getDay(); // 0=Sun
+    const el = document.getElementById(ids[today]);
+    if (el) el.classList.add('today');
+  })();
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
