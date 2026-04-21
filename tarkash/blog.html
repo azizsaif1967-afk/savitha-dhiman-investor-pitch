@@ -13,7 +13,11 @@
     --ink:#2A1810;--cream:#F5EDE0;--cream-deep:#EFE4D2;--hot:#F47A1F;
     --burgundy:#8B1A1A;--gold:#E8C77E;--sage:#A8B89E;--wine:#6B2737;
     --mist:#8FB4C7;--white:#FFFBF3;--muted:rgba(42,24,16,.62);--line:rgba(42,24,16,.12);
+    --sage-tint:#DDE4D7;--mist-tint:#D8E5ED;--gold-tint:#F5E7C4;
+    --wine-tint:#E9D4D7;--burgundy-tint:#EBCECE;--hot-tint:#FBD9BE;
   }
+  .palette-strip{display:flex;width:100%;height:8px}
+  .palette-strip i{flex:1;display:block}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;overflow-x:hidden}
@@ -160,6 +164,17 @@
 </style>
 </head>
 <body>
+
+<div class="palette-strip" aria-hidden="true">
+  <i style="background:var(--ink)"></i>
+  <i style="background:var(--cream)"></i>
+  <i style="background:var(--hot)"></i>
+  <i style="background:var(--burgundy)"></i>
+  <i style="background:var(--gold)"></i>
+  <i style="background:var(--sage)"></i>
+  <i style="background:var(--wine)"></i>
+  <i style="background:var(--mist)"></i>
+</div>
 
 <nav class="nav">
   <div class="nav-inner">
@@ -412,6 +427,16 @@
       <div>© <span id="yr"></span> Tarkash FZE. All rights reserved.</div>
       <div style="display:flex;gap:18px;flex-wrap:wrap"><a href="#">Privacy</a><a href="#">Cookies</a><a href="#">Terms</a></div>
     </div>
+  </div>
+  <div class="palette-strip" style="margin-top:40px" aria-hidden="true">
+    <i style="background:var(--ink)"></i>
+    <i style="background:var(--cream)"></i>
+    <i style="background:var(--hot)"></i>
+    <i style="background:var(--burgundy)"></i>
+    <i style="background:var(--gold)"></i>
+    <i style="background:var(--sage)"></i>
+    <i style="background:var(--wine)"></i>
+    <i style="background:var(--mist)"></i>
   </div>
 </footer>
 
