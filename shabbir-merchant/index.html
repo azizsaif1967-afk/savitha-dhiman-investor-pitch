@@ -82,16 +82,18 @@
   .btn-ghost{background:transparent;color:var(--navy-deep);border:1px solid var(--navy-deep)}
   .btn-ghost:hover{background:var(--navy-deep);color:#fff}
 
-  /* Circular portrait medallion */
-  .portrait{width:min(380px,80vw);aspect-ratio:1/1;border-radius:50%;margin:0 auto;position:relative;background:
-      radial-gradient(circle at 30% 25%,rgba(214,183,101,.4),transparent 45%),
-      radial-gradient(circle at 70% 80%,rgba(192,22,28,.35),transparent 45%),
-      linear-gradient(135deg,#0f2740,#081a2e);
+  /* Circular video medallion (was monogram) */
+  .portrait{width:min(380px,80vw);aspect-ratio:1/1;border-radius:50%;margin:0 auto;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,#0f2740,#081a2e);
     box-shadow:0 30px 70px -25px rgba(10,15,25,.45),inset 0 0 0 1px rgba(214,183,101,.2);
-    display:flex;align-items:center;justify-content:center;border:2px solid var(--gold)}
-  .portrait::before{content:"";position:absolute;inset:10px;border-radius:50%;border:1px solid rgba(214,183,101,.3)}
-  .portrait-mono{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:#f3e4bd;font-size:clamp(130px,22vw,200px);line-height:1;text-shadow:0 8px 30px rgba(0,0,0,.5)}
-  .portrait-stamp{position:absolute;bottom:30px;left:0;right:0;text-align:center;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-light)}
+    border:3px solid var(--gold);display:block;text-decoration:none;cursor:pointer;isolation:isolate}
+  .portrait iframe{position:absolute;top:50%;left:50%;width:177.78%;height:100%;transform:translate(-50%,-50%);border:0;pointer-events:none;z-index:1}
+  .portrait::before{content:"";position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(214,183,101,.35);pointer-events:none;z-index:2}
+  .portrait::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at center,transparent 55%,rgba(8,26,46,.55) 100%);pointer-events:none;z-index:2}
+  .play-overlay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:82px;height:82px;border-radius:50%;background:rgba(192,22,28,.92);color:#fff;display:flex;align-items:center;justify-content:center;z-index:3;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 6px rgba(255,255,255,.12);transition:transform .25s,background .25s}
+  .play-overlay svg{width:32px;height:32px;fill:#fff;margin-left:4px}
+  .portrait:hover .play-overlay{transform:translate(-50%,-50%) scale(1.08);background:var(--red-deep)}
+  .portrait-stamp{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-light);z-index:3;text-shadow:0 2px 8px rgba(0,0,0,.7)}
 
   /* ===== Stats ===== */
   .stats{background:var(--navy-deep);color:#e8d9aa;padding:42px 0;border-top:1px solid var(--gold-deep);border-bottom:1px solid var(--gold-deep)}
@@ -277,10 +279,13 @@
       </div>
     </div>
     <div>
-      <div class="portrait" aria-label="Shabbir Merchant portrait medallion">
-        <div class="portrait-mono">SM</div>
-        <div class="portrait-stamp">Dubai · Since 1976</div>
-      </div>
+      <a class="portrait" href="https://www.youtube.com/watch?v=pJfxnoD2txs" target="_blank" rel="noopener" aria-label="Watch the Gulf News documentary on Shabbir Merchant">
+        <iframe src="https://www.youtube.com/embed/pJfxnoD2txs?autoplay=1&mute=1&loop=1&playlist=pJfxnoD2txs&controls=0&modestbranding=1&playsinline=1&rel=0&showinfo=0&iv_load_policy=3" title="Gulf News — Shabbir Merchant, the multi-million neon magnate" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <span class="play-overlay" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg>
+        </span>
+        <span class="portrait-stamp">Gulf News · The Neon Magnate</span>
+      </a>
     </div>
   </div>
 </section>
