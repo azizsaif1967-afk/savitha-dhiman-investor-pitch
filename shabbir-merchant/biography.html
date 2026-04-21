@@ -82,12 +82,13 @@
   .btn-ghost{background:transparent;color:var(--navy-deep);border:1px solid var(--navy-deep)}
   .btn-ghost:hover{background:var(--navy-deep);color:#fff}
 
-  /* Circular video medallion (was monogram) */
+  /* Circular photo medallion (with play overlay linking to Gulf News doc) */
   .portrait{width:min(380px,80vw);aspect-ratio:1/1;border-radius:50%;margin:0 auto;position:relative;overflow:hidden;
     background:linear-gradient(135deg,#0f2740,#081a2e);
     box-shadow:0 30px 70px -25px rgba(10,15,25,.45),inset 0 0 0 1px rgba(214,183,101,.2);
     border:3px solid var(--gold);display:block;text-decoration:none;cursor:pointer;isolation:isolate}
-  .portrait iframe{position:absolute;top:50%;left:50%;width:177.78%;height:100%;transform:translate(-50%,-50%);border:0;pointer-events:none;z-index:1}
+  .portrait .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%;z-index:1;transition:transform .5s ease}
+  .portrait:hover .photo{transform:scale(1.04)}
   .portrait::before{content:"";position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(214,183,101,.35);pointer-events:none;z-index:2}
   .portrait::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at center,transparent 55%,rgba(8,26,46,.55) 100%);pointer-events:none;z-index:2}
   .play-overlay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:82px;height:82px;border-radius:50%;background:rgba(192,22,28,.92);color:#fff;display:flex;align-items:center;justify-content:center;z-index:3;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 6px rgba(255,255,255,.12);transition:transform .25s,background .25s}
@@ -294,7 +295,7 @@
     </div>
     <div>
       <a class="portrait" href="https://www.youtube.com/watch?v=pJfxnoD2txs" target="_blank" rel="noopener" aria-label="Watch the Gulf News documentary on Shabbir Merchant">
-        <iframe src="https://www.youtube.com/embed/pJfxnoD2txs?autoplay=1&mute=1&loop=1&playlist=pJfxnoD2txs&controls=0&modestbranding=1&playsinline=1&rel=0&showinfo=0&iv_load_policy=3" title="Gulf News — Shabbir Merchant, the multi-million neon magnate" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <img class="photo" src="./photo.png" alt="Muhammad Shabbir Merchant — Group Chairman, Champion Group"/>
         <span class="play-overlay" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg>
         </span>
