@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Full AI Marketing Team — Complete Step-by-Step SOP (Claude Code + Agents + Skills)</title>
+<meta name="description" content="Verified, full step-by-step guide to building a 5-agent, 12-skill AI marketing team inside Claude Code. Based on Grace Leung's YouTube walkthrough + the screen-by-screen SOP — merged, verified, and consolidated.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0B0D10;
+  --bg-2: #11141A;
+  --bg-3: #171B22;
+  --panel: #1B2028;
+  --border: #232932;
+  --border-2: #2D3440;
+  --text: #E6EAF0;
+  --text-dim: #97A0AD;
+  --text-mute: #6B7482;
+  --accent: #D97706;      /* Claude amber */
+  --accent-2: #F59E0B;
+  --accent-soft: rgba(217,119,6,0.12);
+  --green: #10B981;
+  --blue: #3B82F6;
+  --purple: #8B5CF6;
+  --pink: #EC4899;
+  --code-bg: #0E1116;
+  --code-border: #1F2530;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.65;
+  font-weight: 400; font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { color: var(--accent); text-decoration: underline; }
+code, pre, .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+/* ───── NAV ───── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(11,13,16,0.85); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px; height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; color: var(--text); }
+.nav-brand span { color: var(--accent-2); }
+.nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+.nav-links a {
+  font-size: 12px; color: var(--text-dim); padding: 6px 12px;
+  border-radius: 6px; transition: all 0.2s; font-weight: 500;
+}
+.nav-links a:hover { background: var(--bg-3); color: var(--text); text-decoration: none; }
+@media (max-width: 900px) { .nav-links { display: none; } }
+
+/* ───── HERO ───── */
+.hero {
+  padding: 140px 32px 60px;
+  max-width: 1080px; margin: 0 auto;
+  position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,119,6,0.08) 0%, transparent 70%);
+  pointer-events: none; z-index: -1;
+}
+.tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent-2);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  border: 1px solid rgba(245,158,11,0.2);
+  margin-bottom: 24px;
+}
+.tag::before { content: '●'; color: var(--green); font-size: 8px; }
+h1 {
+  font-size: clamp(32px, 5vw, 52px); font-weight: 800;
+  letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 20px;
+  background: linear-gradient(135deg, #fff 0%, #B8C1CC 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.subtitle { font-size: 19px; color: var(--text-dim); max-width: 720px; line-height: 1.55; margin-bottom: 32px; }
+.meta {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  font-size: 13px; color: var(--text-mute); margin-bottom: 40px;
+  padding-top: 24px; border-top: 1px solid var(--border);
+}
+.meta strong { color: var(--text-dim); font-weight: 600; }
+
+/* ───── VERIFICATION BANNER ───── */
+.verify {
+  background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(59,130,246,0.06) 100%);
+  border: 1px solid rgba(16,185,129,0.25);
+  border-radius: 12px; padding: 20px 24px; margin: 24px 0 48px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.verify-icon {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--green); display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: 18px;
+}
+.verify-body { flex: 1; }
+.verify-title { font-weight: 700; color: var(--text); font-size: 15px; margin-bottom: 4px; }
+.verify-text { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; }
+
+/* ───── SECTION ───── */
+section { max-width: 1080px; margin: 0 auto; padding: 48px 32px; }
+h2 {
+  font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 8px; color: var(--text);
+  display: flex; align-items: center; gap: 14px;
+}
+h2 .num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--accent-soft); color: var(--accent-2);
+  font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700;
+  border: 1px solid rgba(245,158,11,0.25);
+}
+h3 { font-size: 19px; font-weight: 600; margin: 28px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+h4 { font-size: 15px; font-weight: 600; margin: 20px 0 8px; color: var(--text); }
+p { color: var(--text-dim); margin-bottom: 14px; }
+ul, ol { color: var(--text-dim); margin: 12px 0 18px 22px; }
+li { margin-bottom: 6px; line-height: 1.65; }
+strong { color: var(--text); font-weight: 600; }
+.section-desc { color: var(--text-mute); font-size: 14px; margin-bottom: 24px; margin-left: 50px; }
+
+/* ───── CARDS ───── */
+.card {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: 12px; padding: 24px; margin: 16px 0;
+}
+.card-accent { border-left: 3px solid var(--accent); }
+.card-title { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 15px; }
+.callout {
+  background: var(--accent-soft); border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 10px; padding: 16px 20px; margin: 20px 0;
+  font-size: 14px; color: var(--text);
+}
+.callout strong { color: var(--accent-2); }
+
+/* ───── CODE BLOCKS ───── */
+pre {
+  background: var(--code-bg); border: 1px solid var(--code-border);
+  border-radius: 10px; padding: 18px 20px; margin: 14px 0 20px;
+  overflow-x: auto; font-size: 13px; line-height: 1.6;
+  color: #D6DEE8;
+}
+pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+:not(pre) > code {
+  background: var(--bg-3); color: var(--accent-2);
+  padding: 2px 7px; border-radius: 4px; font-size: 13px;
+  border: 1px solid var(--border);
+}
+.code-label {
+  display: inline-block; font-size: 11px; font-weight: 600;
+  color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+/* ───── TABLES ───── */
+.table-wrap { overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--bg-3); font-weight: 600; color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+tr:last-child td { border-bottom: none; }
+td { color: var(--text-dim); }
+td code { font-size: 12.5px; }
+
+/* ───── STEP LIST ───── */
+.steps { list-style: none; margin: 20px 0; padding: 0; counter-reset: step; }
+.steps > li {
+  counter-increment: step;
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 18px 22px 18px 66px; margin-bottom: 12px;
+  position: relative;
+}
+.steps > li::before {
+  content: counter(step);
+  position: absolute; left: 18px; top: 18px;
+  width: 32px; height: 32px; border-radius: 8px;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+}
+
+/* ───── AGENT GRID ───── */
+.agent-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px; margin: 20px 0;
+}
+.agent-card {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 18px; transition: all 0.2s;
+}
+.agent-card:hover { border-color: var(--border-2); transform: translateY(-2px); }
+.agent-emoji { font-size: 24px; margin-bottom: 10px; }
+.agent-name { font-weight: 700; color: var(--text); font-size: 15px; margin-bottom: 4px; }
+.agent-desc { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+/* ───── TIMELINE (SCREEN-BY-SCREEN) ───── */
+.timeline { position: relative; padding-left: 36px; margin-top: 24px; }
+.timeline::before {
+  content: ''; position: absolute; left: 10px; top: 10px; bottom: 10px;
+  width: 2px; background: var(--border);
+}
+.tl-item { position: relative; padding: 0 0 24px; }
+.tl-item::before {
+  content: ''; position: absolute; left: -32px; top: 6px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--accent);
+}
+.tl-time {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--accent-2); font-weight: 600; letter-spacing: 0.03em;
+}
+.tl-title { font-weight: 700; color: var(--text); font-size: 15px; margin: 2px 0 6px; }
+.tl-body { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; }
+
+/* ───── PHASE BADGE ───── */
+.phase-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+.phase {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px; text-align: center;
+}
+.phase-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--accent-2); font-weight: 600; letter-spacing: 0.1em;
+}
+.phase-name { font-weight: 700; margin: 6px 0 4px; color: var(--text); font-size: 14px; }
+.phase-time { font-size: 12px; color: var(--text-mute); }
+
+/* ───── FOLDER TREE ───── */
+.tree {
+  background: var(--code-bg); border: 1px solid var(--code-border);
+  border-radius: 10px; padding: 20px; margin: 16px 0;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  line-height: 1.8; color: #D6DEE8;
+  overflow-x: auto;
+}
+.tree .dir { color: var(--accent-2); font-weight: 600; }
+.tree .file { color: #B8C1CC; }
+.tree .comment { color: #5A6472; font-style: italic; }
+
+/* ───── FOOTER ───── */
+footer {
+  border-top: 1px solid var(--border); margin-top: 80px;
+  padding: 40px 32px; text-align: center;
+  color: var(--text-mute); font-size: 13px;
+}
+footer a { color: var(--text-dim); }
+
+/* ───── UTILITY ───── */
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.divider { height: 1px; background: var(--border); margin: 40px 0; border: none; }
+.pill {
+  display: inline-block; font-size: 11px; font-weight: 600;
+  padding: 3px 10px; border-radius: 999px;
+  background: var(--bg-3); color: var(--text-dim);
+  border: 1px solid var(--border); margin: 2px 4px 2px 0;
+}
+.pill-accent { background: var(--accent-soft); color: var(--accent-2); border-color: rgba(245,158,11,0.25); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">AI Marketing Team <span>/ SOP</span></div>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#design">Design</a>
+    <a href="#install">Install</a>
+    <a href="#folders">Folders</a>
+    <a href="#skills">Skills</a>
+    <a href="#agents">Agents</a>
+    <a href="#orchestrate">Orchestrate</a>
+    <a href="#notion">Notion</a>
+    <a href="#sop">30-Min SOP</a>
+    <a href="#resources">Resources</a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <div class="tag">Verified against source · April 2026</div>
+  <h1>Build Your Full AI Marketing Team<br>— Step-by-Step Guide</h1>
+  <p class="subtitle">A complete, consolidated walkthrough to build a <strong>5-agent, 12-skill autonomous AI marketing team</strong> inside Claude Code — based on Grace Leung's YouTube demo and the official screen-by-screen SOP, merged and cross-verified.</p>
+
+  <div class="meta">
+    <span><strong>Source video:</strong> <a href="https://www.youtube.com/watch?v=yLXLHnD4fco&t=10s" target="_blank">Claude Code: Build Your Full AI Marketing Team</a></span>
+    <span><strong>Presenter:</strong> Grace Leung · @graceleungyl</span>
+    <span><strong>Published:</strong> March 27, 2026</span>
+    <span><strong>Runtime:</strong> ~15 min</span>
+  </div>
+
+  <div class="verify">
+    <div class="verify-icon">✓</div>
+    <div class="verify-body">
+      <div class="verify-title">Source verification — YouTube video + PDF SOP cross-checked</div>
+      <div class="verify-text">
+        The attached PDF (<em>"Build Your Full AI Marketing Team — Screen-by-Screen SOP"</em>) is an authoritative transcript of the YouTube video by Grace Leung. Both cover the same 14 screens, the same 5 agents, the same open-source <code>coreyhaines31/marketingskills</code> library (36–40 skills, confirmed live on GitHub), the same Notion + Nano Banana MCP integration, and the same remote-control workflow. <strong>Content is the same — consolidated below into a single sequential document.</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ OVERVIEW ═══════════ -->
+<section id="overview">
+  <h2><span class="num">01</span> What You're Building</h2>
+  <p class="section-desc">A persistent, autonomous AI marketing team that lives inside your file system — not a chat window.</p>
+
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="card-title">🎯 The Outcome</div>
+      <p>A 5-agent team (Data Analyst, Content Creator, Market Researcher, Creative Designer, Campaign Strategist) that research, write, design, and analyse together. Tasks flow through Claude Code automatically — even from a Notion board you can update from your phone.</p>
+    </div>
+    <div class="card card-accent">
+      <div class="card-title">🧠 The Insight</div>
+      <p><strong>95% of bad AI output is a context problem, not a model problem.</strong> The real work isn't prompting — it's building the <code>context/</code> folder and agent routing so Claude picks the right specialist for every task.</p>
+    </div>
+  </div>
+
+  <h3>The team at a glance</h3>
+  <div class="agent-grid">
+    <div class="agent-card"><div class="agent-emoji">📊</div><div class="agent-name">Data Analyst</div><div class="agent-desc">Analytics, reports, A/B tests, SEO audits. Turns raw data into recommendations.</div></div>
+    <div class="agent-card"><div class="agent-emoji">✍️</div><div class="agent-name">Content Creator</div><div class="agent-desc">Blog posts, landing pages, emails, ad copy, social posts.</div></div>
+    <div class="agent-card"><div class="agent-emoji">🔍</div><div class="agent-name">Market Researcher</div><div class="agent-desc">Competitor analysis, trends, audience research.</div></div>
+    <div class="agent-card"><div class="agent-emoji">🎨</div><div class="agent-name">Creative Designer</div><div class="agent-desc">Visual briefs, social creatives, pitch deck structure.</div></div>
+    <div class="agent-card"><div class="agent-emoji">🚀</div><div class="agent-name">Campaign Strategist</div><div class="agent-desc">Launches, multi-channel plans, orchestrates the other agents.</div></div>
+  </div>
+</section>
+
+<!-- ═══════════ DESIGN ═══════════ -->
+<section id="design">
+  <h2><span class="num">02</span> Design Your AI Team (4-Step Framework)</h2>
+  <p class="section-desc">Before installing anything, design the team on paper. This is the most-skipped step and the one that separates a useful team from a noisy one.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Step</th><th>Action</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1</strong></td><td>Map your weekly marketing functions</td><td>SEO audits, social posts, analytics reports, email sequences, landing-page copy</td></tr>
+        <tr><td><strong>2</strong></td><td>Decide what to delegate vs. keep manual</td><td><strong>Automate:</strong> audits, drafts, reports. <strong>Keep manual:</strong> strategy calls, final approvals, brand positioning decisions.</td></tr>
+        <tr><td><strong>3</strong></td><td>Group tasks into agent roles</td><td>Data Analyst · Content Creator · Market Researcher · Creative Designer · Campaign Strategist</td></tr>
+        <tr><td><strong>4</strong></td><td>Assign skills per agent</td><td>Data Analyst gets: <code>analytics-tracking</code>, <code>ab-test-setup</code>, <code>seo-audit</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <strong>Action:</strong> Open a doc and list your 10 most-repeated weekly marketing tasks. Those are your first delegation candidates. Don't proceed until this list exists — it determines which skills you need.
+  </div>
+</section>
+
+<!-- ═══════════ INSTALL ═══════════ -->
+<section id="install">
+  <h2><span class="num">03</span> Install Claude Code</h2>
+  <p class="section-desc">You can run Claude Code three ways. For a marketing team setup, VS Code gives you the best file-explorer + terminal combo.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Mode</th><th>Best for</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Terminal (CLI)</strong></td><td>Speed, minimalism</td><td>Lightest, fastest, no UI</td></tr>
+        <tr><td><strong>VS Code extension</strong></td><td>Most marketers</td><td>File explorer + terminal in one window</td></tr>
+        <tr><td><strong>Cursor IDE</strong></td><td>Technical marketers</td><td>AI-native editor, better inline code suggestions</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Install Claude Code in VS Code</h3>
+  <ol class="steps">
+    <li><strong>Install Node.js first</strong> (required for the CLI): <a href="https://nodejs.org" target="_blank">nodejs.org</a> — verify with <code>node -v</code>.</li>
+    <li><strong>Install VS Code:</strong> <a href="https://code.visualstudio.com" target="_blank">code.visualstudio.com</a>.</li>
+    <li><strong>Open VS Code</strong> and click the <strong>Extensions</strong> icon in the left sidebar (square-grid icon).</li>
+    <li>Search for <strong>"Claude Code"</strong> in the marketplace.</li>
+    <li>Click <strong>Install</strong> on the official Anthropic Claude Code extension.</li>
+    <li><strong>Sign in</strong> with your Anthropic account when prompted.</li>
+  </ol>
+
+  <h4>CLI alternative (terminal only):</h4>
+  <pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
+</section>
+
+<!-- ═══════════ FOLDERS ═══════════ -->
+<section id="folders">
+  <h2><span class="num">04</span> Project Folder Structure</h2>
+  <p class="section-desc">The folder layout <em>is</em> the team. <code>CLAUDE.md</code> is the boss, <code>.agents/</code> holds the team, <code>context/</code> is the brand brain.</p>
+
+  <div class="tree">
+<span class="dir">my-marketing-team/</span>
+├── <span class="file">CLAUDE.md</span>                    <span class="comment">← Agent routing + team instructions</span>
+├── <span class="dir">.agents/</span>
+│   ├── <span class="file">product-marketing-context.md</span>   <span class="comment">← Foundation read by all agents</span>
+│   ├── <span class="dir">data-analyst/</span>
+│   │   └── <span class="file">AGENT.md</span>
+│   ├── <span class="dir">content-creator/</span>
+│   │   └── <span class="file">AGENT.md</span>
+│   ├── <span class="dir">market-researcher/</span>
+│   │   └── <span class="file">AGENT.md</span>
+│   ├── <span class="dir">creative-designer/</span>
+│   │   └── <span class="file">AGENT.md</span>
+│   ├── <span class="dir">campaign-strategist/</span>
+│   │   └── <span class="file">AGENT.md</span>
+│   └── <span class="dir">skills/</span>                   <span class="comment">← All installed skill files go here</span>
+│       ├── <span class="dir">copywriting/</span>
+│       ├── <span class="dir">seo-audit/</span>
+│       ├── <span class="dir">social-content/</span>
+│       └── <span class="file">…</span>
+└── <span class="dir">context/</span>
+    ├── <span class="file">brand-voice.md</span>
+    ├── <span class="file">customer-personas.md</span>
+    └── <span class="file">competitors.md</span>
+  </div>
+
+  <div class="callout">
+    <strong>Key insight from the video:</strong> 95% of bad AI output is a context problem. The <code>context/</code> folder is the most important investment you make — fill it thoroughly <em>before</em> running any agents. Garbage in, garbage out.
+  </div>
+</section>
+
+<!-- ═══════════ SKILLS ═══════════ -->
+<section id="skills">
+  <h2><span class="num">05</span> Build Skills (The Handbook Chapters)</h2>
+  <p class="section-desc">A skill is just a markdown file with YAML frontmatter. No coding. The <code>description</code> field contains trigger phrases that auto-activate the skill.</p>
+
+  <h3>Example 1 — Branded Deck Skill</h3>
+  <span class="code-label">File: .agents/skills/branded-deck/SKILL.md</span>
+  <pre><code>---
+name: branded-deck
+description: When the user needs to create a presentation, pitch deck, or slide content.
+  Use when the user says "create a deck," "make slides," "presentation," "pitch."
+---
+
+# Branded Deck Creator
+You are an expert presentation designer.
+
+## Before Creating
+Check for product-marketing-context.md first.
+Apply brand colors, fonts, and tone from context.
+
+## Slide Structure
+1. Problem slide
+2. Solution slide
+3. Value proposition
+4. How it works
+5. Social proof / case studies
+6. CTA</code></pre>
+
+  <h3>Example 2 — Social Creative Designer</h3>
+  <span class="code-label">File: .agents/skills/social-creative/SKILL.md</span>
+  <pre><code>---
+name: social-creative
+description: When user needs social media visuals, carousel designs, image concepts,
+  or creative direction for Instagram, LinkedIn, X, or TikTok.
+---
+
+# Social Creative Designer
+You are an expert social media creative director.
+
+## Before Designing
+Read product-marketing-context.md for brand guidelines.
+Ask: Which platform? What format? What goal (awareness, clicks, engagement)?
+
+## Output Format
+- Image concept description (what to design)
+- Copy overlay text
+- Caption with hashtags
+- Platform-specific specs (Instagram 1080x1080, LinkedIn 1200x628, etc.)</code></pre>
+
+  <div class="callout">
+    <strong>Key rule:</strong> The <code>description</code> field must contain <em>trigger phrases</em> — the exact words a user would say that should activate this skill (e.g. "make me a deck", "pitch slides", "presentation"). Claude matches these to route requests.
+  </div>
+
+  <h3>Or install 36 pre-built skills in one command</h3>
+  <p>Instead of writing your own, install the open-source library <code>coreyhaines31/marketingskills</code>:</p>
+
+  <span class="code-label">Option A — CLI</span>
+  <pre><code>npx skills add coreyhaines31/marketingskills</code></pre>
+
+  <span class="code-label">Option B — Claude Code plugin</span>
+  <pre><code>/plugin marketplace add coreyhaines31/marketingskills</code></pre>
+
+  <h3>All skills in the library (by category)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Skills</th></tr></thead>
+      <tbody>
+        <tr><td>Copywriting</td><td><code>copywriting</code>, <code>copy-editing</code>, <code>social-content</code></td></tr>
+        <tr><td>Conversion Optimization (CRO)</td><td><code>page-cro</code>, <code>form-cro</code>, <code>signup-flow-cro</code>, <code>onboarding-cro</code>, <code>popup-cro</code>, <code>paywall-upgrade-cro</code></td></tr>
+        <tr><td>SEO &amp; Content</td><td><code>seo-audit</code>, <code>programmatic-seo</code>, <code>schema-markup</code>, <code>content-strategy</code>, <code>ai-seo</code></td></tr>
+        <tr><td>Growth Strategy</td><td><code>launch-strategy</code>, <code>marketing-ideas</code>, <code>referral-program</code>, <code>free-tool-strategy</code>, <code>community-marketing</code></td></tr>
+        <tr><td>Pricing &amp; Competitors</td><td><code>pricing-strategy</code>, <code>competitor-alternatives</code></td></tr>
+        <tr><td>Email &amp; Ads</td><td><code>email-sequence</code>, <code>paid-ads</code>, <code>cold-email</code>, <code>ad-creative</code></td></tr>
+        <tr><td>Analytics &amp; Testing</td><td><code>analytics-tracking</code>, <code>ab-test-setup</code></td></tr>
+        <tr><td>Retention</td><td><code>churn-prevention</code></td></tr>
+        <tr><td>App Store</td><td><code>aso-audit</code></td></tr>
+        <tr><td>Foundations</td><td><code>marketing-psychology</code>, <code>product-marketing-context</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ AGENTS ═══════════ -->
+<section id="agents">
+  <h2><span class="num">06</span> Build Agents (The Team Members)</h2>
+  <p class="section-desc">An agent is a role with a persona, a toolkit of skills, and a routing identity. Same markdown format — placed in its own folder under <code>.agents/</code>.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Concept</th><th>What it is</th><th>When to use</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Skill</strong></td><td>Specialized knowledge for one task (like a handbook chapter)</td><td>Simple tasks: "audit my homepage copy"</td></tr>
+        <tr><td><strong>Agent</strong></td><td>A role with a persona + multiple skills + routing logic</td><td>Complex tasks: "launch a campaign with research, brief, copy, and ads"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Agent 1 — Data Analyst</h3>
+  <span class="code-label">File: .agents/data-analyst/AGENT.md</span>
+  <pre><code>---
+name: data-analyst
+description: Handles analytics, reporting, A/B test analysis, and data interpretation.
+  Activate when user says "analyze data," "pull report," "what's the conversion rate,"
+  "check performance," "A/B test results."
+---
+
+# Data Analyst Agent
+
+## Your Role
+You are a senior marketing data analyst.
+Your job is to turn raw data into clear, actionable insights.
+
+## Skills Available
+- analytics-tracking
+- ab-test-setup
+- seo-audit
+
+## Workflow
+1. Read product-marketing-context.md first
+2. Identify what data source is needed (GA4, Mixpanel, CSV, etc.)
+3. Pull and analyze the data
+4. Format output as: Key Finding → Supporting Data → Recommendation</code></pre>
+
+  <h3>Agent 2 — Content Creator</h3>
+  <span class="code-label">File: .agents/content-creator/AGENT.md</span>
+  <pre><code>---
+name: content-creator
+description: Handles blog posts, landing page copy, email sequences, social posts,
+  ad copy, and all written content. Activate when user says "write," "draft,"
+  "create content," "blog post," "email," "social post."
+---
+
+# Content Creator Agent
+
+## Your Role
+You are a senior conversion copywriter and content strategist.
+
+## Skills Available
+- copywriting
+- copy-editing
+- email-sequence
+- social-content
+- content-strategy
+- marketing-psychology
+
+## Workflow
+1. Always read product-marketing-context.md first
+2. Identify content type and goal
+3. Ask for audience, platform, and CTA if not provided
+4. Draft content following the relevant skill framework
+5. Output with headline options, body, and CTA variants</code></pre>
+
+  <div class="callout">
+    <strong>Build the remaining 3 agents</strong> — Market Researcher, Creative Designer, Campaign Strategist — using exactly the same pattern. Give each its own folder under <code>.agents/</code>, drop in an <code>AGENT.md</code>, list the skills it owns, and write its workflow.
+  </div>
+</section>
+
+<!-- ═══════════ ORCHESTRATE ═══════════ -->
+<section id="orchestrate">
+  <h2><span class="num">07</span> Agent Routing with CLAUDE.md</h2>
+  <p class="section-desc">The root <code>CLAUDE.md</code> file is the team coordinator. It tells Claude which agent to activate for which task type, and how agents collaborate on complex work.</p>
+
+  <span class="code-label">File: CLAUDE.md (root)</span>
+  <pre><code># My AI Marketing Team
+
+## Team Overview
+You manage a team of 5 specialized marketing agents.
+Always read product-marketing-context.md before routing any task.
+
+## Routing Rules
+- Analytics, data, reports        → data-analyst
+- Writing, copy, emails           → content-creator
+- Market research, competitors    → market-researcher
+- Visuals, design briefs          → creative-designer
+- Campaigns, launches, strategy   → campaign-strategist
+
+## Collaboration
+For complex tasks requiring multiple agents, use this sequence:
+1. market-researcher gathers data
+2. campaign-strategist creates brief
+3. content-creator writes copy
+4. creative-designer creates visuals
+5. data-analyst tracks performance
+
+## Output Standards
+Every output must include: Goal, Deliverable, Next Action.</code></pre>
+
+  <h3>Live demo from the video — the Japan Cherry Blossom campaign</h3>
+  <div class="card card-accent">
+    <div class="card-title">📋 The prompt</div>
+    <p style="font-style: italic; color: var(--text);">"We are launching a new Japan Cherry Blossom season campaign. We need a full marketing package: research, campaign brief, social posts, landing page, and ad creatives."</p>
+  </div>
+
+  <h4>What Claude does automatically:</h4>
+  <ol>
+    <li>Recognises this is a <strong>complex task</strong> → multiple agents needed</li>
+    <li>Routes in sequence: <code>market-researcher</code> → <code>campaign-strategist</code> → <code>content-creator</code> → <code>creative-designer</code></li>
+    <li>Each agent consumes the previous agent's output as context</li>
+    <li>Final output: a complete campaign package with all deliverables</li>
+  </ol>
+
+  <div class="callout">
+    <strong>The intelligence layer:</strong> Claude reads <code>CLAUDE.md</code>, judges task complexity, then decides whether to use a single skill, a single agent, or a full multi-agent collaboration. You don't orchestrate manually — you describe the job.
+  </div>
+</section>
+
+<!-- ═══════════ NOTION + REMOTE ═══════════ -->
+<section id="notion">
+  <h2><span class="num">08</span> Notion Task Board + Remote Control</h2>
+  <p class="section-desc">Expose the team to non-technical people (clients, junior marketers, yourself-on-phone). Tasks go in → Claude picks them up → done column.</p>
+
+  <h3>How the Notion integration works</h3>
+  <ul>
+    <li>A Notion database with columns: <strong>Task · Status (To Do / In Progress / Done) · Agent · Instructions · Priority</strong></li>
+    <li>Claude Code connects via the <strong>Nano Banana MCP server</strong></li>
+    <li>Claude polls the board, picks up "To Do" tasks, assigns the right agent, and moves them to "Done"</li>
+    <li>Anyone on your team can add a card — no Claude Code knowledge required</li>
+  </ul>
+
+  <h3>Setup steps</h3>
+  <ol class="steps">
+    <li><strong>Create a Notion database</strong> with columns: Task, Status, Agent, Instructions, Priority.</li>
+    <li><strong>Install Nano Banana MCP:</strong> <a href="https://github.com/zhongweili/nanobanana-mcp-server" target="_blank">github.com/zhongweili/nanobanana-mcp-server</a></li>
+    <li><strong>Connect the MCP</strong> to Claude Code following the Nano Banana setup guide.</li>
+    <li><strong>Add to CLAUDE.md:</strong> <em>"Check the Notion task board for pending tasks before starting each session."</em></li>
+  </ol>
+
+  <h3>Three ways to control the team remotely</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Method</th><th>How it works</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Notion task board</strong></td><td>Add card → Claude picks it up</td><td>Async task delegation</td></tr>
+        <tr><td><strong>Claude.ai mobile</strong></td><td>Chat with the Claude Code project from your phone</td><td>Quick, conversational instructions</td></tr>
+        <tr><td><strong>SMS → Notion (n8n/Zapier)</strong></td><td>Text a number → auto-creates a Notion card → Claude executes</td><td>Fully hands-free control</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ SCREEN-BY-SCREEN ═══════════ -->
+<section id="timeline">
+  <h2><span class="num">09</span> Screen-by-Screen Video Walkthrough</h2>
+  <p class="section-desc">Mapped to exact timestamps in the YouTube video. Jump to any point to see the step performed live.</p>
+
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-time">00:00 – 00:23 · Screen 1</div><div class="tl-title">Intro &amp; what we're covering</div><div class="tl-body">Grace introduces the concept: most marketers run tasks manually, one prompt at a time. This video builds a persistent, autonomous team inside Claude Code — 5 agents + 12 skills, with Notion integration and remote control from your phone.</div></div>
+    <div class="tl-item"><div class="tl-time">00:24 – 01:02 · Screen 2</div><div class="tl-title">Design your AI marketing team (4 steps)</div><div class="tl-body">Map functions → decide what to delegate → group into agent roles → assign skills to each agent. Action: list your 10 most-repeated weekly tasks.</div></div>
+    <div class="tl-item"><div class="tl-time">01:03 – 01:27 · Screen 3</div><div class="tl-title">Popular ways to use Claude Code</div><div class="tl-body">Terminal (fastest, CLI) · VS Code extension (file explorer + terminal) · Cursor IDE (AI-native). Picks VS Code for the demo.</div></div>
+    <div class="tl-item"><div class="tl-time">01:28 – 01:45 · Screen 4</div><div class="tl-title">Install Claude Code in VS Code</div><div class="tl-body">Open VS Code → Extensions → search "Claude Code" → Install → sign in with Anthropic account. CLI alternative: <code>npm install -g @anthropic-ai/claude-code</code>.</div></div>
+    <div class="tl-item"><div class="tl-time">01:46 – 03:39 · Screen 5</div><div class="tl-title">Project folder setup</div><div class="tl-body">Create <code>my-marketing-team/</code> with <code>CLAUDE.md</code>, <code>.agents/</code> (holds agents + skills), and <code>context/</code> (brand voice, personas, competitors). The video's key insight: 95% of bad AI output is a context problem.</div></div>
+    <div class="tl-item"><div class="tl-time">03:40 – 06:14 · Screen 6</div><div class="tl-title">Build Skill 1 — Branded Deck</div><div class="tl-body">Create <code>.agents/skills/branded-deck/SKILL.md</code>. Uses YAML frontmatter with <code>name</code> and a <code>description</code> full of trigger phrases.</div></div>
+    <div class="tl-item"><div class="tl-time">06:15 – 08:02 · Screen 7</div><div class="tl-title">Build Skill 2 — Social Creative Designer</div><div class="tl-body">Same pattern, different folder. Demonstrates that skills are just markdown — no coding required.</div></div>
+    <div class="tl-item"><div class="tl-time">08:03 – 08:31 · Screen 8</div><div class="tl-title">Marketing Skills library + why go beyond skills</div><div class="tl-body">Introduces <code>coreyhaines31/marketingskills</code> — 36 pre-built skills. Skills are enough for simple tasks; agents are needed when a job spans research + brief + copy + design.</div></div>
+    <div class="tl-item"><div class="tl-time">08:32 – 10:22 · Screen 9</div><div class="tl-title">Build Agent 1 — Data Analyst</div><div class="tl-body">Create <code>.agents/data-analyst/AGENT.md</code>. Agent = persona + toolkit of skills + routing identity.</div></div>
+    <div class="tl-item"><div class="tl-time">10:23 – 11:41 · Screen 10</div><div class="tl-title">Build Agent 2 — Content Creator</div><div class="tl-body">Same method builds the remaining 3 agents (Market Researcher, Creative Designer, Campaign Strategist).</div></div>
+    <div class="tl-item"><div class="tl-time">11:42 – 12:07 · Screen 11</div><div class="tl-title">Agent routing with CLAUDE.md</div><div class="tl-body">Root <code>CLAUDE.md</code> becomes the team coordinator. Defines routing rules, collaboration sequence, and output standards.</div></div>
+    <div class="tl-item"><div class="tl-time">12:08 – 13:52 · Screen 12</div><div class="tl-title">Team orchestration live demo</div><div class="tl-body">Japan Cherry Blossom campaign prompt → Claude auto-routes through 4 agents in sequence → produces a full campaign package.</div></div>
+    <div class="tl-item"><div class="tl-time">13:53 – 15:16 · Screen 13</div><div class="tl-title">Notion task board integration</div><div class="tl-body">Connects Claude Code to Notion via Nano Banana MCP. Team/clients add cards; Claude executes and moves them to Done.</div></div>
+    <div class="tl-item"><div class="tl-time">15:17 – end · Screen 14</div><div class="tl-title">Remote control from your phone</div><div class="tl-body">Notion cards · Claude.ai mobile · SMS → n8n/Zapier → Notion. Design the team once, run it from anywhere.</div></div>
+  </div>
+</section>
+
+<!-- ═══════════ 30-MIN SOP ═══════════ -->
+<section id="sop">
+  <h2><span class="num">10</span> The 30-Minute Install &amp; Run SOP</h2>
+  <p class="section-desc">If you have 30 minutes right now, follow this exactly. End state: a working AI marketing team executing its first real task.</p>
+
+  <div class="phase-row">
+    <div class="phase"><div class="phase-num">PHASE 1</div><div class="phase-name">Setup</div><div class="phase-time">10 min</div></div>
+    <div class="phase"><div class="phase-num">PHASE 2</div><div class="phase-name">Install Skills</div><div class="phase-time">5 min</div></div>
+    <div class="phase"><div class="phase-num">PHASE 3</div><div class="phase-name">Fill Context</div><div class="phase-time">10 min</div></div>
+    <div class="phase"><div class="phase-num">PHASE 4</div><div class="phase-name">Build Agents</div><div class="phase-time">5 min</div></div>
+    <div class="phase"><div class="phase-num">PHASE 5</div><div class="phase-name">First Task</div><div class="phase-time">→</div></div>
+  </div>
+
+  <h3>Phase 1 — Setup (10 min)</h3>
+  <ol class="steps">
+    <li>Install Node.js: <a href="https://nodejs.org" target="_blank">nodejs.org</a> · verify with <code>node -v</code></li>
+    <li>Install VS Code: <a href="https://code.visualstudio.com" target="_blank">code.visualstudio.com</a></li>
+    <li>Install the Claude Code extension in VS Code</li>
+    <li>Sign in to your Anthropic account</li>
+    <li>Create a new project folder: <code>my-marketing-team/</code></li>
+    <li>Open the folder in VS Code</li>
+  </ol>
+
+  <h3>Phase 2 — Install Skills (5 min)</h3>
+  <ol class="steps" start="7" style="counter-reset: step 6;">
+    <li>Open the integrated terminal in VS Code (<code>Ctrl + ~</code>)</li>
+    <li>Run: <code>npx skills add coreyhaines31/marketingskills</code></li>
+    <li>Confirm skills appear in <code>.agents/skills/</code></li>
+  </ol>
+
+  <h3>Phase 3 — Fill Context (10 min)</h3>
+  <ol class="steps" start="10" style="counter-reset: step 9;">
+    <li>Create <code>.agents/product-marketing-context.md</code></li>
+    <li>Fill in: product name, what it does, target audience, key pain points, competitors, brand voice, pricing, key differentiators</li>
+    <li>Create <code>context/brand-voice.md</code> with tone guidelines and sample writing</li>
+  </ol>
+
+  <h3>Phase 4 — Build Agents (5 min)</h3>
+  <ol class="steps" start="13" style="counter-reset: step 12;">
+    <li>Create <code>.agents/data-analyst/AGENT.md</code> — analytics, reporting role</li>
+    <li>Create <code>.agents/content-creator/AGENT.md</code> — writing, copy role</li>
+    <li>Create <code>.agents/market-researcher/AGENT.md</code> — research role</li>
+    <li>Update root <code>CLAUDE.md</code> with the routing rules</li>
+  </ol>
+
+  <h3>Phase 5 — Run your first task</h3>
+  <ol class="steps" start="17" style="counter-reset: step 16;">
+    <li>Open the Claude Code terminal</li>
+    <li>Type: <em>"Review my homepage copy and suggest CRO improvements"</em></li>
+    <li>Claude auto-routes to <code>content-creator</code> + <code>page-cro</code> skill</li>
+    <li>Review output, iterate, and add more agents as you grow</li>
+  </ol>
+
+  <div class="callout">
+    <strong>You're done.</strong> From here, add the remaining 2 agents (Creative Designer, Campaign Strategist), wire up the Notion board, and start delegating real weekly work.
+  </div>
+</section>
+
+<!-- ═══════════ FULL SKILLS TABLE ═══════════ -->
+<section id="full-skills">
+  <h2><span class="num">11</span> Full Skills Reference (36 skills)</h2>
+  <p class="section-desc">Every skill in <code>coreyhaines31/marketingskills</code> as of April 2026 — verified live on GitHub.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width: 28%;">Skill</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>product-marketing-context</code></td><td>Foundation file — all other skills read this first</td></tr>
+        <tr><td><code>copywriting</code></td><td>Homepage, landing pages, pricing pages, hero sections</td></tr>
+        <tr><td><code>copy-editing</code></td><td>Editing and improving existing marketing copy</td></tr>
+        <tr><td><code>social-content</code></td><td>Platform-specific social media post creation</td></tr>
+        <tr><td><code>page-cro</code></td><td>Conversion rate optimization for landing pages</td></tr>
+        <tr><td><code>form-cro</code></td><td>CRO for signup and lead-gen forms</td></tr>
+        <tr><td><code>signup-flow-cro</code></td><td>Optimizing the user signup experience</td></tr>
+        <tr><td><code>onboarding-cro</code></td><td>Improving user onboarding conversion</td></tr>
+        <tr><td><code>popup-cro</code></td><td>Exit-intent and timed popup optimization</td></tr>
+        <tr><td><code>paywall-upgrade-cro</code></td><td>Free-to-paid upgrade conversion</td></tr>
+        <tr><td><code>seo-audit</code></td><td>Technical + content SEO audit</td></tr>
+        <tr><td><code>programmatic-seo</code></td><td>Scaled SEO page generation strategies</td></tr>
+        <tr><td><code>schema-markup</code></td><td>Structured data implementation for SEO</td></tr>
+        <tr><td><code>content-strategy</code></td><td>Editorial calendar and content planning</td></tr>
+        <tr><td><code>ai-seo</code></td><td>Getting content cited by AI search (Google AI Overviews, ChatGPT, Perplexity)</td></tr>
+        <tr><td><code>launch-strategy</code></td><td>ORB Framework (Owned/Rented/Borrowed), 5-phase launch plan, Product Hunt</td></tr>
+        <tr><td><code>marketing-ideas</code></td><td>139 proven SaaS marketing ideas by category</td></tr>
+        <tr><td><code>referral-program</code></td><td>Designing and launching referral growth loops</td></tr>
+        <tr><td><code>free-tool-strategy</code></td><td>Building free tools as marketing channels</td></tr>
+        <tr><td><code>community-marketing</code></td><td>Discord, Slack, Circle, Reddit community growth</td></tr>
+        <tr><td><code>pricing-strategy</code></td><td>Pricing model design and optimization</td></tr>
+        <tr><td><code>competitor-alternatives</code></td><td>Competitor comparison and positioning pages</td></tr>
+        <tr><td><code>email-sequence</code></td><td>Automated email nurture sequence creation</td></tr>
+        <tr><td><code>paid-ads</code></td><td>Google, Meta, LinkedIn, X ad strategy</td></tr>
+        <tr><td><code>cold-email</code></td><td>Cold outreach sequences that get replies</td></tr>
+        <tr><td><code>ad-creative</code></td><td>Bulk ad creative generation across platforms</td></tr>
+        <tr><td><code>analytics-tracking</code></td><td>GA4, Mixpanel tracking setup without engineers</td></tr>
+        <tr><td><code>ab-test-setup</code></td><td>A/B test design, hypothesis, and analysis</td></tr>
+        <tr><td><code>churn-prevention</code></td><td>Cancel flows, save offers, dunning sequences</td></tr>
+        <tr><td><code>aso-audit</code></td><td>App Store and Google Play listing optimization</td></tr>
+        <tr><td><code>marketing-psychology</code></td><td>Persuasion frameworks and behavioral triggers</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size: 13px; color: var(--text-mute); margin-top: 8px;">Live repo (v1.2.0+) may also include <code>site-architecture</code>, <code>revops</code>, and <code>sales-enablement</code> — run <code>npx skills list coreyhaines31/marketingskills</code> for the current full list.</p>
+</section>
+
+<!-- ═══════════ RESOURCES ═══════════ -->
+<section id="resources">
+  <h2><span class="num">12</span> Resources &amp; Links</h2>
+  <p class="section-desc">Everything referenced in the video + this guide, in one place.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Resource</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td>📺 Source video (Grace Leung)</td><td><a href="https://www.youtube.com/watch?v=yLXLHnD4fco&t=10s" target="_blank">youtube.com/watch?v=yLXLHnD4fco</a></td></tr>
+        <tr><td>📦 Marketing Skills GitHub repo</td><td><a href="https://github.com/coreyhaines31/marketingskills" target="_blank">github.com/coreyhaines31/marketingskills</a></td></tr>
+        <tr><td>🌐 Marketing Skills website</td><td><a href="https://marketing-skills.com" target="_blank">marketing-skills.com</a></td></tr>
+        <tr><td>🔌 Nano Banana MCP (Notion integration)</td><td><a href="https://github.com/zhongweili/nanobanana-mcp-server" target="_blank">github.com/zhongweili/nanobanana-mcp-server</a></td></tr>
+        <tr><td>📺 Previous video (Claude Skills intro)</td><td><a href="https://youtu.be/X8afcX2s2Mo" target="_blank">youtu.be/X8afcX2s2Mo</a></td></tr>
+        <tr><td>📖 Claude Code documentation</td><td><a href="https://code.claude.ai" target="_blank">code.claude.ai</a></td></tr>
+        <tr><td>👥 Grace Leung's community</td><td><a href="https://community.graceleung.com" target="_blank">community.graceleung.com</a></td></tr>
+        <tr><td>🧰 AI Toolkit download (from video)</td><td><a href="https://clickhubspot.com/33a603" target="_blank">clickhubspot.com/33a603</a></td></tr>
+        <tr><td>⚙️ Node.js</td><td><a href="https://nodejs.org" target="_blank">nodejs.org</a></td></tr>
+        <tr><td>💻 VS Code</td><td><a href="https://code.visualstudio.com" target="_blank">code.visualstudio.com</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p>
+    Consolidated from <a href="https://www.youtube.com/watch?v=yLXLHnD4fco&t=10s" target="_blank">Grace Leung's YouTube walkthrough</a> and the screen-by-screen SOP PDF · verified against the live <a href="https://github.com/coreyhaines31/marketingskills" target="_blank">coreyhaines31/marketingskills</a> repo · April 2026.
+  </p>
+  <p style="margin-top: 8px;">No affiliation. All trademarks and content credit to their respective owners.</p>
+</footer>
+
+</body>
+</html>
