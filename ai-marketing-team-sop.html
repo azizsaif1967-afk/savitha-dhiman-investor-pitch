@@ -255,6 +255,28 @@ footer {
 }
 footer a { color: var(--text-dim); }
 
+/* ───── VIDEO EMBED ───── */
+.video-wrap {
+  max-width: 1080px; margin: 0 auto 40px; padding: 0 32px;
+}
+.video-frame {
+  position: relative; width: 100%; padding-bottom: 56.25%;
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.video-frame iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  border: 0;
+}
+.video-caption {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 4px 0; font-size: 13px; color: var(--text-mute);
+  flex-wrap: wrap; gap: 12px;
+}
+.video-caption a { color: var(--accent-2); font-weight: 500; }
+
 /* ───── UTILITY ───── */
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
 .divider { height: 1px; background: var(--border); margin: 40px 0; border: none; }
@@ -306,6 +328,17 @@ footer a { color: var(--text-dim); }
         The attached PDF (<em>"Build Your Full AI Marketing Team — Screen-by-Screen SOP"</em>) is an authoritative transcript of the YouTube video by Grace Leung. Both cover the same 14 screens, the same 5 agents, the same open-source <code>coreyhaines31/marketingskills</code> library (36–40 skills, confirmed live on GitHub), the same Notion + Nano Banana MCP integration, and the same remote-control workflow. <strong>Content is the same — consolidated below into a single sequential document.</strong>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ═══════════ VIDEO EMBED ═══════════ -->
+<div class="video-wrap" id="video">
+  <div class="video-frame">
+    <iframe src="https://www.youtube.com/embed/yLXLHnD4fco?start=10" title="Claude Code: Build Your Full AI Marketing Team (Agents + Claude Skills) — Grace Leung" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <div class="video-caption">
+    <span>🎥 <strong style="color: var(--text);">Claude Code: Build Your Full AI Marketing Team</strong> — Grace Leung · Mar 27, 2026</span>
+    <a href="https://www.youtube.com/watch?v=yLXLHnD4fco&t=10s" target="_blank">Watch on YouTube ↗</a>
   </div>
 </div>
 

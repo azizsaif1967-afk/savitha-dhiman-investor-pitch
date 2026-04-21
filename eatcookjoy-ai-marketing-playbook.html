@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EatCookJoy UAE — AI Marketing Team Playbook (5 Agents + 12 Skills, Pre-Configured)</title>
+<meta name="description" content="A step-by-step playbook to deploy a 5-agent AI marketing team inside Claude Code for EatCookJoy UAE — with brand context, personas, competitors, and 12 priority skills pre-configured for a UAE personal-chef & meal-prep business.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --saffron: #E8A547;
+  --saffron-dark: #C8852B;
+  --coral: #E57A5C;
+  --date: #5A3A1F;
+  --date-soft: #7A5535;
+  --sage: #7A8B5F;
+  --sage-dark: #5A6B3F;
+  --cream: #FBF6ED;
+  --cream-2: #F5EDE0;
+  --ivory: #FFFDF8;
+  --charcoal: #2A2420;
+  --text: #3F3530;
+  --text-mute: #8A7F76;
+  --border: #EADDC8;
+  --border-2: #D9C8A8;
+  --white: #FFFFFF;
+  --code-bg: #FDF8EE;
+  --code-border: #EADDC8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--ivory); color: var(--text); line-height: 1.7;
+  font-weight: 400; font-size: 15.5px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--saffron-dark); text-decoration: none; }
+a:hover { color: var(--coral); text-decoration: underline; }
+code, pre, .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+h1, h2, h3, .serif { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--charcoal); letter-spacing: -0.01em; }
+
+/* ───── NAV ───── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,253,248,0.92); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px; height: 66px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; color: var(--date); letter-spacing: -0.01em; }
+.nav-brand span { color: var(--saffron); }
+.nav-links { display: flex; gap: 2px; flex-wrap: wrap; }
+.nav-links a {
+  font-size: 12px; color: var(--text-mute); padding: 8px 13px;
+  border-radius: 6px; transition: all 0.2s; font-weight: 500; letter-spacing: 0.02em;
+}
+.nav-links a:hover { background: var(--cream-2); color: var(--date); text-decoration: none; }
+@media (max-width: 960px) { .nav-links { display: none; } }
+
+/* ───── HERO ───── */
+.hero {
+  padding: 130px 32px 40px;
+  max-width: 1080px; margin: 0 auto;
+  position: relative;
+  background: radial-gradient(circle at 20% 0%, rgba(232,165,71,0.1) 0%, transparent 50%),
+              radial-gradient(circle at 90% 40%, rgba(229,122,92,0.08) 0%, transparent 50%);
+}
+.kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 7px 16px; border-radius: 999px;
+  background: var(--cream-2); color: var(--date);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+  border: 1px solid var(--border); margin-bottom: 24px;
+}
+.kicker .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+h1 {
+  font-size: clamp(34px, 5vw, 58px); line-height: 1.05;
+  margin-bottom: 20px; color: var(--date);
+}
+h1 .italic { font-style: italic; color: var(--saffron-dark); font-weight: 500; }
+.subtitle { font-size: 19px; color: var(--text); max-width: 760px; line-height: 1.6; margin-bottom: 32px; font-weight: 300; }
+.meta-row {
+  display: flex; flex-wrap: wrap; gap: 22px; align-items: center;
+  font-size: 13.5px; color: var(--text-mute); margin-bottom: 28px;
+  padding: 18px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.meta-row strong { color: var(--date); font-weight: 600; }
+
+/* ───── VIDEO EMBED ───── */
+.video-wrap { max-width: 1080px; margin: 20px auto 30px; padding: 0 32px; }
+.video-frame {
+  position: relative; width: 100%; padding-bottom: 56.25%;
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--cream-2);
+  box-shadow: 0 24px 60px rgba(90,58,31,0.15);
+}
+.video-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.video-caption {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 4px 0; font-size: 13px; color: var(--text-mute);
+  flex-wrap: wrap; gap: 12px;
+}
+.video-caption a { color: var(--saffron-dark); font-weight: 600; }
+
+/* ───── SECTION ───── */
+section { max-width: 1080px; margin: 0 auto; padding: 56px 32px; }
+h2 {
+  font-size: 32px; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 16px;
+}
+h2 .num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--saffron); color: #fff;
+  font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700;
+  flex-shrink: 0;
+}
+h3 { font-size: 22px; margin: 32px 0 12px; }
+h4 { font-size: 16px; font-weight: 600; margin: 22px 0 10px; color: var(--date); font-family: 'Inter', sans-serif; letter-spacing: 0; }
+p { margin-bottom: 14px; }
+ul, ol { margin: 12px 0 20px 24px; }
+li { margin-bottom: 7px; line-height: 1.65; }
+strong { color: var(--date); font-weight: 600; }
+.section-desc { color: var(--text-mute); font-size: 15px; margin-bottom: 28px; margin-left: 60px; font-style: italic; }
+
+/* ───── CARDS ───── */
+.card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 26px; margin: 18px 0;
+  box-shadow: 0 4px 20px rgba(90,58,31,0.04);
+}
+.card-accent { border-left: 4px solid var(--saffron); }
+.card-title { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--date); margin-bottom: 10px; font-size: 19px; }
+.callout {
+  background: linear-gradient(135deg, rgba(232,165,71,0.1), rgba(229,122,92,0.06));
+  border: 1px solid rgba(232,165,71,0.3);
+  border-radius: 12px; padding: 20px 24px; margin: 24px 0;
+  font-size: 14.5px;
+}
+.callout strong { color: var(--saffron-dark); }
+
+/* ───── CODE BLOCKS ───── */
+pre {
+  background: var(--code-bg); border: 1px solid var(--code-border);
+  border-radius: 10px; padding: 20px 22px; margin: 14px 0 22px;
+  overflow-x: auto; font-size: 13px; line-height: 1.65;
+  color: var(--date);
+}
+pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+:not(pre) > code {
+  background: var(--cream-2); color: var(--date-soft);
+  padding: 2px 7px; border-radius: 4px; font-size: 13.5px;
+  border: 1px solid var(--border); font-weight: 500;
+}
+.code-label {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  color: var(--saffron-dark); text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+
+/* ───── TABLES ───── */
+.table-wrap { overflow-x: auto; margin: 18px 0 28px; border: 1px solid var(--border); border-radius: 12px; background: var(--white); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--cream); font-weight: 600; color: var(--date); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'Inter', sans-serif; }
+tr:last-child td { border-bottom: none; }
+td { color: var(--text); }
+td code { font-size: 12.5px; }
+
+/* ───── STEP LIST ───── */
+.steps { list-style: none; margin: 22px 0; padding: 0; counter-reset: step; }
+.steps > li {
+  counter-increment: step;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px 26px 20px 72px; margin-bottom: 14px;
+  position: relative;
+}
+.steps > li::before {
+  content: counter(step);
+  position: absolute; left: 20px; top: 20px;
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--saffron); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px;
+}
+
+/* ───── AGENT GRID ───── */
+.agent-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px; margin: 22px 0;
+}
+.agent-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 22px; transition: all 0.2s;
+}
+.agent-card:hover { border-color: var(--saffron); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(232,165,71,0.15); }
+.agent-emoji { font-size: 30px; margin-bottom: 10px; display: block; }
+.agent-name { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--date); font-size: 19px; margin-bottom: 6px; }
+.agent-role { font-size: 12px; color: var(--saffron-dark); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 10px; }
+.agent-desc { font-size: 13.5px; color: var(--text); line-height: 1.6; margin-bottom: 10px; }
+.agent-skills { font-size: 12px; color: var(--text-mute); }
+
+/* ───── PHASE ROW ───── */
+.phase-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin: 24px 0; }
+.phase {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px; text-align: center;
+}
+.phase-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--saffron-dark); font-weight: 700; letter-spacing: 0.12em; }
+.phase-name { font-family: 'Playfair Display', serif; font-weight: 700; margin: 8px 0 4px; color: var(--date); font-size: 17px; }
+.phase-time { font-size: 13px; color: var(--text-mute); }
+
+/* ───── FOLDER TREE ───── */
+.tree {
+  background: var(--code-bg); border: 1px solid var(--code-border);
+  border-radius: 12px; padding: 22px; margin: 18px 0;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  line-height: 1.85; color: var(--date);
+  overflow-x: auto;
+}
+.tree .dir { color: var(--saffron-dark); font-weight: 700; }
+.tree .file { color: var(--date); }
+.tree .comment { color: var(--sage-dark); font-style: italic; }
+
+/* ───── 30-DAY CALENDAR ───── */
+.cal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
+.cal-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+.cal-week { font-size: 12px; font-weight: 700; color: var(--saffron-dark); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+.cal-title { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--date); font-size: 18px; margin-bottom: 12px; }
+.cal-list { font-size: 13.5px; color: var(--text); margin-left: 18px; }
+.cal-list li { margin-bottom: 5px; }
+
+/* ───── PERSONA CARDS ───── */
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 18px 0; }
+.persona { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.persona-name { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--date); font-size: 18px; margin-bottom: 4px; }
+.persona-tag { font-size: 12px; color: var(--saffron-dark); font-weight: 600; margin-bottom: 10px; }
+.persona p { font-size: 13px; margin-bottom: 6px; color: var(--text); }
+
+/* ───── FOOTER ───── */
+footer {
+  border-top: 1px solid var(--border); margin-top: 80px;
+  padding: 48px 32px; text-align: center;
+  background: var(--cream); color: var(--text-mute); font-size: 13.5px;
+}
+footer a { color: var(--date); font-weight: 500; }
+footer .brand-line { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--date); margin-bottom: 10px; }
+footer .brand-line span { color: var(--saffron); }
+
+/* ───── UTILITY ───── */
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.pill {
+  display: inline-block; font-size: 11.5px; font-weight: 600;
+  padding: 4px 11px; border-radius: 999px;
+  background: var(--cream-2); color: var(--date-soft);
+  border: 1px solid var(--border); margin: 3px 4px 3px 0;
+}
+.pill-hot { background: rgba(229,122,92,0.15); color: var(--coral); border-color: rgba(229,122,92,0.3); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">EatCookJoy <span>· AI Playbook</span></div>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#video">Video</a>
+    <a href="#brand">Brand Context</a>
+    <a href="#agents">The 5 Agents</a>
+    <a href="#skills">12 Priority Skills</a>
+    <a href="#claude-md">CLAUDE.md</a>
+    <a href="#30day">30-Day Plan</a>
+    <a href="#install">Install SOP</a>
+    <a href="#resources">Resources</a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <div class="kicker"><span class="dot"></span> AI Marketing Playbook · Pre-configured for UAE</div>
+  <h1>The EatCookJoy UAE<br><span class="italic">AI Marketing Team Playbook</span></h1>
+  <p class="subtitle">A complete, step-by-step setup to run a <strong>5-agent autonomous marketing team</strong> inside Claude Code — tailored for a UAE personal-chef &amp; meal-prep business. Brand voice, personas, competitors, and the 12 highest-leverage skills are already written for you.</p>
+
+  <div class="meta-row">
+    <span>🇦🇪 <strong>Market:</strong> UAE (7 emirates)</span>
+    <span>🍲 <strong>Brand:</strong> EatCookJoy UAE — personal chef + meal prep</span>
+    <span>🤖 <strong>Based on:</strong> Grace Leung's Claude Code walkthrough</span>
+    <span>⏱️ <strong>Setup time:</strong> ~45 min</span>
+  </div>
+</div>
+
+<!-- ═══════════ VIDEO ═══════════ -->
+<div class="video-wrap" id="video">
+  <div class="video-frame">
+    <iframe src="https://www.youtube.com/embed/yLXLHnD4fco?start=10" title="Claude Code: Build Your Full AI Marketing Team (Agents + Claude Skills) — Grace Leung" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <div class="video-caption">
+    <span>🎥 <strong style="color: var(--date);">Watch the full method first (15 min)</strong> — Grace Leung · Mar 27, 2026</span>
+    <a href="https://azizsaif1967-afk.github.io/marketing-ai-skills/" target="_blank">Base framework ↗</a>
+    <a href="https://www.youtube.com/watch?v=yLXLHnD4fco&t=10s" target="_blank">Watch on YouTube ↗</a>
+  </div>
+</div>
+
+<!-- ═══════════ OVERVIEW ═══════════ -->
+<section id="overview">
+  <h2><span class="num">01</span> What EatCookJoy Gets From This</h2>
+  <p class="section-desc">Instead of running every marketing task manually, delegate the repetitive 80% to 5 specialised AI agents. Keep strategy &amp; approvals human.</p>
+
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="card-title">🍽️ Before this playbook</div>
+      <p>You (or a part-time marketer) write every chef bio, every Instagram caption, every WhatsApp broadcast, every "why us vs Kitopi" comparison, every Ramadan menu page, every Google Ad. Output is slow, inconsistent, and expensive.</p>
+    </div>
+    <div class="card card-accent">
+      <div class="card-title">🚀 After this playbook</div>
+      <p>You type <em>"prep the Ramadan iftar campaign for family-of-4 segment in Dubai &amp; Sharjah"</em> — the Market Researcher pulls competitor pricing, the Strategist writes the brief, the Content Creator drafts captions in English + Arabic tone, the Creative Designer specs the photo shoot, and the Data Analyst sets up tracking. One prompt → full campaign.</p>
+    </div>
+  </div>
+
+  <h3>The 5 specialists — customised for food &amp; UAE</h3>
+  <div class="agent-grid">
+    <div class="agent-card">
+      <span class="agent-emoji">📊</span>
+      <div class="agent-name">Souq Analyst</div>
+      <div class="agent-role">Data Analyst</div>
+      <div class="agent-desc">Tracks booking conversion, repeat-order rate, chef utilisation, AOV by emirate, and top-performing cuisines.</div>
+      <div class="agent-skills">Skills: analytics-tracking, ab-test-setup, seo-audit</div>
+    </div>
+    <div class="agent-card">
+      <span class="agent-emoji">✍️</span>
+      <div class="agent-name">The Food Writer</div>
+      <div class="agent-role">Content Creator</div>
+      <div class="agent-desc">Chef bios, weekly menu emails, Instagram captions, landing-page copy, WhatsApp broadcasts. Bilingual EN + AR tone.</div>
+      <div class="agent-skills">Skills: copywriting, social-content, email-sequence, copy-editing</div>
+    </div>
+    <div class="agent-card">
+      <span class="agent-emoji">🔍</span>
+      <div class="agent-name">Majlis Scout</div>
+      <div class="agent-role">Market Researcher</div>
+      <div class="agent-desc">Competitor pricing (Kitopi, Munch:on, Calo), dietary trends (keto, halal-clean, high-protein), seasonal events.</div>
+      <div class="agent-skills">Skills: competitor-alternatives, marketing-ideas, community-marketing</div>
+    </div>
+    <div class="agent-card">
+      <span class="agent-emoji">🎨</span>
+      <div class="agent-name">Plate Stylist</div>
+      <div class="agent-role">Creative Designer</div>
+      <div class="agent-desc">Food-photography briefs, Instagram carousel layouts, chef-portrait shoots, menu-card design direction.</div>
+      <div class="agent-skills">Skills: social-content, ad-creative, branded-deck</div>
+    </div>
+    <div class="agent-card">
+      <span class="agent-emoji">🚀</span>
+      <div class="agent-name">Season Strategist</div>
+      <div class="agent-role">Campaign Strategist</div>
+      <div class="agent-desc">Orchestrates Ramadan, summer, back-to-school, UAE National Day, corporate-catering pushes across channels.</div>
+      <div class="agent-skills">Skills: launch-strategy, paid-ads, referral-program, free-tool-strategy</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BRAND CONTEXT ═══════════ -->
+<section id="brand">
+  <h2><span class="num">02</span> Pre-Written Brand Context</h2>
+  <p class="section-desc">The single most important file. Every agent reads this first. Copy it into <code>.agents/product-marketing-context.md</code> and edit the bits only you know (real numbers, real chef names, real partner clinics).</p>
+
+  <span class="code-label">File: .agents/product-marketing-context.md</span>
+  <pre><code># EatCookJoy UAE — Product Marketing Context
+
+## What we are
+EatCookJoy UAE is a marketplace + managed service that sends vetted
+personal chefs to homes, villas, and offices across all 7 UAE emirates
+for weekly meal prep, dinner parties, and corporate catering.
+
+Tagline: "Your Personal Chef, Right at Your Door."
+Website: eatcookjoy-uae.com
+
+## Core offerings &amp; price anchors (AED, inclusive)
+- Weekly meal prep (bulk cook-session)       from AED 450
+- Light meal prep (busy-professional plan)   from AED 300
+- Dinner party (3-course, up to 8 guests)    from AED 600
+- Event / corporate catering                 POA (custom quotes)
+
+## The promise
+- 500+ curated recipes, every allergen tracked &amp; labelled
+- 50+ vetted chefs across Arabic, Levantine, Indian, Italian, Pan-Asian, clean-keto
+- Google Calendar integration for booking &amp; reminders
+- 4.9★ from 1,200+ reviews
+- Coverage: Dubai, Abu Dhabi, Sharjah, Ajman, RAK, Fujairah, UAQ
+
+## Target audience (the 4 personas)
+1. "Busy Pro Priya" — 32, Dubai Marina, management consultant, wants
+   healthy lunches delivered so she stops ordering Talabat at 10pm.
+2. "Family Fatima" — 38, Arabian Ranches, 2 kids, one dairy-free, wants
+   Sunday-through-Wednesday dinner sorted without supermarket stress.
+3. "Host Hassan" — 45, Emirates Hills, entertains business partners
+   monthly, wants Michelin-style dinners without hiring full-time staff.
+4. "HR Hana" — 29, corporate HR at DIFC firm, books Thursday team lunches
+   + Ramadan iftar for 40-person office.
+
+## Brand voice
+- Warm, generous, hospitable — Arab + Mediterranean hospitality.
+- Confident but never boastful. Quietly premium.
+- Bilingual-ready: English primary, Arabic phrases welcomed ("bil hana
+  wa shifa," "sahtein"), never forced.
+- No stock-photo adjectives. Never say "delicious," "mouth-watering,"
+  "exquisite." Instead describe the dish specifically.
+- Tone by channel:
+  - Instagram captions: playful, sensory, 1–2 emojis max
+  - WhatsApp: direct, one-thing-per-message, no essays
+  - Landing pages: confident, specific numbers, testimonials above fold
+  - Email: personal-sounding, from the chef or founder, never "Dear Valued Customer"
+
+## Competitors (UAE)
+- Kitopi — cloud kitchens, scale, lower price, less personal
+- Munch:on — corporate subscriptions, B2B heavy
+- Calo — meal-plan subscription, fitness-coded, no live chef
+- Chef for a Night — private-chef marketplace, similar model, smaller chef pool
+- Careem Food / Talabat — delivery apps, not meal-prep
+
+## Differentiators (lead with these)
+- Real chef in your kitchen, not a dark-kitchen reheat
+- 7-emirate coverage (most rivals are Dubai-only)
+- Full allergen tracking on every recipe
+- Transparent chef profiles (name, face, cuisine, years of experience)
+- One-click re-order of a chef you loved
+
+## Key differentiators NOT to claim
+- We are not cheapest. Do not compete on price.
+- We are not a subscription box. Every week is fresh &amp; custom.
+- We are not a restaurant. Do not use restaurant adjectives.
+
+## Current priorities (this quarter)
+- Grow Abu Dhabi bookings (30% of bookings vs 55% in Dubai)
+- Launch Ramadan iftar-at-home package (families of 4–10)
+- Build corporate-catering pipeline in DIFC / ADGM
+- Reduce CAC on Meta ads (currently AED 180, target AED 110)
+
+## Compliance
+- All chefs: Dubai Municipality food handler certificate
+- All recipes: allergen labels required (UAE FoodWatch standard)
+- Never claim medical benefits ("cures," "heals," "treats")
+- Alcohol: offer BYOB only, never serve or supply</code></pre>
+
+  <h3>The 4 personas — one-glance reference</h3>
+  <div class="persona-grid">
+    <div class="persona">
+      <div class="persona-name">Busy Pro Priya</div>
+      <div class="persona-tag">Dubai Marina · 32</div>
+      <p><strong>Pain:</strong> 10pm Talabat guilt.</p>
+      <p><strong>Sells her:</strong> Light meal prep, lunch-sized portions, Monday drop-off.</p>
+    </div>
+    <div class="persona">
+      <div class="persona-name">Family Fatima</div>
+      <div class="persona-tag">Arabian Ranches · 38</div>
+      <p><strong>Pain:</strong> Dairy-free kid, mid-week chaos.</p>
+      <p><strong>Sells her:</strong> Weekly prep, allergen-safe, Sunday–Wednesday cover.</p>
+    </div>
+    <div class="persona">
+      <div class="persona-name">Host Hassan</div>
+      <div class="persona-tag">Emirates Hills · 45</div>
+      <p><strong>Pain:</strong> Entertains often, hates takeout.</p>
+      <p><strong>Sells him:</strong> Dinner party chef, 3-course, premium produce.</p>
+    </div>
+    <div class="persona">
+      <div class="persona-name">HR Hana</div>
+      <div class="persona-tag">DIFC corporate · 29</div>
+      <p><strong>Pain:</strong> Same bland platters every week.</p>
+      <p><strong>Sells her:</strong> Corporate catering, Thursday rotation, Ramadan iftar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ AGENTS ═══════════ -->
+<section id="agents">
+  <h2><span class="num">03</span> The 5 Agent Definitions</h2>
+  <p class="section-desc">Drop these exactly as-written into your project. They reference the brand context above.</p>
+
+  <h3>Agent 1 — Souq Analyst (Data)</h3>
+  <span class="code-label">File: .agents/souq-analyst/AGENT.md</span>
+  <pre><code>---
+name: souq-analyst
+description: Handles bookings analytics, conversion funnels, A/B tests, SEO audits,
+  chef utilisation, and emirate-level performance. Activate when user says
+  "how are bookings," "what's converting," "analyse," "pull the numbers,"
+  "A/B test," "SEO audit."
+---
+
+# Souq Analyst Agent
+
+## Your role
+You are EatCookJoy's senior data analyst. You turn GA4, booking data,
+and chef-utilisation CSVs into one-page insights the founders can act
+on this week.
+
+## Skills available
+- analytics-tracking
+- ab-test-setup
+- seo-audit
+
+## Workflow
+1. Read product-marketing-context.md first.
+2. Ask which data source: GA4, internal bookings CSV, Meta Ads, or Google Ads.
+3. Segment by emirate whenever possible (Dubai, Abu Dhabi, Sharjah, other).
+4. Always report: Key Finding → Supporting Data → Recommendation → Owner.
+5. Flag anything where CAC &gt; AED 180 or repeat-order rate &lt; 35%.</code></pre>
+
+  <h3>Agent 2 — The Food Writer (Content)</h3>
+  <span class="code-label">File: .agents/food-writer/AGENT.md</span>
+  <pre><code>---
+name: food-writer
+description: Writes chef bios, weekly menu emails, Instagram captions,
+  landing-page copy, WhatsApp broadcasts, ad copy. Activate when user says
+  "write," "draft," "caption," "email," "bio," "landing page," "SMS," "WhatsApp."
+---
+
+# Food Writer Agent
+
+## Your role
+You are a UAE-based senior conversion copywriter who writes food copy
+the way a confident host speaks — warm, specific, never overselling.
+
+## Skills available
+- copywriting
+- copy-editing
+- email-sequence
+- social-content
+- marketing-psychology
+
+## Workflow
+1. Read product-marketing-context.md — obey the brand voice rules.
+2. Ask: which persona (Priya / Fatima / Hassan / Hana)? which channel?
+   which offering? what's the one action we want them to take?
+3. Never use banned adjectives (delicious, mouth-watering, exquisite).
+4. Always name the dish specifically ("slow-braised lamb ouzi with
+   saffron rice" &gt; "our signature lamb dish").
+5. Output 3 headline options + body + CTA variants.
+6. For Arabic phrases: use sparingly, always romanised, always translated
+   in parentheses on first use.</code></pre>
+
+  <h3>Agent 3 — Majlis Scout (Research)</h3>
+  <span class="code-label">File: .agents/majlis-scout/AGENT.md</span>
+  <pre><code>---
+name: majlis-scout
+description: Researches UAE competitors, pricing, trends, partnerships,
+  and seasonal opportunities. Activate when user says "research," "competitor,"
+  "what's Kitopi doing," "trend," "partnership," "Ramadan," "summer plan."
+---
+
+# Majlis Scout Agent
+
+## Your role
+You are a UAE food-market researcher. You give the team a 1-page scan
+before any campaign, brief, or pricing change.
+
+## Skills available
+- competitor-alternatives
+- marketing-ideas
+- community-marketing
+- pricing-strategy
+
+## Workflow
+1. Read product-marketing-context.md.
+2. For competitor scans, always cover: Kitopi, Munch:on, Calo, Chef for
+   a Night. Include their price, positioning, current promo, and gap.
+3. For seasonal research, always note UAE calendar events (Ramadan dates,
+   Eid, UAE National Day, Dubai Food Festival, summer exodus July–Aug).
+4. Output as: Finding → So what → Recommended action.</code></pre>
+
+  <h3>Agent 4 — Plate Stylist (Creative)</h3>
+  <span class="code-label">File: .agents/plate-stylist/AGENT.md</span>
+  <pre><code>---
+name: plate-stylist
+description: Creates visual briefs, Instagram carousel layouts, food-photography
+  shot lists, chef-portrait direction, pitch decks. Activate when user says
+  "design," "carousel," "photo shoot," "brief," "deck," "visual."
+---
+
+# Plate Stylist Agent
+
+## Your role
+You are the art director for EatCookJoy. You don't edit images — you
+write briefs so sharp the photographer/designer shoots it right the
+first time.
+
+## Skills available
+- social-content
+- ad-creative
+- branded-deck
+
+## Workflow
+1. Read product-marketing-context.md.
+2. Always specify: aspect ratio, surface, props, lighting direction,
+   hero element, negative space for copy.
+3. UAE-specific cues: natural daylight &gt; overhead shots; avoid over-styled
+   American-diner look; Arabic ceramics and brass welcome, kitsch not.
+4. Output as a shot list the photographer can hand to their assistant.</code></pre>
+
+  <h3>Agent 5 — Season Strategist (Campaigns)</h3>
+  <span class="code-label">File: .agents/season-strategist/AGENT.md</span>
+  <pre><code>---
+name: season-strategist
+description: Owns multi-channel campaigns, launches, and seasonal pushes.
+  Orchestrates the other 4 agents. Activate when user says "launch,"
+  "campaign," "Ramadan plan," "summer push," "corporate play," "new offering."
+---
+
+# Season Strategist Agent
+
+## Your role
+You are the Head of Growth. You take one founder instruction and
+produce a full campaign package the team can execute this week.
+
+## Skills available
+- launch-strategy
+- paid-ads
+- referral-program
+- free-tool-strategy
+
+## Workflow
+1. Read product-marketing-context.md.
+2. Call majlis-scout first for market scan.
+3. Write a one-page brief: Objective · Audience · Offer · Channels ·
+   Timeline · Budget · KPIs.
+4. Call food-writer for copy, plate-stylist for visuals.
+5. Call souq-analyst to define tracking + success metrics.
+6. Final deliverable: campaign pack (brief + copy + creative specs +
+   tracking plan + go/no-go checklist).</code></pre>
+</section>
+
+<!-- ═══════════ 12 PRIORITY SKILLS ═══════════ -->
+<section id="skills">
+  <h2><span class="num">04</span> The 12 Priority Skills for EatCookJoy</h2>
+  <p class="section-desc">Of the 36 skills in <code>coreyhaines31/marketingskills</code>, these 12 deliver the most for a UAE meal-prep business. Install all 36, but start with these.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width: 22%;">Skill</th><th style="width: 12%;">Owner agent</th><th>Why it matters for EatCookJoy</th></tr></thead>
+      <tbody>
+        <tr><td><code>copywriting</code> <span class="pill pill-hot">P0</span></td><td>Food Writer</td><td>Homepage, 4 persona landing pages, chef-bio template, pricing page.</td></tr>
+        <tr><td><code>social-content</code> <span class="pill pill-hot">P0</span></td><td>Food Writer + Plate Stylist</td><td>Instagram is your #1 acquisition channel in UAE. Carousel formulas, Reel hooks, hashtag sets.</td></tr>
+        <tr><td><code>email-sequence</code> <span class="pill pill-hot">P0</span></td><td>Food Writer</td><td>Welcome series, first-booking nudge, win-back after 30 days, Ramadan pre-launch.</td></tr>
+        <tr><td><code>page-cro</code> <span class="pill pill-hot">P0</span></td><td>Food Writer + Souq Analyst</td><td>Lift homepage booking rate — current benchmark ~2.3%, target 3.5%.</td></tr>
+        <tr><td><code>paid-ads</code> <span class="pill pill-hot">P0</span></td><td>Season Strategist</td><td>Meta + Google Ads for UAE. Target CAC AED 110 from current 180.</td></tr>
+        <tr><td><code>competitor-alternatives</code></td><td>Majlis Scout</td><td>"EatCookJoy vs Kitopi," "vs Munch:on," "vs Chef for a Night" comparison pages — high-intent SEO.</td></tr>
+        <tr><td><code>launch-strategy</code></td><td>Season Strategist</td><td>Ramadan iftar package, summer-travel-freezer packs, UAE National Day corporate.</td></tr>
+        <tr><td><code>referral-program</code></td><td>Season Strategist</td><td>"Give AED 100, get AED 100" — high word-of-mouth sector.</td></tr>
+        <tr><td><code>seo-audit</code></td><td>Souq Analyst</td><td>Own "personal chef Dubai," "meal prep Abu Dhabi," "private chef UAE."</td></tr>
+        <tr><td><code>analytics-tracking</code></td><td>Souq Analyst</td><td>GA4 events for booking funnel, chef-click, allergen-filter use.</td></tr>
+        <tr><td><code>ab-test-setup</code></td><td>Souq Analyst</td><td>Hero headline tests, price-anchor tests, chef-photo vs plated-dish tests.</td></tr>
+        <tr><td><code>marketing-psychology</code></td><td>Food Writer</td><td>Social proof placement (1,200 reviews, 4.9★), scarcity ("3 slots left this week in Dubai Marina").</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ CLAUDE.md ═══════════ -->
+<section id="claude-md">
+  <h2><span class="num">05</span> Your Ready-Made CLAUDE.md</h2>
+  <p class="section-desc">Root-level coordinator. Tells Claude who runs what. Copy-paste into the root of your project.</p>
+
+  <span class="code-label">File: CLAUDE.md (project root)</span>
+  <pre><code># EatCookJoy UAE — AI Marketing Team
+
+## Team overview
+You manage a 5-agent marketing team for EatCookJoy UAE, a personal-chef
+&amp; meal-prep service covering all 7 emirates.
+
+Always read `.agents/product-marketing-context.md` before routing ANY task.
+
+## The agents
+- souq-analyst       — data, analytics, SEO, A/B
+- food-writer        — copy, captions, emails, WhatsApp
+- majlis-scout       — competitor &amp; market research
+- plate-stylist      — visual briefs, shot lists, decks
+- season-strategist  — campaigns, launches, orchestration
+
+## Routing rules
+- "analyse," "how are bookings," "CAC," "SEO"     → souq-analyst
+- "write," "caption," "email," "bio," "copy"      → food-writer
+- "competitor," "Kitopi," "trend," "research"     → majlis-scout
+- "brief," "carousel," "photo," "deck," "visual"  → plate-stylist
+- "campaign," "launch," "Ramadan," "summer"       → season-strategist
+
+## Default collaboration for campaigns
+When the task is a full campaign (Ramadan / summer / new offering):
+1. majlis-scout gathers the market scan
+2. season-strategist writes the brief
+3. food-writer drafts copy (EN + AR tone)
+4. plate-stylist produces the visual brief
+5. souq-analyst defines tracking &amp; success metrics
+
+## Output standards (every agent, every time)
+- Start with: **Goal** (one sentence)
+- End with: **Next action** (who does what by when)
+- Always name the persona being addressed
+- Always quote a specific dish, chef, or emirate — never generic
+- Never use: "delicious," "mouth-watering," "exquisite"
+- AED prices, never $ or €
+
+## Local rules
+- Use UAE spelling &amp; English (realise not realize)
+- Prayer times &amp; Ramadan hours matter — adjust send times
+- Avoid alcohol in hero imagery unless the brief explicitly says so
+- Summer (Jul–Aug) = freezer-pack angle, not dinner-party angle
+
+## Notion task board
+Before starting any session, check the Notion board "ECJ Marketing" for
+"To Do" cards. Pick up the oldest, move to "In Progress," complete,
+move to "Done" with a 3-line summary attached.</code></pre>
+</section>
+
+<!-- ═══════════ 30-DAY PLAN ═══════════ -->
+<section id="30day">
+  <h2><span class="num">06</span> Your First 30 Days</h2>
+  <p class="section-desc">Drop each of these into the Notion board as a card. Claude picks them up and executes. This is a realistic month-one roadmap for EatCookJoy.</p>
+
+  <div class="cal-grid">
+    <div class="cal-card">
+      <div class="cal-week">Week 1 · Foundation</div>
+      <div class="cal-title">Audit + Quick Wins</div>
+      <ul class="cal-list">
+        <li><code>souq-analyst</code> — Run SEO audit of eatcookjoy-uae.com</li>
+        <li><code>souq-analyst</code> — Analyse GA4: top 3 leaks in booking funnel</li>
+        <li><code>food-writer</code> — Rewrite homepage hero (3 variants to test)</li>
+        <li><code>majlis-scout</code> — Full scan of Kitopi + Calo current promos</li>
+        <li><code>plate-stylist</code> — Shot list for 10 hero chef portraits</li>
+      </ul>
+    </div>
+    <div class="cal-card">
+      <div class="cal-week">Week 2 · Acquisition</div>
+      <div class="cal-title">Paid + Social</div>
+      <ul class="cal-list">
+        <li><code>season-strategist</code> — Meta ads campaign brief for "Busy Pro Priya"</li>
+        <li><code>food-writer</code> — 20 Instagram captions (5 per persona)</li>
+        <li><code>food-writer</code> — Google Ads: 10 ad variants for "personal chef Dubai"</li>
+        <li><code>plate-stylist</code> — 3-slide carousel template (chef → dish → CTA)</li>
+        <li><code>souq-analyst</code> — A/B test spec: hero photo (chef vs plated dish)</li>
+      </ul>
+    </div>
+    <div class="cal-card">
+      <div class="cal-week">Week 3 · Comparison + SEO</div>
+      <div class="cal-title">Win The Search</div>
+      <ul class="cal-list">
+        <li><code>food-writer</code> — "EatCookJoy vs Kitopi" comparison page</li>
+        <li><code>food-writer</code> — "EatCookJoy vs Chef for a Night" page</li>
+        <li><code>food-writer</code> — 4 persona landing pages (Priya / Fatima / Hassan / Hana)</li>
+        <li><code>souq-analyst</code> — Schema markup for 10 chef profile pages</li>
+        <li><code>majlis-scout</code> — UAE meal-prep search-trend report</li>
+      </ul>
+    </div>
+    <div class="cal-card">
+      <div class="cal-week">Week 4 · Retention + Referral</div>
+      <div class="cal-title">Compound the Wins</div>
+      <ul class="cal-list">
+        <li><code>food-writer</code> — Email welcome series (5 emails)</li>
+        <li><code>food-writer</code> — Win-back sequence for 30-day-inactive customers</li>
+        <li><code>season-strategist</code> — Referral program spec (AED 100 / AED 100)</li>
+        <li><code>food-writer</code> — WhatsApp broadcast template library (10 templates)</li>
+        <li><code>souq-analyst</code> — Month-1 scorecard: CAC, booking rate, repeat %</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Follow this and month 1 delivers:</strong> rewritten homepage, 4 persona landing pages, 2 comparison pages, 20 IG captions, Meta + Google ad variants, schema markup, email welcome series, win-back sequence, referral program spec, and a scorecard to prove it all worked.
+  </div>
+</section>
+
+<!-- ═══════════ INSTALL ═══════════ -->
+<section id="install">
+  <h2><span class="num">07</span> Install SOP — 45 Minutes</h2>
+  <p class="section-desc">Follow exactly. End state: a working AI marketing team for EatCookJoy executing its first real task.</p>
+
+  <div class="phase-row">
+    <div class="phase"><div class="phase-num">PHASE 1</div><div class="phase-name">Setup</div><div class="phase-time">10 min</div></div>
+    <div class="phase"><div class="phase-num">PHASE 2</div><div class="phase-name">Install Skills</div><div class="phase-time">5 min</div></div>
+    <div class="phase"><div class="phase-num">PHASE 3</div><div class="phase-name">Paste Context</div><div class="phase-time">10 min</div></div>
+    <div class="phase"><div class="phase-num">PHASE 4</div><div class="phase-name">Paste Agents</div><div class="phase-time">10 min</div></div>
+    <div class="phase"><div class="phase-num">PHASE 5</div><div class="phase-name">Run First Task</div><div class="phase-time">10 min</div></div>
+  </div>
+
+  <h3>Folder to create</h3>
+  <div class="tree">
+<span class="dir">eatcookjoy-marketing/</span>
+├── <span class="file">CLAUDE.md</span>                       <span class="comment">← paste from Section 05</span>
+├── <span class="dir">.agents/</span>
+│   ├── <span class="file">product-marketing-context.md</span>      <span class="comment">← paste from Section 02</span>
+│   ├── <span class="dir">souq-analyst/</span>      └── <span class="file">AGENT.md</span>
+│   ├── <span class="dir">food-writer/</span>       └── <span class="file">AGENT.md</span>
+│   ├── <span class="dir">majlis-scout/</span>      └── <span class="file">AGENT.md</span>
+│   ├── <span class="dir">plate-stylist/</span>     └── <span class="file">AGENT.md</span>
+│   ├── <span class="dir">season-strategist/</span> └── <span class="file">AGENT.md</span>
+│   └── <span class="dir">skills/</span>                      <span class="comment">← installed via npx</span>
+└── <span class="dir">context/</span>
+    ├── <span class="file">brand-voice.md</span>
+    ├── <span class="file">customer-personas.md</span>
+    └── <span class="file">competitors.md</span>
+  </div>
+
+  <h3>Step-by-step</h3>
+  <ol class="steps">
+    <li><strong>Install Node.js</strong> (<a href="https://nodejs.org" target="_blank">nodejs.org</a>) then VS Code (<a href="https://code.visualstudio.com" target="_blank">code.visualstudio.com</a>).</li>
+    <li>Install the <strong>Claude Code</strong> extension in VS Code · sign in with Anthropic.</li>
+    <li>Create folder <code>eatcookjoy-marketing/</code> and open it in VS Code.</li>
+    <li>Open the terminal (<code>Ctrl + ~</code>) and run:<br><code>npx skills add coreyhaines31/marketingskills</code></li>
+    <li>Create <code>.agents/product-marketing-context.md</code> — paste Section 02 content.</li>
+    <li>Create the 5 agent folders and paste each <code>AGENT.md</code> from Section 03.</li>
+    <li>Create root <code>CLAUDE.md</code> — paste Section 05 content.</li>
+    <li>(Optional) Set up Notion board "ECJ Marketing" and install <a href="https://github.com/zhongweili/nanobanana-mcp-server" target="_blank">Nano Banana MCP</a> for remote task pickup.</li>
+    <li><strong>Run your first task:</strong> in the Claude Code terminal, type: <em>"Rewrite the homepage hero for EatCookJoy UAE with 3 variants aimed at Busy Pro Priya"</em></li>
+    <li>Claude auto-routes to <code>food-writer</code> + <code>copywriting</code> + <code>page-cro</code>. Review, tweak, ship.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Week 1 win condition:</strong> hero rewrite live, Kitopi comparison page drafted, first 10 Instagram captions queued. If you hit that, the system is working.
+  </div>
+</section>
+
+<!-- ═══════════ RESOURCES ═══════════ -->
+<section id="resources">
+  <h2><span class="num">08</span> Resources &amp; Links</h2>
+  <p class="section-desc">Everything you need to deploy. All verified April 2026.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Resource</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td>🌐 EatCookJoy UAE (the brand)</td><td><a href="https://eatcookjoy-uae.com" target="_blank">eatcookjoy-uae.com</a></td></tr>
+        <tr><td>📖 Base framework (generic version)</td><td><a href="https://azizsaif1967-afk.github.io/marketing-ai-skills/" target="_blank">azizsaif1967-afk.github.io/marketing-ai-skills</a></td></tr>
+        <tr><td>📺 Source video (Grace Leung)</td><td><a href="https://www.youtube.com/watch?v=yLXLHnD4fco&t=10s" target="_blank">youtube.com/watch?v=yLXLHnD4fco</a></td></tr>
+        <tr><td>📦 Marketing Skills repo (36 skills)</td><td><a href="https://github.com/coreyhaines31/marketingskills" target="_blank">github.com/coreyhaines31/marketingskills</a></td></tr>
+        <tr><td>🔌 Nano Banana MCP (Notion)</td><td><a href="https://github.com/zhongweili/nanobanana-mcp-server" target="_blank">github.com/zhongweili/nanobanana-mcp-server</a></td></tr>
+        <tr><td>📖 Claude Code docs</td><td><a href="https://code.claude.ai" target="_blank">code.claude.ai</a></td></tr>
+        <tr><td>⚙️ Node.js</td><td><a href="https://nodejs.org" target="_blank">nodejs.org</a></td></tr>
+        <tr><td>💻 VS Code</td><td><a href="https://code.visualstudio.com" target="_blank">code.visualstudio.com</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <strong>Next step for EatCookJoy:</strong> complete the 45-minute install, then drop the 20 cards from the 30-day plan into the Notion board. You'll ship a month of marketing output in week one — from rewritten hero copy to two competitor comparison pages — and the system compounds from there.
+  </div>
+</section>
+
+<footer>
+  <div class="brand-line">EatCookJoy UAE · <span>AI Marketing Playbook</span></div>
+  <p>Built on the framework in <a href="https://www.youtube.com/watch?v=yLXLHnD4fco&t=10s" target="_blank">Grace Leung's Claude Code walkthrough</a>, customised for a UAE personal-chef &amp; meal-prep service. Skills library: <a href="https://github.com/coreyhaines31/marketingskills" target="_blank">coreyhaines31/marketingskills</a>.</p>
+  <p style="margin-top: 10px;">Not affiliated with Grace Leung, Corey Haines, or Anthropic. All trademarks remain with their respective owners.</p>
+</footer>
+
+</body>
+</html>
