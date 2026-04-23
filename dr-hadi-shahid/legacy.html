@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <title>Dr. A. Hadi Shahid — The Legacy Journey | Alliott Hadi Shahid Chartered Accountants</title>
 <meta name="description" content="Official legacy biography of Dr. A. Hadi Shahid — Founder & Managing Partner, Alliott Hadi Shahid Chartered Accountants & Consultancy. Fifty years of service to the profession across the UAE, Pakistan, Afghanistan and beyond." />
 <meta name="author" content="Dr. A. Hadi Shahid" />
@@ -60,7 +63,7 @@
   "https://amchamabudhabi.org/dr-a-hadi-shahid-bio/",
   "https://icap.org.pk/daab/board-members/hadi-shahid.html",
   "https://www.alliottuae.com/",
-  "http://alliott.com.pk/"
+  "https://alliott.com.pk/"
  ]
 }
 </script>
@@ -446,7 +449,7 @@
 
   /* ============ Video feature (side-by-side) ============ */
   .video-feature{
-    display:grid;grid-template-columns:1.35fr 1fr;gap:0;
+    display:grid;grid-template-columns:1.1fr 1fr;gap:0;
     background:#fffdf6;border:1px solid var(--gold);box-shadow:var(--shadow);
     text-decoration:none;color:inherit;overflow:hidden;align-items:stretch;
   }
@@ -474,14 +477,16 @@
     border:1px solid var(--gold-light);white-space:nowrap;
   }
   .video-feature .info{
-    padding:36px 36px;display:flex;flex-direction:column;justify-content:center;gap:14px;
+    padding:32px 32px;display:flex;flex-direction:column;justify-content:center;gap:12px;
     background:linear-gradient(160deg,#fffdf6 0%,#f2e9d0 100%);
+    min-width:0;
   }
   .video-feature .info .kicker{
     font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-deep);
   }
   .video-feature .info h4{
-    font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.15;margin:0;color:var(--navy-deep);font-weight:600
+    font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.2vw,28px);line-height:1.2;margin:0;color:var(--navy-deep);font-weight:600;
+    overflow-wrap:break-word;
   }
   .video-feature .info h4 em{font-style:italic;color:var(--gold-deep);font-weight:500}
   .video-feature .info .meta{
@@ -665,9 +670,10 @@
     font-family:'Cinzel',serif;letter-spacing:.24em;text-transform:uppercase;font-size:13px;
     color:var(--gold-deep);text-align:center;margin:0 0 26px;font-weight:500
   }
-  .feed-grid{display:grid;gap:22px}
-  .li-grid{grid-template-columns:repeat(2,1fr)}
-  .ig-grid{grid-template-columns:repeat(3,1fr)}
+  .feed-grid{display:grid;gap:18px}
+  .li-grid{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+  .ig-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .li-grid .feed-card iframe{height:420px}
   .fb-grid{grid-template-columns:1fr;max-width:540px;margin:0 auto}
   @media (max-width:900px){.li-grid,.ig-grid{grid-template-columns:1fr}}
   .feed-card{
@@ -703,35 +709,44 @@
     font-family:'Cinzel',serif;letter-spacing:.24em;text-transform:uppercase;font-size:13px;
     color:var(--gold-light);text-align:center;margin:0 0 26px;font-weight:500
   }
+  /* Compact horizontal-pill layout — reduces per-tile visual weight ~70%
+     so 12–13 tiles no longer dominate the screen. Auto-fit keeps density. */
   .dir-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;
   }
-  @media (max-width:1100px){.dir-grid{grid-template-columns:repeat(3,1fr)}}
-  @media (max-width:760px){.dir-grid{grid-template-columns:repeat(2,1fr);gap:14px}}
-  @media (max-width:420px){.dir-grid{grid-template-columns:1fr}}
+  @media (max-width:520px){.dir-grid{grid-template-columns:1fr;gap:10px}}
   .dir-tile{
-    background:rgba(255,253,246,.04);border:1px solid rgba(214,183,101,.35);
-    padding:18px;display:flex;flex-direction:column;gap:8px;
+    background:rgba(255,253,246,.04);border:1px solid rgba(214,183,101,.28);
+    padding:12px 14px;
+    display:grid;grid-template-columns:48px 1fr;grid-template-rows:auto auto;
+    column-gap:14px;row-gap:2px;align-items:center;
     color:#f4ead0;text-decoration:none;transition:all .2s ease;
-    position:relative;overflow:hidden;border-radius:4px;
+    position:relative;overflow:hidden;border-radius:6px;min-height:72px;
   }
   .dir-tile:hover{
-    background:rgba(214,183,101,.12);border-color:var(--gold-light);
-    transform:translateY(-3px);box-shadow:0 14px 30px -14px rgba(0,0,0,.6);color:#fff
+    background:rgba(214,183,101,.1);border-color:var(--gold-light);
+    transform:translateY(-2px);box-shadow:0 10px 22px -12px rgba(0,0,0,.55);color:#fff
   }
   .dir-tile .thumb{
-    aspect-ratio:4/3;border:1px solid rgba(214,183,101,.4);display:flex;
+    width:48px;height:48px;border-radius:50%;
+    grid-row:1 / span 2;align-self:center;
+    border:1px solid rgba(214,183,101,.35);display:flex;
     align-items:center;justify-content:center;font-family:'Cinzel',serif;
-    font-size:clamp(38px,5vw,56px);letter-spacing:.04em;color:#fff;
-    box-shadow:inset 0 0 0 3px rgba(255,255,255,.06);border-radius:3px;
+    font-size:20px;letter-spacing:0;color:#fff;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.06);
+    aspect-ratio:auto;
   }
-  .dir-tile .thumb span{text-shadow:0 2px 8px rgba(0,0,0,.4);line-height:1}
-  .dir-tile .thumb svg{width:48px!important;height:48px!important}
+  .dir-tile .thumb span{text-shadow:0 1px 3px rgba(0,0,0,.4);line-height:1;font-size:18px}
+  .dir-tile .thumb svg{width:22px!important;height:22px!important}
   .dir-tile b{
-    font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;margin-top:6px;line-height:1.2;font-weight:600
+    grid-column:2;align-self:end;
+    font-family:'Cormorant Garamond',serif;font-size:16px;color:#fff;line-height:1.2;font-weight:600;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis
   }
   .dir-tile p{
-    margin:0;font-size:13px;color:#d8c9a0;line-height:1.5
+    grid-column:2;align-self:start;
+    margin:0;font-size:12px;color:#d8c9a0;line-height:1.35;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis
   }
 
   /* ============ Footer ============ */
@@ -1456,7 +1471,7 @@
         <p>Suite #913, Trade Tower, Abdullah Haroon Road, Karachi, Pakistan</p>
         <p><span class="lbl">Tel</span> <a href="tel:+922135215703">+92 21 3521 5703</a> · <a href="tel:+922135661192">+92 21 3566 1192</a></p>
         <p><span class="lbl">Email</span> <a href="mailto:qaiseranis@gmail.com">qaiseranis@gmail.com</a></p>
-        <p><span class="lbl">Web</span> <a href="http://alliott.com.pk/" target="_blank" rel="noopener">alliott.com.pk ↗</a></p>
+        <p><span class="lbl">Web</span> <a href="https://alliott.com.pk/" target="_blank" rel="noopener">alliott.com.pk ↗</a></p>
       </div>
 
       <div class="office-card">
@@ -1525,7 +1540,7 @@
         <div class="go">Visit Website ↗</div>
       </a>
 
-      <a class="mtile span-6" href="http://alliott.com.pk/" target="_blank" rel="noopener">
+      <a class="mtile span-6" href="https://alliott.com.pk/" target="_blank" rel="noopener">
         <div class="plate"><span class="mono">alliott.com.pk</span></div>
         <b>Firm Website — Pakistan</b>
         <p>Sister office website — Alliott Shahid Hadi Chartered Accountants, Karachi.</p>
@@ -1577,7 +1592,7 @@
     </div>
 
     <!-- Featured: Sharjah TV Ramadan Majlis -->
-    <a class="video-feature" href="https://maraya.sba.net.ae/episode/139333" target="_blank" rel="noopener" title="Watch on Maraya — Sharjah Broadcasting Authority">
+    <a class="video-feature" href="https://maraya.sba.net.ae/episode/139333" target="_blank" rel="noopener" aria-label="Watch Ramadan Majlis episode on Maraya — Sharjah Broadcasting Authority">
       <div class="thumb">
         <img src="./photos/sharjahtv-poster.jpg" alt="Dr. Hadi Shahid on Sharjah TV — The Ramadan Majlis, Faith, Morals and the Path of Islam">
         <span class="badge">Sharjah TV · Maraya</span>
@@ -1654,7 +1669,7 @@
     <div class="gallery-grid">
 
       <!-- ===== ROW 1 — Featured portraits of Dr. A. Hadi Shahid ===== -->
-      <a class="gallery-tile span-6" href="./portrait.jpg" target="_blank">
+      <a class="gallery-tile span-6" href="./portrait.jpg" target="_blank" rel="noopener">
         <span class="gt-n">01</span>
         <img src="./portrait.jpg" alt="Dr. A. Hadi Shahid — Official firm portrait">
         <div class="plate"><b>Dr. A. Hadi Shahid</b>Official firm portrait · Alliott Hadi Shahid</div>
@@ -1826,19 +1841,19 @@
     <h3 class="feed-h">✦ LinkedIn — Dr. A. Hadi Shahid &amp; Alliott Hadi Shahid</h3>
     <div class="feed-grid li-grid">
       <div class="feed-card">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7121054752783708160" height="570" width="100%" frameborder="0" allowfullscreen="" title="Award of Appreciation — PBC Dubai"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7121054752783708160" height="420" width="100%" frameborder="0" allowfullscreen="" title="Award of Appreciation — PBC Dubai"></iframe>
         <div class="feed-cap"><b>Award of Appreciation · PBC Dubai</b> — Dubai Chamber of Commerce</div>
       </div>
       <div class="feed-card">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7086725789102043136" height="570" width="100%" frameborder="0" allowfullscreen="" title="UAE Tax update"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7086725789102043136" height="420" width="100%" frameborder="0" allowfullscreen="" title="UAE Tax update"></iframe>
         <div class="feed-cap"><b>#UAE #Tax</b> — Corporate tax advisory update</div>
       </div>
       <div class="feed-card">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7212034422588514304" height="570" width="100%" frameborder="0" allowfullscreen="" title="Financial insights"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7212034422588514304" height="420" width="100%" frameborder="0" allowfullscreen="" title="Financial insights"></iframe>
         <div class="feed-cap"><b>#Financial</b> — Thought leadership</div>
       </div>
       <div class="feed-card">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7220020238971465730" height="570" width="100%" frameborder="0" allowfullscreen="" title="Alliott Hadi Shahid — July 16 2024"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7220020238971465730" height="420" width="100%" frameborder="0" allowfullscreen="" title="Alliott Hadi Shahid — July 16 2024"></iframe>
         <div class="feed-cap"><b>Firm Update</b> — 16 July 2024, Alliott Hadi Shahid</div>
       </div>
     </div>
@@ -1897,7 +1912,7 @@
     <ul>
       <li><b>Firm Official</b><a href="https://www.alliottuae.com/Auditors/Aboutus" target="_blank" rel="noopener">alliottuae.com — About Us</a></li>
       <li><b>Firm Team</b><a href="https://www.alliottuae.com/Auditors/OurTeam" target="_blank" rel="noopener">alliottuae.com — Meet Our Team</a></li>
-      <li><b>Pakistan Office</b><a href="http://alliott.com.pk/" target="_blank" rel="noopener">alliott.com.pk</a></li>
+      <li><b>Pakistan Office</b><a href="https://alliott.com.pk/" target="_blank" rel="noopener">alliott.com.pk</a></li>
       <li><b>Alliott Global</b><a href="https://www.alliottglobal.com/directory-search/members/hadi-shahid/" target="_blank" rel="noopener">Alliott Global — Hadi Shahid</a></li>
       <li><b>Alliott Global (Firm)</b><a href="https://www.alliottglobal.com/directory-search/firms/alliott-hadi-shahid-chartered-accountants" target="_blank" rel="noopener">Alliott Global — Firm Profile</a></li>
       <li><b>AmCham</b><a href="https://amchamabudhabi.org/dr-a-hadi-shahid-bio/" target="_blank" rel="noopener">AmCham Abu Dhabi — Bio</a></li>
@@ -1907,7 +1922,7 @@
       <li><b>Instagram</b><a href="https://www.instagram.com/alliotthadishahid/" target="_blank" rel="noopener">@alliotthadishahid</a></li>
       <li><b>Facebook</b><a href="https://www.facebook.com/AlliotthadishahidCA/" target="_blank" rel="noopener">Facebook — AlliotthadishahidCA</a></li>
       <li><b>British Chamber</b><a href="https://britishchamberdubai.com/company/members?id=258" target="_blank" rel="noopener">British Chamber of Commerce, Dubai</a></li>
-      <li><b>Swiss Business Council</b><a href="http://www.swissbcuae.com/members/alliott-hadi-shahid-chartered-accountants/" target="_blank" rel="noopener">Swiss Business Council UAE</a></li>
+      <li><b>Swiss Business Council</b><a href="https://www.swissbcuae.com/members/alliott-hadi-shahid-chartered-accountants/" target="_blank" rel="noopener">Swiss Business Council UAE</a></li>
       <li><b>Clutch Profile</b><a href="https://clutch.co/profile/alliott-hadi-shahid-chartered-accountants" target="_blank" rel="noopener">Clutch — Firm Profile</a></li>
       <li><b>Sortlist Profile</b><a href="https://www.sortlist.com/agency/alliott-hadi-shahid-chartered-accountants" target="_blank" rel="noopener">Sortlist — Firm Profile</a></li>
       <li><b>Award Announcement</b><a href="https://www.linkedin.com/posts/dr-a-hadi-shahid-64314055_drhadishahid-pbcdubai-dubaichamberofcommerce-activity-7121054752783708160-Rgf2" target="_blank" rel="noopener">PBC Dubai Appreciation — LinkedIn</a></li>
@@ -1965,11 +1980,11 @@
       <a class="dir-tile" href="https://www.alliottuae.com" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#0f2740,#1c3b5e)"><span>UAE</span></div><b>alliottuae.com</b><p>Firm website — UAE</p></a>
       <a class="dir-tile" href="https://www.alliottuae.com/Auditors/Aboutus" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#0f2740,#b8892a)"><span>About</span></div><b>Firm · About Us</b><p>Since 1976</p></a>
       <a class="dir-tile" href="https://www.alliottuae.com/Auditors/OurTeam" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#b8892a,#efe3c0)"><span>Team</span></div><b>Firm · Meet the Team</b><p>Partners &amp; managers</p></a>
-      <a class="dir-tile" href="http://alliott.com.pk/" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#01411c,#d6b765)"><span>PK</span></div><b>alliott.com.pk</b><p>Pakistan office — Karachi</p></a>
+      <a class="dir-tile" href="https://alliott.com.pk/" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#01411c,#d6b765)"><span>PK</span></div><b>alliott.com.pk</b><p>Pakistan office — Karachi</p></a>
       <a class="dir-tile" href="https://amchamabudhabi.org/dr-a-hadi-shahid-bio/" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#b22234,#ffffff,#3c3b6e)"><span>AC</span></div><b>AmCham Abu Dhabi</b><p>Official bio</p></a>
       <a class="dir-tile" href="https://icap.org.pk/daab/board-members/hadi-shahid.html" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#003366,#b8892a)"><span>ICAP</span></div><b>ICAP DAAB</b><p>Board member profile</p></a>
       <a class="dir-tile" href="https://britishchamberdubai.com/company/members?id=258" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#012169,#c8102e,#ffffff)"><span>BCC</span></div><b>British Chamber</b><p>Dubai — member page</p></a>
-      <a class="dir-tile" href="http://www.swissbcuae.com/members/alliott-hadi-shahid-chartered-accountants/" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#ff0000,#ffffff)"><span>🇨🇭</span></div><b>Swiss Business Council</b><p>UAE — member page</p></a>
+      <a class="dir-tile" href="https://www.swissbcuae.com/members/alliott-hadi-shahid-chartered-accountants/" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#ff0000,#ffffff)"><span>🇨🇭</span></div><b>Swiss Business Council</b><p>UAE — member page</p></a>
       <a class="dir-tile" href="https://clutch.co/profile/alliott-hadi-shahid-chartered-accountants" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#17313e,#e91e63)"><span>Cl</span></div><b>Clutch</b><p>Company profile</p></a>
       <a class="dir-tile" href="https://www.sortlist.com/agency/alliott-hadi-shahid-chartered-accountants" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#fa5b35,#0f2740)"><span>So</span></div><b>Sortlist</b><p>Agency listing</p></a>
       <a class="dir-tile" href="https://www.alliottglobal.com/directory-search/firms/alliott-hadi-shahid-chartered-accountants" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#0f2740,#d6b765)"><span>AGA</span></div><b>Alliott Global · Firm</b><p>Firm directory entry</p></a>
