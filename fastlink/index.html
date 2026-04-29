@@ -507,30 +507,85 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 </header>
 
 
-<!-- BRAND ENTRANCE (dual-pane, kakalbrothers / tarkashgcc style) -->
+<!-- BRAND ENTRANCE (dual-pane) -->
 <section class="entrance">
   <div class="wrap" style="text-align:center;margin-bottom:18px"><span style="display:inline-block;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:6px 14px;background:var(--chip);border-radius:999px">👋 Who are you?</span></div>
   <div class="wrap entrance-grid">
-    <button class="ent-pane ent-blue" onclick="setMode('candidate');document.getElementById('jobs').scrollIntoView({behavior:'smooth'})">
+    <div class="ent-pane ent-blue">
       <span class="ent-eyebrow">Candidates</span>
       <h2 class="ent-h">Looking for your next role?</h2>
       <p class="ent-sub">Upload your CV and a recruiter will be in touch within 24 hours.</p>
-      <span class="ent-cta-row">
-        <span class="ent-btn ent-btn-w">Upload CV →</span>
-        <span class="ent-btn ent-btn-o">Browse jobs</span>
-      </span>
-    </button>
-    <button class="ent-pane ent-green" onclick="setMode('employer');openChat()">
+      <div class="ent-cta-row">
+        <button type="button" class="ent-btn ent-btn-w" onclick="setMode('candidate');openCV()">Upload CV →</button>
+        <button type="button" class="ent-btn ent-btn-o" onclick="setMode('candidate');document.getElementById('jobs').scrollIntoView({behavior:'smooth'})">Browse jobs</button>
+      </div>
+    </div>
+    <div class="ent-pane ent-green">
       <span class="ent-eyebrow">Employers</span>
       <h2 class="ent-h">Need to hire — fast?</h2>
       <p class="ent-sub">Get an instant AI-powered quote, or book a 15-minute discovery call.</p>
-      <span class="ent-cta-row">
-        <span class="ent-btn ent-btn-w">⚡ Get instant quote</span>
-        <span class="ent-btn ent-btn-o">Book a call</span>
-      </span>
-    </button>
+      <div class="ent-cta-row">
+        <button type="button" class="ent-btn ent-btn-w" onclick="setMode('employer');openChat()">⚡ Get instant quote</button>
+        <button type="button" class="ent-btn ent-btn-o" onclick="openCall()">Book a call</button>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- CV UPLOAD MODAL -->
+<div class="modal-back" id="cvModal">
+  <div class="modal">
+    <div class="modal-head" style="background:linear-gradient(135deg,#1E5AA8,#143E76)">
+      <h3>📄 Upload your CV</h3>
+      <p>A FastLink recruiter will be in touch within 24 hours.</p>
+      <button class="close" onclick="closeCV()">×</button>
+    </div>
+    <form class="modal-body" onsubmit="cvSubmit(event)">
+      <div class="row">
+        <div><label>Full name</label><input type="text" required id="cvName" placeholder="Your name"/></div>
+        <div><label>Mobile (UAE)</label><input type="tel" required id="cvMob" placeholder="+971 50 000 0000"/></div>
+      </div>
+      <div><label>Email</label><input type="email" required id="cvEmail" placeholder="you@email.com"/></div>
+      <div><label>Target role / industry</label><input type="text" required id="cvRole" placeholder="e.g. Civil Engineer, Hospitality, Sales..."/></div>
+      <div>
+        <label>CV / Resume (PDF or Word)</label>
+        <input type="file" required id="cvFile" accept=".pdf,.doc,.docx" style="padding:10px;border:1px dashed var(--line);background:#fafbfd;cursor:pointer"/>
+      </div>
+      <button type="submit" class="submit" style="background:#1E5AA8">📤 Submit my CV</button>
+      <div class="legal">By submitting, you agree to our privacy policy. We'll never share your CV without permission.</div>
+    </form>
+  </div>
+</div>
+
+<!-- BOOK A CALL MODAL -->
+<div class="modal-back" id="callModal">
+  <div class="modal">
+    <div class="modal-head" style="background:linear-gradient(135deg,#16A34A,#0F8A3E)">
+      <h3>📅 Book a 15-min discovery call</h3>
+      <p>A senior FastLink consultant will WhatsApp or call you back within 1 hour.</p>
+      <button class="close" onclick="closeCall()">×</button>
+    </div>
+    <form class="modal-body" onsubmit="callSubmit(event)">
+      <div class="row">
+        <div><label>Full name</label><input type="text" required id="clName" placeholder="Your name"/></div>
+        <div><label>Company</label><input type="text" required id="clCo" placeholder="Company name"/></div>
+      </div>
+      <div><label>Work email</label><input type="email" required id="clEmail" placeholder="you@company.com"/></div>
+      <div><label>UAE mobile / WhatsApp</label><input type="tel" required id="clMob" placeholder="+971 50 000 0000"/></div>
+      <div>
+        <label>Preferred time</label>
+        <select id="clTime" style="width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:4px;font-size:14.5px">
+          <option>Morning · 9am–12pm GST</option>
+          <option>Afternoon · 12pm–5pm GST</option>
+          <option>Evening · 5pm–8pm GST</option>
+          <option>ASAP — call me now</option>
+        </select>
+      </div>
+      <button type="submit" class="submit">📞 Confirm my call</button>
+      <div class="legal">We respond within 1 business hour, 9am–9pm GST.</div>
+    </form>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1439,6 +1494,30 @@ function setFaq(k, btn){
   document.querySelectorAll('.faq-tab').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   document.querySelectorAll('.faq-panel').forEach(p=>p.style.display = p.dataset.faq===k?'flex':'none');
+}
+
+/* CV upload modal */
+function openCV(){document.getElementById('cvModal').classList.add('open');}
+function closeCV(){document.getElementById('cvModal').classList.remove('open');}
+function cvSubmit(e){
+  e.preventDefault();
+  const lead={kind:'cv',name:cvName.value,mobile:cvMob.value,email:cvEmail.value,role:cvRole.value,file:cvFile.files[0]?.name,ts:new Date().toISOString()};
+  console.log('📨 CV lead:', lead);
+  try{localStorage.setItem('fastlink_last_cv',JSON.stringify(lead));}catch(err){}
+  alert(`✅ Thanks ${lead.name.split(' ')[0]}! Your CV has been received. A recruiter will WhatsApp you on ${lead.mobile} within 24 hours.`);
+  closeCV();
+}
+
+/* Book a call modal */
+function openCall(){document.getElementById('callModal').classList.add('open');}
+function closeCall(){document.getElementById('callModal').classList.remove('open');}
+function callSubmit(e){
+  e.preventDefault();
+  const lead={kind:'call',name:clName.value,co:clCo.value,email:clEmail.value,mobile:clMob.value,time:clTime.value,ts:new Date().toISOString()};
+  console.log('📨 Call request:', lead);
+  try{localStorage.setItem('fastlink_last_call',JSON.stringify(lead));}catch(err){}
+  alert(`✅ Booked! ${lead.name.split(' ')[0]}, our consultant will call/WhatsApp ${lead.mobile} during your "${lead.time}" window.`);
+  closeCall();
 }
 </script>
 </body>
