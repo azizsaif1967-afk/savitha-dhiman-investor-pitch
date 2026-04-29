@@ -483,6 +483,29 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 .call-opt-arrow{font-size:22px;color:var(--muted);font-weight:300}
 .call-opt:hover .call-opt-arrow{color:var(--green);transform:translateX(3px);transition:.15s}
 
+
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.contact-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);transition:.2s;border:0;border:1px solid var(--line)}
+.contact-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);text-decoration:none}
+.contact-card.wa{background:linear-gradient(135deg,rgba(37,211,102,.08),#fff);border-color:rgba(37,211,102,.4)}
+.contact-card.wa:hover{border-color:#25D366}
+.contact-ico{width:54px;height:54px;border-radius:8px;display:grid;place-items:center;font-size:24px;margin-bottom:10px}
+.contact-eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.contact-num{font-size:22px;font-weight:700;letter-spacing:-.01em;color:var(--ink);line-height:1.2;word-break:break-word}
+.contact-card.wa .contact-num{color:#075E54}
+.contact-sub{font-size:13px;color:var(--muted);margin-top:2px}
+.contact-cta{margin-top:auto;padding-top:12px;font-size:13.5px;font-weight:600;color:var(--blue)}
+.contact-card.wa .contact-cta{color:#075E54}
+
+.contact-locations{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px}
+.loc{display:flex;gap:14px;align-items:flex-start}
+.loc-flag{font-size:24px}
+.loc-city{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:4px}
+.loc-addr{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+
+@media (max-width:980px){.contact-grid{grid-template-columns:1fr 1fr}.contact-locations{grid-template-columns:1fr}}
+@media (max-width:560px){.contact-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body data-mode="candidate">
@@ -1111,6 +1134,68 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
         <input type="email" required placeholder="your@work-email.com" id="nlEmail"/>
         <button type="submit">Subscribe →</button>
       </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section class="sec" id="contact" style="background:var(--cream)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Contact</span><h2>Talk to a real human in <em>under 5 minutes</em>.</h2></div>
+      <p>Mon–Sat · 9am–9pm GST · Dubai &amp; Abu Dhabi consultants on rotation.</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card wa" href="https://wa.me/971500000000?text=Hi%20FastLink%2C%20I%27d%20like%20to%20enquire" target="_blank">
+        <div class="contact-ico" style="background:#25D366;color:#fff">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4-.1-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.2 0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.4L2 22l4.7-1.3A10 10 0 1 0 12 2z"/></svg>
+        </div>
+        <span class="contact-eyebrow">WhatsApp · Fastest</span>
+        <div class="contact-num">+971 50 000 0000</div>
+        <div class="contact-sub">Tap to chat — responds in &lt; 5 min</div>
+        <span class="contact-cta">Open WhatsApp →</span>
+      </a>
+      <a class="contact-card" href="tel:+97142000000">
+        <div class="contact-ico" style="background:var(--blue-soft);color:var(--blue)">📞</div>
+        <span class="contact-eyebrow">Phone</span>
+        <div class="contact-num">+971 4 200 0000</div>
+        <div class="contact-sub">Dubai HQ landline</div>
+        <span class="contact-cta">Call now →</span>
+      </a>
+      <a class="contact-card" href="mailto:hello@fastlinkoutsourcing.com">
+        <div class="contact-ico" style="background:var(--blue-soft);color:var(--blue)">✉</div>
+        <span class="contact-eyebrow">Email</span>
+        <div class="contact-num" style="font-size:18px">hello@fastlinkoutsourcing.com</div>
+        <div class="contact-sub">Replies within 1 business hour</div>
+        <span class="contact-cta">Send email →</span>
+      </a>
+      <button class="contact-card" onclick="openCall()" style="text-align:left;font-family:inherit;cursor:pointer">
+        <div class="contact-ico" style="background:#EAF2FF">
+          <svg width="28" height="28" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="#006BFF"/><text x="12" y="16" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">C</text></svg>
+        </div>
+        <span class="contact-eyebrow">Calendly</span>
+        <div class="contact-num" style="font-size:20px">Book a 15-min call</div>
+        <div class="contact-sub">Pick your own slot — Dubai &amp; Abu Dhabi consultants</div>
+        <span class="contact-cta">Open Calendly →</span>
+      </button>
+    </div>
+
+    <div class="contact-locations">
+      <div class="loc">
+        <div class="loc-flag">📍</div>
+        <div>
+          <div class="loc-city">Dubai HQ</div>
+          <div class="loc-addr">Office 1208, Boulevard Plaza Tower 1<br/>Sheikh Mohammed bin Rashid Blvd, Downtown Dubai, UAE</div>
+        </div>
+      </div>
+      <div class="loc">
+        <div class="loc-flag">📍</div>
+        <div>
+          <div class="loc-city">Abu Dhabi</div>
+          <div class="loc-addr">Level 14, Al Sila Tower<br/>Abu Dhabi Global Market Square, Al Maryah Island, UAE</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
