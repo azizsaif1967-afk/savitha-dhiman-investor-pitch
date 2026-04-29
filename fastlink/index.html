@@ -536,6 +536,15 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 @media (max-width:980px){.board-grid{grid-template-columns:1fr}.board-filter{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.board-filter{grid-template-columns:1fr}}
 
+
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--chip);border-radius:6px;padding:4px;gap:4px}
+.auth-tab{padding:10px;border-radius:4px;font-weight:600;font-size:14px;color:var(--ink-2);transition:.15s}
+.auth-tab.on{background:#fff;color:var(--blue);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.auth-or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:11.5px;font-weight:600;letter-spacing:.06em;margin:4px 0}
+.auth-or::before,.auth-or::after{content:"";flex:1;height:1px;background:var(--line)}
+.auth-social{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:6px;background:#fff;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;transition:.15s}
+.auth-social:hover{border-color:var(--blue);background:var(--blue-soft)}
+
 </style>
 </head>
 <body data-mode="candidate">
@@ -585,8 +594,8 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
       <h2 class="ent-h">Looking for your next role?</h2>
       <p class="ent-sub">Upload your CV and a recruiter will be in touch within 24 hours.</p>
       <div class="ent-cta-row">
-        <button type="button" class="ent-btn ent-btn-w" onclick="setMode('candidate');openCV()">Upload CV →</button>
-        <button type="button" class="ent-btn ent-btn-o" onclick="setMode('candidate');document.getElementById('jobs').scrollIntoView({behavior:'smooth'})">Browse jobs</button>
+        <button type="button" class="ent-btn ent-btn-w" onclick="setMode('candidate');gateCandidate('cv')">Upload CV →</button>
+        <button type="button" class="ent-btn ent-btn-o" onclick="setMode('candidate');gateCandidate('jobs')">Browse jobs</button>
       </div>
     </div>
     <div class="ent-pane ent-green">
@@ -623,6 +632,37 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
       <button type="submit" class="submit" style="background:#1E5AA8">📤 Submit my CV</button>
       <div class="legal">By submitting, you agree to our privacy policy. We'll never share your CV without permission.</div>
     </form>
+  </div>
+</div>
+
+
+<!-- CANDIDATE AUTH MODAL (Login / Sign up) -->
+<div class="modal-back" id="authModal">
+  <div class="modal">
+    <div class="modal-head" style="background:linear-gradient(135deg,#1E5AA8,#143E76)">
+      <h3 id="authTitle">Create your candidate account</h3>
+      <p id="authSub">Save your CV, track applications, get job alerts — all in one place.</p>
+      <button class="close" onclick="closeAuth()">×</button>
+    </div>
+    <div class="modal-body" style="gap:14px">
+      <div class="auth-tabs">
+        <button class="auth-tab on" onclick="setAuthTab('signup', this)">Sign up</button>
+        <button class="auth-tab" onclick="setAuthTab('login', this)">Log in</button>
+      </div>
+      <form onsubmit="authSubmit(event)" style="display:flex;flex-direction:column;gap:12px">
+        <div id="authNameRow"><label>Full name</label><input type="text" id="authName" placeholder="Your name" required/></div>
+        <div><label>Email address</label><input type="email" id="authEmail" placeholder="you@email.com" required/></div>
+        <div><label>Password</label><input type="password" id="authPass" placeholder="At least 8 characters" minlength="8" required/></div>
+        <div id="authConfirmRow"><label>Confirm password</label><input type="password" id="authConfirm" placeholder="Re-enter password" minlength="8" required/></div>
+        <button type="submit" class="submit" style="background:#1E5AA8" id="authBtn">Create account →</button>
+        <div class="auth-or"><span>OR</span></div>
+        <button type="button" class="auth-social" onclick="authGoogle()">
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.2 6 29.4 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.1 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.2 6 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.2-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2c-.4.4 6.6-4.8 6.6-14.8 0-1.3-.1-2.6-.4-3.9z"/></svg>
+          Continue with Google
+        </button>
+        <div class="legal" style="text-align:center;margin-top:4px">By continuing you agree to our <a href="#" style="color:var(--blue)">Terms</a> &amp; <a href="#" style="color:var(--blue)">Privacy Policy</a>.</div>
+      </form>
+    </div>
   </div>
 </div>
 
@@ -1760,6 +1800,64 @@ function filterJobs(){
   ));
 }
 document.addEventListener('DOMContentLoaded',()=>renderJobs(JOBS));
+
+/* Candidate auth */
+let authMode='signup';
+let pendingAction=null;
+function isCandidateLoggedIn(){try{return !!JSON.parse(localStorage.getItem('fastlink_candidate'));}catch(e){return false;}}
+function gateCandidate(action){
+  pendingAction = action;
+  if(isCandidateLoggedIn()){runPendingAction();return;}
+  openAuth();
+}
+function runPendingAction(){
+  if(pendingAction==='cv') openCV();
+  else if(pendingAction==='jobs') document.getElementById('jobs-board').scrollIntoView({behavior:'smooth'});
+  pendingAction=null;
+}
+function openAuth(){
+  document.getElementById('authModal').classList.add('open');
+  setAuthTab('signup', document.querySelector('.auth-tab'));
+}
+function closeAuth(){document.getElementById('authModal').classList.remove('open');}
+function setAuthTab(mode, btn){
+  authMode=mode;
+  document.querySelectorAll('.auth-tab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const isSignup = mode==='signup';
+  document.getElementById('authTitle').textContent = isSignup?'Create your candidate account':'Welcome back';
+  document.getElementById('authSub').textContent = isSignup?'Save your CV, track applications, get job alerts — all in one place.':'Log in to access your saved jobs and applications.';
+  document.getElementById('authBtn').textContent = isSignup?'Create account →':'Log in →';
+  document.getElementById('authNameRow').style.display = isSignup?'block':'none';
+  document.getElementById('authConfirmRow').style.display = isSignup?'block':'none';
+  document.getElementById('authName').required = isSignup;
+  document.getElementById('authConfirm').required = isSignup;
+}
+function authSubmit(e){
+  e.preventDefault();
+  const email=document.getElementById('authEmail').value;
+  const pass=document.getElementById('authPass').value;
+  if(authMode==='signup'){
+    const name=document.getElementById('authName').value;
+    const confirm=document.getElementById('authConfirm').value;
+    if(pass!==confirm){alert('Passwords do not match.');return;}
+    const acct={name,email,createdAt:new Date().toISOString()};
+    localStorage.setItem('fastlink_candidate',JSON.stringify(acct));
+    closeAuth();
+    setTimeout(()=>{alert(`✅ Welcome ${name.split(' ')[0]}! Your candidate account is ready.`);runPendingAction();},150);
+  } else {
+    localStorage.setItem('fastlink_candidate',JSON.stringify({email,loggedInAt:new Date().toISOString()}));
+    closeAuth();
+    setTimeout(()=>{alert(`✅ Welcome back!`);runPendingAction();},150);
+  }
+}
+function authGoogle(){
+  // Demo — wire to real OAuth in production
+  const email='candidate@gmail.com';
+  localStorage.setItem('fastlink_candidate',JSON.stringify({email,provider:'google',loggedInAt:new Date().toISOString()}));
+  closeAuth();
+  setTimeout(()=>{alert('✅ Signed in with Google (demo)');runPendingAction();},150);
+}
 </script>
 </body>
 </html>
