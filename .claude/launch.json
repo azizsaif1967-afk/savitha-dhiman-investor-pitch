@@ -37,6 +37,20 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", ".claude/worktrees/romantic-ardinghelli", "-l", "8095"],
       "port": 8095
+    },
+    {
+      "name": "azsmw",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "azizsaifmomsworld"],
+      "port": 8096,
+      "autoPort": true
+    },
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "."],
+      "port": 8097,
+      "autoPort": true
     }
   ]
 }

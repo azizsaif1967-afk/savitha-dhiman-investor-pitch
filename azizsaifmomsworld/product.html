@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Piece · azizsaifmomsworld</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body data-page="shop">
+<div id="site-header"></div>
+
+<div class="container">
+  <div class="pdp" id="pdp"></div>
+</div>
+
+<section class="section tight" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-head">
+      <div class="left">
+        <span class="eyebrow">— You may also love</span>
+        <h2>From the same little world.</h2>
+      </div>
+    </div>
+    <div class="prod-grid" id="related"></div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="assets/partials.js"></script>
+<script src="assets/shared.js"></script>
+<script>
+  const id = new URLSearchParams(location.search).get('id') || PRODUCTS[0].id;
+  const p = getProduct(id);
+  const pdp = document.getElementById('pdp');
+  if (!p) {
+    pdp.innerHTML = '<p class="muted" style="padding:80px 0">Piece not found. <a href="shop.html">Return to shop →</a></p>';
+  } else {
+    document.title = `${p.name} · azizsaifmomsworld`;
+    const galleryThumbs = [p.img, 'assets/images/sig-12.jpg', 'assets/images/wg-15.jpg', 'assets/images/sig-08.jpg'];
+    pdp.innerHTML = `
+      <div class="pdp-gallery">
+        <div class="pdp-thumbs">
+          ${galleryThumbs.map((src,i)=>`<div class="thumb ${i===0?'active':''}" data-src="${src}"><img src="${src}" alt=""/></div>`).join('')}
+        </div>
+        <div class="pdp-main"><img id="main-img" src="${p.img}" alt="${p.name}"/></div>
+      </div>
+      <div class="pdp-info">
+        <div class="brandline">${brandName(p.brand)} · ${collName(p.collection)}</div>
+        <h1>${p.name}</h1>
+        <div class="pdp-price">${aed(p.price)}</div>
+        <div class="pdp-vat">Inclusive of 5% VAT · Free GCC shipping over AED 200</div>
+
+        <p>A soft, hand-finished piece from the ${collName(p.collection)} collection. Cut from organic cotton or TENCEL™ — gentle on skin, easy to care for, made to be lived in.</p>
+
+        ${p.colors?`<div class="pdp-options"><label>Colour</label>
+          <div class="swatch-row" data-group="color">
+            ${p.colors.map((c,i)=>`<span class="swatch ${i===0?'active':''}">${c}</span>`).join('')}
+          </div></div>`:''}
+
+        ${p.sizes?`<div class="pdp-options"><label>Size</label>
+          <div class="swatch-row" data-group="size">
+            ${p.sizes.map((s,i)=>`<span class="swatch ${i===0?'active':''}">${s}</span>`).join('')}
+          </div></div>`:''}
+
+        <div class="qty-row">
+          <div class="qty">
+            <button onclick="setQ(-1)">−</button>
+            <span id="q">1</span>
+            <button onclick="setQ(1)">+</button>
+          </div>
+          <button class="btn btn-block" style="flex:1;border-radius:100px" onclick="addThis()">Add to bag · ${aed(p.price)}</button>
+        </div>
+
+        <a href="https://wa.me/971500000000?text=${encodeURIComponent('Hi! I have a question about: ' + p.name)}"
+           target="_blank" class="section-link" style="display:inline-block;margin-top:8px">
+          Ask a question on WhatsApp →
+        </a>
+
+        <div class="pdp-meta">
+          <details open>
+            <summary>Materials</summary>
+            <p>${p.cat==='adult'?'TENCEL™ Modal jersey · 95% TENCEL, 5% elastane.':'95% organic cotton, 5% elastane. OEKO-TEX certified, hand-finished, low-impact dyes.'}</p>
+          </details>
+          <details>
+            <summary>Sizing &amp; fit</summary>
+            <p>Available in: ${(p.sizes||['One Size']).join(' · ')}. Need help? See our sizing guide or message the team on WhatsApp.</p>
+          </details>
+          <details>
+            <summary>Shipping &amp; returns</summary>
+            <p>Free GCC shipping on orders over AED 200. 14-day easy returns on unworn items with tags attached.</p>
+          </details>
+          <details>
+            <summary>Care</summary>
+            <p>Cool wash inside out, line dry, warm iron. Soft fabrics that get even softer with every wash.</p>
+          </details>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('related').innerHTML = PRODUCTS
+      .filter(x => x.id !== p.id && (x.collection === p.collection || x.cat === p.cat))
+      .slice(0, 4)
+      .map(productCardHTML).join('');
+
+    pdp.querySelectorAll('.pdp-thumbs .thumb').forEach(t => {
+      t.addEventListener('click', () => {
+        pdp.querySelectorAll('.pdp-thumbs .thumb').forEach(x=>x.classList.remove('active'));
+        t.classList.add('active');
+        document.getElementById('main-img').src = t.dataset.src;
+      });
+    });
+    pdp.querySelectorAll('.swatch-row').forEach(row => {
+      row.addEventListener('click', e => {
+        if (!e.target.classList.contains('swatch')) return;
+        row.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
+        e.target.classList.add('active');
+      });
+    });
+  }
+
+  let q = 1;
+  function setQ(d) { q = Math.max(1, q + d); const el = document.getElementById('q'); if (el) el.textContent = q; }
+  function addThis() {
+    const size = document.querySelector('[data-group="size"] .swatch.active')?.textContent || '';
+    const color = document.querySelector('[data-group="color"] .swatch.active')?.textContent || '';
+    const variant = [color, size].filter(Boolean).join(' · ');
+    addToCart(p.id, q, variant);
+  }
+</script>
+</body>
+</html>
