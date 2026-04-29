@@ -10,9 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blue:#0F2C5C; --blue-deep:#091E40; --blue-soft:#F2F5FB; --blue-mid:#1F4A8C;
-  --accent:#0F2C5C;
-  --green:#0F2C5C; --green-deep:#091E40;
+  --blue:#1E5AA8; --blue-deep:#143E76; --blue-soft:#EEF3FB; --blue-mid:#1F4A8C;
+  --accent:#16A34A;
+  --green:#16A34A; --green-deep:#0F8A3E; --green-soft:#E9F7EE;
   --ink:#0E1F3A; --ink-2:#3A4658; --muted:#6A7589;
   --line:#E5E7EE; --line-2:#F0F2F6; --cream:#F8F9FB; --cream-2:#EEF1F6;
   --white:#FFFFFF; --chip:#F4F6FA;
@@ -435,6 +435,41 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
   .chat-fab span:not(.ai-dot){display:none}
   .chat-fab{padding:14px;border-radius:50%}
 }
+
+.entrance{padding:32px 0 0;background:#fff}
+.entrance-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ent-pane{padding:48px 44px 40px;border-radius:8px;color:#fff;text-align:left;cursor:pointer;border:0;transition:.2s;display:flex;flex-direction:column;gap:14px;min-height:260px;justify-content:flex-start;font-family:inherit}
+.ent-pane:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,27,45,.18)}
+.ent-blue{background:linear-gradient(135deg,#1E5AA8 0%, #143E76 100%)}
+.ent-green{background:linear-gradient(135deg,#16A34A 0%, #0F8A3E 100%)}
+.ent-eyebrow{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.ent-h{font-size:clamp(28px,3.4vw,38px);font-weight:700;letter-spacing:-.02em;line-height:1.1;color:#fff;margin-top:6px;max-width:380px}
+.ent-sub{font-size:16px;color:rgba(255,255,255,.9);line-height:1.5;max-width:440px}
+.ent-cta-row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.ent-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:6px;font-weight:600;font-size:15px;transition:.15s}
+.ent-btn-w{background:#fff;color:var(--ink)}
+.ent-btn-o{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55)}
+.ent-pane:hover .ent-btn-w{background:#f3f4f7}
+.ent-pane:hover .ent-btn-o{background:rgba(255,255,255,.12)}
+@media (max-width:780px){.entrance-grid{grid-template-columns:1fr}.ent-pane{padding:32px 28px;min-height:auto}}
+
+/* Restore green accent on key employer-side elements */
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:var(--green-deep)}
+.cta-block.green{background:linear-gradient(135deg,#16A34A 0%, #0F8A3E 100%)}
+.hero-tag .pulse,.util-left .dot{background:var(--green);box-shadow:0 0 0 3px rgba(22,163,74,.22)}
+.pill .ck{background:var(--green)}
+.country-pin{background:var(--green);box-shadow:0 0 0 4px rgba(22,163,74,.25)}
+.svc.alt .ico{background:var(--green-soft);color:var(--green-deep)}
+.hv-stat .ico{background:var(--blue-soft);color:var(--blue)}
+.new{color:var(--green-deep) !important;background:rgba(22,163,74,.12) !important}
+.hero h1 .accent{color:var(--green) !important}
+.qresult{background:linear-gradient(135deg,var(--green) 0%, var(--green-deep) 100%) !important}
+.chat-fab{background:var(--green)}
+.chat-fab:hover{background:var(--green-deep)}
+.modal-body .submit{background:var(--green)}
+.modal-body .submit:hover{background:var(--green-deep)}
+
 </style>
 </head>
 <body data-mode="candidate">
@@ -470,12 +505,27 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 </header>
 
 
-<!-- MODE BANNER (prominent toggle) -->
-<section class="mode-banner">
-  <span class="label">Who are you?</span>
-  <div class="mode-toggle" role="tablist">
-    <button class="cand on" onclick="setMode('candidate')">👤 I'm a Candidate</button>
-    <button class="emp" onclick="setMode('employer')">🏢 I'm an Employer <span class="badge-new">NEW</span></button>
+<!-- BRAND ENTRANCE (dual-pane, kakalbrothers / tarkashgcc style) -->
+<section class="entrance">
+  <div class="wrap entrance-grid">
+    <button class="ent-pane ent-blue" onclick="setMode('candidate');document.getElementById('jobs').scrollIntoView({behavior:'smooth'})">
+      <span class="ent-eyebrow">Candidates</span>
+      <h2 class="ent-h">Looking for your next role?</h2>
+      <p class="ent-sub">Upload your CV and a recruiter will be in touch within 24 hours.</p>
+      <span class="ent-cta-row">
+        <span class="ent-btn ent-btn-w">Upload CV →</span>
+        <span class="ent-btn ent-btn-o">Browse jobs</span>
+      </span>
+    </button>
+    <button class="ent-pane ent-green" onclick="setMode('employer');openChat()">
+      <span class="ent-eyebrow">Employers</span>
+      <h2 class="ent-h">Need to hire — fast?</h2>
+      <p class="ent-sub">Get an instant AI-powered quote, or book a 15-minute discovery call.</p>
+      <span class="ent-cta-row">
+        <span class="ent-btn ent-btn-w">⚡ Get instant quote</span>
+        <span class="ent-btn ent-btn-o">Book a call</span>
+      </span>
+    </button>
   </div>
 </section>
 
@@ -985,34 +1035,6 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
         <input type="email" required placeholder="your@work-email.com" id="nlEmail"/>
         <button type="submit">Subscribe →</button>
       </form>
-    </div>
-  </div>
-</section>
-
-<!-- DUAL CTA -->
-<section class="sec" id="contact">
-  <div class="wrap">
-    <div class="ctas">
-      <div class="cta-block blue">
-        <div class="deco"></div>
-        <span class="eyebrow">Candidates</span>
-        <h3>Looking for your next role?</h3>
-        <p>Upload your CV and a recruiter will be in touch within 24 hours.</p>
-        <div class="row">
-          <a class="btn btn-white" href="#">Upload CV →</a>
-          <a class="btn btn-outline-w" href="#jobs">Browse jobs</a>
-        </div>
-      </div>
-      <div class="cta-block green">
-        <div class="deco"></div>
-        <span class="eyebrow">Employers</span>
-        <h3>Need to hire — fast?</h3>
-        <p>Get an instant AI-powered quote, or book a 15-minute discovery call.</p>
-        <div class="row">
-          <button class="btn btn-white" onclick="setMode('employer');openChat()">⚡ Get instant quote</button>
-          <a class="btn btn-outline-w" href="mailto:hello@fastlinkoutsourcing.com">Book a call</a>
-        </div>
-      </div>
     </div>
   </div>
 </section>
