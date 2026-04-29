@@ -63,9 +63,9 @@ nav.main a:hover{background:var(--chip);color:var(--ink)}
 /* mode toggle (Adecco-style) */
 .mode-toggle{display:inline-flex;background:#EEF2F8;border-radius:6px;padding:6px;gap:4px}
 .mode-toggle button{padding:10px 18px;border-radius:4px;font-weight:600;font-size:13.5px;color:var(--ink-2);transition:.15s;display:inline-flex;align-items:center;gap:8px}
-.mode-toggle button.on{background:#fff;color:var(--blue);box-shadow:0 1px 3px rgba(15,27,45,.1)}
-.mode-toggle button.emp.on{background:var(--ink);color:#fff}
-.mode-toggle .badge-new{background:var(--green);color:#fff;font-size:10px;padding:2px 7px;border-radius:5px;font-weight:700;letter-spacing:.04em}
+.mode-toggle button.on{background:var(--blue);color:#fff}
+.mode-toggle button.emp.on{background:var(--blue);color:#fff}
+.mode-toggle .badge-new{background:#fff;color:var(--blue);font-size:11px;padding:3px 9px;border-radius:4px;font-weight:800;letter-spacing:.05em;border:1px solid rgba(255,255,255,.4)}
 
 /* hero */
 .hero{position:relative;background:#fff;border-bottom:1px solid var(--line);overflow:hidden}
@@ -412,6 +412,13 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 .quote-card .qc-cta{margin-top:12px;display:flex;gap:6px}
 .quote-card .qc-cta button{flex:1;padding:8px;border-radius:8px;font-size:12.5px;font-weight:600;background:var(--blue);color:#fff}
 
+
+.mode-banner{background:linear-gradient(180deg,var(--blue) 0%,var(--blue-deep) 100%);padding:36px 0;text-align:center}
+.mode-banner .label{color:rgba(255,255,255,.85);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;display:block}
+.mode-banner .mode-toggle{margin:0 auto}
+.mode-banner .mode-toggle button{padding:22px 40px;font-size:20px}
+@media (max-width:560px){.mode-banner .mode-toggle{flex-direction:column;width:calc(100% - 32px)}.mode-banner .mode-toggle button{width:100%;justify-content:center;font-size:17px;padding:18px 24px}}
+
 @media (max-width:980px){
   .hero-inner{grid-template-columns:1fr;gap:32px;padding:48px 0 56px}
   .hero-visual{height:380px}
@@ -457,13 +464,20 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-cta">
-      <div class="mode-toggle" role="tablist">
-        <button class="cand on" onclick="setMode('candidate')">👤 I'm a Candidate</button>
-        <button class="emp" onclick="setMode('employer')">🏢 I'm an Employer <span class="badge-new">NEW</span></button>
-      </div>
+      <a href="#contact" class="btn btn-primary" style="background:var(--blue);color:#fff;padding:0 18px;height:42px;border-radius:6px;font-weight:600">Contact us</a>
     </div>
   </div>
 </header>
+
+
+<!-- MODE BANNER (prominent toggle) -->
+<section class="mode-banner">
+  <span class="label">Who are you?</span>
+  <div class="mode-toggle" role="tablist">
+    <button class="cand on" onclick="setMode('candidate')">👤 I'm a Candidate</button>
+    <button class="emp" onclick="setMode('employer')">🏢 I'm an Employer <span class="badge-new">NEW</span></button>
+  </div>
+</section>
 
 <!-- HERO -->
 <section class="hero">
@@ -774,11 +788,11 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
       <a class="btn btn-ghost" href="#">All articles →</a>
     </div>
     <div class="blog-grid">
-      <a class="blog-card" href="#"><div class="blog-img"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">EOR</span><h4>The 2026 EOR pricing playbook for GCC employers</h4><p>What you actually pay for EOR in UAE, Saudi & Qatar — and where hidden fees creep in.</p><div class="blog-meta">8 min read · Apr 22, 2026</div></div></a>
-      <a class="blog-card" href="#"><div class="blog-img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Hiring</span><h4>How to mobilise 100 site engineers in 6 weeks</h4><p>The exact playbook we use to staff megaprojects across UAE & KSA with zero quality loss.</p><div class="blog-meta">12 min read · Apr 14, 2026</div></div></a>
-      <a class="blog-card" href="#"><div class="blog-img"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Compliance</span><h4>UAE WPS, Saudi GOSI & Qatar WPS — a compliance cheat sheet</h4><p>Three jurisdictions, three payroll regimes, one weekend to read this guide.</p><div class="blog-meta">6 min read · Apr 02, 2026</div></div></a>
-      <a class="blog-card" href="#"><div class="blog-img"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Talent</span><h4>Why Indian & Filipino talent still dominate Gulf hiring</h4><p>The data behind the 2025 talent flows — and where new corridors are opening.</p><div class="blog-meta">9 min read · Mar 25, 2026</div></div></a>
-      <a class="blog-card" href="#"><div class="blog-img"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">RPO</span><h4>Embedded recruiters: when RPO beats agency-by-the-hire</h4><p>The break-even math: at what hiring volume does RPO outperform per-placement fees?</p><div class="blog-meta">7 min read · Mar 18, 2026</div></div></a>
+      <a class="blog-card" href="blog/eor-pricing-uae-2026.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">EOR</span><h4>The 2026 EOR pricing playbook for UAE employers</h4><p>What you actually pay for EOR in UAE, Saudi & Qatar — and where hidden fees creep in.</p><div class="blog-meta">8 min read · Apr 22, 2026</div></div></a>
+      <a class="blog-card" href="blog/mobilise-100-engineers-uae.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Hiring</span><h4>How to mobilise 100 site engineers in 6 weeks</h4><p>The exact playbook we use to staff megaprojects across UAE & KSA with zero quality loss.</p><div class="blog-meta">12 min read · Apr 14, 2026</div></div></a>
+      <a class="blog-card" href="blog/uae-wps-compliance-2026.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Compliance</span><h4>UAE WPS, Saudi GOSI & Qatar WPS — a compliance cheat sheet</h4><p>Wage Protection System rules, common penalties, and what changed this year.</p><div class="blog-meta">6 min read · Apr 02, 2026</div></div></a>
+      <a class="blog-card" href="blog/indian-filipino-talent-uae.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Talent</span><h4>Why Indian & Filipino talent still dominate Gulf hiring</h4><p>The data behind the 2026 talent flows — and where new corridors are opening.</p><div class="blog-meta">9 min read · Mar 25, 2026</div></div></a>
+      <a class="blog-card" href="blog/rpo-vs-agency-uae.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">RPO</span><h4>Embedded recruiters: when RPO beats agency-by-the-hire</h4><p>The break-even math: at what hiring volume does RPO outperform per-placement fees?</p><div class="blog-meta">7 min read · Mar 18, 2026</div></div></a>
     </div>
   </div>
 </section>
