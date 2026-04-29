@@ -301,9 +301,8 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 
 /* Blog */
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.blog-grid > a:first-child{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:row}
-.blog-grid > a:first-child .blog-img{flex:1;aspect-ratio:auto;min-height:100%}
-.blog-grid > a:first-child h4{font-size:24px}
+@media (max-width:980px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.blog-grid{grid-template-columns:1fr}}
 .blog-card{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:.2s;cursor:pointer}
 .blog-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--blue)}
 .blog-img{aspect-ratio:16/10;overflow:hidden}
@@ -1136,9 +1135,9 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
       <a class="btn btn-ghost" href="#">All articles →</a>
     </div>
     <div class="blog-grid">
-      <a class="blog-card" href="blog/eor-pricing-uae-2026.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">EOR</span><h4>The 2026 EOR pricing playbook for UAE employers</h4><p>What you actually pay for EOR in UAE, Saudi & Qatar — and where hidden fees creep in.</p><div class="blog-meta">8 min read · Apr 22, 2026</div></div></a>
-      <a class="blog-card" href="blog/mobilise-100-engineers-uae.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Hiring</span><h4>How to mobilise 100 site engineers in 6 weeks</h4><p>The exact playbook we use to staff megaprojects across UAE & KSA with zero quality loss.</p><div class="blog-meta">12 min read · Apr 14, 2026</div></div></a>
-      <a class="blog-card" href="blog/uae-wps-compliance-2026.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Compliance</span><h4>UAE WPS, Saudi GOSI & Qatar WPS — a compliance cheat sheet</h4><p>Wage Protection System rules, common penalties, and what changed this year.</p><div class="blog-meta">6 min read · Apr 02, 2026</div></div></a>
+      <a class="blog-card" href="blog/eor-pricing-uae-2026.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">EOR</span><h4>The 2026 EOR pricing playbook for UAE employers</h4><p>What you actually pay for EOR in Dubai, Abu Dhabi & Sharjah — and where hidden fees creep in.</p><div class="blog-meta">8 min read · Apr 22, 2026</div></div></a>
+      <a class="blog-card" href="blog/mobilise-100-engineers-uae.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Hiring</span><h4>How to mobilise 100 site engineers in 6 weeks</h4><p>The exact playbook we use to staff megaprojects across UAE megaprojects with zero quality loss.</p><div class="blog-meta">12 min read · Apr 14, 2026</div></div></a>
+      <a class="blog-card" href="blog/uae-wps-compliance-2026.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Compliance</span><h4>UAE WPS — a compliance cheat sheet</h4><p>Wage Protection System rules, common penalties, and what changed this year.</p><div class="blog-meta">6 min read · Apr 02, 2026</div></div></a>
       <a class="blog-card" href="blog/indian-filipino-talent-uae.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Talent</span><h4>Why Indian & Filipino talent still dominate Gulf hiring</h4><p>The data behind the 2026 talent flows — and where new corridors are opening.</p><div class="blog-meta">9 min read · Mar 25, 2026</div></div></a>
       <a class="blog-card" href="blog/rpo-vs-agency-uae.html"><div class="blog-img"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">RPO</span><h4>Embedded recruiters: when RPO beats agency-by-the-hire</h4><p>The break-even math: at what hiring volume does RPO outperform per-placement fees?</p><div class="blog-meta">7 min read · Mar 18, 2026</div></div></a>
     </div>
