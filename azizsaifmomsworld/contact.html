@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Help · azizsaifmomsworld</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/styles.css"/>
+<style>
+  .contact-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 50px 0 100px; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .field { display:block; margin-bottom: 18px; }
+  .field label { display:block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px; font-weight:600; }
+  .field input, .field textarea, .field select {
+    width:100%; padding:14px 0; background:transparent; border:0;
+    border-bottom:1px solid var(--line); font:inherit; outline:none; color:var(--ink-2);
+  }
+  .field input:focus, .field textarea:focus { border-color: var(--sage-2); }
+  .field textarea { min-height: 110px; resize: vertical; }
+  .info-block { padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .info-block h4 { color: var(--blush-2); margin-bottom: 8px; }
+  .info-block p { margin: 0; color: var(--ink-soft); }
+</style>
+</head>
+<body data-page="contact">
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <span class="eyebrow">— Help &amp; Care</span>
+  <h1>How can we <em>help?</em></h1>
+  <p>For sizing, gift wrapping, brand partnerships or anything else — we usually reply within a few hours, definitely within a working day.</p>
+</section>
+
+<div class="container">
+  <div class="contact-grid">
+    <form onsubmit="event.preventDefault(); this.reset(); toast('Thank you — we\\'ll reply within 24h');">
+      <div class="field"><label>Your name</label><input required/></div>
+      <div class="field"><label>Email</label><input type="email" required/></div>
+      <div class="field"><label>WhatsApp (optional)</label><input type="tel" placeholder="+971…"/></div>
+      <div class="field">
+        <label>How can we help?</label>
+        <select>
+          <option>Sizing &amp; fit</option>
+          <option>Order enquiry</option>
+          <option>Returns &amp; exchange</option>
+          <option>Gift wrapping</option>
+          <option>Brand partnership</option>
+          <option>Press / media</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label>Message</label><textarea required></textarea></div>
+      <button class="btn" type="submit">Send message</button>
+    </form>
+
+    <div>
+      <div class="info-block">
+        <h4>WhatsApp</h4>
+        <p>+971 50 000 0000<br/><a href="https://wa.me/971500000000" style="color:var(--ink-2)">Message us →</a></p>
+      </div>
+      <div class="info-block">
+        <h4>Email</h4>
+        <p><a href="mailto:hello@azizsaifmomsworld.com" style="color:var(--ink-2)">hello@azizsaifmomsworld.com</a><br/><a href="mailto:partners@azizsaifmomsworld.com" style="color:var(--ink-2)">partners@azizsaifmomsworld.com</a></p>
+      </div>
+      <div class="info-block">
+        <h4>Where we are</h4>
+        <p>Dubai · United Arab Emirates<br/>Online &amp; by appointment</p>
+      </div>
+      <div class="info-block">
+        <h4>Hours</h4>
+        <p>Sun – Thu · 9:00 – 18:00 GST<br/>Fri – Sat · WhatsApp only</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="assets/partials.js"></script>
+<script src="assets/shared.js"></script>
+</body>
+</html>

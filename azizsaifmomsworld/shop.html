@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shop · azizsaifmomsworld</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body data-page="shop">
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <span class="eyebrow">— The Shop</span>
+  <h1 id="page-title">Shop <em>everything</em></h1>
+  <p id="page-sub">Soft, organic kids and family essentials. Filter by collection, who's wearing it, or browse the whole house.</p>
+</section>
+
+<div class="container">
+  <div class="shop-layout">
+    <aside class="filter-side">
+      <h4>Collection</h4>
+      <ul id="filter-coll"><li data-coll="" class="active">All <span class="count" id="ct-all"></span></li></ul>
+      <h4>Who it's for</h4>
+      <ul id="filter-cat">
+        <li data-cat="" class="active">Everyone</li>
+        <li data-cat="baby">Baby (0–24M)</li>
+        <li data-cat="kids">Kids (2–10Y)</li>
+        <li data-cat="pyjamas">Pyjamas</li>
+        <li data-cat="adult">Mama (XS–XXL)</li>
+        <li data-cat="matching">Mama &amp; Mini</li>
+      </ul>
+      <h4>Price (AED)</h4>
+      <ul id="filter-price">
+        <li data-min="0" data-max="999999" class="active">All</li>
+        <li data-min="0" data-max="40">Under 40</li>
+        <li data-min="40" data-max="60">40 – 60</li>
+        <li data-min="60" data-max="80">60 – 80</li>
+        <li data-min="80" data-max="999999">80+</li>
+      </ul>
+    </aside>
+
+    <div>
+      <div class="shop-toolbar">
+        <span><span id="result-count">0</span> pieces</span>
+        <span>Sort by
+          <select id="sort">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="name">Name</option>
+          </select>
+        </span>
+      </div>
+      <div class="prod-grid" id="grid"></div>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="assets/partials.js"></script>
+<script src="assets/shared.js"></script>
+<script>
+  const collUL = document.getElementById('filter-coll');
+  COLLECTIONS.forEach(c => {
+    const li = document.createElement('li');
+    li.dataset.coll = c.id;
+    li.innerHTML = `${c.name} <span class="count">${PRODUCTS.filter(p=>p.collection===c.id).length}</span>`;
+    collUL.appendChild(li);
+  });
+  document.getElementById('ct-all').textContent = PRODUCTS.length;
+
+  const state = { coll: '', cat: '', min: 0, max: 999999, sort: 'featured' };
+  const qp = new URLSearchParams(location.search);
+  if (qp.get('collection')) state.coll = qp.get('collection');
+  if (qp.get('cat')) state.cat = qp.get('cat');
+
+  function setActive(ul, attr, val) {
+    ul.querySelectorAll('li').forEach(li => li.classList.toggle('active', li.dataset[attr] == val));
+  }
+
+  function render() {
+    let list = PRODUCTS.filter(p =>
+      (!state.coll || p.collection === state.coll) &&
+      (!state.cat || p.cat === state.cat) &&
+      p.price >= state.min && p.price <= state.max
+    );
+    if (state.sort === 'price-asc') list.sort((a,b)=>a.price-b.price);
+    else if (state.sort === 'price-desc') list.sort((a,b)=>b.price-a.price);
+    else if (state.sort === 'name') list.sort((a,b)=>a.name.localeCompare(b.name));
+
+    document.getElementById('grid').innerHTML = list.length
+      ? list.map(productCardHTML).join('')
+      : '<p class="muted" style="grid-column:1/-1;text-align:center;padding:60px">No pieces match these filters.</p>';
+    document.getElementById('result-count').textContent = list.length;
+
+    if (state.coll) {
+      const c = COLLECTIONS.find(x=>x.id===state.coll);
+      if (c) {
+        document.getElementById('page-title').innerHTML = `${c.name}`;
+        document.getElementById('page-sub').textContent = c.tag;
+      }
+    }
+  }
+
+  document.getElementById('filter-coll').addEventListener('click', e => {
+    if (e.target.tagName !== 'LI') return;
+    state.coll = e.target.dataset.coll;
+    setActive(e.currentTarget, 'coll', state.coll);
+    render();
+  });
+  document.getElementById('filter-cat').addEventListener('click', e => {
+    if (e.target.tagName !== 'LI') return;
+    state.cat = e.target.dataset.cat;
+    setActive(e.currentTarget, 'cat', state.cat);
+    render();
+  });
+  document.getElementById('filter-price').addEventListener('click', e => {
+    if (e.target.tagName !== 'LI') return;
+    state.min = +e.target.dataset.min; state.max = +e.target.dataset.max;
+    e.currentTarget.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+    e.target.classList.add('active');
+    render();
+  });
+  document.getElementById('sort').addEventListener('change', e => { state.sort = e.target.value; render(); });
+
+  if (state.coll) setActive(collUL, 'coll', state.coll);
+  if (state.cat) setActive(document.getElementById('filter-cat'), 'cat', state.cat);
+  render();
+</script>
+</body>
+</html>
