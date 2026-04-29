@@ -614,6 +614,20 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 .brand-dot{margin:0 4px;color:var(--green);font-weight:700}
 @media (max-width:780px){.brand-tag{display:none}}
 
+
+/* Featured Jobs: alt color + flip-on-hover */
+.jobs .job{transition:.3s ease;border:1px solid var(--line);position:relative;overflow:hidden}
+.jobs .job:nth-child(odd){background:var(--blue-soft)}
+.jobs .job:nth-child(even){background:var(--green-soft)}
+.jobs .job:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(15,27,45,.18)}
+.jobs .job:nth-child(odd):hover{background:linear-gradient(135deg,#1E5AA8,#143E76);border-color:transparent;color:#fff}
+.jobs .job:nth-child(even):hover{background:linear-gradient(135deg,#16A34A,#0F8A3E);border-color:transparent;color:#fff}
+.jobs .job:hover h4,.jobs .job:hover .co,.jobs .job:hover .meta,.jobs .job:hover .meta span,.jobs .job:hover .sal,.jobs .job:hover .btn-link{color:#fff !important}
+.jobs .job:hover .new{background:rgba(255,255,255,.2) !important;color:#fff !important}
+.jobs .job:hover .j-tag{background:rgba(255,255,255,.18);color:#fff}
+.jobs .job:hover .job-foot{border-top-color:rgba(255,255,255,.25)}
+.jobs .job h4,.jobs .job .co,.jobs .job .meta,.jobs .job .sal,.jobs .job .btn-link,.jobs .job .j-tag{transition:color .25s ease, background .25s ease}
+
 </style>
 </head>
 <body data-mode="candidate">
@@ -811,9 +825,9 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 
     <!-- Candidate visual -->
     <div class="hero-visual">
-      <div class="hv-img hv-1"><img src="assets/slider-1-4-min.png" alt="FastLink hiring team"/></div>
-      <div class="hv-img hv-2"><img src="assets/slider-2-1-min.png" alt="FastLink workforce"/></div>
-      <div class="hv-img hv-3"><img src="assets/fastlink-hp-solutions.png" alt="FastLink HR solutions" style="object-fit:contain;background:#fff;padding:16px"/></div>
+      <div class="hv-img hv-1"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=900&q=80" alt="UAE professional team"/></div>
+      <div class="hv-img hv-2"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&q=80" alt="UAE workforce"/></div>
+      <div class="hv-img hv-3"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80" alt="UAE hiring"/></div>
       <div class="hv-stat hv-stat-1"><div class="ico">⚡</div><div><div class="num">24h</div><div class="lbl">First match</div></div></div>
       <div class="hv-stat hv-stat-2"><div class="ico">🇦🇪</div><div><div class="num">3,500+</div><div class="lbl">UAE roles live</div></div></div>
     </div>
@@ -960,7 +974,7 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
   <div class="wrap">
     <div class="sec-head">
       <div><span class="eyebrow">Live Now</span><h2>Featured opportunities</h2></div>
-      <a class="btn btn-ghost" href="#">View all 12,400+ jobs →</a>
+      <a class="btn btn-ghost" href="#">View all 3,500+ UAE jobs →</a>
     </div>
     <div class="jobs">
       <div class="job">
@@ -1818,12 +1832,6 @@ function cvSubmit(e){
 /* Book a call modal */
 function openCall(){document.getElementById('callModal').classList.add('open');}
 function closeCall(){document.getElementById('callModal').classList.remove('open');}
-;
-  console.log('📨 Call request:', lead);
-  try{localStorage.setItem('fastlink_last_call',JSON.stringify(lead));}catch(err){}
-  alert(`✅ Booked! ${lead.name.split(' ')[0]}, our consultant will call/WhatsApp ${lead.mobile} during your "${lead.time}" window.`);
-  closeCall();
-}
 
 /* Indeed-style jobs board */
 const JOBS = [
