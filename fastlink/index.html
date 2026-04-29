@@ -628,6 +628,13 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 .jobs .job:hover .job-foot{border-top-color:rgba(255,255,255,.25)}
 .jobs .job h4,.jobs .job .co,.jobs .job .meta,.jobs .job .sal,.jobs .job .btn-link,.jobs .job .j-tag{transition:color .25s ease, background .25s ease}
 
+
+nav.main{flex-wrap:wrap;justify-content:flex-end;max-width:780px;gap:0}
+nav.main a{padding:8px 11px;font-size:13.5px}
+nav.main a.nav-download{background:var(--green-soft);color:var(--green-deep);border-radius:6px;font-weight:700;margin-left:4px}
+nav.main a.nav-download:hover{background:var(--green);color:#fff}
+@media (max-width:1100px){nav.main a{padding:6px 9px;font-size:13px}}
+
 </style>
 </head>
 <body data-mode="candidate">
@@ -653,10 +660,15 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
       <span class="brand-tag">Where UAE Hires Faster <span class="brand-dot">·</span> Dubai &amp; Abu Dhabi</span>
     </a>
     <nav class="main">
-      <a href="#jobs">Find Jobs</a>
+      <a href="#jobs-board">Find Jobs</a>
       <a href="#services">Services</a>
+      <a href="#uae">UAE Focus</a>
+      <a href="#industries">Industries</a>
       <a href="#blog">Blog</a>
+      <a href="#linkedin">LinkedIn</a>
+      <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
+      <a href="#brochure" class="nav-download">📥 Brochure</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-cta">
