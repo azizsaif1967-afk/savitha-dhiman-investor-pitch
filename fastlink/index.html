@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FastLink Outsourcing — Recruitment Agencies in Dubai & Abu Dhabi | UAE Manpower Supply</title>
+<meta name="description" content="UAE's trusted recruitment, manpower & outsourcing partner. Dubai & Abu Dhabi based. Permanent hiring, contract staffing, payroll & RPO — get an instant AI-powered quote." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1E5AA8; --blue-deep:#143E76; --blue-soft:#F0F5FD;
+  --green:#2EAA4B; --green-deep:#1F8A3A;
+  --ink:#0F1B2D; --ink-2:#3A4658; --muted:#6A7589;
+  --line:#E3E6EC; --line-2:#EFF1F5; --cream:#FAF7F2; --cream-2:#F2EDE2;
+  --white:#FFFFFF; --chip:#F4F6FA;
+  --shadow: 0 1px 0 rgba(15,27,45,.04), 0 8px 24px rgba(15,27,45,.06);
+  --shadow-lg: 0 20px 60px rgba(15,27,45,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font:15px/1.55 "Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:transparent}
+input,textarea,select{font:inherit;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.eyebrow{font:600 11px/1 "Inter";letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.h-display{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.02em;line-height:1.05}
+.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:8px;font-weight:600;font-size:14.5px;transition:.15s;justify-content:center}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-deep)}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:var(--green-deep)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#000}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:#cdd3de;background:#fafbfd}
+.btn-outline-w{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.btn-outline-w:hover{background:rgba(255,255,255,.1)}
+
+/* utility bar */
+.util{background:var(--ink);color:#dbe1ee;font-size:12.5px}
+.util .wrap{display:flex;align-items:center;justify-content:space-between;height:36px}
+.util-left{display:flex;gap:18px;align-items:center}
+.util-left .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(46,170,75,.18)}
+.util-right{display:flex;gap:18px;align-items:center}
+.util a:hover{color:#fff}
+
+/* header */
+header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Fraunces",serif;font-weight:600;font-size:22px;letter-spacing:-.01em}
+.brand .logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--green));display:grid;place-items:center;color:#fff;font-family:"Inter";font-weight:800;font-size:15px;letter-spacing:-.02em}
+nav.main{display:flex;gap:2px}
+nav.main a{padding:8px 14px;border-radius:8px;font-size:14.5px;color:var(--ink-2);font-weight:500}
+nav.main a:hover{background:var(--chip);color:var(--ink)}
+.nav-cta{display:flex;gap:8px;align-items:center}
+
+/* mode toggle (Adecco-style) */
+.mode-toggle{display:inline-flex;background:#EEF2F8;border-radius:14px;padding:6px;gap:4px}
+.mode-toggle button{padding:10px 18px;border-radius:10px;font-weight:600;font-size:13.5px;color:var(--ink-2);transition:.15s;display:inline-flex;align-items:center;gap:8px}
+.mode-toggle button.on{background:#fff;color:var(--blue);box-shadow:0 1px 3px rgba(15,27,45,.1)}
+.mode-toggle button.emp.on{background:var(--ink);color:#fff}
+.mode-toggle .badge-new{background:var(--green);color:#fff;font-size:10px;padding:2px 7px;border-radius:5px;font-weight:700;letter-spacing:.04em}
+
+/* hero */
+.hero{position:relative;background:linear-gradient(180deg,var(--cream) 0%, #fff 100%);overflow:hidden}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:64px 0 80px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:12.5px;color:var(--ink-2);font-weight:500}
+.hero-tag .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(46,170,75,.22)}
+.hero h1{font-size:clamp(40px,5.4vw,64px);letter-spacing:-.025em;font-family:"Fraunces",serif;font-weight:500;line-height:1.04;margin-top:18px}
+.hero h1 em{font-style:italic;color:var(--blue);font-weight:500}
+.hero h1 .accent{color:var(--green);font-style:italic}
+.hero p.lede{margin-top:18px;font-size:18px;color:var(--ink-2);max-width:540px}
+.hero .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12.5px;color:var(--ink-2);font-weight:500}
+.pill .ck{width:13px;height:13px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:9px;font-weight:800}
+
+/* search card */
+.search{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px;display:grid;grid-template-columns:1.2fr 1fr auto;gap:8px;max-width:720px}
+.search .field{display:flex;align-items:center;gap:10px;padding:8px 14px;border:1px solid var(--line);border-radius:10px;transition:.15s}
+.search .field:focus-within{border-color:var(--blue);box-shadow:0 0 0 4px rgba(30,90,168,.12)}
+.search .field svg{width:18px;height:18px;color:var(--muted);flex-shrink:0}
+.search .field>div{flex:1;min-width:0}
+.search .field label{display:block;font-size:10.5px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.search .field input{width:100%;border:0;outline:0;font-size:14.5px;background:transparent;padding:2px 0}
+.search .go{background:var(--blue);color:#fff;border-radius:10px;padding:0 22px;font-weight:600;font-size:14.5px;display:flex;align-items:center;gap:8px}
+.search .go:hover{background:var(--blue-deep)}
+.search-meta{margin-top:12px;color:var(--muted);font-size:13px;display:flex;gap:14px;flex-wrap:wrap}
+.search-meta a{color:var(--blue);font-weight:500}
+
+/* hero visual: real photo collage */
+.hero-visual{position:relative;height:520px}
+.hv-img{position:absolute;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);border:6px solid #fff}
+.hv-img img{width:100%;height:100%;object-fit:cover}
+.hv-1{top:0;left:0;width:62%;height:62%}
+.hv-2{bottom:0;right:0;width:58%;height:54%}
+.hv-3{bottom:30%;right:0;width:42%;height:34%}
+.hv-stat{position:absolute;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px;font-weight:600;font-size:13.5px}
+.hv-stat .ico{width:38px;height:38px;border-radius:10px;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center}
+.hv-stat-1{top:46%;left:-20px}
+.hv-stat-2{bottom:-20px;left:18%}
+.hv-stat .num{font-family:"Fraunces",serif;font-size:22px;color:var(--ink);font-weight:600;letter-spacing:-.01em}
+.hv-stat .lbl{font-size:11.5px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+
+/* employer hero card */
+.emp-hero-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);padding:28px;display:none}
+body[data-mode="employer"] .emp-hero-card{display:block}
+body[data-mode="employer"] .hero-visual{display:none}
+body[data-mode="employer"] .cand-search{display:none}
+body[data-mode="candidate"] .emp-quote-card{display:none}
+.emp-hero-card h3{font-family:"Fraunces",serif;font-size:24px;font-weight:600;letter-spacing:-.01em}
+.emp-hero-card p{color:var(--ink-2);margin-top:6px;font-size:14.5px}
+.quote-step{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.qstep-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qstep-grid button{padding:12px;border:1px solid var(--line);border-radius:10px;text-align:left;font-size:13.5px;font-weight:500;color:var(--ink-2);transition:.15s;background:#fff}
+.qstep-grid button:hover{border-color:var(--blue);background:var(--blue-soft);color:var(--blue)}
+.qstep-grid button.on{border-color:var(--blue);background:var(--blue-soft);color:var(--blue)}
+.emp-hero-card label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:6px}
+.emp-hero-card input,.emp-hero-card select{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:9px;font-size:14.5px;outline:none;background:#fff}
+.emp-hero-card input:focus,.emp-hero-card select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,90,168,.12)}
+.qresult{margin-top:6px;background:linear-gradient(135deg,var(--blue) 0%, var(--blue-deep) 100%);color:#fff;border-radius:12px;padding:18px;display:none}
+.qresult.show{display:block}
+.qresult .num{font-family:"Fraunces",serif;font-size:36px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.qresult .sm{opacity:.85;font-size:13px;margin-top:4px}
+.qresult .breakdown{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);display:flex;flex-direction:column;gap:6px;font-size:13px}
+.qresult .breakdown div{display:flex;justify-content:space-between;color:rgba(255,255,255,.92)}
+
+/* sections */
+section.sec{padding:80px 0;border-bottom:1px solid var(--line-2)}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.sec-head h2{font-family:"Fraunces",serif;font-weight:500;letter-spacing:-.02em;font-size:clamp(28px,3.4vw,42px);line-height:1.1;max-width:640px}
+.sec-head h2 em{color:var(--blue);font-style:italic}
+.sec-head p{color:var(--muted);max-width:480px;font-size:15px}
+.sec-head .eyebrow{margin-bottom:10px;display:block}
+
+/* logo strip */
+.logos-strip{padding:32px 0;background:#fff;border-bottom:1px solid var(--line-2)}
+.logos-strip .wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:space-between}
+.logos-strip .ll{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);max-width:180px;line-height:1.5}
+.logos-grid{display:flex;align-items:center;gap:36px;flex-wrap:wrap;flex:1;justify-content:flex-end}
+.lg-logo{font-family:"Fraunces",serif;font-weight:500;font-size:22px;color:#A8B0BF;font-style:italic}
+.lg-logo.bold{font-family:"Inter";font-weight:700;font-style:normal;letter-spacing:.04em;font-size:17px;text-transform:uppercase}
+.lg-logo.mono{font-family:ui-monospace,Menlo,monospace;font-style:normal;font-size:15px;font-weight:600;text-transform:lowercase}
+
+/* stats */
+.stats{background:var(--ink);color:#fff}
+.stats .grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:36px 24px;border-right:1px solid rgba(255,255,255,.08)}
+.stat:last-child{border-right:0}
+.stat .n{font-family:"Fraunces",serif;font-weight:500;font-size:48px;letter-spacing:-.02em}
+.stat .n .sup{font-size:24px;color:var(--green);margin-left:2px}
+.stat .l{margin-top:6px;color:#aab4c9;font-size:13.5px}
+
+/* global / hire-anywhere (PEBL-inspired) */
+.global{background:linear-gradient(180deg,#0A1422 0%, #0F1B2D 100%);color:#fff;border-bottom:0}
+.global .sec-head h2{color:#fff;max-width:760px}
+.global .sec-head h2 em{color:#7BB6FF}
+.global .sec-head p{color:#aab4c9;max-width:520px}
+.global-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.globe-vis{position:relative;aspect-ratio:1/1;max-width:520px;margin:0 auto}
+.globe-vis::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(30,90,168,.45) 0%, transparent 60%);}
+.globe-vis svg{position:absolute;inset:0;width:100%;height:100%}
+.country-pin{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(46,170,75,.25);animation:pulse 2.4s infinite}
+.country-pin span{position:absolute;left:18px;top:-6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:3px 8px;border-radius:6px;font-size:11.5px;font-weight:500;color:#fff;white-space:nowrap;backdrop-filter:blur(6px)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(46,170,75,.45)}50%{box-shadow:0 0 0 10px rgba(46,170,75,0)}}
+.country-list{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:24px}
+.country-list span{padding:6px 10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:7px;font-size:12.5px;color:#cfd6e6;text-align:center}
+.global-features{display:flex;flex-direction:column;gap:18px;margin-top:24px}
+.gf{display:flex;gap:14px;align-items:flex-start}
+.gf .ico{width:38px;height:38px;border-radius:10px;background:rgba(123,182,255,.12);color:#7BB6FF;display:grid;place-items:center;flex-shrink:0}
+.gf h4{color:#fff;font-size:16px;font-weight:600}
+.gf p{color:#aab4c9;font-size:14px;margin-top:3px;line-height:1.55}
+
+/* category cards with photo */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/5;cursor:pointer;transition:.2s}
+.cat:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.cat img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.cat:hover img{transform:scale(1.06)}
+.cat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.85) 100%)}
+.cat-body{position:absolute;left:18px;right:18px;bottom:18px;color:#fff;z-index:2}
+.cat-body .nm{font-family:"Fraunces",serif;font-size:20px;font-weight:500;letter-spacing:-.01em}
+.cat-body .ct{font-size:12.5px;opacity:.85;margin-top:3px}
+
+/* jobs */
+.jobs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.job{padding:22px;border:1px solid var(--line);border-radius:12px;background:#fff;display:flex;flex-direction:column;gap:12px;cursor:pointer;transition:.15s}
+.job:hover{border-color:var(--blue);box-shadow:var(--shadow);transform:translateY(-2px)}
+.job-top{display:flex;justify-content:space-between;gap:10px}
+.job h4{font-size:17px;font-weight:600;letter-spacing:-.01em}
+.job .co{font-size:13.5px;color:var(--ink-2);margin-top:2px}
+.job .new{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green-deep);background:rgba(46,170,75,.12);padding:4px 8px;border-radius:6px;height:fit-content;flex-shrink:0}
+.job .meta{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.job .meta span{display:inline-flex;align-items:center;gap:5px}
+.job-tags{display:flex;gap:6px;flex-wrap:wrap}
+.j-tag{font-size:11.5px;color:var(--ink-2);background:var(--chip);padding:4px 9px;border-radius:6px;font-weight:500}
+.job-foot{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px dashed var(--line)}
+.job-foot .sal{font-weight:600;font-size:14px}
+
+/* services */
+.svc-wrap{background:var(--cream)}
+.svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.svc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.svc .ico{width:48px;height:48px;border-radius:10px;background:rgba(30,90,168,.08);color:var(--blue);display:grid;place-items:center;font-size:22px}
+.svc.alt .ico{background:rgba(46,170,75,.1);color:var(--green-deep)}
+.svc h4{font-size:18px;font-weight:600;letter-spacing:-.01em}
+.svc p{color:var(--ink-2);font-size:14px;line-height:1.55}
+.svc ul{list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:6px}
+.svc li{font-size:13.5px;color:var(--ink-2);display:flex;gap:8px}
+.svc li::before{content:"✓";color:var(--green-deep);font-weight:800;flex-shrink:0}
+
+/* how it works */
+.how{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.step{padding:22px;border:1px solid var(--line);border-radius:12px;background:#fff;position:relative}
+.step .n{font-family:"Fraunces",serif;font-size:38px;color:var(--blue);font-weight:500}
+.step h4{margin-top:10px;font-size:16px;font-weight:600}
+.step p{margin-top:6px;color:var(--ink-2);font-size:13.5px}
+
+/* industry showcase with real photos */
+.industries{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.ind{position:relative;aspect-ratio:3/2;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.ind img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.ind:hover img{transform:scale(1.04)}
+.ind::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%, rgba(15,27,45,.85) 100%)}
+.ind-body{position:absolute;inset:auto 18px 18px;color:#fff;z-index:2}
+.ind h4{font-family:"Fraunces",serif;font-size:22px;font-weight:500;letter-spacing:-.01em}
+.ind p{font-size:13px;opacity:.9;margin-top:3px}
+
+/* testimonials */
+.testi-wrap{background:var(--cream)}
+.testi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.quote{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.quote .stars{color:#F5A524;letter-spacing:2px;font-size:13px}
+.quote q{font-family:"Fraunces",serif;font-size:17px;line-height:1.45;color:var(--ink);font-weight:400;quotes:"\201C" "\201D"}
+.quote q::before{content:open-quote;color:var(--blue);margin-right:2px}
+.quote q::after{content:close-quote;color:var(--blue);margin-left:2px}
+.who{display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid var(--line);margin-top:auto}
+.who img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.who .nm{font-size:14px;font-weight:600}
+.who .rl{font-size:12.5px;color:var(--muted)}
+
+/* dual CTA */
+.ctas{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cta-block{position:relative;padding:36px;border-radius:16px;overflow:hidden;color:#fff;display:flex;flex-direction:column;gap:14px;min-height:240px;justify-content:flex-end}
+.cta-block.blue{background:linear-gradient(135deg,#1E5AA8 0%, #143E76 100%)}
+.cta-block.green{background:linear-gradient(135deg,#2EAA4B 0%, #1F8A3A 100%)}
+.cta-block .eyebrow{color:rgba(255,255,255,.75)}
+.cta-block h3{font-family:"Fraunces",serif;font-size:30px;font-weight:500;letter-spacing:-.02em;line-height:1.1;max-width:320px}
+.cta-block p{color:rgba(255,255,255,.85);font-size:14.5px;max-width:380px}
+.cta-block .row{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.cta-block .btn-white{background:#fff;color:var(--ink)}
+.cta-block .btn-white:hover{background:#f3f4f7}
+.cta-block .deco{position:absolute;top:-40px;right:-40px;width:200px;height:200px;border:1px solid rgba(255,255,255,.18);border-radius:50%}
+.cta-block .deco::after{content:"";position:absolute;inset:24px;border:1px solid rgba(255,255,255,.12);border-radius:50%}
+
+/* footer */
+footer{background:#0A1422;color:#aab4c9;padding:64px 0 24px}
+.ft-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:32px}
+.ft-brand .brand{color:#fff}
+.ft-brand p{margin-top:14px;font-size:13.5px;color:#8390a8;line-height:1.55;max-width:280px}
+.ft-soc{display:flex;gap:8px;margin-top:18px}
+.ft-soc a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.06);display:grid;place-items:center;color:#aab4c9;transition:.15s}
+.ft-soc a:hover{background:var(--blue);color:#fff}
+.ft-col h5{color:#fff;font-size:13.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft-col a{color:#aab4c9;font-size:14px;transition:.15s}
+.ft-col a:hover{color:#fff}
+.ft-bot{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:#6e7c95}
+
+/* AI chatbot */
+.chat-fab{position:fixed;bottom:24px;right:24px;z-index:90;display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:999px;background:var(--ink);color:#fff;box-shadow:var(--shadow-lg);font-weight:600;font-size:14px;transition:.2s}
+.chat-fab:hover{background:#000;transform:translateY(-2px)}
+.chat-fab .ai-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(46,170,75,.3);animation:pulse 1.6s infinite}
+.chat-fab .label-em{display:none}
+body[data-mode="employer"] .chat-fab .label-em{display:inline}
+body[data-mode="employer"] .chat-fab .label-cand{display:none}
+.chat-panel{position:fixed;bottom:90px;right:24px;width:400px;max-width:calc(100vw - 32px);height:580px;max-height:calc(100vh - 120px);background:#fff;border-radius:18px;box-shadow:var(--shadow-lg);z-index:91;display:none;flex-direction:column;overflow:hidden;border:1px solid var(--line)}
+.chat-panel.open{display:flex;animation:slideUp .25s ease}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.chat-head{padding:18px 20px;background:linear-gradient(135deg,var(--blue) 0%, var(--blue-deep) 100%);color:#fff;display:flex;align-items:center;gap:12px}
+.chat-head .ai-av{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-weight:700;font-size:13px;letter-spacing:-.02em}
+.chat-head h4{font-size:15px;font-weight:600}
+.chat-head .sub{font-size:12px;opacity:.85;display:flex;align-items:center;gap:6px;margin-top:2px}
+.chat-head .sub::before{content:"";width:6px;height:6px;border-radius:50%;background:#7BFF94}
+.chat-head .close{margin-left:auto;width:32px;height:32px;border-radius:8px;display:grid;place-items:center;color:#fff;font-size:18px;background:rgba(255,255,255,.1)}
+.chat-head .close:hover{background:rgba(255,255,255,.2)}
+.chat-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:#FAFBFD}
+.msg{max-width:88%;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.5;animation:fadeIn .25s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.msg.bot{background:#fff;border:1px solid var(--line);color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.user{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.msg b{font-weight:600}
+.chat-quick{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px 12px;background:#FAFBFD}
+.chat-quick button{padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:999px;font-size:12.5px;font-weight:500;color:var(--ink-2);transition:.15s}
+.chat-quick button:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-soft)}
+
+/* Blog */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.blog-grid > a:first-child{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:row}
+.blog-grid > a:first-child .blog-img{flex:1;aspect-ratio:auto;min-height:100%}
+.blog-grid > a:first-child h4{font-size:24px}
+.blog-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:.2s;cursor:pointer}
+.blog-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--blue)}
+.blog-img{aspect-ratio:16/10;overflow:hidden}
+.blog-img img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.blog-card:hover .blog-img img{transform:scale(1.06)}
+.blog-body{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.blog-tag{display:inline-block;padding:3px 9px;background:var(--blue-soft);color:var(--blue);border-radius:5px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;width:fit-content}
+.blog-card h4{font-family:"Fraunces",serif;font-size:18px;font-weight:600;letter-spacing:-.01em;line-height:1.2;color:var(--ink)}
+.blog-card p{color:var(--ink-2);font-size:13.5px;line-height:1.5}
+.blog-meta{font-size:12px;color:var(--muted);margin-top:auto;padding-top:8px}
+
+/* LinkedIn posts */
+.li-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.li-post{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:10px;transition:.2s}
+.li-post:hover{border-color:#0A66C2;box-shadow:var(--shadow)}
+.li-head{display:flex;align-items:center;gap:10px}
+.li-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#0A66C2,#143E76);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.li-name{font-size:14px;font-weight:600;color:var(--ink)}
+.li-meta{font-size:11.5px;color:var(--muted)}
+.li-post p{font-size:13.5px;color:var(--ink);line-height:1.5}
+.li-post p b{font-weight:600;color:var(--blue)}
+.li-stats{font-size:12px;color:var(--muted);padding-top:8px;border-top:1px solid var(--line)}
+
+/* FAQ */
+.faq-tabs{display:inline-flex;background:var(--chip);border-radius:12px;padding:5px;gap:4px;margin-bottom:24px}
+.faq-tab{padding:10px 18px;border-radius:9px;font-weight:600;font-size:13.5px;color:var(--ink-2);transition:.15s}
+.faq-tab.on{background:#fff;color:var(--blue);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.faq-panel{max-width:820px;display:flex;flex-direction:column;gap:8px}
+.faq-panel details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:0;transition:.15s}
+.faq-panel details[open]{border-color:var(--blue);box-shadow:var(--shadow)}
+.faq-panel summary{padding:18px 20px;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-panel summary::-webkit-details-marker{display:none}
+.faq-panel summary::after{content:"+";font-size:22px;color:var(--blue);font-weight:300}
+.faq-panel details[open] summary::after{content:"−"}
+.faq-panel details p{padding:0 20px 18px;color:var(--ink-2);font-size:14px;line-height:1.6}
+
+/* Newsletter */
+.newsletter{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-deep) 100%);color:#fff;border-radius:18px;padding:48px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.newsletter::before{content:"";position:absolute;top:-100px;right:-50px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(46,170,75,.3) 0%,transparent 70%)}
+.newsletter h3{font-family:"Fraunces",serif;font-size:32px;font-weight:500;letter-spacing:-.02em;line-height:1.1;position:relative}
+.newsletter p{color:rgba(255,255,255,.85);margin-top:10px;font-size:15px;position:relative}
+.nl-form{display:flex;gap:8px;background:#fff;padding:6px;border-radius:12px;position:relative}
+.nl-form input{flex:1;border:0;outline:0;padding:12px 16px;font-size:14.5px;background:transparent;color:var(--ink);min-width:0}
+.nl-form button{background:var(--ink);color:#fff;border-radius:9px;padding:0 22px;font-weight:600;font-size:14px;height:44px;display:flex;align-items:center;gap:6px}
+.nl-form button:hover{background:#000}
+.nl-perks{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.85);position:relative}
+.nl-perks span{display:inline-flex;align-items:center;gap:5px}
+
+/* Reviews strip (Google/Trustpilot style) */
+.rev-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+.rev-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.rev-card .stars{color:#F5A524;font-size:13px;letter-spacing:1px}
+.rev-card q{font-size:13.5px;color:var(--ink);line-height:1.5;quotes:"\201C" "\201D"}
+.rev-card .who{display:flex;align-items:center;gap:8px;padding-top:10px;border-top:1px solid var(--line);margin-top:auto}
+.rev-card .av-circle{width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px}
+.rev-card .who .nm{font-size:13px;font-weight:600}
+.rev-card .who .src{font-size:11px;color:var(--muted)}
+.rev-meta-bar{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:18px 22px;background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:18px}
+.rev-meta-bar .item{display:flex;align-items:center;gap:8px;font-size:13px}
+.rev-meta-bar .item b{font-size:18px;font-family:"Fraunces",serif;color:var(--ink)}
+
+/* WhatsApp + socials FAB stack */
+.fab-stack{position:fixed;bottom:24px;right:24px;z-index:90;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.fab-stack .chat-fab{position:static}
+.wa-fab{width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:var(--shadow-lg);transition:.2s;font-size:26px}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab svg{width:28px;height:28px;fill:#fff}
+
+/* Brochure modal */
+.modal-back{position:fixed;inset:0;background:rgba(15,27,45,.65);backdrop-filter:blur(4px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-back.open{display:flex;animation:fadeIn .2s}
+.modal{background:#fff;border-radius:18px;max-width:520px;width:100%;overflow:hidden;box-shadow:var(--shadow-lg);animation:slideUp .3s}
+.modal-head{padding:24px 28px;background:linear-gradient(135deg,var(--blue),var(--blue-deep));color:#fff;position:relative}
+.modal-head h3{font-family:"Fraunces",serif;font-size:24px;font-weight:600;letter-spacing:-.01em}
+.modal-head p{margin-top:6px;font-size:14px;opacity:.9}
+.modal-head .close{position:absolute;top:18px;right:18px;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.15);color:#fff;display:grid;place-items:center;font-size:20px}
+.modal-body{padding:28px;display:flex;flex-direction:column;gap:14px}
+.modal-body label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px}
+.modal-body input{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:9px;font-size:14.5px;outline:none}
+.modal-body input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,90,168,.12)}
+.modal-body .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.modal-body .submit{margin-top:6px;height:48px;background:var(--green);color:#fff;border-radius:9px;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px}
+.modal-body .submit:hover{background:var(--green-deep)}
+.modal-body .legal{font-size:11.5px;color:var(--muted);text-align:center}
+
+/* Brochure CTA */
+.brochure{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;background:var(--ink);color:#fff;border-radius:18px;padding:40px;overflow:hidden;position:relative}
+.brochure::before{content:"";position:absolute;top:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(46,170,75,.2),transparent 70%)}
+.brochure h3{font-family:"Fraunces",serif;font-size:30px;font-weight:500;letter-spacing:-.02em;line-height:1.1;position:relative}
+.brochure p{color:#aab4c9;margin-top:10px;font-size:15px;line-height:1.55;max-width:420px;position:relative}
+.brochure .b-cta{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;position:relative}
+.brochure-card{background:#fff;color:var(--ink);border-radius:12px;padding:20px;position:relative;display:flex;align-items:center;gap:14px;transform:rotate(-2deg);box-shadow:var(--shadow-lg)}
+.brochure-card .pdf-ico{width:54px;height:54px;border-radius:10px;background:#FEE2E2;color:#DC2626;display:grid;place-items:center;font-weight:700;font-size:13px;flex-shrink:0}
+.brochure-card .pdf-meta{font-size:12px;color:var(--muted);margin-top:2px}
+.chat-input{display:flex;gap:8px;padding:14px 18px;border-top:1px solid var(--line);background:#fff}
+.chat-input input{flex:1;padding:10px 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;outline:none}
+.chat-input input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,90,168,.12)}
+.chat-input button{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center}
+.chat-input button:hover{background:var(--blue-deep)}
+.quote-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin:8px 0;align-self:stretch;box-shadow:var(--shadow)}
+.quote-card .qc-head{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.quote-card .qc-num{font-family:"Fraunces",serif;font-size:34px;color:var(--blue);font-weight:600;letter-spacing:-.02em;margin-top:4px}
+.quote-card .qc-sub{font-size:12px;color:var(--muted)}
+.quote-card .qc-bd{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:var(--ink-2)}
+.quote-card .qc-bd div{display:flex;justify-content:space-between}
+.quote-card .qc-cta{margin-top:12px;display:flex;gap:6px}
+.quote-card .qc-cta button{flex:1;padding:8px;border-radius:8px;font-size:12.5px;font-weight:600;background:var(--blue);color:#fff}
+
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:32px;padding:48px 0 56px}
+  .hero-visual{height:380px}
+  .stats .grid,.cats,.svcs,.how,.testi,.jobs,.ctas,.global-grid,.industries,.ft-grid{grid-template-columns:1fr 1fr}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  nav.main{display:none}
+  .util-left .hide-sm{display:none}
+}
+@media (max-width:560px){
+  .stats .grid,.cats,.svcs,.how,.testi,.jobs,.ctas,.industries,.ft-grid,.search,.country-list{grid-template-columns:1fr}
+  .country-list{grid-template-columns:repeat(2,1fr)}
+  .nav .brand span.tag{display:none}
+  .chat-panel{right:8px;left:8px;bottom:80px;width:auto}
+  .chat-fab span:not(.ai-dot){display:none}
+  .chat-fab{padding:14px;border-radius:50%}
+}
+</style>
+</head>
+<body data-mode="candidate">
+
+<div class="util">
+  <div class="wrap">
+    <div class="util-left">
+      <span><span class="dot"></span> 247 jobs added this week</span>
+      <span class="hide-sm">Mon–Sat • 9am–7pm GST</span>
+    </div>
+    <div class="util-right">
+      <a href="tel:+97142000000">📞 +971 4 200 0000</a>
+      <a href="mailto:hello@fastlinkoutsourcing.com">✉ hello@fastlinkoutsourcing.com</a>
+      <a href="#">EN</a>
+    </div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="#" class="brand"><span class="logo">FL</span> FastLink</a>
+    <nav class="main">
+      <a href="#jobs">Find Jobs</a>
+      <a href="#services">Services</a>
+      <a href="#blog">Blog</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="mode-toggle" role="tablist">
+        <button class="cand on" onclick="setMode('candidate')">👤 I'm a Candidate</button>
+        <button class="emp" onclick="setMode('employer')">🏢 I'm an Employer <span class="badge-new">NEW</span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="hero-tag"><span class="pulse"></span> <span data-mode-text data-cand="Trusted by 1,200+ candidates this month" data-emp="Trusted by 380+ companies across MENA">Trusted by 1,200+ candidates this month</span></span>
+      <h1 data-mode-text data-cand="Find your next <em>career move</em>.<br>In the <span class='accent'>UAE</span>." data-emp="Hire <em>vetted talent</em>.<br>In Dubai &amp; <span class='accent'>Abu Dhabi.</span>">Find your next <em>career move</em>.<br>In the <span class="accent">UAE</span>.</h1>
+      <p class="lede" data-mode-text data-cand="3,500+ live UAE jobs in Dubai &amp; Abu Dhabi. Upload your CV once, get matched by recruiters who actually call back." data-emp="From single hires to project teams — recruitment, contract staffing, payroll &amp; manpower supply across the UAE. Get an instant AI-powered quote in 60 seconds.">3,500+ live UAE jobs in Dubai & Abu Dhabi. Upload your CV once, get matched by recruiters who actually call back.</p>
+      <div class="pills">
+        <span class="pill"><span class="ck">✓</span> Free for candidates</span>
+        <span class="pill"><span class="ck">✓</span> MOHRE-licensed agency</span>
+        <span class="pill"><span class="ck">✓</span> 24h CV review</span>
+      </div>
+
+      <!-- Candidate search -->
+      <div class="search cand-search">
+        <div class="field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <div><label>What</label><input id="searchKw" placeholder="Job title, skill or company" /></div>
+        </div>
+        <div class="field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><label>Where</label><input id="searchLoc" placeholder="Dubai, Riyadh, Remote..." /></div>
+        </div>
+        <button class="go" onclick="doSearch()">Search →</button>
+      </div>
+      <div class="search-meta cand-search">
+        <span>Popular:</span>
+        <a href="#jobs">Sales Executive</a>
+        <a href="#jobs">Construction Foreman</a>
+        <a href="#jobs">Hospitality</a>
+        <a href="#jobs">Healthcare</a>
+      </div>
+    </div>
+
+    <!-- Candidate visual -->
+    <div class="hero-visual">
+      <div class="hv-img hv-1"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Diverse team meeting"/></div>
+      <div class="hv-img hv-2"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80" alt="Engineer at workplace"/></div>
+      <div class="hv-img hv-3"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80" alt="Hospitality professional"/></div>
+      <div class="hv-stat hv-stat-1"><div class="ico">⚡</div><div><div class="num">24h</div><div class="lbl">First match</div></div></div>
+      <div class="hv-stat hv-stat-2"><div class="ico">🇦🇪</div><div><div class="num">3,500+</div><div class="lbl">UAE roles live</div></div></div>
+    </div>
+
+    <!-- Employer hero card -->
+    <div class="emp-hero-card emp-quote-card">
+      <span class="eyebrow">⚡ Instant Quote</span>
+      <h3 style="margin-top:8px">Get a hiring estimate in 60s</h3>
+      <p>Tell our AI what you need — we'll quote rates, timeline, and whether to hire direct, contract, or via EOR.</p>
+      <div class="quote-step">
+        <div>
+          <label>Role type</label>
+          <div class="qstep-grid" id="qRoleTypes">
+            <button data-key="role" data-val="executive" data-rate="22000">Executive / Manager</button>
+            <button data-key="role" data-val="professional" data-rate="12000">Professional / Engineer</button>
+            <button data-key="role" data-val="skilled" data-rate="6500">Skilled Trade</button>
+            <button data-key="role" data-val="general" data-rate="2800">General Labour</button>
+          </div>
+        </div>
+        <div>
+          <label>Engagement</label>
+          <div class="qstep-grid" id="qEngagement">
+            <button data-key="eng" data-val="permanent" data-mult="1">Permanent</button>
+            <button data-key="eng" data-val="contract" data-mult="1.15">Contract / Project</button>
+            <button data-key="eng" data-val="eor" data-mult="1.25">Employer of Record</button>
+            <button data-key="eng" data-val="payroll" data-mult="0.9">Payroll Outsource</button>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div>
+            <label>Headcount</label>
+            <input type="number" id="qCount" value="5" min="1" max="500"/>
+          </div>
+          <div>
+            <label>Emirate</label>
+            <select id="qCountry">
+              <option value="1.0" data-cur="AED">🇦🇪 Dubai</option>
+              <option value="0.95" data-cur="AED">🇦🇪 Abu Dhabi</option>
+              <option value="0.85" data-cur="AED">🇦🇪 Sharjah</option>
+              <option value="1.05" data-cur="AED">🇦🇪 DIFC / Free Zone</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-dark" onclick="calcQuote()" style="width:100%;margin-top:6px">⚡ Generate my quote</button>
+        <div class="qresult" id="qresult">
+          <div class="num" id="qrNum">—</div>
+          <div class="sm" id="qrSub">per hire, all-in</div>
+          <div class="breakdown" id="qrBd"></div>
+          <button class="btn btn-green" onclick="openChat()" style="width:100%;margin-top:14px">💬 Refine with our AI agent</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos-strip">
+  <div class="wrap">
+    <div class="ll">Trusted by 380+ UAE employers</div>
+    <div class="logos-grid">
+      <span class="lg-logo">Emirates Group</span>
+      <span class="lg-logo bold">DAMAC</span>
+      <span class="lg-logo">Marriott</span>
+      <span class="lg-logo bold">EMAAR</span>
+      <span class="lg-logo mono">al-futtaim.</span>
+      <span class="lg-logo">Majid Al Futtaim</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="grid">
+      <div class="stat"><div class="n">8,400<span class="sup">+</span></div><div class="l">UAE hires placed (2024–25)</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">UAE offices · Dubai &amp; Abu Dhabi</div></div>
+      <div class="stat"><div class="n">24h</div><div class="l">First-shortlist SLA</div></div>
+      <div class="stat"><div class="n">96<span class="sup">%</span></div><div class="l">Client retention</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- UAE FOCUS -->
+<section class="sec global" id="uae">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">100% UAE-Focused</span>
+        <h2>Built in <em>Dubai &amp; Abu Dhabi.</em><br>For the UAE market.</h2>
+      </div>
+      <p>We're not a global agency pretending to know the UAE — we <em>are</em> the UAE. MOHRE-licensed, on-the-ground in both emirates, with deep specialist desks for the sectors that matter here.</p>
+    </div>
+    <div class="global-grid">
+      <div class="globe-vis">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <radialGradient id="gg" cx="35%" cy="35%"><stop offset="0%" stop-color="#1E5AA8" stop-opacity=".7"/><stop offset="100%" stop-color="#0A1422" stop-opacity="1"/></radialGradient>
+          </defs>
+          <circle cx="200" cy="200" r="180" fill="url(#gg)" stroke="rgba(123,182,255,.2)"/>
+          <path d="M 130 150 Q 170 140 210 160 Q 250 150 290 175 Q 280 220 240 230 Q 200 245 160 230 Q 125 215 130 150 Z" fill="rgba(46,170,75,.35)" stroke="rgba(46,170,75,.6)" stroke-width="1.5"/>
+          <text x="200" y="280" text-anchor="middle" fill="rgba(255,255,255,.6)" font-size="13" font-family="Inter" font-weight="600" letter-spacing="2">UNITED ARAB EMIRATES</text>
+        </svg>
+        <div class="country-pin" style="top:40%;left:38%"><span>📍 Abu Dhabi HQ</span></div>
+        <div class="country-pin" style="top:32%;left:62%"><span>📍 Dubai Office</span></div>
+      </div>
+      <div>
+        <div class="global-features">
+          <div class="gf"><div class="ico">🇦🇪</div><div><h4>MOHRE-Licensed</h4><p>Fully licensed by the UAE Ministry of Human Resources & Emiratisation. Every placement is 100% compliant.</p></div></div>
+          <div class="gf"><div class="ico">🛂</div><div><h4>Visa & Mobilisation</h4><p>UAE work permits, family visas, Emirates ID, medicals — all coordinated end-to-end by our team.</p></div></div>
+          <div class="gf"><div class="ico">💼</div><div><h4>WPS-Compliant Payroll</h4><p>Wage Protection System–ready payroll across both emirates. Free Zone, Mainland & DIFC covered.</p></div></div>
+          <div class="gf"><div class="ico">🤝</div><div><h4>Emiratisation Support</h4><p>Helping you meet Nafis quotas with vetted UAE National candidates and onboarding programs.</p></div></div>
+        </div>
+        <div class="country-list">
+          <span>📍 Dubai</span><span>📍 Abu Dhabi</span><span>📍 Sharjah</span>
+          <span>📍 DIFC</span><span>📍 ADGM</span><span>📍 JAFZA</span>
+          <span>📍 DMCC</span><span>📍 Mainland</span><span>📍 Free Zones</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="sec" id="jobs">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Browse by Industry</span><h2>Hiring across <em>every sector</em>.</h2></div>
+      <p>From C-suite executives to skilled trades — we recruit across the full spectrum.</p>
+    </div>
+    <div class="cats">
+      <a class="cat" href="#"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80" alt=""/><div class="cat-body"><div class="nm">Healthcare</div><div class="ct">680 open roles</div></div></a>
+      <a class="cat" href="#"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" alt=""/><div class="cat-body"><div class="nm">Engineering &amp; Tech</div><div class="ct">920 open roles</div></div></a>
+      <a class="cat" href="#"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt=""/><div class="cat-body"><div class="nm">Hospitality</div><div class="ct">540 open roles</div></div></a>
+      <a class="cat" href="#"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt=""/><div class="cat-body"><div class="nm">Construction</div><div class="ct">1,180 open roles</div></div></a>
+      <a class="cat" href="#"><img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=600&q=80" alt=""/><div class="cat-body"><div class="nm">Retail &amp; Sales</div><div class="ct">410 open roles</div></div></a>
+      <a class="cat" href="#"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&q=80" alt=""/><div class="cat-body"><div class="nm">Logistics &amp; Transport</div><div class="ct">760 open roles</div></div></a>
+      <a class="cat" href="#"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt=""/><div class="cat-body"><div class="nm">Education</div><div class="ct">220 open roles</div></div></a>
+      <a class="cat" href="#"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt=""/><div class="cat-body"><div class="nm">Corporate &amp; Admin</div><div class="ct">490 open roles</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED JOBS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Live Now</span><h2>Featured opportunities</h2></div>
+      <a class="btn btn-ghost" href="#">View all 12,400+ jobs →</a>
+    </div>
+    <div class="jobs">
+      <div class="job">
+        <div class="job-top">
+          <div><h4>Senior Civil Engineer</h4><div class="co">DAMAC Properties · Dubai, UAE</div></div>
+          <span class="new">New</span>
+        </div>
+        <div class="meta"><span>📍 Onsite</span><span>💼 Full-time</span><span>⏱ 8+ yrs</span></div>
+        <div class="job-tags"><span class="j-tag">Construction</span><span class="j-tag">PMP</span><span class="j-tag">Visa sponsored</span></div>
+        <div class="job-foot"><span class="sal">AED 28,000–35,000/mo</span><a class="btn-link" style="color:var(--blue);font-weight:600">Apply →</a></div>
+      </div>
+      <div class="job">
+        <div class="job-top">
+          <div><h4>Hotel Operations Manager</h4><div class="co">Marriott International · Dubai, UAE</div></div>
+          <span class="new">Hot</span>
+        </div>
+        <div class="meta"><span>📍 Onsite</span><span>💼 Full-time</span><span>⏱ 5+ yrs</span></div>
+        <div class="job-tags"><span class="j-tag">Hospitality</span><span class="j-tag">Pre-opening</span><span class="j-tag">Family status</span></div>
+        <div class="job-foot"><span class="sal">AED 22,000–28,000/mo</span><a class="btn-link" style="color:var(--blue);font-weight:600">Apply →</a></div>
+      </div>
+      <div class="job">
+        <div class="job-top">
+          <div><h4>Registered Nurse (ICU)</h4><div class="co">NMC Healthcare · Abu Dhabi, UAE</div></div>
+          <span class="new">New</span>
+        </div>
+        <div class="meta"><span>📍 Onsite</span><span>💼 Full-time</span><span>⏱ 3+ yrs</span></div>
+        <div class="job-tags"><span class="j-tag">DOH licensed</span><span class="j-tag">Visa</span><span class="j-tag">Accommodation</span></div>
+        <div class="job-foot"><span class="sal">AED 14,000–18,000/mo</span><a class="btn-link" style="color:var(--blue);font-weight:600">Apply →</a></div>
+      </div>
+      <div class="job">
+        <div class="job-top">
+          <div><h4>Sales Executive — B2B SaaS</h4><div class="co">Stealth Tech · Dubai (Hybrid)</div></div>
+          <span class="new">New</span>
+        </div>
+        <div class="meta"><span>📍 Hybrid</span><span>💼 Full-time</span><span>⏱ 2+ yrs</span></div>
+        <div class="job-tags"><span class="j-tag">SaaS</span><span class="j-tag">Commission</span><span class="j-tag">Equity</span></div>
+        <div class="job-foot"><span class="sal">AED 12k base + uncapped</span><a class="btn-link" style="color:var(--blue);font-weight:600">Apply →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec svc-wrap" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">For Employers</span><h2>Outsourcing services that <em>actually scale</em>.</h2></div>
+      <p>End-to-end people operations. Pick what you need — we slot in seamlessly.</p>
+    </div>
+    <div class="svcs">
+      <div class="svc">
+        <div class="ico">🎯</div>
+        <h4>Permanent Recruitment</h4>
+        <p>Executive search and mid-level placements with replacement guarantee.</p>
+        <ul><li>Dedicated account manager</li><li>3-month replacement</li><li>Pay on placement</li></ul>
+      </div>
+      <div class="svc alt">
+        <div class="ico">🇦🇪</div>
+        <h4>Emiratisation &amp; Nafis</h4>
+        <p>Vetted UAE National candidates. Help your company hit Nafis quotas with confidence.</p>
+        <ul><li>UAE National database</li><li>Nafis-aligned onboarding</li><li>Mainland &amp; Free Zone</li></ul>
+      </div>
+      <div class="svc">
+        <div class="ico">⚙️</div>
+        <h4>Manpower Supply</h4>
+        <p>Skilled and general labour for construction, hospitality, retail and logistics.</p>
+        <ul><li>Visa & accommodation</li><li>Bulk mobilisation</li><li>WPS-compliant payroll</li></ul>
+      </div>
+      <div class="svc alt">
+        <div class="ico">💰</div>
+        <h4>Payroll Outsourcing</h4>
+        <p>Multi-country payroll, WPS in UAE, GOSI in KSA — all on one platform.</p>
+        <ul><li>SLA-backed accuracy</li><li>120 currencies</li><li>Self-serve employee portal</li></ul>
+      </div>
+      <div class="svc">
+        <div class="ico">📋</div>
+        <h4>Contract & Temp Staffing</h4>
+        <p>Project-based teams that ramp up in days and ramp down with zero overhead.</p>
+        <ul><li>1–60 month contracts</li><li>You direct the work</li><li>We handle the admin</li></ul>
+      </div>
+      <div class="svc alt">
+        <div class="ico">🛂</div>
+        <h4>Visa & Mobility</h4>
+        <p>Relocation, work permits, dependant visas, and onboarding logistics.</p>
+        <ul><li>UAE / KSA / Qatar specialists</li><li>Family visa support</li><li>4–6 week turnaround</li></ul>
+      </div>
+      <div class="svc">
+        <div class="ico">💻</div>
+        <h4>IT Staffing & RPO</h4>
+        <p>Dedicated tech recruiters and full Recruitment Process Outsourcing for scale-ups.</p>
+        <ul><li>Devs, DevOps, Cloud, Data</li><li>Embedded recruiters</li><li>Per-hire or monthly retainer</li></ul>
+      </div>
+      <div class="svc alt">
+        <div class="ico">🎤</div>
+        <h4>Events & Activation Staffing</h4>
+        <p>Hostesses, promoters, ushers, AV crew, and brand ambassadors at scale.</p>
+        <ul><li>Same-day mobilisation</li><li>Bilingual EN/AR talent</li><li>Expo, F1, GITEX experience</li></ul>
+      </div>
+      <div class="svc">
+        <div class="ico">🧰</div>
+        <h4>Managed Staffing & BPO</h4>
+        <p>End-to-end outsourced functions — call centres, back-office, customer support.</p>
+        <ul><li>SLA-backed delivery</li><li>24/7 multilingual ops</li><li>UAE-based or offshore</li></ul>
+      </div>
+      <div class="svc alt">
+        <div class="ico">🤖</div>
+        <h4>HR & Payroll Software</h4>
+        <p>Cloud HRMS that handles attendance, leave, payroll, WPS — included free.</p>
+        <ul><li>Mobile self-serve</li><li>WPS / GOSI ready</li><li>Free for 50+ employees</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="sec" id="blog" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Insights</span><h2>From the <em>FastLink blog</em>.</h2></div>
+      <a class="btn btn-ghost" href="#">All articles →</a>
+    </div>
+    <div class="blog-grid">
+      <a class="blog-card" href="#"><div class="blog-img"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">EOR</span><h4>The 2026 EOR pricing playbook for GCC employers</h4><p>What you actually pay for EOR in UAE, Saudi & Qatar — and where hidden fees creep in.</p><div class="blog-meta">8 min read · Apr 22, 2026</div></div></a>
+      <a class="blog-card" href="#"><div class="blog-img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Hiring</span><h4>How to mobilise 100 site engineers in 6 weeks</h4><p>The exact playbook we use to staff megaprojects across UAE & KSA with zero quality loss.</p><div class="blog-meta">12 min read · Apr 14, 2026</div></div></a>
+      <a class="blog-card" href="#"><div class="blog-img"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Compliance</span><h4>UAE WPS, Saudi GOSI & Qatar WPS — a compliance cheat sheet</h4><p>Three jurisdictions, three payroll regimes, one weekend to read this guide.</p><div class="blog-meta">6 min read · Apr 02, 2026</div></div></a>
+      <a class="blog-card" href="#"><div class="blog-img"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">Talent</span><h4>Why Indian & Filipino talent still dominate Gulf hiring</h4><p>The data behind the 2025 talent flows — and where new corridors are opening.</p><div class="blog-meta">9 min read · Mar 25, 2026</div></div></a>
+      <a class="blog-card" href="#"><div class="blog-img"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt=""/></div><div class="blog-body"><span class="blog-tag">RPO</span><h4>Embedded recruiters: when RPO beats agency-by-the-hire</h4><p>The break-even math: at what hiring volume does RPO outperform per-placement fees?</p><div class="blog-meta">7 min read · Mar 18, 2026</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- LINKEDIN LIVE FEED -->
+<section class="sec" id="linkedin" style="background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V8h3v11zM6.5 6.7a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V19h-3V8h2.9v1.5h0a3.2 3.2 0 0 1 2.9-1.6c3.1 0 3.7 2 3.7 4.7V19z"/></svg> Live from LinkedIn</span><h2>What we're <em>posting this week</em>.</h2></div>
+      <a class="btn btn-ghost" href="https://linkedin.com" target="_blank">Follow on LinkedIn →</a>
+    </div>
+    <div class="li-grid">
+      <div class="li-post">
+        <div class="li-head"><div class="li-av">FL</div><div><div class="li-name">FastLink Outsourcing</div><div class="li-meta">23,400 followers · 2h · 🌐</div></div></div>
+        <p>🚀 We just placed our 12,400th hire of 2025 — a senior MEP engineer at a NEOM giga-project. Here's what we learned about hiring at scale this year... 🧵</p>
+        <div class="li-stats">👍 1,240 · 💬 87 · ↪ 41</div>
+      </div>
+      <div class="li-post">
+        <div class="li-head"><div class="li-av">FL</div><div><div class="li-name">FastLink Outsourcing</div><div class="li-meta">1d · 🌐</div></div></div>
+        <p>📊 New benchmark: average time-to-hire for tech roles in UAE dropped to <b>18 days</b> in Q1 2026 — down from 27 days in 2024. Three reasons why ↓</p>
+        <div class="li-stats">👍 890 · 💬 54 · ↪ 28</div>
+      </div>
+      <div class="li-post">
+        <div class="li-head"><div class="li-av">FL</div><div><div class="li-name">FastLink Outsourcing</div><div class="li-meta">3d · 🌐</div></div></div>
+        <p>💼 Hiring in Saudi without an entity? Our EOR launched 14 new GCC corridors this quarter. AMA in the comments — what's blocking your KSA expansion?</p>
+        <div class="li-stats">👍 612 · 💬 102 · ↪ 19</div>
+      </div>
+      <div class="li-post">
+        <div class="li-head"><div class="li-av">FL</div><div><div class="li-name">FastLink Outsourcing</div><div class="li-meta">5d · 🌐</div></div></div>
+        <p>🎉 Welcome to our 50 new joiners across Dubai, Riyadh & Manila. The team is now 320-strong across 8 offices. We're hiring recruiters — link in comments.</p>
+        <div class="li-stats">👍 2,100 · 💬 168 · ↪ 73</div>
+      </div>
+      <div class="li-post">
+        <div class="li-head"><div class="li-av">FL</div><div><div class="li-name">FastLink Outsourcing</div><div class="li-meta">1w · 🌐</div></div></div>
+        <p>📥 Free download: the 2026 GCC Salary Guide. 240+ roles benchmarked across UAE, KSA, Qatar & Bahrain. Comment "GUIDE" and we'll DM you the link 👇</p>
+        <div class="li-stats">👍 3,420 · 💬 412 · ↪ 198</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">FAQ</span><h2>Questions, <em>answered</em>.</h2></div>
+    </div>
+    <div class="faq-tabs">
+      <button class="faq-tab on" onclick="setFaq('cand', this)">👤 For Candidates</button>
+      <button class="faq-tab" onclick="setFaq('emp', this)">🏢 For Employers</button>
+    </div>
+    <div class="faq-panel" data-faq="cand">
+      <details><summary>Is FastLink free for candidates?</summary><p>Yes — 100% free. We are paid by the employer. You'll never receive an invoice from us.</p></details>
+      <details><summary>How long does it take to get matched to a role?</summary><p>First shortlist within 24 hours of CV submission. Most candidates have an interview scheduled within 5 business days.</p></details>
+      <details><summary>Do you sponsor visas?</summary><p>Yes — we handle UAE, KSA, Qatar and 90+ other countries. Most placements include full visa, medical, and family status where applicable.</p></details>
+      <details><summary>What types of roles do you recruit for?</summary><p>From C-suite executives and engineers to skilled trades, hospitality, healthcare, and general manpower. If it's a job, we likely cover it.</p></details>
+      <details><summary>Will my CV be shared without permission?</summary><p>Never. We always check before sending your profile to a client and brief you fully on the role before any introduction.</p></details>
+      <details><summary>What if I'm currently outside the UAE?</summary><p>No problem — 60% of our placements are international candidates. We coordinate visas, flights, and onboarding end-to-end.</p></details>
+    </div>
+    <div class="faq-panel" data-faq="emp" style="display:none">
+      <details><summary>How quickly can FastLink shortlist candidates?</summary><p>3–5 vetted CVs land in your inbox within 24 hours of brief. Specialist roles may take 48 hours; bulk mobilisation is scheduled by week.</p></details>
+      <details><summary>What is your replacement guarantee?</summary><p>3-month free replacement on every permanent hire. If a candidate leaves or doesn't pass probation, we replace them at no cost.</p></details>
+      <details><summary>How does your EOR pricing work?</summary><p>From $299/employee/month + a one-time setup. No hidden fees — full breakdown on the AI quote tool above.</p></details>
+      <details><summary>Can you handle bulk mobilisation (50+ hires)?</summary><p>Yes — our largest single mobilisation was 480 site staff for a UAE megaproject in 8 weeks. We have dedicated mobilisation desks for India, Philippines, Egypt and Nepal.</p></details>
+      <details><summary>What's the difference between EOR and Manpower Supply?</summary><p>EOR = we are the legal employer, you direct the work (used for white-collar). Manpower Supply = same model but priced per-day for blue-collar/skilled trades.</p></details>
+      <details><summary>Are you MOHRE-licensed?</summary><p>Yes — fully licensed by the UAE Ministry of Human Resources and Emiratisation, plus equivalent licenses in KSA, Qatar, India and Philippines.</p></details>
+      <details><summary>Can you support payroll-only (we found the candidate)?</summary><p>Absolutely — payroll-only outsourcing starts at $79/employee/month and includes WPS/GOSI compliance, payslips, and full reporting.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES (real photos) -->
+<section class="sec" id="industries">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Industries we know</span><h2>Real teams. <em>Real outcomes.</em></h2></div>
+      <p>Specialist desks for the sectors that move MENA's economy.</p>
+    </div>
+    <div class="industries">
+      <div class="ind"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&q=80" alt=""/><div class="ind-body"><h4>Construction</h4><p>4,200+ trades placed across UAE & KSA megaprojects</p></div></div>
+      <div class="ind"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=80" alt=""/><div class="ind-body"><h4>Healthcare</h4><p>DOH/MOH licensed clinicians, visa-ready</p></div></div>
+      <div class="ind"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=80" alt=""/><div class="ind-body"><h4>Hospitality</h4><p>Pre-opening teams for 5★ properties region-wide</p></div></div>
+      <div class="ind"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=900&q=80" alt=""/><div class="ind-body"><h4>Corporate &amp; Admin</h4><p>EAs, ops, HR &amp; back-office — interview-ready</p></div></div>
+      <div class="ind"><img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=900&q=80" alt=""/><div class="ind-body"><h4>Logistics</h4><p>Drivers, warehouse, last-mile at scale</p></div></div>
+      <div class="ind"><img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=900&q=80" alt=""/><div class="ind-body"><h4>Tech & Engineering</h4><p>Devs, DevOps, MEP engineers across the stack</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec" id="how" style="background:var(--cream)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">How it works</span><h2>From brief to <em>first day</em> in 14 days.</h2></div>
+      <p>A repeatable process built for hiring managers who want predictability.</p>
+    </div>
+    <div class="how">
+      <div class="step"><div class="n">01</div><h4>Brief us</h4><p>Talk to a specialist or use our AI quote — we capture role, scope, location & timeline.</p></div>
+      <div class="step"><div class="n">02</div><h4>Shortlist in 24h</h4><p>3–5 vetted CVs land in your inbox the next business day. No noise, no junk.</p></div>
+      <div class="step"><div class="n">03</div><h4>Interview & select</h4><p>We coordinate, schedule, and prep. You make the call.</p></div>
+      <div class="step"><div class="n">04</div><h4>Onboard & guarantee</h4><p>Visa, payroll, day-one logistics. 3-month replacement guarantee on every hire.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec testi-wrap">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">What clients say</span><h2>Quietly building <em>great teams</em>.</h2></div>
+    </div>
+    <div class="testi">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <q>FastLink mobilised 80 site engineers across two emirates in under 6 weeks. We've worked with the big four — none came close.</q>
+        <div class="who"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=120&q=80" alt=""/><div><div class="nm">Mohamed K.</div><div class="rl">Project Director · Tier-1 Contractor</div></div></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <q>The EOR setup let us hire our first 12 hires in Dubai before our entity was even registered. Zero drama, full compliance.</q>
+        <div class="who"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" alt=""/><div><div class="nm">Sarah D.</div><div class="rl">VP People · UK SaaS Scaleup</div></div></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <q>Genuinely the only agency that respects our SLAs. Shortlists arrive when they say they will, and the candidates actually fit.</q>
+        <div class="who"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt=""/><div><div class="nm">Rohit P.</div><div class="rl">Head of TA · Hospitality Group</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" id="reviews" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Reviews</span><h2>What clients &amp; candidates <em>actually say</em>.</h2></div>
+      <div class="rev-meta-bar">
+        <div class="item"><span style="color:#F5A524;font-size:18px">★★★★★</span><b>4.9</b><span style="color:var(--muted)">on Google</span></div>
+        <div class="item"><b>4.8</b><span style="color:var(--muted)">Trustpilot · 612 reviews</span></div>
+        <div class="item"><b>4.9</b><span style="color:var(--muted)">Glassdoor · 240 reviews</span></div>
+      </div>
+    </div>
+    <div class="rev-strip">
+      <div class="rev-card"><div class="stars">★★★★★</div><q>Recruiters who actually understand the UAE market. Got hired at a top hospitality group in 9 days.</q><div class="who"><div class="av-circle">AK</div><div><div class="nm">Ahmed K.</div><div class="src">Candidate · Google review</div></div></div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><q>Mobilised 40 site engineers in Dubai in under 3 weeks. Fastest agency we've used.</q><div class="who"><div class="av-circle">MJ</div><div><div class="nm">Mohamed J.</div><div class="src">Employer · Trustpilot</div></div></div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><q>FastLink handled our Abu Dhabi visa &amp; onboarding end-to-end. Zero stress for me as a candidate.</q><div class="who"><div class="av-circle">PR</div><div><div class="nm">Priya R.</div><div class="src">Candidate · Google review</div></div></div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><q>The AI quote tool was right on the money. Replaced our retainer agency in one quarter.</q><div class="who"><div class="av-circle">SD</div><div><div class="nm">Sara D.</div><div class="src">HR Director · Glassdoor</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BROCHURE -->
+<section class="sec" id="brochure" style="background:var(--cream)">
+  <div class="wrap">
+    <div class="brochure">
+      <div>
+        <span class="eyebrow" style="color:rgba(255,255,255,.7)">📥 Free download</span>
+        <h3 style="margin-top:8px">The complete FastLink<br/>company brochure.</h3>
+        <p>Services, case studies, UAE rate cards, Nafis playbook, and our full delivery process — 32 pages, free.</p>
+        <div class="b-cta">
+          <button class="btn btn-green" onclick="openBrochure()">📥 Download brochure (PDF)</button>
+          <a class="btn btn-outline-w" href="#contact">Talk to sales</a>
+        </div>
+      </div>
+      <div class="brochure-card">
+        <div class="pdf-ico">PDF</div>
+        <div>
+          <div style="font-weight:600;font-size:15px">FastLink Company Profile 2026</div>
+          <div class="pdf-meta">32 pages · 4.2 MB · Updated Apr 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="sec" id="newsletter" style="background:#fff;padding:64px 0">
+  <div class="wrap">
+    <div class="newsletter">
+      <div>
+        <h3>UAE hiring intel, every Tuesday.</h3>
+        <p>Salary benchmarks, visa updates, Nafis news, and the best new roles — direct from our Dubai &amp; Abu Dhabi desks.</p>
+        <div class="nl-perks">
+          <span>✓ 12,000 readers</span>
+          <span>✓ Free forever</span>
+          <span>✓ Unsubscribe anytime</span>
+        </div>
+      </div>
+      <form class="nl-form" onsubmit="nlSubmit(event)">
+        <input type="email" required placeholder="your@work-email.com" id="nlEmail"/>
+        <button type="submit">Subscribe →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- DUAL CTA -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="ctas">
+      <div class="cta-block blue">
+        <div class="deco"></div>
+        <span class="eyebrow">Candidates</span>
+        <h3>Looking for your next role?</h3>
+        <p>Upload your CV and a recruiter will be in touch within 24 hours.</p>
+        <div class="row">
+          <a class="btn btn-white" href="#">Upload CV →</a>
+          <a class="btn btn-outline-w" href="#jobs">Browse jobs</a>
+        </div>
+      </div>
+      <div class="cta-block green">
+        <div class="deco"></div>
+        <span class="eyebrow">Employers</span>
+        <h3>Need to hire — fast?</h3>
+        <p>Get an instant AI-powered quote, or book a 15-minute discovery call.</p>
+        <div class="row">
+          <button class="btn btn-white" onclick="setMode('employer');openChat()">⚡ Get instant quote</button>
+          <a class="btn btn-outline-w" href="mailto:hello@fastlinkoutsourcing.com">Book a call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <a class="brand"><span class="logo">FL</span> FastLink</a>
+        <p>FastLink Outsourcing LLC — Recruitment, EOR & manpower supply across 90+ countries. Licensed by MOHRE, Dubai.</p>
+        <div class="ft-soc">
+          <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V8h3v11zM6.5 6.7a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V19h-3V8h2.9v1.5h0a3.2 3.2 0 0 1 2.9-1.6c3.1 0 3.7 2 3.7 4.7V19z"/></svg></a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.3a4.8 4.8 0 0 1-3.4-1.7 4.8 4.8 0 0 1-1.2-2.6h-3v13.5a2.6 2.6 0 1 1-1.9-2.5V9.9a5.6 5.6 0 1 0 4.9 5.6V9.4a7.6 7.6 0 0 0 4.6 1.5V8a4.8 4.8 0 0 1 0-1.7z"/></svg></a>
+          <a href="https://wa.me/971500000000" target="_blank" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4-.1-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.2 0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.4L2 22l4.7-1.3A10 10 0 1 0 12 2z"/></svg></a>
+          <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zM17.083 19.77h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </div>
+      <div class="ft-col"><h5>For Candidates</h5><ul><li><a href="#">Browse jobs</a></li><li><a href="#">Upload CV</a></li><li><a href="#">Career advice</a></li><li><a href="#">Visa guide</a></li></ul></div>
+      <div class="ft-col"><h5>For Employers</h5><ul><li><a href="#">Get a quote</a></li><li><a href="#">EOR services</a></li><li><a href="#">Payroll</a></li><li><a href="#">Manpower supply</a></li></ul></div>
+      <div class="ft-col"><h5>Company</h5><ul><li><a href="#">About</a></li><li><a href="#">Industries</a></li><li><a href="#">Insights</a></li><li><a href="#">Careers</a></li></ul></div>
+      <div class="ft-col"><h5>Legal</h5><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">MOHRE license</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 FastLink Outsourcing LLC. All rights reserved.</span>
+      <span>Dubai · Abu Dhabi · UAE</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB STACK: WhatsApp + AI Chat -->
+<div class="fab-stack">
+  <a class="wa-fab" href="https://wa.me/971500000000?text=Hi%20FastLink%2C%20I%27d%20like%20to%20enquire" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4-.1-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.2 0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.4L2 22l4.7-1.3A10 10 0 1 0 12 2z"/></svg>
+  </a>
+  <button class="chat-fab" onclick="openChat()">
+    <span class="ai-dot"></span>
+    <span class="label-cand">💬 Chat with us</span>
+    <span class="label-em">⚡ Get instant quote</span>
+  </button>
+</div>
+
+<!-- BROCHURE MODAL -->
+<div class="modal-back" id="brochureModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>📥 Download FastLink Brochure</h3>
+      <p>32-page company profile with full UAE rate cards. Free.</p>
+      <button class="close" onclick="closeBrochure()">×</button>
+    </div>
+    <form class="modal-body" onsubmit="brochureSubmit(event)">
+      <div class="row">
+        <div><label>Full name</label><input type="text" required id="brName" placeholder="Your name"/></div>
+        <div><label>Company</label><input type="text" required id="brCo" placeholder="Company name"/></div>
+      </div>
+      <div><label>Work email</label><input type="email" required id="brEmail" placeholder="you@company.com"/></div>
+      <div><label>Mobile (UAE)</label><input type="tel" required id="brMob" placeholder="+971 50 000 0000"/></div>
+      <button type="submit" class="submit">📥 Send me the brochure</button>
+      <div class="legal">By submitting, you agree to our privacy policy. We'll email the PDF instantly.</div>
+    </form>
+  </div>
+</div>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <div class="ai-av">AI</div>
+    <div>
+      <h4>FastLink Quote Assistant</h4>
+      <div class="sub">Powered by FastLink AI · Online</div>
+    </div>
+    <button class="close" onclick="closeChat()">×</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-quick" id="chatQuick"></div>
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Type your message..." onkeydown="if(event.key==='Enter')sendChat()"/>
+    <button onclick="sendChat()">→</button>
+  </div>
+</div>
+
+<script>
+/* ---------- mode toggle ---------- */
+function setMode(m){
+  document.body.dataset.mode = m;
+  document.querySelectorAll('.mode-toggle button').forEach(b=>b.classList.remove('on'));
+  document.querySelector(`.mode-toggle button.${m==='candidate'?'cand':'emp'}`).classList.add('on');
+  document.querySelectorAll('[data-mode-text]').forEach(el=>{
+    el.innerHTML = el.dataset[m==='candidate'?'cand':'emp'];
+  });
+  if(m==='employer' && !chatStarted) startChat();
+}
+
+/* ---------- search ---------- */
+function doSearch(){
+  const k = document.getElementById('searchKw').value;
+  const l = document.getElementById('searchLoc').value;
+  alert(`Searching ${k||'all roles'} ${l?'in '+l:'globally'}...\n\n(Demo — connects to live job board API in production)`);
+}
+
+/* ---------- inline quote calculator ---------- */
+const qState = {role:null, eng:null, rate:0, mult:1};
+document.querySelectorAll('#qRoleTypes button, #qEngagement button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const grp = btn.parentElement;
+    grp.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    qState[btn.dataset.key] = btn.dataset.val;
+    if(btn.dataset.rate) qState.rate = +btn.dataset.rate;
+    if(btn.dataset.mult) qState.mult = +btn.dataset.mult;
+  });
+});
+function calcQuote(){
+  if(!qState.role || !qState.eng){
+    alert('Pick a role type and engagement first.');
+    return;
+  }
+  const count = +document.getElementById('qCount').value || 1;
+  const sel = document.getElementById('qCountry');
+  const cMult = +sel.value;
+  const cur = sel.options[sel.selectedIndex].dataset.cur;
+  const perHire = Math.round(qState.rate * qState.mult * cMult);
+  const total = perHire * count;
+  const fee = qState.eng==='permanent' ? Math.round(perHire * 1.5) : Math.round(perHire * 0.18);
+
+  document.getElementById('qrNum').textContent = `${cur} ${total.toLocaleString()}`;
+  document.getElementById('qrSub').textContent = `Total monthly cost · ${count} ${count>1?'hires':'hire'}`;
+  document.getElementById('qrBd').innerHTML = `
+    <div><span>Per-hire monthly</span><b>${cur} ${perHire.toLocaleString()}</b></div>
+    <div><span>FastLink fee (one-time)</span><b>${cur} ${fee.toLocaleString()}</b></div>
+    <div><span>First shortlist</span><b>24 hours</b></div>
+    <div><span>Time to start</span><b>${qState.eng==='eor'?'5–7 days':'2–4 weeks'}</b></div>
+  `;
+  document.getElementById('qresult').classList.add('show');
+}
+
+/* ---------- AI chatbot (employer quotes + candidate help) ---------- */
+const chatPanel = document.getElementById('chatPanel');
+const chatBody = document.getElementById('chatBody');
+const chatQuick = document.getElementById('chatQuick');
+let chatStarted = false;
+let chatStep = 0;
+let chatCtx = {};
+
+const PRICING = {
+  executive:{base:22000, label:'Executive / Manager'},
+  professional:{base:12000, label:'Professional / Engineer'},
+  skilled:{base:6500, label:'Skilled Trade'},
+  general:{base:2800, label:'General Labour'},
+  it:{base:14000, label:'IT / Tech'},
+  healthcare:{base:13500, label:'Healthcare'},
+};
+const COUNTRY = {
+  'dubai':{m:1.0, cur:'AED', f:'🇦🇪 Dubai'},
+  'abudhabi':{m:0.95, cur:'AED', f:'🇦🇪 Abu Dhabi'},
+  'sharjah':{m:0.85, cur:'AED', f:'🇦🇪 Sharjah'},
+  'difc':{m:1.05, cur:'AED', f:'🇦🇪 DIFC'},
+};
+const ENG = {
+  permanent:{m:1, label:'Permanent'},
+  contract:{m:1.15, label:'Contract'},
+  eor:{m:1.25, label:'EOR'},
+  payroll:{m:0.9, label:'Payroll Outsource'},
+};
+
+function openChat(){chatPanel.classList.add('open'); if(!chatStarted) startChat();}
+function closeChat(){chatPanel.classList.remove('open');}
+function bot(html, delay=400){
+  return new Promise(r=>setTimeout(()=>{
+    const m = document.createElement('div'); m.className='msg bot'; m.innerHTML=html;
+    chatBody.appendChild(m); chatBody.scrollTop=chatBody.scrollHeight; r();
+  }, delay));
+}
+function user(text){
+  const m = document.createElement('div'); m.className='msg user'; m.textContent=text;
+  chatBody.appendChild(m); chatBody.scrollTop=chatBody.scrollHeight;
+}
+function quick(opts){
+  chatQuick.innerHTML='';
+  opts.forEach(o=>{
+    const b=document.createElement('button'); b.textContent=o.label;
+    b.onclick=()=>{user(o.label); chatQuick.innerHTML=''; handleStep(o.val);};
+    chatQuick.appendChild(b);
+  });
+}
+async function startChat(){
+  chatStarted = true;
+  await bot(`👋 Hi! I'm <b>Lina</b>, FastLink's UAE hiring assistant. I have live rate data across Dubai &amp; Abu Dhabi.`);
+  await bot(`Which service can I help you with today?`, 600);
+  quick([
+    {label:'⚡ Get an instant quote', val:'svc:quote'},
+    {label:'🔍 Find a job in UAE', val:'svc:job'},
+    {label:'🇦🇪 Emiratisation / Nafis', val:'svc:nafis'},
+    {label:'💼 Visa &amp; PRO services', val:'svc:visa'},
+    {label:'💰 Payroll outsourcing', val:'svc:payroll'},
+    {label:'📥 Download brochure', val:'svc:brochure'},
+    {label:'💬 Talk on WhatsApp', val:'svc:whatsapp'},
+  ]);
+  chatStep='svc';
+}
+async function handleStep(val){
+  const [k,v] = val.split(':');
+  if(k==='svc'){
+    if(v==='quote'){
+      setMode('employer');
+      await bot(`Great — let's build a quote. What kind of role are you hiring for?`);
+      quick([
+        {label:'Executive / Manager', val:'role:executive'},
+        {label:'Professional / Engineer', val:'role:professional'},
+        {label:'Skilled Trade', val:'role:skilled'},
+        {label:'General Labour', val:'role:general'},
+        {label:'IT / Tech', val:'role:it'},
+        {label:'Healthcare', val:'role:healthcare'},
+      ]);
+      chatStep=1; return;
+    }
+    if(v==='job'){
+      await bot(`Awesome! What role and emirate are you targeting? (e.g. "civil engineer in Dubai")`);
+      chatStep=99; return;
+    }
+    if(v==='nafis'){
+      await bot(`We help UAE companies meet Nafis quotas with vetted UAE National candidates and full onboarding. Drop your work email and I'll send you our Nafis playbook.`);
+      chatStep=200; return;
+    }
+    if(v==='visa'){
+      await bot(`Our PRO team handles UAE work permits, family visas, Emirates ID &amp; medicals — turnaround is 3–4 weeks. Share your email and we'll send the full visa pack.`);
+      chatStep=200; return;
+    }
+    if(v==='payroll'){
+      await bot(`Payroll outsourcing starts at AED 79/employee/month — WPS-compliant, mainland &amp; free zone. Want our pricing sheet emailed?`);
+      chatStep=200; return;
+    }
+    if(v==='brochure'){
+      await bot(`Opening the brochure download form for you...`); openBrochure(); return;
+    }
+    if(v==='whatsapp'){
+      await bot(`Connecting you to our WhatsApp now — answer time is under 5 mins, 9am–9pm GST. 📱`);
+      setTimeout(()=>window.open('https://wa.me/971500000000?text=Hi%20FastLink%2C%20I%27d%20like%20to%20enquire','_blank'), 800);
+      return;
+    }
+  }
+  if(k==='role'){
+    chatCtx.role = v;
+    await bot(`Got it — <b>${PRICING[v].label}</b>. How will you engage them?`);
+    quick([
+      {label:'Permanent hire', val:'eng:permanent'},
+      {label:'Contract / project', val:'eng:contract'},
+      {label:'Employer of Record', val:'eng:eor'},
+      {label:'Payroll outsource', val:'eng:payroll'},
+    ]);
+    chatStep=2; return;
+  }
+  if(k==='eng'){
+    chatCtx.eng = v;
+    await bot(`Perfect. Which emirate will the team work in?`);
+    quick([
+      {label:'🇦🇪 Dubai', val:'country:dubai'},
+      {label:'🇦🇪 Abu Dhabi', val:'country:abudhabi'},
+      {label:'🇦🇪 Sharjah', val:'country:sharjah'},
+      {label:'🇦🇪 DIFC / Free Zone', val:'country:difc'},
+    ]);
+    chatStep=3; return;
+  }
+  if(k==='country'){
+    chatCtx.country = v;
+    await bot(`Last one — how many hires? Type a number, or pick:`);
+    quick([
+      {label:'1', val:'count:1'},{label:'5', val:'count:5'},
+      {label:'10', val:'count:10'},{label:'25', val:'count:25'},
+      {label:'50+', val:'count:50'},
+    ]);
+    chatStep=4; return;
+  }
+  if(k==='count'){
+    chatCtx.count = +v;
+    showQuote();
+  }
+}
+async function showQuote(){
+  const r = PRICING[chatCtx.role];
+  const c = COUNTRY[chatCtx.country];
+  const e = ENG[chatCtx.eng];
+  const perHire = Math.round(r.base * e.m * c.m);
+  const total = perHire * chatCtx.count;
+  const fee = chatCtx.eng==='permanent' ? Math.round(perHire * 1.5) : Math.round(perHire * 0.18);
+  const tts = chatCtx.eng==='eor' ? '5–7 days' : '2–4 weeks';
+
+  await bot(`✨ Pulling live UAE rates for <b>${c.f} · ${r.label}</b>, <b>${e.label}</b>...`, 500);
+  await bot(`Based on 1,200+ recent UAE placements, here's your estimate:`, 1000);
+
+  const card = document.createElement('div');
+  card.className = 'quote-card';
+  card.innerHTML = `
+    <div class="qc-head">Your estimate · ${c.f}</div>
+    <div class="qc-num">${c.cur} ${total.toLocaleString()}</div>
+    <div class="qc-sub">monthly · ${chatCtx.count} ${chatCtx.count>1?'hires':'hire'}</div>
+    <div class="qc-bd">
+      <div><span>Per-hire</span><b>${c.cur} ${perHire.toLocaleString()}/mo</b></div>
+      <div><span>FastLink fee (one-time)</span><b>${c.cur} ${fee.toLocaleString()}</b></div>
+      <div><span>Engagement type</span><b>${e.label}</b></div>
+      <div><span>Time to first hire</span><b>${tts}</b></div>
+      <div><span>Replacement guarantee</span><b>3 months</b></div>
+    </div>
+    <div class="qc-cta">
+      <button onclick="bookCall()">📅 Book 15-min call</button>
+    </div>
+  `;
+  chatBody.appendChild(card); chatBody.scrollTop = chatBody.scrollHeight;
+
+  await bot(`To send this quote, I just need a few details. What's your <b>name</b>?`, 1000);
+  chatStep='lead_name';
+}
+async function bookCall(){
+  await bot(`Great — opening Calendly... (in production this links to your scheduling tool). For now, drop your email and we'll reach out within the hour.`);
+}
+async function sendChat(){
+  const i = document.getElementById('chatInput');
+  const t = i.value.trim(); if(!t) return;
+  user(t); i.value='';
+  if(chatStep===4 && /^\d+$/.test(t)){chatCtx.count=+t; showQuote(); return;}
+  if(chatStep==='lead_name'){
+    chatCtx.name=t;
+    await bot(`Thanks ${t.split(' ')[0]}! What's your <b>company</b>?`); chatStep='lead_co'; return;
+  }
+  if(chatStep==='lead_co'){
+    chatCtx.co=t;
+    await bot(`Got it. What's your <b>work email</b>?`); chatStep='lead_email'; return;
+  }
+  if(chatStep==='lead_email'){
+    if(!/@/.test(t)){await bot(`That doesn't look like an email — could you double-check?`); return;}
+    chatCtx.email=t;
+    await bot(`Last one — your <b>UAE mobile</b> number?`); chatStep='lead_mob'; return;
+  }
+  if(chatStep==='lead_mob'){
+    chatCtx.mob=t;
+    submitLead('quote');
+    await bot(`✅ Done! Quote emailed to <b>${chatCtx.email}</b>. A senior consultant will WhatsApp you on <b>${t}</b> within 1 business hour.`);
+    await bot(`Anything else I can help with?`, 800);
+    quick([
+      {label:'📥 Download brochure', val:'svc:brochure'},
+      {label:'💬 Continue on WhatsApp', val:'svc:whatsapp'},
+    ]);
+    chatStep='svc'; return;
+  }
+  if(chatStep===99){
+    await bot(`Nice — I'll match you to live UAE roles for "<b>${t}</b>". Drop your email so we can send 5 best matches within 24h.`);
+    chatStep=100; return;
+  }
+  if(chatStep===100 && /@/.test(t)){
+    submitLead('candidate', {email:t});
+    await bot(`✅ Got it. Our team will email <b>${t}</b> within 24 hours. Welcome to FastLink!`);
+    return;
+  }
+  if(chatStep===200 && /@/.test(t)){
+    submitLead('info', {email:t});
+    await bot(`✅ Sent! Check <b>${t}</b> in the next few minutes.`); return;
+  }
+  await bot(`Let me connect you to a specialist. What's your work email?`);
+  chatStep=200;
+}
+
+function submitLead(kind, extra={}){
+  // In production: POST to /api/leads or webhook (HubSpot/Zapier).
+  const lead = {kind, ts:new Date().toISOString(), ...chatCtx, ...extra};
+  console.log('📨 Lead captured:', lead);
+  try{ localStorage.setItem('fastlink_last_lead', JSON.stringify(lead)); }catch(e){}
+}
+
+/* Brochure modal */
+function openBrochure(){document.getElementById('brochureModal').classList.add('open');}
+function closeBrochure(){document.getElementById('brochureModal').classList.remove('open');}
+function brochureSubmit(e){
+  e.preventDefault();
+  const lead = {
+    kind:'brochure',
+    name:document.getElementById('brName').value,
+    co:document.getElementById('brCo').value,
+    email:document.getElementById('brEmail').value,
+    mob:document.getElementById('brMob').value,
+    ts:new Date().toISOString(),
+  };
+  console.log('📨 Brochure lead:', lead);
+  try{ localStorage.setItem('fastlink_last_brochure', JSON.stringify(lead)); }catch(err){}
+  alert(`✅ Thanks ${lead.name.split(' ')[0]}! The brochure is on its way to ${lead.email}. (Demo — wire to your CRM/email service in production.)`);
+  closeBrochure();
+}
+
+/* Newsletter */
+function nlSubmit(e){
+  e.preventDefault();
+  const email = document.getElementById('nlEmail').value;
+  console.log('📨 Newsletter:', email);
+  alert(`✅ Subscribed! Welcome to the FastLink Tuesday digest.`);
+  document.getElementById('nlEmail').value='';
+}
+
+/* FAQ tabs */
+function setFaq(k, btn){
+  document.querySelectorAll('.faq-tab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.faq-panel').forEach(p=>p.style.display = p.dataset.faq===k?'flex':'none');
+}
+</script>
+</body>
+</html>
