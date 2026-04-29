@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio · Aziz Saif</title>
+<meta name="description" content="A selection of websites by Aziz Saif — multi-brand ecommerce, brand profiles, and concept sites built across the UAE and beyond."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #555;
+    --muted: #999;
+    --line: #ececec;
+    --bg: #f7f4ee;
+    --paper: #fffdf9;
+    --accent: #b08d57;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.6; font-weight: 300; }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.1; }
+
+  header.top { padding: 28px 0; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: rgba(255,253,249,.96); backdrop-filter: blur(8px); z-index: 90; }
+  header.top .container { display: flex; justify-content: space-between; align-items: center; }
+  .brand { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; }
+  .brand span { color: var(--accent); }
+  header nav { display: flex; gap: 28px; font-size: 13px; color: var(--ink-soft); }
+  header nav a:hover { color: var(--accent); }
+
+  .hero { padding: 110px 0 80px; max-width: 880px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .hero h1 { font-size: clamp(44px, 6vw, 84px); margin: 22px 0 26px; }
+  .hero h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .hero p { font-size: 19px; color: var(--ink-soft); max-width: 620px; }
+
+  .filters { display: flex; gap: 18px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 13px; color: var(--ink-soft); }
+  .filters span { font-weight: 500; color: var(--ink); }
+  .filters a { padding: 4px 0; border-bottom: 1px solid transparent; cursor: pointer; }
+  .filters a.active, .filters a:hover { border-color: var(--ink); color: var(--ink); }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px 40px; padding: 70px 0 110px; }
+  @media (max-width: 800px) { .grid { grid-template-columns: 1fr; gap: 50px; padding: 50px 0; } }
+
+  .card { display: block; cursor: pointer; }
+  .card .img {
+    aspect-ratio: 16/10; background: var(--bg); overflow: hidden; border-radius: 14px;
+    position: relative;
+  }
+  .card .img iframe, .card .img img {
+    width: 100%; height: 100%; border: 0; display: block;
+    transition: transform .5s ease;
+  }
+  .card:hover .img img { transform: scale(1.03); }
+  .card .img .ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 36px; color: rgba(0,0,0,.18); }
+  .card .img .badge { position: absolute; top: 16px; left: 16px; background: rgba(255,253,249,.94); padding: 6px 12px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; border-radius: 100px; }
+  .card .img .badge.live { background: #1a1a1a; color: #fff; }
+  .card .meta { padding: 18px 4px 0; }
+  .card .meta .tag { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .card .meta h3 { font-size: 28px; margin: 6px 0 8px; }
+  .card .meta p { color: var(--ink-soft); font-size: 14px; max-width: 520px; }
+  .card .meta .url { display: inline-block; margin-top: 12px; font-size: 13px; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 2px; font-weight: 500; }
+  .card .meta .url:hover { color: var(--accent); border-color: var(--accent); }
+
+  .card.feat { grid-column: span 2; }
+  .card.feat .img { aspect-ratio: 21/9; }
+  .card.feat .meta h3 { font-size: 38px; }
+  @media (max-width: 800px) { .card.feat { grid-column: span 1; } .card.feat .img { aspect-ratio: 16/10; } .card.feat .meta h3 { font-size: 28px; } }
+
+  footer { padding: 40px 0; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="container">
+    <a href="portfolio.html" class="brand">Aziz <span>Saif</span></a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="mailto:hello@azizsaif.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="container">
+  <div class="hero">
+    <span class="eyebrow">— Selected work · 2026</span>
+    <h1>Websites I've built<br/><em>recently.</em></h1>
+    <p>A small portfolio of multi-brand ecommerce, brand profiles and concept sites — built fast, with care, mostly across the GCC.</p>
+  </div>
+
+  <div class="filters" id="filters">
+    <span>Filter:</span>
+    <a class="active" data-cat="">All</a>
+    <a data-cat="ecommerce">Ecommerce</a>
+    <a data-cat="brand">Brand sites</a>
+    <a data-cat="profile">Profiles</a>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <a class="card feat" data-cat="ecommerce" href="azizsaifmomsworld/index.html">
+      <div class="img">
+        <span class="badge live">New · Live</span>
+        <img src="azizsaifmomsworld/assets/images/sig-01.jpg" alt="azizsaifmomsworld" loading="lazy" style="object-fit:cover"/>
+      </div>
+      <div class="meta">
+        <span class="tag">Multi-brand ecommerce · Organic kids &amp; family</span>
+        <h3>azizsaifmomsworld</h3>
+        <p>A curated multi-brand house for organic kids and family essentials — soft cream/sage palette, real catalogue imagery, AED-converted pricing, full cart, and a multi-brand structure ready to scale.</p>
+        <span class="url">Visit azizsaifmomsworld →</span>
+      </div>
+    </a>
+
+    <a class="card" data-cat="brand" href="dmcdubai/index.html">
+      <div class="img">
+        <span class="badge">Live</span>
+        <div style="background:linear-gradient(135deg,#0a2540 0%,#1e4d7c 60%,#c9a96e 140%);width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:32px"><img src="dmcdubai/assets/dmc-logo.png" alt="DMC Dubai" loading="lazy" style="max-width:50%;max-height:60%;object-fit:contain;filter:brightness(0) invert(1)"/></div>
+      </div>
+      <div class="meta">
+        <span class="tag">Brand site · Destination management</span>
+        <h3>DMC Dubai</h3>
+        <p>A destination management company site with blog, AI assistant integration and social-ready storytelling — built to introduce a Dubai DMC's services to international planners.</p>
+        <span class="url">Visit DMC Dubai →</span>
+      </div>
+    </a>
+
+    <a class="card" data-cat="profile" href="zainab/index.html">
+      <div class="img">
+        <span class="badge">Reading room</span>
+        <img src="zainab/portrait.jpg" alt="Zainab Ghadiyali" loading="lazy" style="object-fit:cover"/>
+      </div>
+      <div class="meta">
+        <span class="tag">Personal site · Reading room</span>
+        <h3>Zainab Ghadiyali</h3>
+        <p>A quiet, unlisted reading-room site — long-form essays and notes presented in a calm, type-led layout with thoughtful typography and easy navigation.</p>
+        <span class="url">Visit reading room →</span>
+      </div>
+    </a>
+
+    <a class="card" data-cat="profile" href="savitha-dhiman/index.html">
+      <div class="img">
+        <span class="badge">Investor pitch</span>
+        <img src="savitha-dhiman/hero.jpg" alt="Savitha Dhiman — Vastra Modular" loading="lazy" style="object-fit:cover"/>
+      </div>
+      <div class="meta">
+        <span class="tag">Founder pitch · Bridal couture</span>
+        <h3>Savitha Dhiman — Vastra Modular</h3>
+        <p>An investor-facing pitch site for a modular wedding couture concept in Delhi NCR — long-form storytelling, market sizing and a clear founder narrative.</p>
+        <span class="url">View pitch →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;width:100%">
+    <span>© <span id="yr"></span> Aziz Saif · azizsaif.com</span>
+    <span>Have a project? <a href="mailto:hello@azizsaif.com" style="color:var(--ink);border-bottom:1px solid var(--ink)">hello@azizsaif.com</a></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.getElementById('filters').addEventListener('click', e => {
+    if (e.target.tagName !== 'A') return;
+    const cat = e.target.dataset.cat;
+    document.querySelectorAll('#filters a').forEach(a => a.classList.toggle('active', a === e.target));
+    document.querySelectorAll('#grid .card').forEach(c => {
+      c.style.display = (!cat || c.dataset.cat === cat) ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>

@@ -44,6 +44,13 @@
       "runtimeArgs": ["serve", "azizsaifmomsworld"],
       "port": 8096,
       "autoPort": true
+    },
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "."],
+      "port": 8097,
+      "autoPort": true
     }
   ]
 }
