@@ -52,7 +52,7 @@ input,textarea,select{font:inherit;color:inherit}
 
 /* header */
 header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:104px;gap:20px}
 .brand{display:flex;align-items:center;gap:10px;font-family:"Inter",sans-serif;font-weight:600;font-size:22px;letter-spacing:-.01em}
 .brand .logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--green));display:grid;place-items:center;color:#fff;font-family:"Inter";font-weight:800;font-size:15px;letter-spacing:-.02em}
 nav.main{display:flex;gap:2px}
@@ -506,6 +506,36 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 @media (max-width:980px){.contact-grid{grid-template-columns:1fr 1fr}.contact-locations{grid-template-columns:1fr}}
 @media (max-width:560px){.contact-grid{grid-template-columns:1fr}}
 
+
+.board-filter{display:grid;grid-template-columns:2fr 1.4fr 1fr 1.2fr;gap:10px;background:#fff;padding:14px;border-radius:8px;border:1px solid var(--line);margin-bottom:18px}
+.bf-search{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:6px;padding:8px 14px;background:#fff}
+.bf-search:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,90,168,.12)}
+.bf-search svg{color:var(--muted);flex-shrink:0}
+.bf-search input,.bf-search select{flex:1;border:0;outline:0;background:transparent;font-size:14px;width:100%}
+.board-filter > select{padding:10px 14px;border:1px solid var(--line);border-radius:6px;background:#fff;font-size:14px}
+.board-grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:flex-start}
+.board-list{display:flex;flex-direction:column;gap:10px}
+.board-job{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 22px;display:grid;grid-template-columns:1fr auto;gap:14px;cursor:pointer;transition:.15s}
+.board-job:hover{border-color:var(--blue);box-shadow:var(--shadow);transform:translateY(-1px)}
+.board-job h4{font-size:16.5px;font-weight:700;color:var(--blue);letter-spacing:-.005em}
+.bj-co{font-size:13.5px;color:var(--ink-2);margin-top:3px;font-weight:500}
+.bj-meta{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:12.5px;margin-top:8px}
+.bj-meta span{display:inline-flex;align-items:center;gap:5px}
+.bj-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.bj-tag{font-size:11px;color:var(--ink-2);background:var(--chip);padding:3px 8px;border-radius:4px;font-weight:500}
+.bj-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;justify-content:space-between;text-align:right}
+.bj-sal{font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap}
+.bj-posted{font-size:11.5px;color:var(--muted)}
+.bj-apply{padding:8px 14px;border-radius:6px;background:var(--blue);color:#fff;font-size:13px;font-weight:600;border:0;cursor:pointer}
+.bj-apply:hover{background:var(--blue-deep)}
+.board-side{position:sticky;top:120px;display:flex;flex-direction:column;gap:14px}
+.board-cta{padding:24px;border-radius:8px;background:linear-gradient(135deg,#1E5AA8,#143E76);color:#fff}
+.board-cta h4{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.board-cta p{font-size:13.5px;color:rgba(255,255,255,.85);margin-top:6px;line-height:1.5}
+.board-cta:nth-child(2){color:var(--ink)}
+@media (max-width:980px){.board-grid{grid-template-columns:1fr}.board-filter{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.board-filter{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body data-mode="candidate">
@@ -526,7 +556,7 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 
 <header class="site">
   <div class="wrap nav">
-    <a href="#" class="brand"><img src="logo.png" alt="FastLink Outsourcing" style="height:40px;width:auto"/></a>
+    <a href="#" class="brand"><img src="logo.png" alt="FastLink Outsourcing" style="height:80px;width:auto"/></a>
     <nav class="main">
       <a href="#jobs">Find Jobs</a>
       <a href="#services">Services</a>
@@ -664,13 +694,12 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 
     <!-- Candidate visual -->
     <div class="hero-visual">
-      <div class="hv-img hv-1"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Diverse team meeting"/></div>
-      <div class="hv-img hv-2"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80" alt="Engineer at workplace"/></div>
-      <div class="hv-img hv-3"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80" alt="Hospitality professional"/></div>
+      <div class="hv-img hv-1"><img src="assets/slider-1-4-min.png" alt="FastLink hiring team"/></div>
+      <div class="hv-img hv-2"><img src="assets/slider-2-1-min.png" alt="FastLink workforce"/></div>
+      <div class="hv-img hv-3"><img src="assets/fastlink-hp-solutions.png" alt="FastLink HR solutions" style="object-fit:contain;background:#fff;padding:16px"/></div>
       <div class="hv-stat hv-stat-1"><div class="ico">⚡</div><div><div class="num">24h</div><div class="lbl">First match</div></div></div>
       <div class="hv-stat hv-stat-2"><div class="ico">🇦🇪</div><div><div class="num">3,500+</div><div class="lbl">UAE roles live</div></div></div>
     </div>
-
     <!-- Employer hero card -->
     <div class="emp-hero-card emp-quote-card">
       <span class="eyebrow">⚡ Instant Quote</span>
@@ -853,6 +882,67 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
         <div class="job-tags"><span class="j-tag">SaaS</span><span class="j-tag">Commission</span><span class="j-tag">Equity</span></div>
         <div class="job-foot"><span class="sal">AED 12k base + uncapped</span><a class="btn-link" style="color:var(--blue);font-weight:600">Apply →</a></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDEED-STYLE FULL JOBS BOARD -->
+<section class="sec" id="jobs-board" style="background:var(--cream);padding-top:56px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Live Jobs Board</span><h2>3,500+ live roles across the <em>UAE</em>.</h2></div>
+      <p>Updated every hour from our partner database. Filter, search, apply.</p>
+    </div>
+
+    <!-- Filter bar (Indeed-style) -->
+    <div class="board-filter">
+      <div class="bf-search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="bfKw" placeholder="Job title, company, or keyword..." onkeyup="filterJobs()"/>
+      </div>
+      <div class="bf-search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <select id="bfLoc" onchange="filterJobs()">
+          <option value="">All UAE locations</option>
+          <option>Dubai</option>
+          <option>Abu Dhabi</option>
+          <option>Sharjah</option>
+          <option>DIFC</option>
+        </select>
+      </div>
+      <select id="bfType" onchange="filterJobs()">
+        <option value="">All job types</option>
+        <option>Full-time</option>
+        <option>Contract</option>
+        <option>Part-time</option>
+      </select>
+      <select id="bfCat" onchange="filterJobs()">
+        <option value="">All industries</option>
+        <option>Construction</option>
+        <option>Hospitality</option>
+        <option>Healthcare</option>
+        <option>Engineering</option>
+        <option>Sales</option>
+        <option>Logistics</option>
+        <option>Admin</option>
+        <option>IT</option>
+      </select>
+    </div>
+
+    <div class="board-grid">
+      <div id="boardList" class="board-list"></div>
+      <aside class="board-side">
+        <div class="board-cta">
+          <h4>Get matched, faster</h4>
+          <p>Upload your CV and our recruiters will match you to live UAE roles within 24 hours.</p>
+          <button class="btn btn-green" onclick="openCV()" style="width:100%;margin-top:10px">📤 Upload my CV</button>
+        </div>
+        <div class="board-cta" style="background:#fff">
+          <h4 style="color:var(--ink)">Hiring? Post a role.</h4>
+          <p style="color:var(--ink-2)">List your role with FastLink and receive vetted shortlists in 24 hours.</p>
+          <button class="btn btn-primary" onclick="openChat()" style="width:100%;margin-top:10px">⚡ Get a quote</button>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -1106,12 +1196,8 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
           <a class="btn btn-outline-w" href="#contact">Talk to sales</a>
         </div>
       </div>
-      <div class="brochure-card">
-        <div class="pdf-ico">PDF</div>
-        <div>
-          <div style="font-weight:600;font-size:15px">FastLink Company Profile 2026</div>
-          <div class="pdf-meta">32 pages · 4.2 MB · Updated Apr 2026</div>
-        </div>
+      <div style="position:relative">
+        <img src="assets/homepage-WCU-min.png" alt="FastLink — Why Choose Us" style="width:100%;height:auto;border-radius:8px;background:#fff;padding:14px"/>
       </div>
     </div>
   </div>
@@ -1205,7 +1291,7 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
   <div class="wrap">
     <div class="ft-grid">
       <div class="ft-brand">
-        <a class="brand"><img src="logo.png" alt="FastLink Outsourcing" style="height:38px;width:auto;filter:brightness(0) invert(1)"/></a>
+        <a class="brand"><img src="logo.png" alt="FastLink Outsourcing" style="height:72px;width:auto;filter:brightness(0) invert(1)"/></a>
         <p>FastLink Outsourcing LLC — Recruitment, EOR & manpower supply across 90+ countries. Licensed by MOHRE, Dubai.</p>
         <div class="ft-soc">
           <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V8h3v11zM6.5 6.7a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V19h-3V8h2.9v1.5h0a3.2 3.2 0 0 1 2.9-1.6c3.1 0 3.7 2 3.7 4.7V19z"/></svg></a>
@@ -1618,6 +1704,57 @@ function closeCall(){document.getElementById('callModal').classList.remove('open
   alert(`✅ Booked! ${lead.name.split(' ')[0]}, our consultant will call/WhatsApp ${lead.mobile} during your "${lead.time}" window.`);
   closeCall();
 }
+
+/* Indeed-style jobs board */
+const JOBS = [
+ {t:"Senior Civil Engineer",co:"DAMAC Properties",loc:"Dubai",type:"Full-time",cat:"Construction",exp:"8+ yrs",sal:"AED 28,000–35,000/mo",tags:["PMP","Visa sponsored","Family status"],posted:"2 days ago",hot:true},
+ {t:"Hotel Operations Manager",co:"Marriott International",loc:"Dubai",type:"Full-time",cat:"Hospitality",exp:"5+ yrs",sal:"AED 22,000–28,000/mo",tags:["Pre-opening","Visa","Accommodation"],posted:"1 day ago",hot:true},
+ {t:"Registered Nurse (ICU)",co:"NMC Healthcare",loc:"Abu Dhabi",type:"Full-time",cat:"Healthcare",exp:"3+ yrs",sal:"AED 14,000–18,000/mo",tags:["DOH licensed","Visa","Accommodation"],posted:"3 days ago"},
+ {t:"Sales Executive — B2B SaaS",co:"Stealth Tech",loc:"Dubai",type:"Full-time",cat:"Sales",exp:"2+ yrs",sal:"AED 12,000 + commission",tags:["SaaS","Equity","Hybrid"],posted:"1 day ago",hot:true},
+ {t:"MEP Site Engineer",co:"EMAAR Construction",loc:"Dubai",type:"Contract",cat:"Engineering",exp:"5+ yrs",sal:"AED 18,000–22,000/mo",tags:["MEP","HVAC","Site"],posted:"4 days ago"},
+ {t:"Executive Assistant",co:"Confidential",loc:"DIFC",type:"Full-time",cat:"Admin",exp:"4+ yrs",sal:"AED 16,000–20,000/mo",tags:["Bilingual","Travel","Discretion"],posted:"5 days ago"},
+ {t:"Logistics Coordinator",co:"Al-Futtaim Logistics",loc:"Dubai",type:"Full-time",cat:"Logistics",exp:"3+ yrs",sal:"AED 9,000–12,000/mo",tags:["JAFZA","Customs","Visa"],posted:"2 days ago"},
+ {t:"Restaurant Supervisor",co:"5★ Hospitality Group",loc:"Abu Dhabi",type:"Full-time",cat:"Hospitality",exp:"3+ yrs",sal:"AED 7,500 + tips",tags:["F&B","Pre-opening","Accommodation"],posted:"1 day ago"},
+ {t:"Full-Stack Developer (Node + React)",co:"FinTech Scale-up",loc:"DIFC",type:"Full-time",cat:"IT",exp:"4+ yrs",sal:"AED 25,000–32,000/mo",tags:["Node","React","Equity"],posted:"3 days ago",hot:true},
+ {t:"Site Foreman (Concrete)",co:"Tier-1 Contractor",loc:"Dubai",type:"Contract",cat:"Construction",exp:"7+ yrs",sal:"AED 9,500–12,000/mo",tags:["MEP","Concrete","Site"],posted:"2 days ago"},
+ {t:"Pharmacist",co:"Aster Pharmacy",loc:"Sharjah",type:"Full-time",cat:"Healthcare",exp:"2+ yrs",sal:"AED 8,000–11,000/mo",tags:["DHA licensed","Retail","Visa"],posted:"6 days ago"},
+ {t:"Procurement Manager",co:"Engineering Conglomerate",loc:"Abu Dhabi",type:"Full-time",cat:"Admin",exp:"7+ yrs",sal:"AED 30,000–38,000/mo",tags:["MEP","Strategic","Family status"],posted:"4 days ago"},
+ {t:"Driver — Heavy Vehicle",co:"Major Logistics Co.",loc:"Dubai",type:"Full-time",cat:"Logistics",exp:"3+ yrs",sal:"AED 4,500 + OT",tags:["UAE license","Visa","Bunk"],posted:"1 day ago"},
+ {t:"Front Office Receptionist",co:"5★ Hotel Group",loc:"Dubai",type:"Full-time",cat:"Hospitality",exp:"2+ yrs",sal:"AED 5,500 + tips",tags:["Opera","Bilingual","Accommodation"],posted:"3 days ago"},
+ {t:"DevOps Engineer",co:"Series B SaaS",loc:"Dubai",type:"Full-time",cat:"IT",exp:"4+ yrs",sal:"AED 22,000–28,000/mo",tags:["AWS","Kubernetes","Remote-friendly"],posted:"2 days ago",hot:true},
+ {t:"Quantity Surveyor",co:"Mega-project Contractor",loc:"Abu Dhabi",type:"Full-time",cat:"Engineering",exp:"6+ yrs",sal:"AED 16,000–22,000/mo",tags:["FIDIC","Cost control","Site"],posted:"5 days ago"},
+ {t:"Retail Sales Associate",co:"Luxury Brand · Dubai Mall",loc:"Dubai",type:"Full-time",cat:"Sales",exp:"1+ yrs",sal:"AED 4,500 + commission",tags:["Bilingual","POS","Visa"],posted:"1 day ago"},
+ {t:"HR Manager",co:"Mid-size Family Office",loc:"Dubai",type:"Full-time",cat:"Admin",exp:"6+ yrs",sal:"AED 22,000–28,000/mo",tags:["MOHRE","Payroll","Generalist"],posted:"4 days ago"},
+];
+function renderJobs(list){
+  const el=document.getElementById('boardList');
+  if(!list.length){el.innerHTML='<div style="padding:48px;text-align:center;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:8px">No matches — try different filters</div>';return;}
+  el.innerHTML=list.map(j=>`
+    <div class="board-job" onclick="openCV()">
+      <div>
+        <h4>${j.t} ${j.hot?'<span style="background:rgba(46,170,75,.12);color:#0F8A3E;padding:2px 7px;border-radius:4px;font-size:10.5px;font-weight:700;letter-spacing:.04em;margin-left:6px;text-transform:uppercase">Hot</span>':''}</h4>
+        <div class="bj-co">${j.co}</div>
+        <div class="bj-meta"><span>📍 ${j.loc}</span><span>💼 ${j.type}</span><span>⏱ ${j.exp}</span><span>🏷 ${j.cat}</span></div>
+        <div class="bj-tags">${j.tags.map(t=>`<span class="bj-tag">${t}</span>`).join('')}</div>
+      </div>
+      <div class="bj-right">
+        <div><div class="bj-sal">${j.sal}</div><div class="bj-posted">${j.posted}</div></div>
+        <button class="bj-apply" onclick="event.stopPropagation();openCV()">Apply →</button>
+      </div>
+    </div>
+  `).join('');
+}
+function filterJobs(){
+  const kw=(document.getElementById('bfKw').value||'').toLowerCase();
+  const loc=document.getElementById('bfLoc').value;
+  const type=document.getElementById('bfType').value;
+  const cat=document.getElementById('bfCat').value;
+  renderJobs(JOBS.filter(j=>
+    (!kw || (j.t+j.co+j.tags.join(' ')).toLowerCase().includes(kw)) &&
+    (!loc || j.loc===loc) && (!type || j.type===type) && (!cat || j.cat===cat)
+  ));
+}
+document.addEventListener('DOMContentLoaded',()=>renderJobs(JOBS));
 </script>
 </body>
 </html>
