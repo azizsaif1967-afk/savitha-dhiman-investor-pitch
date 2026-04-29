@@ -545,6 +545,70 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 .auth-social{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:6px;background:#fff;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;transition:.15s}
 .auth-social:hover{border-color:var(--blue);background:var(--blue-soft)}
 
+
+/* === 2-COLOR ALTERNATING + HOVER FLIP — kills boring grid view === */
+
+/* Services grid: alternating blue/green tint, full color flip on hover */
+.svcs .svc{position:relative;overflow:hidden;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease, background .3s ease, color .3s ease;border:1px solid var(--line)}
+.svcs .svc:nth-child(odd){background:var(--blue-soft)}
+.svcs .svc:nth-child(even){background:var(--green-soft)}
+.svcs .svc:hover{transform:translateY(-6px);box-shadow:0 18px 48px rgba(15,27,45,.18)}
+.svcs .svc:nth-child(odd):hover{background:linear-gradient(135deg,#1E5AA8,#143E76);border-color:transparent;color:#fff}
+.svcs .svc:nth-child(even):hover{background:linear-gradient(135deg,#16A34A,#0F8A3E);border-color:transparent;color:#fff}
+.svcs .svc:hover h4,.svcs .svc:hover p,.svcs .svc:hover li{color:#fff}
+.svcs .svc:hover .ico{background:rgba(255,255,255,.18) !important;color:#fff !important}
+.svcs .svc:hover li::before{color:#fff}
+.svcs .svc h4,.svcs .svc p,.svcs .svc li{transition:color .3s ease}
+.svcs .svc .ico{transition:background .3s ease, color .3s ease}
+
+/* Why-us features (gf inside .global): subtle alt tint and hover flip */
+.global-features .gf{padding:14px;border-radius:8px;transition:.25s;cursor:default}
+.global-features .gf:nth-child(odd):hover{background:rgba(30,90,168,.18)}
+.global-features .gf:nth-child(even):hover{background:rgba(46,170,75,.18)}
+
+/* Categories grid: alt overlay color flip on hover */
+.cats .cat{transition:.3s}
+.cats .cat:nth-child(odd):hover::after{background:linear-gradient(180deg,rgba(30,90,168,0) 30%, rgba(20,62,118,.92) 100%)}
+.cats .cat:nth-child(even):hover::after{background:linear-gradient(180deg,rgba(22,163,74,0) 30%, rgba(15,138,62,.92) 100%)}
+
+/* Industries: same alt flip */
+.industries .ind:nth-child(odd):hover::after{background:linear-gradient(180deg,rgba(30,90,168,0) 30%, rgba(15,27,45,.95) 70%, rgba(20,62,118,.95) 100%)}
+.industries .ind:nth-child(even):hover::after{background:linear-gradient(180deg,rgba(22,163,74,0) 30%, rgba(15,138,62,.95) 100%)}
+
+/* How-it-works steps: alt tint + flip */
+.how .step{cursor:default;transition:.25s;border:1px solid var(--line)}
+.how .step:nth-child(odd){background:var(--blue-soft)}
+.how .step:nth-child(even){background:var(--green-soft)}
+.how .step:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.how .step:nth-child(odd):hover{background:linear-gradient(135deg,#1E5AA8,#143E76);color:#fff;border-color:transparent}
+.how .step:nth-child(even):hover{background:linear-gradient(135deg,#16A34A,#0F8A3E);color:#fff;border-color:transparent}
+.how .step:hover h4,.how .step:hover p,.how .step:hover .n{color:#fff !important}
+
+/* FAQ details: alt tint */
+.faq-panel details:nth-child(odd){background:var(--blue-soft)}
+.faq-panel details:nth-child(even){background:var(--green-soft)}
+.faq-panel details:hover{border-color:transparent}
+.faq-panel details:nth-child(odd)[open]{background:#fff;border-color:var(--blue)}
+.faq-panel details:nth-child(even)[open]{background:#fff;border-color:var(--green)}
+
+/* Reviews: alt accent */
+.rev-strip .rev-card:nth-child(odd){border-top:3px solid var(--blue)}
+.rev-strip .rev-card:nth-child(even){border-top:3px solid var(--green)}
+.rev-strip .rev-card{transition:.25s;cursor:default}
+.rev-strip .rev-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+
+/* Contact cards: alt tint */
+.contact-grid .contact-card:nth-child(2){background:linear-gradient(135deg,rgba(30,90,168,.05),#fff)}
+.contact-grid .contact-card:nth-child(3){background:linear-gradient(135deg,rgba(46,170,75,.05),#fff)}
+
+/* Blog cards alt accent */
+.blog-grid .blog-card:nth-child(odd) .blog-tag{background:var(--blue-soft);color:var(--blue)}
+.blog-grid .blog-card:nth-child(even) .blog-tag{background:var(--green-soft);color:var(--green-deep)}
+
+/* LinkedIn posts: alt left border */
+.li-grid .li-post:nth-child(odd){border-left:4px solid var(--blue)}
+.li-grid .li-post:nth-child(even){border-left:4px solid var(--green)}
+
 </style>
 </head>
 <body data-mode="candidate">
