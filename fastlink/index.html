@@ -368,9 +368,9 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 /* WhatsApp + socials FAB stack */
 .fab-stack{position:fixed;bottom:24px;right:24px;z-index:90;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
 .fab-stack .chat-fab{position:static}
-.wa-fab{width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:var(--shadow-lg);transition:.2s;font-size:26px}
+.wa-fab{width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(37,211,102,.4);transition:.2s;text-decoration:none;cursor:pointer}
 .wa-fab:hover{transform:scale(1.08)}
-.wa-fab svg{width:28px;height:28px;fill:#fff}
+.wa-fab svg{width:30px;height:30px;color:#fff}
 
 /* Brochure modal */
 .modal-back{position:fixed;inset:0;background:rgba(15,27,45,.65);backdrop-filter:blur(4px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
@@ -1229,9 +1229,7 @@ body[data-mode="employer"] .chat-fab .label-cand{display:none}
 
 <!-- FAB STACK: WhatsApp + AI Chat -->
 <div class="fab-stack">
-  <a class="wa-fab" href="https://wa.me/971500000000?text=Hi%20FastLink%2C%20I%27d%20like%20to%20enquire" target="_blank" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4-.1-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.2 0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.4L2 22l4.7-1.3A10 10 0 1 0 12 2z"/></svg>
-  </a>
+  <a class="wa-fab" href="https://wa.me/971500000000?text=Hi%20FastLink%2C%20I%27d%20like%20to%20enquire" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32" fill="currentColor" width="100%" height="100%"><path d="M16.001 3C9.385 3 4 8.385 4 15.001c0 2.317.677 4.477 1.84 6.296L4 28l6.86-1.797A11.94 11.94 0 0 0 16.001 27C22.617 27 28 21.617 28 15.001 28 8.385 22.617 3 16.001 3zm0 21.818c-1.96 0-3.79-.575-5.328-1.567l-.382-.243-4.071 1.067 1.087-3.967-.249-.408a8.802 8.802 0 0 1-1.349-4.7c0-4.876 3.967-8.842 8.842-8.842 4.875 0 8.842 3.966 8.842 8.842s-3.967 8.818-8.842 8.818zm5.143-6.617c-.275-.137-1.625-.802-1.876-.893-.252-.092-.435-.137-.617.137-.183.274-.71.893-.871 1.076-.16.183-.32.205-.595.069-.275-.137-1.16-.428-2.21-1.363-.817-.728-1.367-1.625-1.527-1.9-.16-.275-.017-.423.12-.56.123-.123.275-.32.412-.481.137-.16.183-.275.275-.458.092-.183.046-.343-.023-.481-.07-.137-.617-1.487-.846-2.038-.222-.534-.448-.461-.617-.47l-.526-.01a1.011 1.011 0 0 0-.732.343c-.252.275-.961.94-.961 2.29 0 1.351.984 2.657 1.121 2.84.137.183 1.937 2.957 4.696 4.146.656.283 1.168.452 1.567.578.658.21 1.257.18 1.732.11.528-.079 1.625-.664 1.853-1.305.229-.642.229-1.193.16-1.305-.069-.114-.252-.184-.527-.32z"/></svg></a>
   <button class="chat-fab" onclick="openChat()">
     <span class="ai-dot"></span>
     <span class="label-cand">💬 Chat with us</span>
