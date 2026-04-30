@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Admin Dashboard — FastLink Outsourcing</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1E5AA8;--blue-deep:#143E76;--blue-soft:#EEF3FB;
+  --green:#16A34A;--green-deep:#0F8A3E;--green-soft:#E9F7EE;
+  --ink:#0E1F3A;--ink-2:#3A4658;--muted:#6A7589;
+  --line:#E5E7EE;--cream:#F8F9FB;--chip:#F4F6FA;
+  --side:#0E1F3A;--side-2:#091428;
+  --shadow:0 1px 2px rgba(15,27,45,.04);
+  --shadow-lg:0 8px 32px rgba(15,27,45,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.55 "Inter",sans-serif;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:transparent}
+input,select{font:inherit;color:inherit}
+
+/* Layout */
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+aside{background:var(--side);color:#cdd5e0;display:flex;flex-direction:column}
+.brand{padding:18px 18px 14px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px}
+.brand img{height:42px;width:auto;background:#fff;padding:6px 10px;border-radius:6px}
+.brand-tag{font-size:11px;color:rgba(255,255,255,.6);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-top:4px}
+.menu-section{padding:14px 14px 6px;font-size:10.5px;letter-spacing:.18em;color:#6e7c95;text-transform:uppercase;font-weight:700}
+nav.side a{display:flex;align-items:center;gap:10px;padding:10px 16px;font-size:13.5px;color:#cdd5e0;font-weight:500;border-left:3px solid transparent;transition:.15s;cursor:pointer}
+nav.side a:hover{background:rgba(255,255,255,.04);color:#fff}
+nav.side a.on{background:linear-gradient(90deg,rgba(22,163,74,.18),transparent);border-left-color:var(--green);color:#fff;font-weight:600}
+nav.side a .ico{width:18px;text-align:center}
+.side-bot{margin-top:auto;padding:14px 16px;border-top:1px solid rgba(255,255,255,.06);font-size:12px;color:#6e7c95}
+
+/* Topbar */
+.top{background:#fff;border-bottom:1px solid var(--line);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20}
+.top h1{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.top .tools{display:flex;gap:12px;align-items:center}
+.top .search{display:flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:6px;width:280px}
+.top .search input{flex:1;border:0;outline:0;font-size:13px;background:transparent}
+.user-chip{display:flex;align-items:center;gap:10px;padding:6px 12px 6px 6px;border:1px solid var(--line);border-radius:999px}
+.user-chip .av{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px}
+.user-chip .nm{font-size:13px;font-weight:600}
+.user-chip .rl{font-size:11px;color:var(--muted)}
+
+main{padding:28px}
+.view{display:none}
+.view.on{display:block}
+
+/* KPI cards */
+.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.kpi{padding:24px;border-radius:8px;color:#fff;display:flex;justify-content:space-between;align-items:flex-start;position:relative;overflow:hidden}
+.kpi h3{font-size:13.5px;font-weight:600;opacity:.92;letter-spacing:.02em}
+.kpi .num{font-size:34px;font-weight:800;letter-spacing:-.02em;margin-top:6px}
+.kpi .sub{font-size:12px;opacity:.85;margin-top:4px}
+.kpi .ico{font-size:32px;opacity:.45}
+.kpi.b{background:linear-gradient(135deg,#3B82F6,#1E5AA8)}
+.kpi.o{background:linear-gradient(135deg,#F59E0B,#D97706)}
+.kpi.g{background:linear-gradient(135deg,#16A34A,#0F8A3E)}
+.kpi.p{background:linear-gradient(135deg,#8B5CF6,#6D28D9)}
+.kpi.r{background:linear-gradient(135deg,#EF4444,#B91C1C)}
+.kpi.t{background:linear-gradient(135deg,#0E1F3A,#1F4A8C)}
+
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:22px}
+.card h3{font-size:15px;font-weight:700;letter-spacing:-.005em;margin-bottom:18px}
+.bars{display:flex;align-items:flex-end;gap:8px;height:200px}
+.bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.bar .b{width:100%;background:linear-gradient(180deg,var(--blue),var(--blue-deep));border-radius:4px 4px 0 0;min-height:6px;transition:.3s}
+.bar .b.g{background:linear-gradient(180deg,var(--green),var(--green-deep))}
+.bar .lbl{font-size:10px;color:var(--muted);font-weight:600;transform:rotate(-25deg);transform-origin:top left;white-space:nowrap;height:30px}
+.line-chart{height:200px;position:relative}
+.line-chart svg{width:100%;height:100%}
+
+/* Table */
+.table-card{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:18px}
+.table-head{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-bottom:1px solid var(--line)}
+.table-head h2{font-size:16px;font-weight:700;letter-spacing:-.005em}
+.table-tools{display:flex;gap:10px;align-items:center}
+.table-tools input,.table-tools select{padding:8px 12px;border:1px solid var(--line);border-radius:5px;font-size:13px;outline:none}
+.table-tools input:focus,.table-tools select:focus{border-color:var(--blue)}
+.btn{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;border-radius:5px;font-weight:600;font-size:13px;cursor:pointer;transition:.15s}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:var(--green-deep)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-deep)}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead{background:var(--green);color:#fff}
+thead th{padding:13px 18px;text-align:left;font-weight:600;font-size:12.5px;letter-spacing:.02em}
+tbody tr{border-bottom:1px solid var(--line);transition:.1s}
+tbody tr:hover{background:var(--cream)}
+tbody td{padding:14px 18px;vertical-align:middle}
+.cell-co{display:flex;align-items:center;gap:12px}
+.cell-co .av{width:34px;height:34px;border-radius:6px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:12px}
+.cell-co .av.b1{background:#1E5AA8}.cell-co .av.b2{background:#16A34A}.cell-co .av.b3{background:#F59E0B}.cell-co .av.b4{background:#8B5CF6}.cell-co .av.b5{background:#EF4444}.cell-co .av.b6{background:#0E1F3A}
+.cell-co .nm{font-weight:600;font-size:13.5px;color:var(--ink)}
+.cell-co .em{font-size:11.5px;color:var(--muted)}
+.toggle{display:inline-block;width:34px;height:18px;background:var(--green);border-radius:999px;position:relative;cursor:pointer}
+.toggle::after{content:"";position:absolute;top:2px;left:18px;width:14px;height:14px;background:#fff;border-radius:50%;transition:.2s}
+.toggle.off{background:#cbd5e1}
+.toggle.off::after{left:2px}
+.act{display:flex;gap:5px}
+.act button{width:30px;height:30px;border-radius:5px;display:grid;place-items:center;font-size:13px;color:#fff}
+.act .v{background:var(--green)}.act .e{background:#3B82F6}.act .d{background:#EF4444}
+.badge{display:inline-block;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.badge.applied{background:#8B5CF6;color:#fff}
+.badge.shortlisted{background:#F59E0B;color:#fff}
+.badge.interview{background:#F59E0B;color:#fff}
+.badge.hired{background:#06B6D4;color:#fff}
+.badge.rejected{background:#EF4444;color:#fff}
+.badge.live{background:var(--green);color:#fff}
+.badge.expired{background:#6B7280;color:#fff}
+
+.pager{padding:14px 22px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+.pager .pages{display:flex;gap:4px}
+.pager .pages button{padding:6px 12px;border-radius:4px;background:#fff;border:1px solid var(--line);font-weight:600;color:var(--ink-2);font-size:12.5px}
+.pager .pages button.on{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* Login wall */
+.login-wall{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#0E1F3A,#143E76);padding:24px}
+.login-card{background:#fff;border-radius:12px;padding:36px;width:100%;max-width:440px;box-shadow:var(--shadow-lg)}
+.login-card .lc-brand{text-align:center;margin-bottom:24px}
+.login-card .lc-brand img{height:60px;width:auto}
+.login-card h2{font-size:22px;font-weight:700;letter-spacing:-.01em;text-align:center}
+.login-card p{font-size:13.5px;color:var(--muted);text-align:center;margin-top:6px}
+.login-card .field{margin-top:14px}
+.login-card label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.login-card input{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:6px;font-size:14px;outline:none}
+.login-card input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,90,168,.12)}
+.login-card .submit{width:100%;height:46px;margin-top:18px;background:var(--blue);color:#fff;border-radius:6px;font-weight:700;font-size:14.5px}
+.login-card .submit:hover{background:var(--blue-deep)}
+.login-card .or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.06em;margin:18px 0}
+.login-card .or::before,.login-card .or::after{content:"";flex:1;height:1px;background:var(--line)}
+.login-card .gauth{width:100%;height:46px;background:#fff;border:1px solid var(--line);border-radius:6px;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:10px}
+.login-card .gauth:hover{border-color:var(--blue);background:var(--blue-soft)}
+.login-card .hint{font-size:11.5px;color:var(--muted);text-align:center;margin-top:14px;padding:10px;background:var(--cream);border-radius:6px}
+.login-card .hint code{font-family:ui-monospace,Menlo,monospace;background:#fff;padding:2px 6px;border-radius:3px;color:var(--blue);font-weight:600}
+.login-card .err{color:#DC2626;font-size:13px;text-align:center;margin-top:10px;display:none}
+.login-card .err.show{display:block}
+
+@media (max-width:980px){.app{grid-template-columns:1fr}aside{display:none}.charts{grid-template-columns:1fr}.kpi-row{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN WALL -->
+<div id="loginWall" class="login-wall">
+  <div class="login-card">
+    <div class="lc-brand">
+      <img src="logo.png" alt="FastLink Outsourcing"/>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:.06em;font-weight:600">ADMIN PORTAL</div>
+    </div>
+    <h2>Sign in to your dashboard</h2>
+    <p>Authorised FastLink personnel only.</p>
+    <form onsubmit="return doLogin(event)">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="u" placeholder="username" required autocomplete="username"/>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="p" placeholder="••••••••" required autocomplete="current-password"/>
+      </div>
+      <button type="submit" class="submit">🔐 Sign in</button>
+      <div class="or"><span>OR</span></div>
+      <button type="button" class="gauth" onclick="doGoogle()">
+        <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.2 6 29.4 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.1 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.2 6 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.2-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2c-.4.4 6.6-4.8 6.6-14.8 0-1.3-.1-2.6-.4-3.9z"/></svg>
+        Continue with Google
+      </button>
+      <div class="err" id="err">Invalid credentials. Try again.</div>
+      <div class="hint">Demo · username <code>fastlink</code> · password <code>admin</code> — or any Google account</div>
+    </form>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app" style="display:none">
+
+  <aside>
+    <div class="brand">
+      <img src="logo.png" alt="FastLink"/>
+    </div>
+    <div style="padding:8px 0">
+      <nav class="side">
+        <a class="on" data-view="dashboard"><span class="ico">📊</span> Dashboard</a>
+        <a data-view="companies"><span class="ico">🏢</span> Companies</a>
+        <a data-view="candidates"><span class="ico">👥</span> Candidates</a>
+        <a data-view="plans"><span class="ico">📦</span> Package Plans</a>
+        <a data-view="subs"><span class="ico">💳</span> Subscriptions</a>
+      </nav>
+      <div class="menu-section">Manage Jobs</div>
+      <nav class="side">
+        <a data-view="jobs"><span class="ico">💼</span> Jobs</a>
+        <a data-view="applicants"><span class="ico">📥</span> Job Applicants</a>
+        <a data-view="cats"><span class="ico">🏷️</span> Job Categories</a>
+        <a data-view="skills"><span class="ico">🎯</span> Job Skills</a>
+        <a data-view="roles"><span class="ico">🧑‍💼</span> Job Roles</a>
+        <a data-view="exp"><span class="ico">📈</span> Job Experience</a>
+        <a data-view="lang"><span class="ico">🗣️</span> Language Levels</a>
+        <a data-view="career"><span class="ico">🪜</span> Career Levels</a>
+      </nav>
+      <div class="menu-section">System</div>
+      <nav class="side">
+        <a data-view="settings"><span class="ico">⚙️</span> Settings</a>
+        <a onclick="logout()"><span class="ico">🚪</span> Log out</a>
+      </nav>
+    </div>
+    <div class="side-bot">
+      © 2026 FastLink Outsourcing<br/>v1.0.0 · Dubai &amp; Abu Dhabi
+    </div>
+  </aside>
+
+  <div>
+    <div class="top">
+      <h1 id="topTitle">Dashboard</h1>
+      <div class="tools">
+        <div class="search">
+          <span style="color:var(--muted)">🔍</span>
+          <input placeholder="Search across UAE jobs, candidates, companies..."/>
+        </div>
+        <div class="user-chip">
+          <div class="av" id="userAv">A</div>
+          <div>
+            <div class="nm" id="userNm">Admin</div>
+            <div class="rl">FastLink HQ · Dubai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main>
+
+    <!-- DASHBOARD -->
+    <section class="view on" data-view="dashboard">
+      <div class="kpi-row">
+        <div class="kpi b"><div><h3>Total Jobs</h3><div class="num">3,540</div><div class="sub">▲ 12% vs last month</div></div><div class="ico">💼</div></div>
+        <div class="kpi o"><div><h3>Total Companies</h3><div class="num">386</div><div class="sub">▲ 8 new this week</div></div><div class="ico">🏢</div></div>
+        <div class="kpi g"><div><h3>Total Candidates</h3><div class="num">12,840</div><div class="sub">▲ 240 new today</div></div><div class="ico">👥</div></div>
+      </div>
+      <div class="kpi-row" style="margin-top:14px">
+        <div class="kpi p"><div><h3>Total Earnings (AED)</h3><div class="num">AED 387,420</div><div class="sub">YTD 2026 · ▲ 18%</div></div><div class="ico">💰</div></div>
+        <div class="kpi r"><div><h3>Active Subscriptions</h3><div class="num">142</div><div class="sub">96% renewal rate</div></div><div class="ico">📋</div></div>
+        <div class="kpi t"><div><h3>All Active Jobs</h3><div class="num">2,180</div><div class="sub">62% of total · ▲ 4%</div></div><div class="ico">⚡</div></div>
+      </div>
+
+      <div class="charts">
+        <div class="card">
+          <h3>Earnings Overview · 2026 (AED)</h3>
+          <div class="bars">
+            <div class="bar"><div class="b" style="height:32%"></div><div class="lbl">Jan</div></div>
+            <div class="bar"><div class="b" style="height:48%"></div><div class="lbl">Feb</div></div>
+            <div class="bar"><div class="b" style="height:62%"></div><div class="lbl">Mar</div></div>
+            <div class="bar"><div class="b" style="height:78%"></div><div class="lbl">Apr</div></div>
+            <div class="bar"><div class="b" style="height:55%"></div><div class="lbl">May</div></div>
+            <div class="bar"><div class="b" style="height:40%"></div><div class="lbl">Jun</div></div>
+            <div class="bar"><div class="b" style="height:35%"></div><div class="lbl">Jul</div></div>
+            <div class="bar"><div class="b" style="height:50%"></div><div class="lbl">Aug</div></div>
+            <div class="bar"><div class="b" style="height:88%"></div><div class="lbl">Sep</div></div>
+            <div class="bar"><div class="b" style="height:72%"></div><div class="lbl">Oct</div></div>
+            <div class="bar"><div class="b" style="height:60%"></div><div class="lbl">Nov</div></div>
+            <div class="bar"><div class="b" style="height:95%"></div><div class="lbl">Dec</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Company Registrations · 2026</h3>
+          <div class="line-chart">
+            <svg viewBox="0 0 600 200" preserveAspectRatio="none">
+              <polyline points="0,160 50,140 100,135 150,120 200,128 250,115 300,108 350,118 400,90 450,72 500,80 550,62 600,40" fill="none" stroke="#16A34A" stroke-width="3"/>
+              <polyline points="0,160 50,140 100,135 150,120 200,128 250,115 300,108 350,118 400,90 450,72 500,80 550,62 600,40 600,200 0,200" fill="rgba(22,163,74,.12)" stroke="none"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-head">
+          <h2>Recent applicants</h2>
+          <div class="table-tools"><input placeholder="Search…"/><button class="btn btn-ghost">Export CSV</button></div>
+        </div>
+        <table id="applicantsRecent"></table>
+      </div>
+    </section>
+
+    <!-- COMPANIES -->
+    <section class="view" data-view="companies">
+      <div class="table-card">
+        <div class="table-head">
+          <h2>Company List</h2>
+          <div class="table-tools">
+            <select><option>Show 10</option><option>25</option><option>50</option></select>
+            <input placeholder="Search company…"/>
+            <button class="btn btn-green">+ Create Company</button>
+          </div>
+        </div>
+        <table id="tblCompanies"></table>
+        <div class="pager"><span>Showing 1 to 10 of 386</span><div class="pages"><button class="on">1</button><button>2</button><button>3</button><button>…</button><button>39</button></div></div>
+      </div>
+    </section>
+
+    <!-- CANDIDATES -->
+    <section class="view" data-view="candidates">
+      <div class="table-card">
+        <div class="table-head">
+          <h2>Candidate List</h2>
+          <div class="table-tools"><input placeholder="Search candidate…"/><button class="btn btn-ghost">Export CSV</button></div>
+        </div>
+        <table id="tblCandidates"></table>
+        <div class="pager"><span>Showing 1 to 10 of 12,840</span><div class="pages"><button class="on">1</button><button>2</button><button>3</button><button>…</button><button>1284</button></div></div>
+      </div>
+    </section>
+
+    <!-- JOBS -->
+    <section class="view" data-view="jobs">
+      <div class="kpi-row">
+        <div class="kpi g"><div><h3>Active Jobs</h3><div class="num">2,180</div></div><div class="ico">⚡</div></div>
+        <div class="kpi r"><div><h3>Pending Jobs</h3><div class="num">42</div></div><div class="ico">⏳</div></div>
+        <div class="kpi o"><div><h3>Featured Jobs</h3><div class="num">128</div></div><div class="ico">⭐</div></div>
+      </div>
+      <div class="table-card">
+        <div class="table-head">
+          <h2>Job List</h2>
+          <div class="table-tools"><input placeholder="Search job title…"/><button class="btn btn-green">+ Create Job</button></div>
+        </div>
+        <table id="tblJobs"></table>
+        <div class="pager"><span>Showing 1 to 10 of 3,540</span><div class="pages"><button class="on">1</button><button>2</button><button>3</button><button>…</button><button>354</button></div></div>
+      </div>
+    </section>
+
+    <!-- APPLICANTS -->
+    <section class="view" data-view="applicants">
+      <div class="table-card">
+        <div class="table-head">
+          <h2>Applicants List</h2>
+          <div class="table-tools">
+            <select><option>All status</option><option>Applied</option><option>Shortlisted</option><option>Interview</option><option>Hired</option><option>Rejected</option></select>
+            <input placeholder="Search…"/>
+          </div>
+        </div>
+        <table id="tblApplicants"></table>
+        <div class="pager"><span>Showing 1 to 10 of 8,420</span><div class="pages"><button class="on">1</button><button>2</button><button>3</button></div></div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="view" data-view="cats">
+      <div class="table-card">
+        <div class="table-head">
+          <h2>Job Categories</h2>
+          <div class="table-tools"><input placeholder="Search category…"/><button class="btn btn-green">+ Create Category</button></div>
+        </div>
+        <table id="tblCats"></table>
+      </div>
+    </section>
+
+    <!-- Other admin views (lightweight stubs) -->
+    <section class="view" data-view="plans"><div class="card"><h3>Package Plans</h3><p style="color:var(--muted);margin-top:6px">Manage employer subscription tiers (Starter / Growth / Enterprise) — pricing, job-post limits, featured-post quotas, support SLAs.</p></div></section>
+    <section class="view" data-view="subs"><div class="card"><h3>Subscriptions</h3><p style="color:var(--muted);margin-top:6px">142 active employer subscriptions · AED 387,420 YTD revenue · auto-renewal, billing history, invoices.</p></div></section>
+    <section class="view" data-view="skills"><div class="card"><h3>Job Skills</h3><p style="color:var(--muted);margin-top:6px">Master taxonomy of skills used across the platform (e.g. AutoCAD, Opera PMS, FIDIC, AWS, etc.). 480+ entries.</p></div></section>
+    <section class="view" data-view="roles"><div class="card"><h3>Job Roles</h3><p style="color:var(--muted);margin-top:6px">Standardised role names across categories — keeps search relevance high.</p></div></section>
+    <section class="view" data-view="exp"><div class="card"><h3>Job Experience Levels</h3><p style="color:var(--muted);margin-top:6px">Entry · 1–3 yrs · 4–7 yrs · 8–12 yrs · 12+ yrs (Senior / Director).</p></div></section>
+    <section class="view" data-view="lang"><div class="card"><h3>Language Levels</h3><p style="color:var(--muted);margin-top:6px">English · Arabic · Hindi · Urdu · Tagalog · Bengali — basic / conversational / fluent / native.</p></div></section>
+    <section class="view" data-view="career"><div class="card"><h3>Career Levels</h3><p style="color:var(--muted);margin-top:6px">Junior · Mid · Senior · Lead · Manager · Director · VP · C-suite.</p></div></section>
+    <section class="view" data-view="settings"><div class="card"><h3>Settings</h3><p style="color:var(--muted);margin-top:6px">Branding, email templates, payment gateway, integrations (Calendly, WhatsApp Business, HubSpot CRM).</p></div></section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   AUTH — demo: fastlink/admin OR Google
+   ============================================================ */
+function doLogin(e){
+  e.preventDefault();
+  const u=document.getElementById('u').value.trim();
+  const p=document.getElementById('p').value;
+  if(u==='fastlink' && p==='admin'){
+    sessionStorage.setItem('fl_admin', JSON.stringify({user:u,via:'password',at:Date.now()}));
+    showApp(u);
+  } else {
+    document.getElementById('err').classList.add('show');
+  }
+  return false;
+}
+function doGoogle(){
+  // demo — accept any Google sign-in
+  sessionStorage.setItem('fl_admin', JSON.stringify({user:'admin@fastlink.ae',via:'google',at:Date.now()}));
+  showApp('admin@fastlink.ae');
+}
+function logout(){
+  sessionStorage.removeItem('fl_admin');
+  location.reload();
+}
+function showApp(name){
+  document.getElementById('loginWall').style.display='none';
+  document.getElementById('app').style.display='grid';
+  const initial=(name||'A')[0].toUpperCase();
+  document.getElementById('userAv').textContent=initial;
+  document.getElementById('userNm').textContent = name.length>20 ? 'Admin' : (name.charAt(0).toUpperCase()+name.slice(1));
+  initData();
+}
+// auto-login if session
+if(sessionStorage.getItem('fl_admin')){
+  const s=JSON.parse(sessionStorage.getItem('fl_admin'));
+  showApp(s.user);
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+document.querySelectorAll('nav.side a[data-view]').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const v=a.dataset.view;
+    document.querySelectorAll('nav.side a').forEach(b=>b.classList.remove('on'));
+    a.classList.add('on');
+    document.querySelectorAll('.view').forEach(s=>s.classList.remove('on'));
+    document.querySelector(`.view[data-view="${v}"]`).classList.add('on');
+    document.getElementById('topTitle').textContent = a.textContent.trim().replace(/^[^A-Za-z]+/,'');
+  });
+});
+
+/* ============================================================
+   DATA — UAE-themed, no "First Choice" / "Egens"
+   ============================================================ */
+const COMPANIES = [
+  {n:'Aurum Properties',o:'Mohamed Al Mazrouei',e:'hr@aurumproperties.ae',type:'Real Estate · Dubai',since:'2025-Sep-25',avc:'b1',i:'AP'},
+  {n:'Cedar Healthcare',o:'Dr. Aisha Khalifa',e:'careers@cedarhealth.ae',type:'Healthcare · Abu Dhabi',since:'2025-Sep-17',avc:'b2',i:'CH'},
+  {n:'Halcyon Hospitality',o:'James Whittaker',e:'recruit@halcyon-hospitality.ae',type:'Hospitality · Dubai',since:'2025-Sep-05',avc:'b3',i:'HH'},
+  {n:'Northwind Logistics',o:'Rohit Khanna',e:'jobs@northwind-logistics.ae',type:'Logistics · JAFZA',since:'2025-Sep-02',avc:'b4',i:'NL'},
+  {n:'BluePeak Engineering',o:'Sarah Iyer',e:'careers@bluepeak.ae',type:'Engineering · Dubai',since:'2025-Jul-31',avc:'b5',i:'BP'},
+  {n:'Mira Retail Group',o:'Fatima Al Hashimi',e:'hr@miraretail.ae',type:'Retail · Dubai Mall',since:'2025-Jul-29',avc:'b6',i:'MR'},
+  {n:'Solace Education',o:'Pradeep Menon',e:'hr@solaceedu.ae',type:'Education · Sharjah',since:'2025-Jul-25',avc:'b1',i:'SE'},
+  {n:'Vantage F&amp;B',o:'Liam O\\'Connor',e:'recruit@vantagefb.ae',type:'F&amp;B · Dubai Marina',since:'2025-Jul-22',avc:'b2',i:'VF'},
+  {n:'Quartz Construction',o:'Karthik Subramanian',e:'careers@quartzcon.ae',type:'Construction · Abu Dhabi',since:'2025-Jul-12',avc:'b3',i:'QC'},
+  {n:'Helios Energy Services',o:'Omar Al Suwaidi',e:'hr@heliosenergy.ae',type:'Energy · Mussafah',since:'2025-Jul-08',avc:'b4',i:'HE'},
+];
+
+const CANDIDATES = [
+  {n:'Khandaker Raufur Rahman',e:'kraufur@email.com',prof:'Civil Engineer',role:'Project Engineer',exp:'12 Years',date:'2025-Sep-17'},
+  {n:'Fatima Al Mansoori',e:'fatima.am@email.ae',prof:'HR Manager',role:'Senior HR',exp:'9 Years',date:'2025-Sep-12'},
+  {n:'Rohit Sharma',e:'rohit.sh@email.com',prof:'Software Developer',role:'Full-Stack',exp:'5 Years',date:'2025-Sep-10'},
+  {n:'Aisha Patel',e:'aisha.p@email.com',prof:'Designer',role:'UI/UX Lead',exp:'7 Years',date:'2025-Aug-28'},
+  {n:'Mohammed Hassan',e:'mhassan@email.com',prof:'Site Foreman',role:'Construction',exp:'15 Years',date:'2025-Aug-22'},
+  {n:'Priya Iyer',e:'priya.iy@email.com',prof:'Registered Nurse',role:'ICU',exp:'7 Years',date:'2025-Aug-12'},
+  {n:'Liam Whitaker',e:'liam.w@email.com',prof:'Sales Executive',role:'B2B SaaS',exp:'5 Years',date:'2025-Aug-03'},
+  {n:'Sara Al Nuaimi',e:'sara.an@email.ae',prof:'Procurement',role:'Manager',exp:'11 Years',date:'2025-Jul-31'},
+  {n:'Carlos Reyes',e:'creyes@email.com',prof:'Hotel Operations',role:'Manager',exp:'9 Years',date:'2025-Jul-22'},
+  {n:'Nada Al Hammadi',e:'nada.ah@email.ae',prof:'Executive Assistant',role:'C-suite',exp:'8 Years',date:'2025-Jul-15'},
+];
+
+const JOBS = [
+  {id:101,title:'Senior Civil Engineer (Megaproject)',sal:'AED 28,000–35,000',vac:5,exp:'30 Sep, 26',feat:true,live:true},
+  {id:102,title:'Hotel Operations Manager — 5★',sal:'AED 22,000–28,000',vac:2,exp:'31 Dec, 26',feat:true,live:true},
+  {id:103,title:'ICU Registered Nurse (DOH licensed)',sal:'AED 14,000–18,000',vac:8,exp:'31 Dec, 26',feat:false,live:true},
+  {id:104,title:'Full-Stack Developer (Node + React)',sal:'AED 22,000–28,000',vac:3,exp:'30 Nov, 26',feat:true,live:true},
+  {id:105,title:'MEP Site Engineer',sal:'AED 18,000–22,000',vac:6,exp:'30 Nov, 26',feat:false,live:true},
+  {id:106,title:'Bilingual Executive Assistant',sal:'AED 16,000–20,000',vac:1,exp:'30 Oct, 26',feat:false,live:true},
+  {id:107,title:'Logistics Coordinator (JAFZA)',sal:'AED 9,000–12,000',vac:4,exp:'30 Nov, 26',feat:false,live:true},
+  {id:108,title:'Retail Supervisor — Dubai Mall',sal:'AED 7,500–9,500',vac:10,exp:'25 Oct, 26',feat:true,live:true},
+  {id:109,title:'Procurement Manager (MEP)',sal:'AED 30,000–38,000',vac:1,exp:'30 Nov, 26',feat:false,live:true},
+  {id:110,title:'Site Foreman (Concrete)',sal:'AED 9,500–12,000',vac:12,exp:'20 Sep, 26',feat:false,live:false},
+];
+
+const APPLICANTS = [
+  {n:1,cand:'Khandaker Raufur Rahman',prof:'Civil Engineer',co:'Quartz Construction',loc:'Dubai',job:'Senior Civil Engineer (Megaproject)',dl:'30 Nov, 26',date:'26 Sep, 2026',st:'applied'},
+  {n:2,cand:'Aisha Patel',prof:'UI/UX Designer',co:'BluePeak Engineering',loc:'Dubai',job:'Creative UI/UX Designer',dl:'30 Nov, 26',date:'17 Sep, 2026',st:'shortlisted'},
+  {n:3,cand:'Liam Whitaker',prof:'Sales Manager',co:'Aurum Properties',loc:'Dubai',job:'Hiring Sales Manager',dl:'31 Dec, 26',date:'17 Sep, 2026',st:'interview'},
+  {n:4,cand:'Rohit Sharma',prof:'Software Developer',co:'Northwind Logistics',loc:'Jebel Ali',job:'Full-Stack Developer',dl:'30 Nov, 26',date:'05 Sep, 2026',st:'applied'},
+  {n:5,cand:'Mohammed Hassan',prof:'Site Foreman',co:'Quartz Construction',loc:'Abu Dhabi',job:'Site Foreman (Concrete)',dl:'30 Oct, 26',date:'05 Sep, 2026',st:'hired'},
+  {n:6,cand:'Priya Iyer',prof:'Registered Nurse',co:'Cedar Healthcare',loc:'Abu Dhabi',job:'ICU Registered Nurse',dl:'30 Nov, 26',date:'04 Sep, 2026',st:'shortlisted'},
+  {n:7,cand:'Carlos Reyes',prof:'Hotel Manager',co:'Halcyon Hospitality',loc:'Dubai',job:'Hotel Operations Manager',dl:'30 Nov, 26',date:'02 Sep, 2026',st:'applied'},
+  {n:8,cand:'Sara Al Nuaimi',prof:'Procurement',co:'Helios Energy Services',loc:'Mussafah',job:'Procurement Manager',dl:'30 Nov, 26',date:'01 Sep, 2026',st:'interview'},
+  {n:9,cand:'Nada Al Hammadi',prof:'Executive Assistant',co:'Mira Retail Group',loc:'Dubai',job:'Bilingual EA',dl:'30 Nov, 26',date:'01 Sep, 2026',st:'hired'},
+  {n:10,cand:'Fatima Al Mansoori',prof:'HR Manager',co:'Solace Education',loc:'Sharjah',job:'Senior HR Manager',dl:'31 Dec, 26',date:'25 Aug, 2026',st:'rejected'},
+];
+
+const CATS = [
+  {id:1,nm:'Construction',ico:'🏗️',feat:true,live:true},
+  {id:2,nm:'Healthcare',ico:'⚕️',feat:true,live:true},
+  {id:3,nm:'Hospitality',ico:'🏨',feat:true,live:true},
+  {id:4,nm:'Engineering & Tech',ico:'💻',feat:true,live:true},
+  {id:5,nm:'Sales & Retail',ico:'🛍️',feat:false,live:true},
+  {id:6,nm:'Logistics & Transport',ico:'🚚',feat:false,live:true},
+  {id:7,nm:'Education',ico:'📚',feat:false,live:true},
+  {id:8,nm:'Corporate & Admin',ico:'📋',feat:false,live:true},
+  {id:9,nm:'F&B',ico:'🍽️',feat:true,live:true},
+  {id:10,nm:'Energy & Utilities',ico:'⚡',feat:false,live:true},
+];
+
+function tog(on){return `<span class="toggle ${on?'':'off'}"></span>`;}
+function actBtns(){return `<div class="act"><button class="v" title="View">👁</button><button class="e" title="Edit">✎</button><button class="d" title="Delete">🗑</button></div>`;}
+
+function initData(){
+  // Companies
+  document.getElementById('tblCompanies').innerHTML = `
+    <thead><tr><th>Company</th><th>Owner</th><th>Type / Location</th><th>Established</th><th>Verified</th><th>Status</th><th>Action</th></tr></thead>
+    <tbody>${COMPANIES.map(c=>`<tr>
+      <td><div class="cell-co"><div class="av ${c.avc}">${c.i}</div><div><div class="nm">${c.n}</div><div class="em">${c.e}</div></div></div></td>
+      <td><div class="nm">${c.o}</div><div class="em">${c.e}</div></td>
+      <td>${c.type}</td><td>${c.since}</td><td>${tog(true)}</td><td>${tog(true)}</td><td>${actBtns()}</td>
+    </tr>`).join('')}</tbody>`;
+
+  // Candidates
+  document.getElementById('tblCandidates').innerHTML = `
+    <thead><tr><th>Candidate</th><th>Profession</th><th>Role</th><th>Experience</th><th>Joined</th><th>Verified</th><th>Status</th><th>Action</th></tr></thead>
+    <tbody>${CANDIDATES.map((c,i)=>`<tr>
+      <td><div class="cell-co"><div class="av b${(i%6)+1}">${c.n.split(' ').map(p=>p[0]).slice(0,2).join('')}</div><div><div class="nm">${c.n}</div><div class="em">${c.e}</div></div></div></td>
+      <td>${c.prof}</td><td>${c.role}</td><td>${c.exp}</td><td>${c.date}</td><td>${tog(true)}</td><td>${tog(true)}</td><td>${actBtns()}</td>
+    </tr>`).join('')}</tbody>`;
+
+  // Jobs
+  document.getElementById('tblJobs').innerHTML = `
+    <thead><tr><th>ID</th><th>Title</th><th>Salary Range</th><th>Vacancy</th><th>Expires</th><th>Featured</th><th>Status</th><th>Action</th></tr></thead>
+    <tbody>${JOBS.map(j=>`<tr>
+      <td>${j.id}</td><td><div class="nm">${j.title}</div></td><td>${j.sal}</td><td>${j.vac}</td>
+      <td><span class="badge live">${j.exp}</span></td><td>${tog(j.feat)}</td><td>${tog(j.live)}</td><td>${actBtns()}</td>
+    </tr>`).join('')}</tbody>`;
+
+  // Applicants (full + dashboard recent)
+  const applRows = (rows)=>rows.map(a=>`<tr>
+      <td>${a.n}</td>
+      <td><div class="nm">${a.cand}</div><div class="em">Profession: ${a.prof}</div></td>
+      <td><div class="nm">${a.co}</div><div class="em">📍 ${a.loc}</div></td>
+      <td><div class="nm">${a.job}</div><div class="em">Deadline: <span class="badge live">${a.dl}</span></div></td>
+      <td>${a.date}</td>
+      <td><span class="badge ${a.st}">${a.st}</span></td>
+    </tr>`).join('');
+  document.getElementById('tblApplicants').innerHTML = `
+    <thead><tr><th>S.N</th><th>Candidate</th><th>Company</th><th>Job</th><th>Applied Date</th><th>Status</th></tr></thead>
+    <tbody>${applRows(APPLICANTS)}</tbody>`;
+  document.getElementById('applicantsRecent').innerHTML = `
+    <thead><tr><th>S.N</th><th>Candidate</th><th>Company</th><th>Job</th><th>Date</th><th>Status</th></tr></thead>
+    <tbody>${applRows(APPLICANTS.slice(0,5))}</tbody>`;
+
+  // Categories
+  document.getElementById('tblCats').innerHTML = `
+    <thead><tr><th>ID</th><th>Image</th><th>Category Name</th><th>Featured</th><th>Status</th><th>Action</th></tr></thead>
+    <tbody>${CATS.map(c=>`<tr>
+      <td>${c.id}</td><td style="font-size:24px">${c.ico}</td><td><div class="nm">${c.nm}</div></td>
+      <td>${tog(c.feat)}</td><td>${tog(c.live)}</td><td>${actBtns()}</td>
+    </tr>`).join('')}</tbody>`;
+}
+</script>
+</body>
+</html>

@@ -2145,18 +2145,29 @@ function loginProfileSubmit(e){
 }
 function loginCredSubmit(e){
   e.preventDefault();
-  loginCtx.pass='********';
+  const pass=document.getElementById('lcPass').value;
+  // Admin auth: fastlink/admin (any matching combo accepted)
+  if(loginCtx.role==='admin' && (pass!=='admin' && pass!=='fastlink/admin')){
+    alert('❌ Invalid admin credentials. Use password: admin');
+    return;
+  }
   loginCtx.signedInAt=new Date().toISOString();
-  console.log('🔐 Login:', loginCtx);
   try{localStorage.setItem('fastlink_session', JSON.stringify(loginCtx));}catch(err){}
+  closeLogin();
+  // Redirect by role
+  const dest = {admin:'admin.html', client:'admin.html', candidate:'admin.html'}[loginCtx.role] || 'admin.html';
+  setTimeout(()=>{window.location.href = dest;}, 200);
+}catch(err){}
   closeLogin();
   setTimeout(()=>alert(`✅ Welcome! Signed in as ${loginCtx.role.toUpperCase()} (demo).\n\nIn production this would redirect to:\n• /admin/dashboard\n• /client/portal\n• /candidate/profile`), 150);
 }
 function loginGoogle(){
   loginCtx.provider='google';
   loginCtx.signedInAt=new Date().toISOString();
-  console.log('🔐 Google login:', loginCtx);
-  try{localStorage.setItem('fastlink_session', JSON.stringify(loginCtx));}catch(err){}
+  try{localStorage.setItem('fastlink_session', JSON.stringify(loginCtx));sessionStorage.setItem('fl_admin', JSON.stringify({user:'admin@fastlink.ae',via:'google',at:Date.now()}));}catch(err){}
+  closeLogin();
+  setTimeout(()=>{window.location.href='admin.html';}, 200);
+}catch(err){}
   closeLogin();
   setTimeout(()=>alert(`✅ Signed in with Google as ${loginCtx.role.toUpperCase()} (demo).`), 150);
 }
