@@ -742,15 +742,19 @@ if(sessionStorage.getItem('fl_admin')){
 /* ============================================================
    NAV
    ============================================================ */
-document.querySelectorAll('nav.side a[data-view]').forEach(a=>{
-  a.addEventListener('click',()=>{
-    const v=a.dataset.view;
-    document.querySelectorAll('nav.side a').forEach(b=>b.classList.remove('on'));
-    a.classList.add('on');
-    document.querySelectorAll('.view').forEach(s=>s.classList.remove('on'));
-    document.querySelector(`.view[data-view="${v}"]`).classList.add('on');
-    document.getElementById('topTitle').textContent = a.textContent.trim().replace(/^[^A-Za-z]+/,'');
-  });
+// Event delegation — works even if sidebar is mutated after load
+document.addEventListener('click',function(ev){
+  const a=ev.target.closest('nav.side a[data-view]');
+  if(!a) return;
+  ev.preventDefault();
+  const v=a.dataset.view;
+  document.querySelectorAll('nav.side a').forEach(b=>b.classList.remove('on'));
+  a.classList.add('on');
+  document.querySelectorAll('.view').forEach(s=>s.classList.remove('on'));
+  const target=document.querySelector('.view[data-view="'+v+'"]');
+  if(target) target.classList.add('on');
+  const t=document.getElementById('topTitle');
+  if(t) t.textContent = a.textContent.trim().replace(/^[^A-Za-z]+/,'');
 });
 
 /* ============================================================

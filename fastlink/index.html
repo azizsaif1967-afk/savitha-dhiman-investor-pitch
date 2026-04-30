@@ -661,6 +661,11 @@ nav.main a.nav-download:hover{background:var(--green);color:#fff}
 @media (max-width:560px){.cand-grid{grid-template-columns:1fr}}
 
 
+.enq-svc{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;cursor:pointer;background:#fff}
+.enq-svc:hover{border-color:var(--blue);background:var(--blue-soft)}
+.enq-svc input{margin:0}
+.nav-enq{background:var(--green);color:#fff !important;padding:8px 14px;border-radius:6px;font-weight:700 !important;margin-left:6px}
+.nav-enq:hover{background:var(--green-deep)}
 .nav-login{margin-left:4px;color:var(--ink) !important;font-weight:700 !important}
 .nav-login:hover{background:var(--ink) !important;color:#fff !important}
 
@@ -713,6 +718,7 @@ nav.main a.nav-download:hover{background:var(--green);color:#fff}
       <a href="#faq">FAQ</a>
       <a href="#brochure" class="nav-download">📥 Brochure</a>
       <a href="#contact">Contact</a>
+      <a href="#" class="nav-enq" onclick="event.preventDefault();openEnq()">📨 Enquire</a>
       <a href="#" class="nav-login" onclick="event.preventDefault();openLogin()">🔐 Login</a>
     </nav>
     <div class="nav-cta">
@@ -935,6 +941,59 @@ nav.main a.nav-download:hover{background:var(--green);color:#fff}
         <span class="call-opt-arrow">→</span>
       </a>
       <div class="legal" style="margin-top:6px">Mon–Sat · 9am–9pm GST · Dubai &amp; Abu Dhabi consultants on rotation</div>
+    </div>
+  </div>
+</div>
+
+<!-- ENQUIRY MODAL -->
+<div class="modal-back" id="enqModal">
+  <div class="modal" style="max-width:760px">
+    <div class="modal-head" style="background:linear-gradient(135deg,#1E5AA8,#143E76)">
+      <h3>📨 Send us an enquiry</h3>
+      <p>Tell us what you need — our AI assistant can help fill the form, or submit and we'll be in touch within 4 hours.</p>
+      <button class="close" onclick="closeEnq()">×</button>
+    </div>
+    <div class="modal-body" style="gap:14px">
+      <div id="enqAiPane" style="background:var(--blue-soft);border:1px solid #cbd9ec;border-radius:8px;padding:14px;display:flex;gap:12px;align-items:flex-start">
+        <div style="font-size:24px">🤖</div>
+        <div style="flex:1">
+          <div style="font-weight:700;color:var(--blue-deep)">FastLink AI Assistant</div>
+          <div id="enqAiMsg" style="font-size:13.5px;color:var(--ink-2);margin-top:4px">Hi! I can pre-fill this form based on a short description. Tell me about your hiring need (e.g. "Need 5 ICU nurses in Abu Dhabi by July, DOH-licensed").</div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <input id="enqAiInput" placeholder="Describe your need in one line…" style="flex:1;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:13px"/>
+            <button type="button" class="btn btn-green" onclick="enqAiHelp()" style="padding:8px 14px">✨ Help me</button>
+          </div>
+        </div>
+      </div>
+      <form onsubmit="enqSubmit(event)" style="display:flex;flex-direction:column;gap:12px">
+        <div class="row">
+          <div><label>Full name *</label><input type="text" id="enqName" required placeholder="John Smith"/></div>
+          <div><label>Company name *</label><input type="text" id="enqCo" required placeholder="Your Company FZE"/></div>
+        </div>
+        <div class="row">
+          <div><label>Mobile *</label><input type="tel" id="enqMob" required placeholder="+971 50 000 0000"/></div>
+          <div><label>Email *</label><input type="email" id="enqEmail" required placeholder="you@company.ae"/></div>
+        </div>
+        <div>
+          <label>Services required * (select all that apply)</label>
+          <div id="enqSvcs" style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:6px">
+            <label class="enq-svc"><input type="checkbox" name="svc" value="Permanent recruitment"/> Permanent recruitment</label>
+            <label class="enq-svc"><input type="checkbox" name="svc" value="Contract staffing"/> Contract staffing</label>
+            <label class="enq-svc"><input type="checkbox" name="svc" value="Manpower supply"/> Manpower supply</label>
+            <label class="enq-svc"><input type="checkbox" name="svc" value="Employer of Record (EOR)"/> Employer of Record (EOR)</label>
+            <label class="enq-svc"><input type="checkbox" name="svc" value="Payroll outsourcing"/> Payroll outsourcing</label>
+            <label class="enq-svc"><input type="checkbox" name="svc" value="HR &amp; admin outsourcing"/> HR &amp; admin outsourcing</label>
+            <label class="enq-svc"><input type="checkbox" name="svc" value="RPO (recruitment process)"/> RPO (recruitment process)</label>
+            <label class="enq-svc"><input type="checkbox" name="svc" value="Executive search"/> Executive search</label>
+          </div>
+        </div>
+        <div>
+          <label>Scope description *</label>
+          <textarea id="enqScope" required rows="4" placeholder="Number of hires, roles, locations, timeline, budget range, special requirements…" style="width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:13.5px"></textarea>
+        </div>
+        <button type="submit" class="submit" style="background:#0E1F3A">📨 Submit enquiry</button>
+        <div class="legal" style="text-align:center">We'll respond within 4 working hours · Mon–Sat 9am–9pm GST · Dubai &amp; Abu Dhabi.</div>
+      </form>
     </div>
   </div>
 </div>
@@ -2188,6 +2247,60 @@ function loginCredSubmit(e){
   }catch(err){}
   closeLogin();
   setTimeout(()=>{window.location.href='admin.html';}, 200);
+}
+/* Enquiry modal */
+function openEnq(){document.getElementById('enqModal').classList.add('open');}
+function closeEnq(){document.getElementById('enqModal').classList.remove('open');}
+function enqAiHelp(){
+  const q=(document.getElementById('enqAiInput').value||'').trim();
+  if(!q){document.getElementById('enqAiMsg').textContent='Please type a short description first — e.g. "Need 5 ICU nurses in Abu Dhabi by July, DOH-licensed".';return;}
+  const t=q.toLowerCase();
+  // Heuristic auto-fill based on keywords from website services
+  const svcMap=[
+    [['nurse','doctor','clinic','hospital','medical','healthcare','doh','moh'],'Permanent recruitment'],
+    [['chef','waiter','hotel','hospitality','f&b','restaurant'],'Permanent recruitment'],
+    [['site','engineer','construction','foreman','mep','civil','project'],'Contract staffing'],
+    [['driver','warehouse','labour','labor','manpower','helper','cleaner'],'Manpower supply'],
+    [['payroll','wps','salary'],'Payroll outsourcing'],
+    [['eor','employer of record','sponsor visa','no entity'],'Employer of Record (EOR)'],
+    [['rpo','volume hiring','recruiter','embedded'],'RPO (recruitment process)'],
+    [['ceo','cfo','coo','director','vp','head of','executive search','c-suite'],'Executive search'],
+    [['hr','admin','back-office','back office','outsource'],'HR & admin outsourcing'],
+  ];
+  const picked=new Set();
+  svcMap.forEach(([kws,svc])=>{if(kws.some(k=>t.includes(k))) picked.add(svc);});
+  document.querySelectorAll('#enqSvcs input[name="svc"]').forEach(cb=>{cb.checked=picked.has(cb.value);});
+  // Compose scope text
+  const numMatch=q.match(/\b(\d{1,4})\b/);
+  const cityMatch=q.match(/\b(dubai|abu dhabi|sharjah|ajman|ras al khaimah|fujairah|umm al quwain|jafza|mussafah)\b/i);
+  const timeMatch=q.match(/\b(immediate|asap|by [a-z]+|within \d+ \w+|\d+ (?:days|weeks|months))\b/i);
+  let scope='Brief: '+q;
+  if(numMatch) scope+='\n• Headcount: '+numMatch[1];
+  if(cityMatch) scope+='\n• Location: '+cityMatch[1].replace(/\b\w/g,c=>c.toUpperCase());
+  if(timeMatch) scope+='\n• Timeline: '+timeMatch[0];
+  if(picked.size) scope+='\n• Suggested service(s): '+[...picked].join(', ');
+  document.getElementById('enqScope').value=scope;
+  document.getElementById('enqAiMsg').innerHTML='✅ Pre-filled — review the form below and edit anything you need. <strong>'+(picked.size||'No')+' service(s)</strong> selected based on keywords.';
+}
+function enqSubmit(e){
+  e.preventDefault();
+  const data={
+    name:document.getElementById('enqName').value,
+    co:document.getElementById('enqCo').value,
+    mob:document.getElementById('enqMob').value,
+    email:document.getElementById('enqEmail').value,
+    svcs:[...document.querySelectorAll('#enqSvcs input[name="svc"]:checked')].map(cb=>cb.value),
+    scope:document.getElementById('enqScope').value,
+    at:new Date().toISOString()
+  };
+  if(!data.svcs.length){alert('Please select at least one service.');return;}
+  try{
+    const list=JSON.parse(localStorage.getItem('fastlink_enquiries')||'[]');
+    list.unshift(data);localStorage.setItem('fastlink_enquiries',JSON.stringify(list.slice(0,50)));
+  }catch(err){}
+  closeEnq();
+  setTimeout(()=>alert('✅ Thanks '+data.name+'! Your enquiry has been received.\n\nA FastLink consultant will reach out to '+data.email+' within 4 working hours.'),150);
+  return false;
 }
 function loginGoogle(){
   loginCtx.provider='google';
