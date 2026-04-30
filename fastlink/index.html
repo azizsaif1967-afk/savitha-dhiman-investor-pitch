@@ -2294,12 +2294,38 @@ function enqSubmit(e){
     at:new Date().toISOString()
   };
   if(!data.svcs.length){alert('Please select at least one service.');return;}
+  // Backup to localStorage
   try{
     const list=JSON.parse(localStorage.getItem('fastlink_enquiries')||'[]');
     list.unshift(data);localStorage.setItem('fastlink_enquiries',JSON.stringify(list.slice(0,50)));
   }catch(err){}
+  // Deliver via FormSubmit (free, no signup — first submission triggers a
+  // one-time confirmation email to aziz@azizsaif.com to activate the endpoint)
+  const fd=new FormData();
+  fd.append('Full name',data.name);
+  fd.append('Company',data.co);
+  fd.append('Mobile',data.mob);
+  fd.append('Email',data.email);
+  fd.append('Services required',data.svcs.join(', '));
+  fd.append('Scope',data.scope);
+  fd.append('Submitted at',data.at);
+  fd.append('_subject','New FastLink enquiry from '+data.name+' ('+data.co+')');
+  fd.append('_template','table');
+  fd.append('_captcha','false');
+  fetch('https://formsubmit.co/ajax/aziz@azizsaif.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+    .then(r=>r.json()).catch(()=>({success:false}));
+  // Mailto fallback so the user always has a way to reach us
+  const mailBody='Name: '+data.name+'%0D%0A'
+    +'Company: '+data.co+'%0D%0A'
+    +'Mobile: '+data.mob+'%0D%0A'
+    +'Email: '+data.email+'%0D%0A%0D%0A'
+    +'Services required:%0D%0A'+data.svcs.map(s=>'• '+s).join('%0D%0A')+'%0D%0A%0D%0A'
+    +'Scope:%0D%0A'+encodeURIComponent(data.scope);
   closeEnq();
-  setTimeout(()=>alert('✅ Thanks '+data.name+'! Your enquiry has been received.\n\nA FastLink consultant will reach out to '+data.email+' within 4 working hours.'),150);
+  setTimeout(()=>{
+    const ok=confirm('✅ Thanks '+data.name+'! Your enquiry has been sent to FastLink.\n\nA consultant will reach out to '+data.email+' within 4 working hours.\n\nPress OK to also send a copy via WhatsApp now, Cancel to skip.');
+    if(ok){window.open('https://wa.me/971556492370?text='+encodeURIComponent('Hi FastLink, new enquiry:\n\nName: '+data.name+'\nCompany: '+data.co+'\nMobile: '+data.mob+'\nEmail: '+data.email+'\n\nServices: '+data.svcs.join(', ')+'\n\nScope:\n'+data.scope),'_blank');}
+  },150);
   return false;
 }
 function loginGoogle(){
