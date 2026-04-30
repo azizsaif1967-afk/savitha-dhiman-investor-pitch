@@ -3,177 +3,593 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Portfolio · Aziz Saif</title>
-<meta name="description" content="A selection of websites by Aziz Saif — multi-brand ecommerce, brand profiles, and concept sites built across the UAE and beyond."/>
+<meta name="theme-color" content="#0a0a0a"/>
+
+<title>Aziz Saif — Automation & Consultancy · AI, Workflows, Web · Dubai · UAE</title>
+<meta name="description" content="Aziz Saif builds AI-powered automation, custom workflow systems, and high-converting websites for ambitious businesses across the UAE, GCC and beyond. Practical consulting. Real results. Ship in days, not months."/>
+<meta name="keywords" content="aziz saif, azizsaif, automation consultant dubai, AI automation UAE, business process automation, workflow automation, n8n consultant, make.com expert, zapier consultant, AI consultant dubai, web development dubai, ecommerce automation, GCC automation, digital transformation UAE, custom AI solutions, no-code automation, low-code automation, claude automation, openai consultant, integration consultant, RPA dubai, automation agency middle east"/>
+<meta name="author" content="Aziz Saif"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<link rel="canonical" href="https://azizsaif.com/"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://azizsaif.com/"/>
+<meta property="og:site_name" content="Aziz Saif"/>
+<meta property="og:title" content="Aziz Saif — Automation & Consultancy"/>
+<meta property="og:description" content="AI-powered automation, custom workflows and websites that ship fast. Dubai · UAE · GCC."/>
+<meta property="og:image" content="https://azizsaif.com/images/og-cover.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale" content="en_AE"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Aziz Saif — Automation & Consultancy"/>
+<meta name="twitter:description" content="AI automation, workflows, websites. Dubai · UAE · GCC."/>
+<meta name="twitter:image" content="https://azizsaif.com/images/og-cover.jpg"/>
+
+<!-- Geo -->
+<meta name="geo.region" content="AE-DU"/>
+<meta name="geo.placename" content="Dubai"/>
+<meta name="geo.position" content="25.2048;55.2708"/>
+<meta name="ICBM" content="25.2048, 55.2708"/>
+
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+<!-- JSON-LD: Person + ProfessionalService + WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://azizsaif.com/#aziz",
+      "name": "Aziz Saif",
+      "url": "https://azizsaif.com/",
+      "jobTitle": "Automation & AI Consultant",
+      "email": "hello@azizsaif.com",
+      "image": "https://azizsaif.com/images/aziz.jpg",
+      "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
+      "knowsAbout": ["AI Automation","Business Process Automation","Workflow Design","n8n","Make.com","Zapier","Claude","OpenAI","Web Development","Ecommerce","Digital Transformation"],
+      "sameAs": ["https://www.linkedin.com/in/azizsaif/","https://github.com/azizsaif1967-afk"]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://azizsaif.com/#service",
+      "name": "Aziz Saif — Automation & Consultancy",
+      "url": "https://azizsaif.com/",
+      "founder": { "@id": "https://azizsaif.com/#aziz" },
+      "areaServed": [{"@type":"Country","name":"United Arab Emirates"},{"@type":"Place","name":"GCC"},{"@type":"Place","name":"Worldwide"}],
+      "serviceType": ["AI Automation","Workflow Automation","Business Consultancy","Web Development","Ecommerce"],
+      "priceRange": "$$",
+      "telephone": "+971-00-000-0000"
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://azizsaif.com/",
+      "name": "Aziz Saif",
+      "potentialAction": { "@type":"SearchAction","target":"https://azizsaif.com/?q={query}","query-input":"required name=query" }
+    }
+  ]
+}
+</script>
+
 <style>
   :root {
-    --ink: #1a1a1a;
-    --ink-soft: #555;
-    --muted: #999;
-    --line: #ececec;
-    --bg: #f7f4ee;
-    --paper: #fffdf9;
-    --accent: #b08d57;
+    --ink: #0a0a0a;
+    --ink-2: #141414;
+    --line: rgba(255,255,255,.10);
+    --muted: #8a8a8a;
+    --paper: #fafaf7;
+    --accent: #d4ff3a;
+    --accent-2: #ff5a3c;
+    --grad: linear-gradient(120deg, #d4ff3a 0%, #6effa6 50%, #3aa0ff 100%);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Inter', system-ui, sans-serif; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.6; font-weight: 300; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--ink); color: #f5f5f5; -webkit-font-smoothing: antialiased; line-height: 1.55; font-weight: 300; overflow-x: hidden; }
   a { color: inherit; text-decoration: none; }
   .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
-  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.1; }
+  h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.02em; line-height: 1.05; }
+  .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
 
-  header.top { padding: 28px 0; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: rgba(255,253,249,.96); backdrop-filter: blur(8px); z-index: 90; }
+  /* NAV */
+  header.top {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 22px 0; background: rgba(10,10,10,.6); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
   header.top .container { display: flex; justify-content: space-between; align-items: center; }
-  .brand { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; }
-  .brand span { color: var(--accent); }
-  header nav { display: flex; gap: 28px; font-size: 13px; color: var(--ink-soft); }
+  .brand { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+  .brand .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 10px; vertical-align: middle; box-shadow: 0 0 16px var(--accent); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  header nav { display: flex; gap: 30px; font-size: 13px; color: #ccc; align-items: center; }
   header nav a:hover { color: var(--accent); }
-
-  .hero { padding: 110px 0 80px; max-width: 880px; }
-  .eyebrow { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-  .hero h1 { font-size: clamp(44px, 6vw, 84px); margin: 22px 0 26px; }
-  .hero h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
-  .hero p { font-size: 19px; color: var(--ink-soft); max-width: 620px; }
-
-  .filters { display: flex; gap: 18px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 13px; color: var(--ink-soft); }
-  .filters span { font-weight: 500; color: var(--ink); }
-  .filters a { padding: 4px 0; border-bottom: 1px solid transparent; cursor: pointer; }
-  .filters a.active, .filters a:hover { border-color: var(--ink); color: var(--ink); }
-
-  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px 40px; padding: 70px 0 110px; }
-  @media (max-width: 800px) { .grid { grid-template-columns: 1fr; gap: 50px; padding: 50px 0; } }
-
-  .card { display: block; cursor: pointer; }
-  .card .img {
-    aspect-ratio: 16/10; background: var(--bg); overflow: hidden; border-radius: 14px;
-    position: relative;
+  .cta-btn {
+    background: var(--accent); color: var(--ink) !important;
+    padding: 10px 18px; border-radius: 100px; font-weight: 600; font-size: 13px;
+    transition: all .25s ease;
   }
-  .card .img iframe, .card .img img {
-    width: 100%; height: 100%; border: 0; display: block;
-    transition: transform .5s ease;
+  .cta-btn:hover { background: #fff; transform: translateY(-1px); }
+
+  /* HERO with video */
+  .hero {
+    position: relative; min-height: 100vh; display: flex; align-items: center;
+    overflow: hidden; padding: 120px 0 80px;
   }
-  .card:hover .img img { transform: scale(1.03); }
-  .card .img .ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 36px; color: rgba(0,0,0,.18); }
-  .card .img .badge { position: absolute; top: 16px; left: 16px; background: rgba(255,253,249,.94); padding: 6px 12px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; border-radius: 100px; }
-  .card .img .badge.live { background: #1a1a1a; color: #fff; }
-  .card .meta { padding: 18px 4px 0; }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+  }
+  .hero-bg video, .hero-bg canvas {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.75) 60%, rgba(10,10,10,.95) 100%);
+  }
+  .hero .container { position: relative; z-index: 2; }
+  .hero .eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 100px; backdrop-filter: blur(8px); background: rgba(255,255,255,.04); margin-bottom: 32px; }
+  .hero .eyebrow .ping { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+  .hero h1 {
+    font-size: clamp(48px, 8vw, 120px);
+    max-width: 1100px; margin-bottom: 32px;
+    color: #fff;
+  }
+  .hero h1 em {
+    font-style: italic; font-weight: 400;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p.lead { font-size: clamp(18px, 1.6vw, 22px); max-width: 640px; color: #d6d6d6; margin-bottom: 40px; font-weight: 300; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: var(--ink); padding: 16px 28px;
+    border-radius: 100px; font-weight: 600; font-size: 15px;
+    transition: all .25s ease;
+  }
+  .btn-primary:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(212,255,58,.25); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid rgba(255,255,255,.25); color: #fff; padding: 16px 28px;
+    border-radius: 100px; font-weight: 500; font-size: 15px;
+    transition: all .25s ease;
+  }
+  .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.06); }
+
+  .hero-marquee {
+    position: absolute; bottom: 24px; left: 0; right: 0; z-index: 2;
+    overflow: hidden; white-space: nowrap; opacity: .55;
+  }
+  .hero-marquee div {
+    display: inline-block; padding-left: 100%;
+    animation: marquee 40s linear infinite;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .3em; text-transform: uppercase;
+  }
+  .hero-marquee span { margin: 0 24px; color: var(--muted); }
+  .hero-marquee b { color: var(--accent); font-weight: 500; }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-100%)} }
+
+  /* SECTIONS */
+  section.block { padding: 120px 0; border-top: 1px solid var(--line); }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 60px; flex-wrap: wrap; }
+  .section-head h2 { font-size: clamp(36px, 5vw, 64px); max-width: 720px; }
+  .section-head p { color: var(--muted); max-width: 360px; font-size: 15px; }
+
+  /* SERVICES */
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .services { grid-template-columns: 1fr; } }
+  .svc {
+    background: var(--ink-2); border: 1px solid var(--line); border-radius: 20px;
+    padding: 36px 32px; transition: all .3s ease; position: relative; overflow: hidden;
+  }
+  .svc::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform .4s ease;
+  }
+  .svc:hover { transform: translateY(-4px); border-color: rgba(212,255,58,.3); }
+  .svc:hover::before { transform: scaleX(1); }
+  .svc .num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); margin-bottom: 24px; }
+  .svc h3 { font-size: 28px; margin-bottom: 16px; color: #fff; }
+  .svc p { color: #b8b8b8; font-size: 15px; margin-bottom: 20px; }
+  .svc ul { list-style: none; }
+  .svc li { font-size: 13px; color: #999; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .svc li:last-child { border: none; }
+  .svc li::before { content: '→ '; color: var(--accent); }
+
+  /* PROCESS */
+  .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .process { grid-template-columns: repeat(2, 1fr); } }
+  .step { padding: 28px; border-left: 2px solid var(--accent); }
+  .step .step-num { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 12px; margin-bottom: 12px; }
+  .step h4 { font-size: 22px; margin-bottom: 10px; color: #fff; }
+  .step p { font-size: 14px; color: #999; }
+
+  /* WORK */
+  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  @media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } }
+  .card {
+    display: block; cursor: pointer; background: var(--ink-2); border: 1px solid var(--line);
+    border-radius: 20px; overflow: hidden; transition: all .3s ease;
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.2); }
+  .card .img { aspect-ratio: 16/10; overflow: hidden; position: relative; background: #1a1a1a; }
+  .card .img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .card:hover .img img { transform: scale(1.04); }
+  .card .img .badge { position: absolute; top: 16px; left: 16px; background: rgba(10,10,10,.85); color: #fff; padding: 6px 12px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; border-radius: 100px; backdrop-filter: blur(8px); }
+  .card .img .badge.live { background: var(--accent); color: var(--ink); }
+  .card .meta { padding: 28px; }
   .card .meta .tag { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-  .card .meta h3 { font-size: 28px; margin: 6px 0 8px; }
-  .card .meta p { color: var(--ink-soft); font-size: 14px; max-width: 520px; }
-  .card .meta .url { display: inline-block; margin-top: 12px; font-size: 13px; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 2px; font-weight: 500; }
-  .card .meta .url:hover { color: var(--accent); border-color: var(--accent); }
+  .card .meta h3 { font-size: 26px; margin: 10px 0 12px; color: #fff; }
+  .card .meta p { color: #999; font-size: 14px; }
+  .card .meta .url { display: inline-block; margin-top: 16px; font-size: 13px; color: var(--accent); border-bottom: 1px solid var(--accent); padding-bottom: 2px; font-weight: 500; }
 
-  .card.feat { grid-column: span 2; }
-  .card.feat .img { aspect-ratio: 21/9; }
-  .card.feat .meta h3 { font-size: 38px; }
-  @media (max-width: 800px) { .card.feat { grid-column: span 1; } .card.feat .img { aspect-ratio: 16/10; } .card.feat .meta h3 { font-size: 28px; } }
+  /* STATS */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 60px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  @media (max-width: 700px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat .n { font-family: 'Fraunces', serif; font-size: 56px; font-weight: 500; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 8px; }
+  .stat .l { font-size: 13px; color: var(--muted); letter-spacing: 0.06em; }
 
-  footer { padding: 40px 0; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  /* CTA SECTION */
+  .cta-block {
+    text-align: center; padding: 140px 32px;
+    background: radial-gradient(ellipse at center, rgba(212,255,58,.08) 0%, transparent 60%);
+  }
+  .cta-block h2 { font-size: clamp(48px, 8vw, 96px); margin-bottom: 32px; }
+  .cta-block h2 em { font-style: italic; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cta-block p { color: #ccc; font-size: 18px; margin-bottom: 40px; max-width: 540px; margin-left: auto; margin-right: auto; }
+
+  /* FOOTER */
+  footer { padding: 60px 0 40px; border-top: 1px solid var(--line); background: #050505; }
+  footer .row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+  @media (max-width: 800px) { footer .row { grid-template-columns: 1fr 1fr; } }
+  footer h5 { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+  footer ul { list-style: none; }
+  footer li { padding: 4px 0; font-size: 14px; color: #ccc; }
+  footer li a:hover { color: var(--accent); }
+  footer .tags { font-size: 12px; color: var(--muted); margin-top: 16px; line-height: 2; }
+  footer .tags a { color: var(--accent); }
+  footer .legal { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--muted); padding-top: 30px; border-top: 1px solid var(--line); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all .8s cubic-bezier(.2,.7,.3,1); }
+  .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="container">
-    <a href="portfolio.html" class="brand">Aziz <span>Saif</span></a>
+    <a href="/" class="brand"><span class="dot"></span>Aziz Saif</a>
     <nav>
+      <a href="#services">Services</a>
       <a href="#work">Work</a>
-      <a href="mailto:hello@azizsaif.com">Contact</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="cta-btn">Book a call →</a>
     </nav>
   </div>
 </header>
 
-<section class="container">
-  <div class="hero">
-    <span class="eyebrow">— Selected work · 2026</span>
-    <h1>Websites I've built<br/><em>recently.</em></h1>
-    <p>A small portfolio of multi-brand ecommerce, brand profiles and concept sites — built fast, with care, mostly across the GCC.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <canvas id="hero-canvas"></canvas>
   </div>
-
-  <div class="filters" id="filters">
-    <span>Filter:</span>
-    <a class="active" data-cat="">All</a>
-    <a data-cat="ecommerce">Ecommerce</a>
-    <a data-cat="brand">Brand sites</a>
-    <a data-cat="profile">Profiles</a>
+  <div class="container">
+    <span class="eyebrow mono"><span class="ping"></span> Available · Q2 2026 · Dubai · Remote</span>
+    <h1>Automation that <em>actually</em><br/>moves your business.</h1>
+    <p class="lead">I'm Aziz Saif. I design AI workflows, automation systems and websites that ship in days, not quarters — for ambitious teams across the UAE, GCC and beyond.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start a project →</a>
+      <a href="#work" class="btn-ghost">See recent work</a>
+    </div>
   </div>
-
-  <div class="grid" id="grid">
-
-    <a class="card feat" data-cat="ecommerce" href="azizsaifmomsworld/index.html">
-      <div class="img">
-        <span class="badge live">New · Live</span>
-        <img src="azizsaifmomsworld/assets/images/sig-01.jpg" alt="azizsaifmomsworld" loading="lazy" style="object-fit:cover"/>
-      </div>
-      <div class="meta">
-        <span class="tag">Multi-brand ecommerce · Organic kids &amp; family</span>
-        <h3>azizsaifmomsworld</h3>
-        <p>A curated multi-brand house for organic kids and family essentials — soft cream/sage palette, real catalogue imagery, AED-converted pricing, full cart, and a multi-brand structure ready to scale.</p>
-        <span class="url">Visit azizsaifmomsworld →</span>
-      </div>
-    </a>
-
-    <a class="card" data-cat="brand" href="dmcdubai/index.html">
-      <div class="img">
-        <span class="badge">Live</span>
-        <div style="background:linear-gradient(135deg,#0a2540 0%,#1e4d7c 60%,#c9a96e 140%);width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:32px"><img src="dmcdubai/assets/dmc-logo.png" alt="DMC Dubai" loading="lazy" style="max-width:50%;max-height:60%;object-fit:contain;filter:brightness(0) invert(1)"/></div>
-      </div>
-      <div class="meta">
-        <span class="tag">Brand site · Destination management</span>
-        <h3>DMC Dubai</h3>
-        <p>A destination management company site with blog, AI assistant integration and social-ready storytelling — built to introduce a Dubai DMC's services to international planners.</p>
-        <span class="url">Visit DMC Dubai →</span>
-      </div>
-    </a>
-
-    <a class="card" data-cat="profile" href="zainab/index.html">
-      <div class="img">
-        <span class="badge">Reading room</span>
-        <img src="zainab/portrait.jpg" alt="Zainab Ghadiyali" loading="lazy" style="object-fit:cover"/>
-      </div>
-      <div class="meta">
-        <span class="tag">Personal site · Reading room</span>
-        <h3>Zainab Ghadiyali</h3>
-        <p>A quiet, unlisted reading-room site — long-form essays and notes presented in a calm, type-led layout with thoughtful typography and easy navigation.</p>
-        <span class="url">Visit reading room →</span>
-      </div>
-    </a>
-
-    <a class="card" data-cat="profile" href="savitha-dhiman/index.html">
-      <div class="img">
-        <span class="badge">Investor pitch</span>
-        <img src="savitha-dhiman/hero.jpg" alt="Savitha Dhiman — Vastra Modular" loading="lazy" style="object-fit:cover"/>
-      </div>
-      <div class="meta">
-        <span class="tag">Founder pitch · Bridal couture</span>
-        <h3>Savitha Dhiman — Vastra Modular</h3>
-        <p>An investor-facing pitch site for a modular wedding couture concept in Delhi NCR — long-form storytelling, market sizing and a clear founder narrative.</p>
-        <span class="url">View pitch →</span>
-      </div>
-    </a>
-
+  <div class="hero-marquee">
+    <div>
+      <span><b>AI Automation</b></span><span>·</span>
+      <span>n8n</span><span>·</span>
+      <span>Make.com</span><span>·</span>
+      <span>Zapier</span><span>·</span>
+      <span><b>Claude</b></span><span>·</span>
+      <span>OpenAI</span><span>·</span>
+      <span>Custom GPTs</span><span>·</span>
+      <span><b>Workflow Design</b></span><span>·</span>
+      <span>Web Development</span><span>·</span>
+      <span>Ecommerce</span><span>·</span>
+      <span><b>RPA</b></span><span>·</span>
+      <span>Integrations</span><span>·</span>
+      <span>Dubai · UAE · GCC</span><span>·</span>
+      <span><b>AI Automation</b></span><span>·</span>
+      <span>n8n</span><span>·</span>
+      <span>Make.com</span><span>·</span>
+      <span>Zapier</span><span>·</span>
+      <span><b>Claude</b></span><span>·</span>
+    </div>
   </div>
 </section>
 
+<!-- STATS -->
+<section class="container">
+  <div class="stats reveal">
+    <div class="stat"><div class="n">40+</div><div class="l">Workflows shipped</div></div>
+    <div class="stat"><div class="n">12+</div><div class="l">Sites live across GCC</div></div>
+    <div class="stat"><div class="n">7d</div><div class="l">Average ship time</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">Owner-operated</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="block" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="mono">— What I do</span>
+        <h2 style="margin-top:16px">Three ways I help you ship faster.</h2>
+      </div>
+      <p>Pragmatic automation and consultancy for founders, operators and growing UAE businesses tired of manual work.</p>
+    </div>
+    <div class="services">
+      <div class="svc reveal">
+        <div class="num">/ 01</div>
+        <h3>AI Automation</h3>
+        <p>Custom AI agents and pipelines that read, write, decide and dispatch — wired into the tools you already use.</p>
+        <ul>
+          <li>Claude / GPT custom agents</li>
+          <li>Document & invoice extraction</li>
+          <li>Auto-replies, lead routing, quoting</li>
+          <li>RAG knowledge bases</li>
+          <li>Voice & WhatsApp bots</li>
+        </ul>
+      </div>
+      <div class="svc reveal">
+        <div class="num">/ 02</div>
+        <h3>Workflow Consultancy</h3>
+        <p>I map where your business leaks time and money, then rebuild the flows in n8n, Make or Zapier — visible, owned, debuggable.</p>
+        <ul>
+          <li>Audit & process mapping</li>
+          <li>n8n / Make / Zapier builds</li>
+          <li>CRM & ERP integrations</li>
+          <li>Reporting & dashboards</li>
+          <li>SOPs your team will actually use</li>
+        </ul>
+      </div>
+      <div class="svc reveal">
+        <div class="num">/ 03</div>
+        <h3>Web & Ecommerce</h3>
+        <p>Conversion-led websites and ecommerce, designed to load fast, rank on Google, and feed into your automation stack.</p>
+        <ul>
+          <li>Brand & landing sites</li>
+          <li>Multi-brand ecommerce</li>
+          <li>Technical SEO + schema</li>
+          <li>Bilingual EN / AR builds</li>
+          <li>WhatsApp + payment plug-ins</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="block" id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="mono">— Process</span>
+        <h2 style="margin-top:16px">From call to live<br/>in under two weeks.</h2>
+      </div>
+      <p>No retainers, no SOWs that read like novels. Tight scope, weekly demos, real software at the end.</p>
+    </div>
+    <div class="process">
+      <div class="step reveal"><div class="step-num">01 · Day 1</div><h4>Discovery call</h4><p>30 minutes. We map the problem and decide whether automation is the right fix.</p></div>
+      <div class="step reveal"><div class="step-num">02 · Days 2–3</div><h4>Blueprint</h4><p>Visual map of the flow, tools, costs and risks. Fixed price quoted before any build.</p></div>
+      <div class="step reveal"><div class="step-num">03 · Days 4–10</div><h4>Build & demo</h4><p>I build in public. You see daily progress in a shared workspace and break things early.</p></div>
+      <div class="step reveal"><div class="step-num">04 · Day 14</div><h4>Handover</h4><p>Live system, documented, recorded walkthrough, plus 30 days of post-launch support.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="block" id="work">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="mono">— Selected work</span>
+        <h2 style="margin-top:16px">Recent builds across<br/>the UAE & GCC.</h2>
+      </div>
+      <p>A small slice of recent work — multi-brand ecommerce, founder profiles, automation dashboards and concept sites.</p>
+    </div>
+    <div class="work-grid">
+      <a class="card reveal" href="azizsaifmomsworld/index.html">
+        <div class="img">
+          <span class="badge live">New · Live</span>
+          <img src="azizsaifmomsworld/assets/images/sig-01.jpg" alt="azizsaifmomsworld — multi-brand organic ecommerce" loading="lazy"/>
+        </div>
+        <div class="meta">
+          <span class="tag">Multi-brand ecommerce · Organic family</span>
+          <h3>azizsaifmomsworld</h3>
+          <p>Curated multi-brand house for organic kids and family essentials — full cart, AED pricing, scalable brand structure.</p>
+          <span class="url">View case →</span>
+        </div>
+      </a>
+      <a class="card reveal" href="dmcdubai/index.html">
+        <div class="img">
+          <span class="badge">Live</span>
+          <div style="background:linear-gradient(135deg,#0a2540 0%,#1e4d7c 60%,#c9a96e 140%);width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:32px"><img src="dmcdubai/assets/dmc-logo.png" alt="DMC Dubai" loading="lazy" style="max-width:50%;max-height:60%;object-fit:contain;filter:brightness(0) invert(1)"/></div>
+        </div>
+        <div class="meta">
+          <span class="tag">Brand site · Destination management</span>
+          <h3>DMC Dubai</h3>
+          <p>Destination management company site with blog, AI assistant integration and social-ready storytelling.</p>
+          <span class="url">View case →</span>
+        </div>
+      </a>
+      <a class="card reveal" href="zainab/index.html">
+        <div class="img">
+          <span class="badge">Reading room</span>
+          <img src="zainab/portrait.jpg" alt="Zainab Ghadiyali reading room" loading="lazy"/>
+        </div>
+        <div class="meta">
+          <span class="tag">Personal site · Type-led</span>
+          <h3>Zainab Ghadiyali</h3>
+          <p>Quiet, type-led reading room with long-form essays and notes — calm layout, thoughtful typography.</p>
+          <span class="url">View case →</span>
+        </div>
+      </a>
+      <a class="card reveal" href="savitha-dhiman/index.html">
+        <div class="img">
+          <span class="badge">Investor pitch</span>
+          <img src="savitha-dhiman/hero.jpg" alt="Savitha Dhiman — Vastra Modular investor pitch" loading="lazy"/>
+        </div>
+        <div class="meta">
+          <span class="tag">Founder pitch · Bridal couture</span>
+          <h3>Vastra Modular</h3>
+          <p>Investor-facing pitch site — long-form storytelling, market sizing and a clear founder narrative.</p>
+          <span class="url">View case →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-block" id="contact">
+  <div class="container">
+    <span class="mono">— Let's build</span>
+    <h2 class="reveal">Got a process that's<br/><em>begging to be automated?</em></h2>
+    <p class="reveal">A 30-minute call is free. If automation isn't the right answer, I'll tell you. If it is, you'll have a quote within 48 hours.</p>
+    <div class="hero-actions reveal" style="justify-content:center">
+      <a href="mailto:hello@azizsaif.com?subject=Project%20enquiry%20via%20azizsaif.com" class="btn-primary">hello@azizsaif.com →</a>
+      <a href="https://wa.me/971000000000" class="btn-ghost">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;width:100%">
-    <span>© <span id="yr"></span> Aziz Saif · azizsaif.com</span>
-    <span>Have a project? <a href="mailto:hello@azizsaif.com" style="color:var(--ink);border-bottom:1px solid var(--ink)">hello@azizsaif.com</a></span>
+  <div class="container">
+    <div class="row">
+      <div>
+        <div class="brand" style="margin-bottom:16px"><span class="dot"></span>Aziz Saif</div>
+        <p style="color:#999;font-size:14px;max-width:340px">Independent automation & AI consultant. Building practical systems for ambitious UAE businesses since 2018.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">AI Automation</a></li>
+          <li><a href="#services">Workflow Consultancy</a></li>
+          <li><a href="#services">Web & Ecommerce</a></li>
+          <li><a href="#services">Integrations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="mailto:hello@azizsaif.com">Contact</a></li>
+          <li><a href="https://www.linkedin.com/in/azizsaif/">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="mailto:hello@azizsaif.com">hello@azizsaif.com</a></li>
+          <li><a href="https://wa.me/971000000000">WhatsApp</a></li>
+          <li><a href="https://www.linkedin.com/in/azizsaif/">LinkedIn</a></li>
+          <li>Dubai · UAE</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tags">
+      <strong style="color:#ccc">Tags · </strong>
+      <a href="#">#AIAutomation</a> · <a href="#">#AutomationDubai</a> · <a href="#">#AIConsultant</a> · <a href="#">#WorkflowAutomation</a> ·
+      <a href="#">#n8n</a> · <a href="#">#MakeDotCom</a> · <a href="#">#Zapier</a> · <a href="#">#ClaudeAI</a> · <a href="#">#OpenAI</a> ·
+      <a href="#">#BusinessAutomation</a> · <a href="#">#DigitalTransformation</a> · <a href="#">#UAE</a> · <a href="#">#GCC</a> ·
+      <a href="#">#NoCode</a> · <a href="#">#LowCode</a> · <a href="#">#RPA</a> · <a href="#">#AIagents</a> · <a href="#">#Ecommerce</a> ·
+      <a href="#">#WebDevelopment</a> · <a href="#">#Consultancy</a> · <a href="#">#DubaiTech</a> · <a href="#">#StartupUAE</a>
+    </div>
+
+    <div class="legal">
+      <span>© <span id="yr"></span> Aziz Saif · azizsaif.com · All rights reserved.</span>
+      <span>Built in Dubai · Powered by automation</span>
+    </div>
   </div>
 </footer>
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  document.getElementById('filters').addEventListener('click', e => {
-    if (e.target.tagName !== 'A') return;
-    const cat = e.target.dataset.cat;
-    document.querySelectorAll('#filters a').forEach(a => a.classList.toggle('active', a === e.target));
-    document.querySelectorAll('#grid .card').forEach(c => {
-      c.style.display = (!cat || c.dataset.cat === cat) ? '' : 'none';
-    });
-  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Hero canvas: animated particle network (automation/AI feel)
+  (function(){
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, dpr = window.devicePixelRatio || 1;
+    let particles = [];
+    const N = window.innerWidth < 700 ? 50 : 110;
+
+    function resize() {
+      w = canvas.clientWidth = canvas.parentElement.clientWidth;
+      h = canvas.clientHeight = canvas.parentElement.clientHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    function init() {
+      particles = [];
+      for (let i = 0; i < N; i++) {
+        particles.push({
+          x: Math.random()*w, y: Math.random()*h,
+          vx: (Math.random()-.5)*.4, vy: (Math.random()-.5)*.4,
+          r: Math.random()*1.6 + .4
+        });
+      }
+    }
+    function step() {
+      ctx.clearRect(0,0,w,h);
+      // gradient bg
+      const g = ctx.createRadialGradient(w*0.7, h*0.3, 0, w*0.5, h*0.5, Math.max(w,h));
+      g.addColorStop(0, 'rgba(58,160,255,0.18)');
+      g.addColorStop(0.4, 'rgba(110,255,166,0.05)');
+      g.addColorStop(1, 'rgba(10,10,10,1)');
+      ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+
+      for (let p of particles) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+      }
+      // links
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i+1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = a.x-b.x, dy = a.y-b.y, d = Math.sqrt(dx*dx+dy*dy);
+          if (d < 130) {
+            ctx.strokeStyle = `rgba(212,255,58,${(1 - d/130)*.25})`;
+            ctx.lineWidth = .6;
+            ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+          }
+        }
+      }
+      // dots
+      for (let p of particles) {
+        ctx.fillStyle = 'rgba(255,255,255,.85)';
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+      }
+      requestAnimationFrame(step);
+    }
+    resize(); init(); step();
+    window.addEventListener('resize', () => { resize(); init(); });
+  })();
 </script>
+
 </body>
 </html>
