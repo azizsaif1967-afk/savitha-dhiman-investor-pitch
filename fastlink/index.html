@@ -2126,6 +2126,22 @@ function loginPickRole(role){
   loginCtx.role=role;
   const titleMap={admin:'Admin Sign-in',client:'Client / Employer Sign-in',candidate:'Job Seeker Sign-in'};
   document.getElementById('loginTitle').textContent=titleMap[role];
+  // Admin: skip profile-details step, jump straight to credentials with defaults pre-filled
+  if(role==='admin'){
+    loginCtx.email='fastlink';
+    const lc=document.getElementById('lcEmail');
+    lc.value='fastlink'; lc.removeAttribute('readonly'); lc.type='text';
+    document.getElementById('lcPass').value='admin';
+    document.getElementById('loginRoleLabel').textContent='Admin Login';
+    document.getElementById('loginOrRow').style.display='flex';
+    document.querySelector('#loginModal .auth-social').style.display='flex';
+    // Hide the "← Back" button (no step 2 to go back to)
+    const back=document.querySelector('.login-step[data-step="3"] .btn-ghost');
+    if(back) back.style.display='none';
+    document.getElementById('loginSub').textContent='Default credentials shown — click Sign in';
+    loginGoStep(3);
+    return;
+  }
   document.getElementById('loginSub').textContent='Tell us a bit about you';
   loginGoStep(2);
 }
