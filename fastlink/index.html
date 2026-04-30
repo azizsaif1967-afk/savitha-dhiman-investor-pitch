@@ -848,12 +848,16 @@ nav.main a.nav-download:hover{background:var(--green);color:#fff}
       <!-- STEP 2: profile capture -->
       <div class="login-step" data-step="2" style="display:none">
         <form onsubmit="loginProfileSubmit(event)" style="display:flex;flex-direction:column;gap:12px">
+          <div class="row" id="lpNameRow" style="display:none">
+            <div><label>First name</label><input type="text" id="lpFirst" placeholder="First name"/></div>
+            <div><label>Surname</label><input type="text" id="lpLast" placeholder="Surname"/></div>
+          </div>
           <div class="row">
             <div><label>Email address</label><input type="email" id="lpEmail" required placeholder="you@email.com"/></div>
             <div><label>Contact number</label><input type="tel" id="lpMob" required placeholder="+971 50 000 0000"/></div>
           </div>
           <div class="row">
-            <div><label>Company / Organisation</label><input type="text" id="lpCo" required placeholder="Company name"/></div>
+            <div id="lpCoWrap"><label>Company / Organisation</label><input type="text" id="lpCo" placeholder="Company name"/></div>
             <div><label>Emirate</label>
               <select id="lpCity" required>
                 <option value="">Select city…</option>
@@ -2143,6 +2147,13 @@ function loginPickRole(role){
     return;
   }
   document.getElementById('loginSub').textContent='Tell us a bit about you';
+  // Candidate: show First/Surname, hide Company. Client: hide names, show Company.
+  const isCand = role==='candidate';
+  document.getElementById('lpNameRow').style.display = isCand?'grid':'none';
+  document.getElementById('lpFirst').required = isCand;
+  document.getElementById('lpLast').required = isCand;
+  document.getElementById('lpCoWrap').style.display = isCand?'none':'block';
+  document.getElementById('lpCo').required = !isCand;
   loginGoStep(2);
 }
 function loginProfileSubmit(e){
@@ -2151,6 +2162,8 @@ function loginProfileSubmit(e){
   loginCtx.mob = document.getElementById('lpMob').value;
   loginCtx.co = document.getElementById('lpCo').value;
   loginCtx.city = document.getElementById('lpCity').value;
+  loginCtx.first = document.getElementById('lpFirst').value;
+  loginCtx.last = document.getElementById('lpLast').value;
   document.getElementById('lcEmail').value = loginCtx.email;
   const lblMap={admin:'Admin Login',client:'Client / Employer Login',candidate:'Job Seeker Login'};
   document.getElementById('loginRoleLabel').textContent = lblMap[loginCtx.role];
