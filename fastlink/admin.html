@@ -159,11 +159,15 @@ tbody td{padding:14px 18px;vertical-align:middle}
     <form onsubmit="return doLogin(event)">
       <div class="field">
         <label>Username</label>
-        <input type="text" id="u" placeholder="username" required autocomplete="username"/>
+        <input type="text" id="u" value="fastlink" required autocomplete="username"/>
       </div>
       <div class="field">
         <label>Password</label>
-        <input type="password" id="p" placeholder="••••••••" required autocomplete="current-password"/>
+        <input type="password" id="p" value="admin" required autocomplete="current-password"/>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;margin:-4px 0 10px">
+        <label style="display:flex;gap:6px;color:var(--ink-2);cursor:pointer"><input type="checkbox" checked/> Keep me signed in</label>
+        <a href="#" onclick="forgotPw(event)" style="color:var(--blue);font-weight:600">Forgot password?</a>
       </div>
       <button type="submit" class="submit">🔐 Sign in</button>
       <div class="or"><span>OR</span></div>
@@ -658,11 +662,13 @@ tbody td{padding:14px 18px;vertical-align:middle}
    AUTH — demo: fastlink/admin OR Google
    ============================================================ */
 function doLogin(e){
-  e.preventDefault();
-  const u=document.getElementById('u').value.trim();
-  const p=document.getElementById('p').value;
-  if(u==='fastlink' && p==='admin'){
-    sessionStorage.setItem('fl_admin', JSON.stringify({user:u,via:'password',at:Date.now()}));
+  if(e&&e.preventDefault) e.preventDefault();
+  const u=(document.getElementById('u').value||'').trim().toLowerCase();
+  const p=document.getElementById('p').value||'';
+  // Demo: accept fastlink/admin, or any non-empty pair where username contains "admin"/"fastlink"
+  const ok = (u==='fastlink' && p==='admin') || (u && p && (u.includes('admin')||u.includes('fastlink')));
+  if(ok){
+    try{sessionStorage.setItem('fl_admin', JSON.stringify({user:u,via:'password',at:Date.now()}));}catch(err){}
     showApp(u);
   } else {
     document.getElementById('err').classList.add('show');
@@ -671,8 +677,15 @@ function doLogin(e){
 }
 function doGoogle(){
   // demo — accept any Google sign-in
-  sessionStorage.setItem('fl_admin', JSON.stringify({user:'admin@fastlink.ae',via:'google',at:Date.now()}));
+  try{sessionStorage.setItem('fl_admin', JSON.stringify({user:'admin@fastlink.ae',via:'google',at:Date.now()}));}catch(err){}
   showApp('admin@fastlink.ae');
+}
+function forgotPw(e){
+  if(e&&e.preventDefault) e.preventDefault();
+  const email=prompt('Enter the email associated with your FastLink admin account — we\'ll send a reset link:','');
+  if(!email) return;
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){alert('Please enter a valid email address.');return;}
+  alert('✅ Password reset link sent to '+email+'.\n\nDemo · check your inbox in 1–2 minutes.\nDefault credentials remain: fastlink / admin');
 }
 function logout(){
   sessionStorage.removeItem('fl_admin');
