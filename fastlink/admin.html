@@ -733,11 +733,7 @@ function showApp(name){
   }
   initData();
 }
-// auto-login if session
-if(sessionStorage.getItem('fl_admin')){
-  const s=JSON.parse(sessionStorage.getItem('fl_admin'));
-  showApp(s.user);
-}
+// auto-login moved to end of script (runs after const data is initialised)
 
 /* ============================================================
    NAV
@@ -1025,6 +1021,12 @@ function jsRenderHistory(){
     </tr>`).join('')}</tbody>`;
 }
 function jsClearHistory(){if(confirm('Clear search & application history?')){const s=jsState();s.history=[];jsSave(s);jsRenderHistory();}}
+
+// Auto-login if session — runs LAST so const data is initialised first
+try{
+  const sess=sessionStorage.getItem('fl_admin');
+  if(sess){const s=JSON.parse(sess);showApp(s.user);}
+}catch(err){console.error('auto-login failed',err);}
 </script>
 </body>
 </html>
