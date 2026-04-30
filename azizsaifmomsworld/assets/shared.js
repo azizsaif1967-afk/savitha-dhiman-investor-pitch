@@ -109,6 +109,120 @@ function productCardHTML(p) {
   </a>`;
 }
 
+// ---------- Account / Auth ----------
+// Drop in your Google OAuth Client ID from console.cloud.google.com to enable
+// real Gmail sign-in. Until then, "Continue with Google" simulates the flow.
+const GOOGLE_CLIENT_ID = ''; // e.g. '1234567890-abc.apps.googleusercontent.com'
+const ACCT_KEY = 'azsmw_account_v1';
+
+function getAccount() { try { return JSON.parse(localStorage.getItem(ACCT_KEY)); } catch { return null; } }
+function setAccount(a) { localStorage.setItem(ACCT_KEY, JSON.stringify(a)); paintAccount(); }
+function clearAccount() { localStorage.removeItem(ACCT_KEY); paintAccount(); }
+
+function paintAccount() {
+  const a = getAccount();
+  document.querySelectorAll('[data-account-label]').forEach(el => {
+    el.textContent = a ? (a.name?.split(' ')[0] || 'Account') : 'Account';
+  });
+}
+
+function openAuth() {
+  if (getAccount()) { openProfile(); return; }
+  let m = document.getElementById('azsmw-auth');
+  if (!m) {
+    m = document.createElement('div');
+    m.id = 'azsmw-auth';
+    m.innerHTML = `
+      <div class="auth-backdrop" onclick="closeAuth()"></div>
+      <div class="auth-card" role="dialog" aria-modal="true">
+        <button class="auth-x" onclick="closeAuth()" aria-label="Close">×</button>
+        <div class="auth-head">
+          <span class="eyebrow">— Welcome</span>
+          <h2 id="auth-title">Sign in to <em>your account</em></h2>
+          <p class="muted" style="margin-top:8px;font-size:13px">Track orders, save favourites, and check out faster.</p>
+        </div>
+
+        <button type="button" class="auth-google" onclick="signInWithGoogle()">
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.4 4 9.8 8.4 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.3 0-9.7-3.4-11.3-8L6.1 33C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.2-4.1 5.6l6.2 5.2C40.9 35.6 44 30.3 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+          Continue with Google
+        </button>
+
+        <div class="auth-divider"><span>or</span></div>
+
+        <form class="auth-form" id="auth-form" onsubmit="signInEmail(event)">
+          <label>Full name <input id="auth-name" type="text" autocomplete="name" required/></label>
+          <label>Email <input id="auth-email" type="email" autocomplete="email" required/></label>
+          <label id="auth-pw-wrap">Password <input id="auth-pw" type="password" autocomplete="current-password" minlength="6" required/></label>
+          <button type="submit" class="btn btn-block" style="border-radius:100px">Sign in</button>
+        </form>
+
+        <p class="auth-toggle muted">
+          <span id="auth-mode-text">New here?</span>
+          <a href="#" onclick="event.preventDefault(); toggleAuthMode()" id="auth-mode-link">Create an account</a>
+        </p>
+      </div>`;
+    document.body.appendChild(m);
+  }
+  m.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeAuth() {
+  const m = document.getElementById('azsmw-auth');
+  if (m) m.classList.remove('open');
+  document.body.style.overflow = '';
+}
+let _authMode = 'signin';
+function toggleAuthMode() {
+  _authMode = _authMode === 'signin' ? 'signup' : 'signin';
+  const isSignup = _authMode === 'signup';
+  document.getElementById('auth-title').innerHTML = isSignup ? 'Create your <em>account</em>' : 'Sign in to <em>your account</em>';
+  document.querySelector('#auth-form button[type=submit]').textContent = isSignup ? 'Create account' : 'Sign in';
+  document.getElementById('auth-mode-text').textContent = isSignup ? 'Already have an account?' : 'New here?';
+  document.getElementById('auth-mode-link').textContent = isSignup ? 'Sign in' : 'Create an account';
+}
+function signInEmail(e) {
+  e.preventDefault();
+  const name = document.getElementById('auth-name').value.trim();
+  const email = document.getElementById('auth-email').value.trim();
+  setAccount({ name, email, provider: 'email', signedInAt: Date.now() });
+  closeAuth();
+  toast('Welcome, ' + (name.split(' ')[0] || 'friend'));
+}
+function signInWithGoogle() {
+  if (!GOOGLE_CLIENT_ID) {
+    // Demo flow — open a window simulating Google sign-in
+    const email = prompt('Continue with Google\n\nEnter your Gmail address (Google OAuth Client ID not configured yet — drop one in shared.js to enable real sign-in):');
+    if (!email) return;
+    const name = email.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g, c=>c.toUpperCase());
+    setAccount({ name, email, provider: 'google', signedInAt: Date.now() });
+    closeAuth();
+    toast('Welcome, ' + name.split(' ')[0]);
+    return;
+  }
+  // Real Google Identity Services flow
+  if (!window.google?.accounts?.id) {
+    const s = document.createElement('script');
+    s.src = 'https://accounts.google.com/gsi/client';
+    s.onload = () => signInWithGoogle();
+    document.head.appendChild(s);
+    return;
+  }
+  google.accounts.id.initialize({
+    client_id: GOOGLE_CLIENT_ID,
+    callback: ({credential}) => {
+      const payload = JSON.parse(atob(credential.split('.')[1]));
+      setAccount({ name: payload.name, email: payload.email, picture: payload.picture, provider: 'google', signedInAt: Date.now() });
+      closeAuth();
+      toast('Welcome, ' + payload.given_name);
+    }
+  });
+  google.accounts.id.prompt();
+}
+function openProfile() {
+  const a = getAccount();
+  if (confirm(`Signed in as ${a.name} (${a.email})\n\nSign out?`)) { clearAccount(); toast('Signed out'); }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof renderHeader === 'function') {
     const h = document.getElementById('site-header');
@@ -119,4 +233,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (f) f.innerHTML = renderFooter();
   }
   updateCartCount();
+  paintAccount();
 });

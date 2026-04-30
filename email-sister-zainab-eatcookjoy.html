@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email - EatCookJoy UAE - Sister Zainab</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --hot:#F47A1F;
+  --ink:#0F0F1A;
+  --cream:#F5F1E8;
+  --lime:#C5F540;
+  --butter:#FFE45E;
+  --grape:#7B61FF;
+  --cherry:#FF6B6B;
+  --sky:#B8E4FF;
+  --mint:#A8F0D4;
+}
+body{margin:0;padding:0;background:var(--cream);font-family:'DM Sans',Arial,sans-serif;color:var(--ink)}
+.toolbar{text-align:center;padding:16px;background:var(--cream)}
+.copy-btn{display:inline-block;background:var(--hot);color:#fff;padding:12px 28px;border:3px solid var(--ink);border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;margin:4px 8px;font-family:'DM Sans',sans-serif;box-shadow:4px 4px 0 var(--ink);transition:all 0.15s}
+.copy-btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.copy-btn.dark{background:var(--ink)}
+.wrapper{max-width:640px;margin:12px auto 30px;background:#fff;border:3px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:8px 8px 0 var(--ink)}
+.header{background:var(--ink);padding:28px 32px;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:var(--lime);border-radius:50%;opacity:0.15}
+.header::after{content:'';position:absolute;bottom:-30px;left:40%;width:80px;height:80px;background:var(--hot);border-radius:50%;opacity:0.2}
+.header .tag{display:inline-block;background:var(--hot);color:#fff;padding:4px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px}
+.header h1{margin:0;font-size:20px;font-weight:700;color:#fff;letter-spacing:0.3px;line-height:1.4;position:relative;z-index:1}
+.header .snellito-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:8px;margin-top:12px;font-size:11px;color:rgba(255,255,255,0.7)}
+.header .snellito-badge .dot{width:8px;height:8px;background:var(--lime);border-radius:50%;display:inline-block}
+.body{padding:32px;font-size:15px;line-height:1.75}
+.body p{margin:0 0 16px}
+.greeting{font-family:'Caveat',cursive;font-size:26px;color:var(--hot);font-weight:700;margin-bottom:8px !important}
+.salam{color:var(--grape);font-weight:500;font-style:italic}
+.links-box{background:var(--cream);border:3px solid var(--ink);border-radius:14px;padding:22px;margin:24px 0;position:relative}
+.links-box h3{margin:0 0 16px;color:var(--ink);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;display:flex;align-items:center;gap:8px}
+.links-box h3::before{content:'';display:inline-block;width:20px;height:3px;background:var(--hot);border-radius:2px}
+.link-item{display:flex;align-items:flex-start;gap:14px;margin:14px 0;padding:14px;background:#fff;border:2px solid var(--ink);border-radius:10px;transition:all 0.2s;box-shadow:3px 3px 0 rgba(15,15,26,0.1)}
+.link-item:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 rgba(15,15,26,0.15);border-color:var(--hot)}
+.link-item:nth-child(2) .link-num{background:var(--hot)}
+.link-item:nth-child(3) .link-num{background:var(--grape)}
+.link-item:nth-child(4) .link-num{background:var(--ink)}
+.link-num{background:var(--hot);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;border:2px solid var(--ink)}
+.link-content{flex:1}
+.link-title{font-weight:700;color:var(--ink);font-size:14px;margin-bottom:3px}
+.link-desc{color:#666;font-size:12px;margin-bottom:5px;line-height:1.5}
+.link-url a{color:var(--hot);font-size:12px;text-decoration:none;word-break:break-all;font-weight:600}
+.link-url a:hover{text-decoration:underline;color:var(--grape)}
+.link-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:4px;border:1.5px solid}
+.tag-chefs{background:#fff5ee;color:var(--hot);border-color:var(--hot)}
+.tag-bloggers{background:#f3f0ff;color:var(--grape);border-color:var(--grape)}
+.tag-ai{background:#f0faf5;color:#0a8050;border-color:#0a8050}
+.note-box{background:#fff;border:2px dashed var(--hot);border-radius:10px;padding:14px 18px;margin:20px 0;font-size:13px;color:#555;line-height:1.6}
+.thank-box{background:linear-gradient(135deg,var(--cream),#fff);border:3px solid var(--ink);border-radius:14px;padding:20px 24px;margin:24px 0;position:relative;overflow:hidden}
+.thank-box::before{content:'"';font-family:'Caveat',cursive;font-size:80px;color:var(--lime);position:absolute;top:-10px;left:10px;opacity:0.4;line-height:1}
+.thank-box p{margin:0;color:var(--ink);font-size:14px;line-height:1.7;position:relative;z-index:1}
+.jazak{font-family:'Caveat',cursive;font-size:22px;color:var(--hot);margin-top:12px !important;font-weight:700}
+.closing{margin-top:28px;color:var(--ink);font-size:15px}
+.signature{border-top:3px solid var(--ink);padding-top:18px;margin-top:28px;position:relative}
+.signature::before{content:'';position:absolute;top:-3px;left:0;width:60px;height:3px;background:var(--hot)}
+.sig-name{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:0.5px;margin:0 0 8px}
+.sig-detail{font-size:13px;color:#555;margin:3px 0}
+.sig-detail a{color:var(--hot);text-decoration:none;font-weight:600}
+.sig-detail a:hover{text-decoration:underline;color:var(--grape)}
+.footer{background:var(--ink);padding:18px 32px;text-align:center;font-size:11px;color:rgba(255,255,255,0.5)}
+.footer a{color:var(--hot);text-decoration:none}
+.footer .powered{display:inline-flex;align-items:center;gap:4px;margin-top:4px}
+.footer .powered .dot{width:6px;height:6px;background:var(--lime);border-radius:50%;display:inline-block}
+@media print{.toolbar{display:none}.wrapper{box-shadow:none;border:1px solid #ddd;margin:0}}
+@media(max-width:500px){.body{padding:20px}.header{padding:20px}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+<button class="copy-btn" onclick="copyEmail()">Copy Email Text</button>
+<button class="copy-btn dark" onclick="window.print()">Print / Save PDF</button>
+</div>
+
+<div class="wrapper">
+<div class="header">
+<span class="tag">Email</span>
+<h1>Ref: EatCookJoy for UAE<br>Target List of Bloggers, Foodies & Chefs</h1>
+<div class="snellito-badge"><span class="dot"></span> Powered by Snellito AI</div>
+</div>
+
+<div class="body">
+
+<p class="greeting">Dear Sister Zainab,</p>
+
+<p class="salam">Assalamu Alaikum,</p>
+
+<p>I hope this message finds you well.</p>
+
+<p>Please find below the reference links for our <strong>EatCookJoy UAE</strong> launch initiative. These are the curated lists of bloggers, foodies, and chefs we are targeting for partnerships, along with the Snellito AI platform we discussed:</p>
+
+<div class="links-box">
+<h3>Target Lists & Resources</h3>
+
+<div class="link-item">
+<div class="link-num">1</div>
+<div class="link-content">
+<div class="link-title">UAE Chefs & Cooks Directory</div>
+<div class="link-desc">160+ freelancer chef profiles across Dubai, Abu Dhabi & Sharjah &mdash; searchable by category and location</div>
+<div class="link-url"><a href="https://azizsaif1967-afk.github.io/uae-chefs-instagram/" target="_blank">azizsaif1967-afk.github.io/uae-chefs-instagram</a></div>
+<span class="link-tag tag-chefs">Chefs</span>
+</div>
+</div>
+
+<div class="link-item">
+<div class="link-num">2</div>
+<div class="link-content">
+<div class="link-title">UAE Food Bloggers & Influencers Partnership Directory</div>
+<div class="link-desc">115+ verified profiles with follower counts, nationality, DM outreach templates & full partnership strategy</div>
+<div class="link-url"><a href="https://azizsaif1967-afk.github.io/uae-food-bloggers-partnership/" target="_blank">azizsaif1967-afk.github.io/uae-food-bloggers-partnership</a></div>
+<span class="link-tag tag-bloggers">Bloggers & Influencers</span>
+</div>
+</div>
+
+<div class="link-item">
+<div class="link-num">3</div>
+<div class="link-content">
+<div class="link-title">Snellito AI Platform</div>
+<div class="link-desc">AI platform reference for our project workflow &mdash; save recipes from anywhere</div>
+<div class="link-url"><a href="https://app.snellito.ai/" target="_blank">app.snellito.ai</a></div>
+<span class="link-tag tag-ai">AI Platform</span>
+</div>
+</div>
+</div>
+
+<div class="note-box">
+The bloggers directory includes a complete <strong>partnership strategy</strong> with DM templates, tiered outreach plans (mega, macro, mid-tier, and micro influencers), and a phased campaign approach for the UAE launch.
+</div>
+
+<div class="thank-box">
+<p>Thank you so much for teaching me the code &mdash; it has improved significantly and I am now able to gather information much more efficiently. I truly appreciate your kindness, patience, and guidance throughout this journey.</p>
+<p class="jazak">Jazak Allah Khair for everything.</p>
+</div>
+
+<div class="closing">
+<p>With best regards,</p>
+</div>
+
+<div class="signature">
+<p class="sig-name">Aziz Saif</p>
+<p class="sig-detail">&#128241; WhatsApp & Mobile: <a href="https://wa.me/971556492370">+971 55 649 2370</a></p>
+<p class="sig-detail">&#9993;&#65039; <a href="mailto:aziz6492370@gmail.com">aziz6492370@gmail.com</a></p>
+</div>
+
+</div>
+
+<div class="footer">
+<a href="https://eatcookjoy.com" target="_blank">EatCookJoy.com</a> &middot; Connecting Communities with Chefs &middot; UAE
+<div class="powered"><span class="dot"></span> Built with Snellito AI</div>
+</div>
+</div>
+
+<script>
+function copyEmail(){
+const text=`Subject: Ref: EatCookJoy for UAE - Target List of Bloggers, Foodies & Chefs
+
+Dear Sister Zainab,
+
+Assalamu Alaikum,
+
+I hope this message finds you well.
+
+Please find below the reference links for our EatCookJoy UAE launch initiative. These are the curated lists of bloggers, foodies, and chefs we are targeting for partnerships, along with the Snellito AI platform we discussed:
+
+Target Lists & Resources:
+
+1. UAE Chefs & Cooks Directory (160+ freelancer chef profiles)
+   https://azizsaif1967-afk.github.io/uae-chefs-instagram/
+
+2. UAE Food Bloggers & Influencers Partnership Directory (115+ profiles with outreach strategy)
+   https://azizsaif1967-afk.github.io/uae-food-bloggers-partnership/
+
+3. Snellito AI Platform
+   https://app.snellito.ai/
+
+The bloggers directory includes a complete partnership strategy with DM templates, tiered outreach plans (mega, macro, mid-tier, and micro influencers), and a phased campaign approach for the UAE launch.
+
+Thank you so much for teaching me the code — it has improved significantly and I am now able to gather information much more efficiently. I truly appreciate your kindness, patience, and guidance throughout this journey.
+
+Jazak Allah Khair for everything.
+
+With best regards,
+
+Aziz Saif
+Mobile & WhatsApp: +971 55 649 2370
+Email: aziz6492370@gmail.com`;
+
+navigator.clipboard.writeText(text).then(()=>{
+const btn=document.querySelector('.copy-btn');
+btn.textContent='Copied!';
+btn.style.background='#2e7d32';
+setTimeout(()=>{btn.textContent='Copy Email Text';btn.style.background='var(--hot)'},2000);
+});
+}
+</script>
+</body>
+</html>

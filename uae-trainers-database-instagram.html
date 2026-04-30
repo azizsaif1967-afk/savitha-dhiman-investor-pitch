@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UAE Personal Trainers & Gym Coaches - Instagram Database</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; background: linear-gradient(135deg, #e1306c, #fd1d1d, #f77737); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; font-size: 2rem; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.95rem; }
+  .stats { text-align: center; background: linear-gradient(135deg, #405de6, #e1306c, #fd1d1d); padding: 14px 20px; border-radius: 12px; margin-bottom: 20px; font-size: 1.05rem; font-weight: bold; color: #fff; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+  .filter-bar input { padding: 10px 16px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; width: 300px; }
+  .filter-bar select { padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.95rem; }
+  .action-bar { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
+  .action-bar button { padding: 10px 20px; border-radius: 8px; border: none; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-export { background: #166534; color: #4ade80; }
+  .btn-export:hover { background: #15803d; }
+  .btn-email { background: #1e3a5f; color: #60a5fa; }
+  .btn-email:hover { background: #1e40af; }
+  .btn-copy { background: #4a044e; color: #e879f9; }
+  .btn-copy:hover { background: #6b21a8; }
+  .btn-filter { background: #92400e; color: #fbbf24; }
+  .btn-filter:hover { background: #b45309; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 14px; padding: 16px 18px; transition: all 0.2s; position: relative; }
+  .card:hover { border-color: #e1306c; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(225,48,108,0.25); }
+  .card .num { color: #555; font-size: 0.72rem; margin-bottom: 4px; }
+  .card .handle-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .card .avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #405de6, #e1306c); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; color: #fff; flex-shrink: 0; }
+  .card a.handle { color: #e1306c; text-decoration: none; font-weight: 700; font-size: 1rem; }
+  .card a.handle:hover { text-decoration: underline; }
+  .card .desc { color: #aaa; font-size: 0.82rem; margin-bottom: 6px; line-height: 1.4; }
+  .card .contact-row { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+  .contact-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .badge-email { background: #1e3a5f; color: #93c5fd; }
+  .badge-phone { background: #166534; color: #86efac; }
+  .badge-website { background: #4a044e; color: #d8b4fe; }
+  .badge-nosite { background: #7f1d1d; color: #fca5a5; }
+  .badge-followers { background: #713f12; color: #fde047; }
+  .card .tags { display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { background: #2a2a2a; color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+  .tag.loc-dubai { background: #92400e; color: #fbbf24; }
+  .tag.loc-abudhabi { background: #1e3a5f; color: #60a5fa; }
+  .tag.loc-sharjah { background: #166534; color: #4ade80; }
+  .tag.loc-ajman { background: #5b21b6; color: #c4b5fd; }
+  .tag.loc-alain { background: #164e63; color: #67e8f9; }
+  .tag.loc-rak { background: #7c2d12; color: #fb923c; }
+  .tag.loc-fujairah { background: #4a044e; color: #e879f9; }
+  .tag.loc-uae { background: #991b1b; color: #fca5a5; }
+  .tag.cat-pt { background: #1a2744; color: #7dd3fc; }
+  .tag.cat-gym { background: #312e81; color: #a5b4fc; }
+  .tag.cat-boxing { background: #7f1d1d; color: #fca5a5; }
+  .tag.cat-yoga { background: #065f46; color: #6ee7b7; }
+  .tag.cat-crossfit { background: #78350f; color: #fdba74; }
+  .tag.cat-bodybuilding { background: #581c87; color: #d8b4fe; }
+  .tag.cat-online { background: #0e7490; color: #67e8f9; }
+  .tag.cat-nutrition { background: #3f6212; color: #bef264; }
+  .tag.cat-female { background: #831843; color: #f9a8d4; }
+  .tag.cat-studio { background: #1e1b4b; color: #c7d2fe; }
+  .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #166534; color: #4ade80; padding: 12px 24px; border-radius: 10px; font-weight: 600; display: none; z-index: 999; font-size: 0.95rem; }
+  footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8rem; padding: 20px 0; border-top: 1px solid #222; }
+  footer a { color: #e1306c; text-decoration: none; }
+  @media (max-width: 600px) { h1 { font-size: 1.4rem; } .grid { grid-template-columns: 1fr; } .filter-bar input { width: 100%; } }
+</style>
+</head>
+<body>
+<h1>UAE Personal Trainers & Gym Coaches</h1>
+<p class="subtitle">Instagram Outreach Database | Email, Phone, Website Status | Connect via DM</p>
+<div class="stats" id="stats">Loading...</div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search name, handle, email, specialty..." oninput="filterCards()">
+  <select id="catFilter" onchange="filterCards()">
+    <option value="">All Categories</option>
+    <option value="pt">Personal Trainer</option>
+    <option value="gym">Gym / Studio</option>
+    <option value="boxing">Boxing / MMA</option>
+    <option value="yoga">Yoga / Pilates</option>
+    <option value="crossfit">CrossFit / HIIT</option>
+    <option value="bodybuilding">Bodybuilding / IFBB</option>
+    <option value="online">Online Coach</option>
+    <option value="nutrition">Nutrition Coach</option>
+    <option value="female">Female Specialist</option>
+    <option value="studio">Fitness Center</option>
+  </select>
+  <select id="locFilter" onchange="filterCards()">
+    <option value="">All Emirates</option>
+    <option value="dubai">Dubai</option>
+    <option value="abudhabi">Abu Dhabi</option>
+    <option value="sharjah">Sharjah</option>
+    <option value="ajman">Ajman</option>
+    <option value="alain">Al Ain</option>
+    <option value="rak">RAK</option>
+    <option value="uae">UAE-wide</option>
+  </select>
+  <select id="hasEmail" onchange="filterCards()">
+    <option value="">All Profiles</option>
+    <option value="email">Has Email</option>
+    <option value="phone">Has Phone</option>
+    <option value="nosite">No Website</option>
+    <option value="website">Has Website</option>
+  </select>
+</div>
+<div class="action-bar">
+  <button class="btn-export" onclick="exportCSV()">Export CSV</button>
+  <button class="btn-email" onclick="copyEmails()">Copy All Emails</button>
+  <button class="btn-copy" onclick="copyHandles()">Copy All Handles</button>
+  <button class="btn-filter" onclick="showEmailOnly()">Show Email-Only</button>
+</div>
+<div class="grid" id="grid"></div>
+<div class="toast" id="toast"></div>
+<footer>
+  <p>UAE Personal Trainers Instagram Outreach Database | <a href="https://groupfitapp.com" target="_blank">GroupFit App</a> Compatible</p>
+  <p>Generated April 2026 | All links open Instagram directly | Data for outreach purposes</p>
+</footer>
+<script>
+const profiles = [
+  // DUBAI - Personal Trainers with EMAIL
+  {u:"bahar.dub.fit",d:"Bahar Javan - Level 3 PT, body transformation specialist",c:"pt",l:"dubai",e:"baharjavan1985@gmail.com",p:"",w:"",f:"5K+"},
+  {u:"z_ramsden",d:"Zain Ramsden - Fitness & Wellness Expert, Personal Trainer",c:"pt",l:"dubai",e:"zainramsden0@gmail.com",p:"",w:"",f:"3K+"},
+  {u:"sana_personaltrainerdubai",d:"Sana Sajad - IFBB Certified Level 2-3 PT, fitness photoshoots",c:"bodybuilding",l:"dubai",e:"sanasajad11@gmail.com",p:"",w:"",f:"7.7K"},
+  {u:"ecefitdxb",d:"Ece Yapici - Personal Trainer, body transformation",c:"pt",l:"dubai",e:"ecefit13@gmail.com",p:"",w:"",f:"4K+"},
+  {u:"sarkisvoskorian",d:"Sarkis Voskorian - ISSA Certified PT, deep tissue sports massage",c:"pt",l:"dubai",e:"Sarkisvoskorian@gmail.com",p:"",w:"",f:"6K+"},
+  {u:"ahmed.othman",d:"Ahmed Othman Ibrahim - IFBB Personal Trainer",c:"bodybuilding",l:"dubai",e:"ifbb.ahmed.othman@gmail.com",p:"",w:"",f:"8K+"},
+  {u:"elisharust",d:"Elisha Rust - Online Coach & PT, body transformation",c:"online",l:"dubai",e:"bookingselisharust@gmail.com",p:"",w:"",f:"10K+"},
+  {u:"coach_amira_",d:"Amira Ali - World Boxing/Kickboxing/Kung Fu Champion, PT",c:"boxing",l:"dubai",e:"coachamira0486@gmail.com",p:"",w:"",f:"12K+"},
+  {u:"fitness_foundersdxb",d:"Fitness Founders - Gym & workout community, Dubai",c:"gym",l:"dubai",e:"ff.gym@outlook.com",p:"",w:"",f:"5K+"},
+  {u:"ad__hamed",d:"Personal Trainer Dubai - Body transformation specialist",c:"pt",l:"dubai",e:"ad.hamed.pt@gmail.com",p:"",w:"",f:"3K+"},
+  {u:"liftwithmonika",d:"Monika Bielawska - NASM Certified PT & Nutrition Coach",c:"nutrition",l:"dubai",e:"liftwithmonika@gmail.com",p:"",w:"",f:"8K+"},
+  {u:"personal_coach_dubai",d:"Roberto Alexandru - Bodybuilder & Professional PT",c:"pt",l:"dubai",e:"",p:"+971501269165",w:"",f:"7K+"},
+  // DUBAI - Personal Trainers with DM/Contact
+  {u:"garyphelanfitness",d:"Gary Phelan - 1:1 PT, Muscle Building & Fat Loss, Cardio & Circuit",c:"pt",l:"dubai",e:"",p:"",w:"",f:"4.6K"},
+  {u:"tarekelzamek",d:"Tarek El Zamek - 'Mr Lifestyle', Dubai Personal Trainer",c:"pt",l:"dubai",e:"",p:"",w:"",f:"15K+"},
+  {u:"ash_pt_dubai",d:"Ash - British Personal Trainer in Dubai",c:"pt",l:"dubai",e:"",p:"",w:"",f:"5K+"},
+  {u:"nikki_coachdxb",d:"Nikki - Dubai Personal Trainer, body transformation",c:"pt",l:"dubai",e:"",p:"",w:"",f:"6K+"},
+  {u:"kasia.romanowicz",d:"Kasia - Female Online Coach, helps women lose 5-15kg",c:"female",l:"dubai",e:"",p:"",w:"",f:"7.6K"},
+  {u:"henryrdean",d:"Henry Dean - PT for CEOs & Executives, busy professionals",c:"pt",l:"dubai",e:"",p:"",w:"",f:"8K+"},
+  {u:"cristiaran",d:"Cristi Aran - Dubai Personal Trainer, transformation coach",c:"pt",l:"dubai",e:"",p:"",w:"",f:"4K+"},
+  {u:"maribel.fitness",d:"Maribel - Fitness/Trainer/Coach helping women look & feel best",c:"female",l:"dubai",e:"",p:"",w:"",f:"14K"},
+  {u:"dxb_fit_pt",d:"Dubai PT - BSc Physical Education, Level 3 REPs UAE",c:"pt",l:"dubai",e:"",p:"",w:"",f:"23K"},
+  {u:"bojana_vucic",d:"Bojana Vucic - Master Prof of Sport & PE, home/gym/hotel/park training",c:"pt",l:"dubai",e:"",p:"",w:"",f:"19K"},
+  {u:"coach_najeh",d:"Najeh - Transformation Coach, Binous1 gym, online coaching",c:"pt",l:"dubai",e:"",p:"",w:"",f:"16K"},
+  {u:"olgakazzak",d:"Olga Kazak - Miss Middle East 2024, Fitness Coach 12+ years",c:"female",l:"dubai",e:"",p:"",w:"",f:"20K+"},
+  {u:"coach_naushad_dubai",d:"Muhammed Naushad - NASM/CIMSPA/iCREPS certified, weight loss & nutrition",c:"nutrition",l:"dubai",e:"",p:"",w:"",f:"5K+"},
+  {u:"mohammadmurad01",d:"Mohammad Murad - Fitness Coach, helps busy men get lean in 12 weeks",c:"pt",l:"dubai",e:"",p:"",w:"",f:"7K+"},
+  {u:"masha.from.russia_",d:"Maria - Fitness Coach, online & offline, feminine body goals",c:"female",l:"dubai",e:"",p:"",w:"",f:"3.5K"},
+  {u:"fiabody",d:"FIA - Online Coach & Dubai PT, PCOS/diabetes specialist",c:"online",l:"dubai",e:"",p:"",w:"",f:"16K"},
+  {u:"ryan_north_fitness",d:"Ryan - Dubai PT & Online Coach, BSc Sport & Exercise Science",c:"online",l:"dubai",e:"",p:"",w:"",f:"2.2K"},
+  {u:"pawel_physique_pt",d:"Coach Pawel - Nutrition & Fitness Coach, EU V-Champion Classic Physique",c:"bodybuilding",l:"dubai",e:"",p:"",w:"",f:"9K+"},
+  {u:"ralphfarah",d:"Ralph Farah - IFBB PRO Prep Coach & Sports Nutritionist, 11 years",c:"bodybuilding",l:"dubai",e:"",p:"",w:"",f:"41K"},
+  {u:"dubinasfitness",d:"Dubinas Fitness - IFBB PT, Master Coach, 20 years experience",c:"bodybuilding",l:"dubai",e:"",p:"",w:"",f:"30K"},
+  {u:"cintiapadim",d:"Cintia Padim - Dubai PT, online coaching, rehab & healthy lifestyle",c:"pt",l:"dubai",e:"",p:"",w:"",f:"11K"},
+  {u:"darshen_nair",d:"Darshen Nair - Online Fitness Coach, 300+ clients, calisthenics/gym",c:"online",l:"dubai",e:"",p:"",w:"",f:"15K+"},
+  {u:"tmaxbeauchamp",d:"Max Beauchamp - PT & online coach, fat loss specialist",c:"pt",l:"dubai",e:"",p:"",w:"",f:"35K"},
+  {u:"inna_fitness_dxb",d:"Inna - Fitness Trainer/Model/Influencer, DM for collab",c:"pt",l:"dubai",e:"",p:"",w:"",f:"77.3K"},
+  {u:"dmryaqmur",d:"Yagmur Demir - EREPS Level 4, Aerial Yoga/Kangoo Jumps",c:"yoga",l:"dubai",e:"",p:"",w:"",f:"4K+"},
+  {u:"coachabidi",d:"Coach Abidi - Muay Thai/Kickboxing/Fitness PT, DM for quotes",c:"boxing",l:"dubai",e:"",p:"",w:"",f:"8K+"},
+  {u:"mariia_sincemoment",d:"Maria - Stretch Trainer, ex-gymnast, feminine stretching & body awakening",c:"yoga",l:"dubai",e:"",p:"",w:"",f:"6K+"},
+  // DUBAI - Boxing / MMA
+  {u:"aleexdm",d:"Aleksei Dmitriev - Boxing Coach Dubai",c:"boxing",l:"dubai",e:"",p:"",w:"",f:"4K"},
+  {u:"jhabbyvanbuuren",d:"Jhabby Van Buuren - PT Level 2&3 REPS, boxing trainer",c:"boxing",l:"dubai",e:"",p:"",w:"",f:"3K+"},
+  {u:"agotailko",d:"Ilko Agota - Pro Boxing Coach, Hungarian Champion 5x, Top Boxing Club",c:"boxing",l:"dubai",e:"",p:"",w:"",f:"5K+"},
+  {u:"dm_kickboxing",d:"Dom - Personal Trainer & Kickboxing Coach",c:"boxing",l:"dubai",e:"",p:"",w:"",f:"3K+"},
+  {u:"punch360uae",d:"Punch 360 - Boxing Gym & Training, Jumeirah Islands Pavilion",c:"boxing",l:"dubai",e:"",p:"",w:"",f:"8K+"},
+  // DUBAI - Gyms & Studios
+  {u:"personal_trainers_dubai",d:"PTD Fitness - Helps busy professionals, free consultation (15K)",c:"gym",l:"dubai",e:"milos@personaltrainersdubai.com",p:"+971562929457",w:"personaltrainersdubai.com",f:"15K"},
+  {u:"trainersgymdubai",d:"Trainers Gym Dubai - World champion trainers, Silicon Oasis",c:"gym",l:"dubai",e:"",p:"",w:"",f:"5K+"},
+  {u:"trainers.on.demand",d:"Trainers On Demand - Certified freelance PTs, home/gym/outdoor",c:"gym",l:"dubai",e:"",p:"",w:"",f:"1.1K"},
+  {u:"revivefitness_uae",d:"Revive Fitness Gym - Al Nahda 2, personal training & gym",c:"gym",l:"dubai",e:"",p:"",w:"",f:"4K+"},
+  {u:"fitfactorymidtown",d:"Fit Factory Fitness - HYROX affiliate, S&C classes",c:"crossfit",l:"dubai",e:"",p:"",w:"fitfactoryfitness.com",f:"6K+"},
+  {u:"24fitnessdxb",d:"24 Fitness Dubai - Freelance PT friendly gym",c:"gym",l:"dubai",e:"",p:"",w:"",f:"3K+"},
+  // DUBAI - Influencers / Big Accounts
+  {u:"albin__o2a",d:"Albin Hodza - Online Coach & PT, Dubai (1M followers)",c:"online",l:"dubai",e:"",p:"",w:"",f:"1M"},
+  {u:"dhruvfitness",d:"Dhruv Madaan - Online Fitness Coach, fat loss expert (528K)",c:"online",l:"dubai",e:"",p:"",w:"",f:"528K"},
+  {u:"khabib_nurmagomedov",d:"Khabib Nurmagomedov - MMA legend, fitness (43.2M)",c:"boxing",l:"dubai",e:"",p:"",w:"khabib.com",f:"43.2M"},
+  {u:"tony.keyrouz",d:"Tony Kairouz - Fitness influencer (3.3M)",c:"pt",l:"dubai",e:"",p:"",w:"",f:"3.3M"},
+  {u:"fit.bayann",d:"Bayan Hashmah - Fitness influencer (1.4M)",c:"pt",l:"dubai",e:"",p:"",w:"",f:"1.4M"},
+  // DUBAI - Nutrition & Wellness
+  {u:"thetaniainme",d:"Sasha Edwards - Yoga & Fitness Coach, 18+ years experience",c:"yoga",l:"dubai",e:"",p:"",w:"",f:"8K+"},
+  {u:"vijeshmaxwellman",d:"Vijesh Maxwellman - Fitness Trainer UAE",c:"pt",l:"dubai",e:"",p:"",w:"",f:"4K+"},
+  {u:"rohitkhatrifitness",d:"Rohit Khatri - Fitness & lifestyle coach",c:"pt",l:"dubai",e:"",p:"",w:"",f:"5K+"},
+  // ABU DHABI - With Email
+  {u:"chrischalfoun",d:"Chris Chalfoun - Abu Dhabi PT, 12 years experience, Saadiyat-Reem Island",c:"pt",l:"abudhabi",e:"Christophe12123@gmail.com",p:"",w:"",f:"6K+"},
+  {u:"elina.fitness",d:"Elina - International Certified Fitness Coach, Health/Nutrition/Strength",c:"pt",l:"abudhabi",e:"elina.svitina@gmail.com",p:"",w:"",f:"5K+"},
+  {u:"mounirghailanfitness",d:"Mounir Ghailan - PT & Online Coach, helps busy professionals",c:"online",l:"abudhabi",e:"Mounir.Ghailan@gmail.com",p:"",w:"",f:"4K+"},
+  {u:"abdo_zaak",d:"Abdo Zaak - Fitness Coach, Online Coaching, Moroccan Champion 2015",c:"bodybuilding",l:"abudhabi",e:"Abderrahim.zaakoun@gmail.com",p:"",w:"",f:"5K+"},
+  {u:"sanghafitness5",d:"Sandeep Sangha - Gym Owner, Certified PT",c:"gym",l:"abudhabi",e:"sanghasandeep555@gmail.com",p:"",w:"",f:"3K+"},
+  {u:"fly_fit_gym",d:"Fly Fit Fitness Center - Al Falah Street, Abu Dhabi",c:"studio",l:"abudhabi",e:"flyfitgym786@gmail.com",p:"0566733587",w:"",f:"4K+"},
+  // ABU DHABI - DM/Contact
+  {u:"fitnessfirstmarinamallad",d:"Fitness First Marina Mall - Ladies Only Club, Abu Dhabi",c:"studio",l:"abudhabi",e:"",p:"026662116",w:"fitnessfirst.com",f:"8K+"},
+  {u:"poledivas.ae",d:"Pole Divas Abu Dhabi - First pole & aerial fitness studio (Ladies)",c:"studio",l:"abudhabi",e:"",p:"+971506228044",w:"",f:"5K+"},
+  {u:"sururfitnesscenter",d:"Surur Fitness Center - Unisex & ladies gym, Abu Dhabi",c:"studio",l:"abudhabi",e:"",p:"0504944114",w:"",f:"3K+"},
+  {u:"roarfitnessabu",d:"Roar Fitness Abu Dhabi - 12 years coaching, ladies bootcamp/PT/boxing",c:"studio",l:"abudhabi",e:"",p:"",w:"roar-fitness.com",f:"6K+"},
+  {u:"bodyabs.ae",d:"Body Abs Fitness - 7 branches, fitness/boxing/swimming/PT",c:"studio",l:"abudhabi",e:"",p:"",w:"",f:"10K+"},
+  {u:"fitnessfirstforsan.ladiesonly",d:"Fitness First Forsan - Premium ladies only gym, Abu Dhabi",c:"studio",l:"abudhabi",e:"",p:"",w:"fitnessfirst.com",f:"4K+"},
+  {u:"fitnessfuel.uae",d:"Fitness Fuel UAE - Nutrition & fitness coaching",c:"nutrition",l:"abudhabi",e:"",p:"",w:"",f:"3K+"},
+  {u:"trainingwithnam",d:"Training With Nam - Personal Trainer Abu Dhabi",c:"pt",l:"abudhabi",e:"",p:"",w:"",f:"2K+"},
+  // SHARJAH
+  {u:"floridagym.uae",d:"Florida Gym UAE - Multiple locations: Abushagara, Qasimia, Al Majaz, Al Nahda",c:"gym",l:"sharjah",e:"",p:"",w:"",f:"5K+"},
+  {u:"curstypt",d:"Cursty PT - Personal Trainer for Women 40+, Sharjah",c:"female",l:"sharjah",e:"",p:"",w:"",f:"2K+"},
+  {u:"flex_fitness_uae",d:"Flex Fitness UAE - Gym & fitness services",c:"gym",l:"sharjah",e:"",p:"",w:"",f:"4K+"},
+  // AJMAN
+  {u:"r.fitness.uae",d:"Rashid Body Fitness - Fitness coaching, Ajman",c:"pt",l:"ajman",e:"r.fitness.uae@gmail.com",p:"0509597792",w:"",f:"3K+"},
+  {u:"slimfitgym.ajman",d:"Slim Fit Gym - Personal training, CrossFit, bodybuilding",c:"gym",l:"ajman",e:"",p:"",w:"",f:"4K+"},
+  {u:"universefitnessajman",d:"Universe Fitness Ajman - Modern equipment, expert trainers",c:"gym",l:"ajman",e:"",p:"",w:"",f:"3K+"},
+  {u:"maxgymjurf",d:"Max Gym Ajman Jurf - Certified trainers, PT, CrossFit, 10 years",c:"gym",l:"ajman",e:"",p:"0566292752",w:"",f:"2K+"},
+  {u:"infinityfitness.ae",d:"Infinity Fitness - Grand Mall Ajman, bodybuilding & fitness",c:"gym",l:"ajman",e:"",p:"0503180202",w:"",f:"3K+"},
+  // AL AIN
+  {u:"basefitness.ae",d:"Base Fitness - Al Muwaiji Str 12, Al Ain",c:"gym",l:"alain",e:"basefitness.ae@gmail.com",p:"0542526690",w:"",f:"4.6K"},
+  // UAE-WIDE / Influencers
+  {u:"nadinefit_dxb",d:"Nadine du Toit - Adventure & fitness, explores Dubai outdoors",c:"pt",l:"uae",e:"",p:"",w:"",f:"25K+"},
+  {u:"platform3ae",d:"Omar al-Duri - Platform 3 Fitness Center, Dubai Marina",c:"gym",l:"dubai",e:"",p:"",w:"platform3.ae",f:"15K+"},
+  {u:"parkourdubai",d:"Nabeel Merchant - Parkour Dubai founder, calisthenics instructor",c:"crossfit",l:"dubai",e:"",p:"",w:"",f:"10K+"},
+  {u:"jessicaolie",d:"Jessica Olie - South African, swimmer + yoga, Dubai-based",c:"yoga",l:"dubai",e:"",p:"",w:"",f:"180K+"},
+  {u:"essa_alansari",d:"Essa Al Ansari - Fitness transformation specialist",c:"pt",l:"uae",e:"",p:"",w:"",f:"322K"},
+  {u:"mypt_me",d:"MyPT / Square One Fitness - Home PTs in Dubai/Abu Dhabi/Sharjah",c:"gym",l:"uae",e:"",p:"",w:"mypt-me.com",f:"12K+"},
+  {u:"fitsquaddxb",d:"Fit Squad DXB - Mobile PT leaders, HIIT/boxing/rugby/triathlon",c:"gym",l:"uae",e:"",p:"",w:"fitsquaddxb.com",f:"20K+"},
+  {u:"inspirefitnessacademy",d:"Inspire Fitness Academy - DM for free orientation, Dubai",c:"studio",l:"dubai",e:"",p:"",w:"",f:"6K+"},
+  {u:"abhifit_uae",d:"Abhinav Malhotra - ABHIFit, Fit Award 2019 winner",c:"pt",l:"dubai",e:"",p:"",w:"abhifit.com",f:"10K+"},
+  {u:"victoria__fitness__",d:"Terron Victoria - NASM Certified PT & Nutrition Coach",c:"nutrition",l:"dubai",e:"thevictoriafitness@gmail.com",p:"",w:"",f:"5K+"},
+  {u:"svt.fitness1",d:"SVT Fitness - Online fitness coach & personal trainer",c:"online",l:"dubai",e:"",p:"",w:"",f:"3K+"},
+  {u:"prosperfitness__",d:"Prosper Fitness - Online coach, worldwide coaching",c:"online",l:"dubai",e:"",p:"",w:"",f:"4K+"},
+  {u:"parambodyfitmind",d:"Param - Indian Fitness Trainer, online & Dubai",c:"online",l:"dubai",e:"",p:"",w:"",f:"5K+"},
+  {u:"hxhails",d:"Hails - Online Fitness Coach",c:"online",l:"dubai",e:"Hxhailsz@gmail.com",p:"",w:"",f:"4K+"},
+  {u:"jamiecorso",d:"Jamie Corso Konefal - Online fitness coaching",c:"online",l:"dubai",e:"liftwithjamie@gmail.com",p:"",w:"",f:"6K+"},
+  {u:"trainedbybecky",d:"Becky Warr - Online Coach & PT",c:"online",l:"dubai",e:"trainedbybecky@outlook.com",p:"",w:"",f:"5K+"},
+  {u:"boxingtrainerdubai",d:"Boxing Trainer Dubai - Private boxing, Marina/JBR",c:"boxing",l:"dubai",e:"info@boxingtrainerdubai.com",p:"+971501612291",w:"boxingtrainerdubai.com",f:"3K+"},
+  {u:"nutritionkitchen_uae",d:"Nutrition Kitchen UAE - Meal plans & nutrition coaching",c:"nutrition",l:"uae",e:"",p:"",w:"nutritionkitchen.ae",f:"15K+"}
+];
+
+const seen = new Set();
+const unique = profiles.filter(t => { if (seen.has(t.u)) return false; seen.add(t.u); return true; });
+const grid = document.getElementById('grid');
+const stats = document.getElementById('stats');
+
+function getLocClass(l) { const m = {dubai:'loc-dubai',abudhabi:'loc-abudhabi',sharjah:'loc-sharjah',ajman:'loc-ajman',alain:'loc-alain',rak:'loc-rak',fujairah:'loc-fujairah',uae:'loc-uae'}; return m[l]||''; }
+function getLocLabel(l) { const m = {dubai:'Dubai',abudhabi:'Abu Dhabi',sharjah:'Sharjah',ajman:'Ajman',alain:'Al Ain',rak:'RAK',fujairah:'Fujairah',uae:'UAE-wide'}; return m[l]||l; }
+function getCatClass(c) { const m = {pt:'cat-pt',gym:'cat-gym',boxing:'cat-boxing',yoga:'cat-yoga',crossfit:'cat-crossfit',bodybuilding:'cat-bodybuilding',online:'cat-online',nutrition:'cat-nutrition',female:'cat-female',studio:'cat-studio'}; return m[c]||''; }
+function getCatLabel(c) { const m = {pt:'Personal Trainer',gym:'Gym/Studio',boxing:'Boxing/MMA',yoga:'Yoga/Pilates',crossfit:'CrossFit/HIIT',bodybuilding:'Bodybuilding/IFBB',online:'Online Coach',nutrition:'Nutrition',female:'Female Specialist',studio:'Fitness Center'}; return m[c]||c; }
+
+function renderCards(list) {
+  grid.innerHTML = '';
+  let emailCount = list.filter(t=>t.e).length;
+  let phoneCount = list.filter(t=>t.p).length;
+  let noSiteCount = list.filter(t=>!t.w).length;
+  list.forEach((t, i) => {
+    const initials = t.u.substring(0,2).toUpperCase();
+    const card = document.createElement('div');
+    card.className = 'card';
+    let contactHTML = '';
+    if (t.e) contactHTML += `<span class="contact-badge badge-email" title="${t.e}">&#9993; ${t.e}</span>`;
+    if (t.p) contactHTML += `<span class="contact-badge badge-phone" title="${t.p}">&#9742; ${t.p}</span>`;
+    if (t.w) contactHTML += `<span class="contact-badge badge-website"><a href="https://${t.w}" target="_blank" style="color:inherit;text-decoration:none;">&#127760; ${t.w}</a></span>`;
+    else contactHTML += `<span class="contact-badge badge-nosite">&#10060; No Website</span>`;
+    if (t.f) contactHTML += `<span class="contact-badge badge-followers">&#128101; ${t.f}</span>`;
+    card.innerHTML = `<div class="num">#${i+1}</div><div class="handle-row"><div class="avatar">${initials}</div><div><a class="handle" href="https://instagram.com/${t.u}" target="_blank" rel="noopener">@${t.u}</a></div></div><div class="desc">${t.d}</div><div class="contact-row">${contactHTML}</div><div class="tags"><span class="tag ${getLocClass(t.l)}">${getLocLabel(t.l)}</span><span class="tag ${getCatClass(t.c)}">${getCatLabel(t.c)}</span></div>`;
+    grid.appendChild(card);
+  });
+  stats.innerHTML = `Showing <strong>${list.length}</strong> of ${unique.length} profiles | <strong>${emailCount}</strong> with email | <strong>${phoneCount}</strong> with phone | <strong>${noSiteCount}</strong> without website`;
+}
+
+function filterCards() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const cat = document.getElementById('catFilter').value;
+  const loc = document.getElementById('locFilter').value;
+  const has = document.getElementById('hasEmail').value;
+  const filtered = unique.filter(t => {
+    if (q && !t.u.toLowerCase().includes(q) && !t.d.toLowerCase().includes(q) && !(t.e && t.e.toLowerCase().includes(q))) return false;
+    if (cat && t.c !== cat) return false;
+    if (loc && t.l !== loc) return false;
+    if (has === 'email' && !t.e) return false;
+    if (has === 'phone' && !t.p) return false;
+    if (has === 'nosite' && t.w) return false;
+    if (has === 'website' && !t.w) return false;
+    return true;
+  });
+  renderCards(filtered);
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.style.display = 'block';
+  setTimeout(() => toast.style.display = 'none', 2500);
+}
+
+function exportCSV() {
+  const headers = 'Handle,Name/Description,Category,Location,Email,Phone,Website,Followers,Instagram URL\n';
+  const rows = unique.map(t => `"@${t.u}","${t.d.replace(/"/g,'""')}","${getCatLabel(t.c)}","${getLocLabel(t.l)}","${t.e}","${t.p}","${t.w}","${t.f}","https://instagram.com/${t.u}"`).join('\n');
+  const blob = new Blob([headers + rows], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'uae_trainers_database.csv';
+  a.click();
+  showToast('CSV exported with ' + unique.length + ' profiles!');
+}
+
+function copyEmails() {
+  const emails = unique.filter(t => t.e).map(t => t.e).join('\n');
+  navigator.clipboard.writeText(emails);
+  showToast('Copied ' + unique.filter(t=>t.e).length + ' emails to clipboard!');
+}
+
+function copyHandles() {
+  const handles = unique.map(t => '@' + t.u).join('\n');
+  navigator.clipboard.writeText(handles);
+  showToast('Copied ' + unique.length + ' handles to clipboard!');
+}
+
+function showEmailOnly() {
+  document.getElementById('hasEmail').value = 'email';
+  filterCards();
+  showToast('Filtered to email-only profiles');
+}
+
+renderCards(unique);
+</script>
+</body>
+</html>

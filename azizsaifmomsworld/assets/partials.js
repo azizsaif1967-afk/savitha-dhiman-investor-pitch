@@ -14,7 +14,7 @@ function renderHeader(active = '') {
       <a href="index.html" class="brand">azizsaifmomsworld<small>Organic Family Essentials</small></a>
       <div class="nav-actions">
         <a href="contact.html" class="${active==='contact'?'active':''}">Help</a>
-        <a href="account.html">Account</a>
+        <a href="#" data-account onclick="event.preventDefault(); openAuth();"><span data-account-label>Account</span></a>
         <a class="cart-pill" href="cart.html">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
           Bag · <span data-cart-count>0</span>

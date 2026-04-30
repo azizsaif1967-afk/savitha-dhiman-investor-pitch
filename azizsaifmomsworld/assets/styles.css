@@ -1,6 +1,27 @@
 /* azizsaifmomsworld — Organic Family Essentials
    Soft, warm, kid-and-mom world. Cream / sage / blush palette. */
 
+/* AUTH MODAL */
+#azsmw-auth { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px; }
+#azsmw-auth.open { display: flex; }
+#azsmw-auth .auth-backdrop { position: absolute; inset: 0; background: rgba(44,38,32,.55); backdrop-filter: blur(4px); }
+#azsmw-auth .auth-card { position: relative; background: #fffdf7; width: 100%; max-width: 420px; padding: 40px 36px 32px; border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,.18); }
+#azsmw-auth .auth-x { position: absolute; top: 12px; right: 14px; background: transparent; border: 0; font-size: 26px; line-height: 1; cursor: pointer; color: #6e6256; padding: 6px 10px; }
+#azsmw-auth .auth-head { text-align: center; margin-bottom: 22px; }
+#azsmw-auth .auth-head h2 { font-size: 28px; margin-top: 8px; }
+#azsmw-auth .auth-google { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; padding: 13px 18px; border: 1px solid #ece4d6; background: #fff; border-radius: 100px; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 500; color: #2c2620; transition: all .2s; }
+#azsmw-auth .auth-google:hover { border-color: #2c2620; background: #faf6ee; }
+#azsmw-auth .auth-divider { display: flex; align-items: center; gap: 12px; margin: 22px 0; color: #a39687; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+#azsmw-auth .auth-divider::before, #azsmw-auth .auth-divider::after { content: ''; flex: 1; border-top: 1px solid #ece4d6; }
+#azsmw-auth .auth-form { display: flex; flex-direction: column; gap: 14px; }
+#azsmw-auth .auth-form label { display: flex; flex-direction: column; gap: 6px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #6e6256; font-weight: 600; }
+#azsmw-auth .auth-form input { padding: 12px 14px; border: 1px solid #ece4d6; border-radius: 10px; font: inherit; color: #2c2620; outline: none; font-weight: 400; letter-spacing: 0; text-transform: none; background: #fff; }
+#azsmw-auth .auth-form input:focus { border-color: #8fa085; }
+#azsmw-auth .auth-toggle { text-align: center; margin: 18px 0 0; font-size: 13px; }
+#azsmw-auth .auth-toggle a { color: #d49b91; font-weight: 600; }
+#azsmw-auth .auth-toggle a:hover { color: #2c2620; }
+
+
 :root {
   --ink: #4a3f33;
   --ink-2: #2c2620;
