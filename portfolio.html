@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Aziz Saif"/>
 <meta property="og:title" content="Aziz Saif — Automation & Consultancy"/>
 <meta property="og:description" content="AI-powered automation, custom workflows and websites that ship fast. Dubai · UAE · GCC."/>
-<meta property="og:image" content="https://azizsaif.com/images/og-cover.jpg"/>
+<meta property="og:image" content="https://azizsaif.com/images/aziz-portrait.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:locale" content="en_AE"/>
@@ -27,7 +27,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Aziz Saif — Automation & Consultancy"/>
 <meta name="twitter:description" content="AI automation, workflows, websites. Dubai · UAE · GCC."/>
-<meta name="twitter:image" content="https://azizsaif.com/images/og-cover.jpg"/>
+<meta name="twitter:image" content="https://azizsaif.com/images/aziz-portrait.jpg"/>
 
 <!-- Geo -->
 <meta name="geo.region" content="AE-DU"/>
@@ -51,7 +51,7 @@
       "url": "https://azizsaif.com/",
       "jobTitle": "Automation & AI Consultant",
       "email": "hello@azizsaif.com",
-      "image": "https://azizsaif.com/images/aziz.jpg",
+      "image": "https://azizsaif.com/images/aziz-portrait.jpg",
       "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
       "knowsAbout": ["AI Automation","Business Process Automation","Workflow Design","n8n","Make.com","Zapier","Claude","OpenAI","Web Development","Ecommerce","Digital Transformation"],
       "sameAs": ["https://www.linkedin.com/in/azizsaif/","https://github.com/azizsaif1967-afk"]
@@ -160,6 +160,21 @@
   }
   .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.06); }
 
+  .hero-portrait {
+    position: absolute; right: 48px; bottom: 80px; z-index: 3;
+    width: 180px; height: 220px; border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,.18); box-shadow: 0 30px 60px rgba(0,0,0,.5);
+    backdrop-filter: blur(4px);
+  }
+  .hero-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-portrait .tag {
+    position: absolute; left: 12px; bottom: 12px; right: 12px;
+    background: rgba(10,10,10,.7); color: #fff; padding: 8px 12px;
+    border-radius: 8px; font-size: 11px; backdrop-filter: blur(8px);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-portrait .tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+  @media (max-width: 900px) { .hero-portrait { display: none; } }
   .hero-marquee {
     position: absolute; bottom: 24px; left: 0; right: 0; z-index: 2;
     overflow: hidden; white-space: nowrap; opacity: .55;
@@ -286,6 +301,10 @@
       <a href="#contact" class="btn-primary">Start a project →</a>
       <a href="#work" class="btn-ghost">See recent work</a>
     </div>
+  </div>
+  <div class="hero-portrait">
+    <img src="https://azizsaif.com/images/aziz-portrait.jpg" alt="Aziz Saif — Automation & AI Consultant, Dubai"/>
+    <div class="tag">Aziz Saif · Dubai</div>
   </div>
   <div class="hero-marquee">
     <div>
