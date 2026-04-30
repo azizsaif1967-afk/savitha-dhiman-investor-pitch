@@ -187,6 +187,7 @@ tbody td{padding:14px 18px;vertical-align:middle}
     <div style="padding:8px 0">
       <nav class="side">
         <a class="on" data-view="dashboard"><span class="ico">📊</span> Dashboard</a>
+        <a data-view="emp_jobs" data-emp-only><span class="ico">💼</span> My Jobs</a>
         <a data-view="companies"><span class="ico">🏢</span> Companies</a>
         <a data-view="candidates"><span class="ico">👥</span> Candidates</a>
         <a data-view="plans"><span class="ico">📦</span> Package Plans</a>
@@ -356,6 +357,66 @@ tbody td{padding:14px 18px;vertical-align:middle}
       </div>
     </section>
 
+    <!-- EMPLOYER PORTAL — Indeed-style "My Jobs" + billing (visible to client/employer role) -->
+    <section class="view" data-view="emp_jobs">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+        <div>
+          <div style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.14em;text-transform:uppercase">Employer Portal</div>
+          <h2 style="font-size:22px;font-weight:800;letter-spacing:-.01em;margin-top:4px">My Jobs</h2>
+        </div>
+        <button class="btn btn-green" style="padding:10px 20px;font-weight:700">+ Post a job</button>
+      </div>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+        <select style="padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px"><option>Status ▾</option><option>Open</option><option>Closed</option><option>Paused</option></select>
+        <select style="padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px"><option>Title ▾</option></select>
+        <select style="padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px"><option>Location ▾</option></select>
+        <select style="padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px"><option>Posted by ▾</option></select>
+        <select style="padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px"><option>Sponsorship ▾</option></select>
+        <button class="btn btn-ghost" style="border-radius:999px">⚙ More filters</button>
+        <span style="margin-left:auto;align-self:center;color:var(--muted);font-weight:600;font-size:13px">2 results</span>
+      </div>
+
+      <div class="table-card">
+        <table id="tblEmpJobs"></table>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <h3>Manage billing details</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px">
+          <div style="padding:14px;border:1px solid var(--line);border-radius:8px">
+            <div style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase">This month</div>
+            <div style="font-size:24px;font-weight:800;margin-top:6px">AED 28.77</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">Sponsorship spend · Apr 2026</div>
+          </div>
+          <div style="padding:14px;border:1px solid var(--line);border-radius:8px">
+            <div style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase">Active plan</div>
+            <div style="font-size:24px;font-weight:800;margin-top:6px">Growth</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">5 active posts · renews 23 May 2026</div>
+          </div>
+          <div style="padding:14px;border:1px solid var(--line);border-radius:8px">
+            <div style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase">Payment method</div>
+            <div style="font-size:18px;font-weight:700;margin-top:8px">Visa •••• 4421</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">Expires 09/27 · primary</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:18px;margin-top:18px;flex-wrap:wrap">
+          <a href="#" style="color:var(--blue);font-weight:700;font-size:13.5px">View billing history →</a>
+          <a href="#" style="color:var(--blue);font-weight:700;font-size:13.5px">Update payment method →</a>
+          <a href="#" style="color:var(--blue);font-weight:700;font-size:13.5px">View performance report →</a>
+          <a href="#" style="color:var(--blue);font-weight:700;font-size:13.5px">Download invoices (PDF) →</a>
+        </div>
+      </div>
+
+      <div class="table-card" style="margin-top:18px">
+        <div class="table-head">
+          <h2>Recent applicants to your jobs</h2>
+          <div class="table-tools"><select><option>All status</option><option>Applied</option><option>Shortlisted</option></select></div>
+        </div>
+        <table id="tblEmpApplicants"></table>
+      </div>
+    </section>
+
     <!-- Other admin views (lightweight stubs) -->
     <section class="view" data-view="plans"><div class="card"><h3>Package Plans</h3><p style="color:var(--muted);margin-top:6px">Manage employer subscription tiers (Starter / Growth / Enterprise) — pricing, job-post limits, featured-post quotas, support SLAs.</p></div></section>
     <section class="view" data-view="subs"><div class="card"><h3>Subscriptions</h3><p style="color:var(--muted);margin-top:6px">142 active employer subscriptions · AED 387,420 YTD revenue · auto-renewal, billing history, invoices.</p></div></section>
@@ -401,6 +462,26 @@ function showApp(name){
   const initial=(name||'A')[0].toUpperCase();
   document.getElementById('userAv').textContent=initial;
   document.getElementById('userNm').textContent = name.length>20 ? 'Admin' : (name.charAt(0).toUpperCase()+name.slice(1));
+  // Detect role from /fastlink/index.html login flow
+  let role='admin';
+  try{const s=JSON.parse(localStorage.getItem('fastlink_session')||'{}');if(s.role)role=s.role;}catch(e){}
+  if(role==='client'){
+    document.body.setAttribute('data-role','client');
+    document.querySelector('.user-chip .rl').textContent='Employer · UAE';
+    // Hide admin-only sidebar items, default to My Jobs
+    document.querySelectorAll('nav.side a[data-view]').forEach(a=>{
+      const v=a.dataset.view;
+      const empAllowed=['emp_jobs','applicants','settings'].includes(v);
+      if(!empAllowed) a.style.display='none';
+    });
+    // Activate emp_jobs view
+    document.querySelectorAll('nav.side a').forEach(b=>b.classList.remove('on'));
+    const empLink=document.querySelector('nav.side a[data-view="emp_jobs"]');
+    if(empLink) empLink.classList.add('on');
+    document.querySelectorAll('.view').forEach(s=>s.classList.remove('on'));
+    document.querySelector('.view[data-view="emp_jobs"]').classList.add('on');
+    document.getElementById('topTitle').textContent='My Jobs';
+  }
   initData();
 }
 // auto-login if session
@@ -535,6 +616,29 @@ function initData(){
   document.getElementById('applicantsRecent').innerHTML = `
     <thead><tr><th>S.N</th><th>Candidate</th><th>Company</th><th>Job</th><th>Date</th><th>Status</th></tr></thead>
     <tbody>${applRows(APPLICANTS.slice(0,5))}</tbody>`;
+
+  // Employer "My Jobs" — Indeed-style
+  const EMP_JOBS=[
+    {title:'Chef',loc:'Dubai',appl:73,nw:72,spons:'<a href="#" style="color:var(--blue);font-weight:700">Upgrade to Premium</a><div style="font-size:12px;color:var(--muted);margin-top:2px">5.00 (AED) Daily<br/>28.77 (AED) Total cost</div>',date:'6 days ago<br/><a href="#" style="color:var(--blue)">Sponsorship ended 2 days ago</a>',status:'Closed',dot:'#EF4444'},
+    {title:'Chef',loc:'Dubai',appl:114,nw:54,spons:'Free · <a href="#" style="color:var(--blue);font-weight:700">Sponsor job</a>',date:'7 days ago<br/>April 23, 2026',status:'Open',dot:'#16A34A'},
+  ];
+  const empT=document.getElementById('tblEmpJobs');
+  if(empT){empT.innerHTML=`
+    <thead><tr><th style="width:30px"></th><th>Job title</th><th>Candidates</th><th>Sponsorship</th><th>Date posted</th><th>Email</th><th>Job status</th><th></th></tr></thead>
+    <tbody>${EMP_JOBS.map(j=>`<tr>
+      <td>☆</td>
+      <td><a href="#" style="color:var(--blue);font-weight:700">${j.title}</a><div class="em">${j.loc}</div></td>
+      <td><div style="display:flex;gap:18px"><div><div style="font-weight:700">👥 ${j.appl}</div><a href="#" style="color:var(--blue);font-size:12px">Applicants</a></div><div><div style="font-weight:700">📄 ${j.nw}</div><a href="#" style="color:var(--blue);font-size:12px">New</a></div></div></td>
+      <td>${j.spons}</td>
+      <td>${j.date}</td>
+      <td><div class="av b1" style="width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#3A4658;color:#fff;font-weight:700;font-size:11px">AZ</div></td>
+      <td><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:1px solid var(--line);border-radius:6px;font-weight:600"><span style="width:8px;height:8px;border-radius:50%;background:${j.dot}"></span>${j.status} ▾</span></td>
+      <td>⋯</td>
+    </tr>`).join('')}</tbody>`;}
+  const empA=document.getElementById('tblEmpApplicants');
+  if(empA){empA.innerHTML=`
+    <thead><tr><th>S.N</th><th>Candidate</th><th>Job</th><th>Applied</th><th>Status</th></tr></thead>
+    <tbody>${APPLICANTS.slice(0,6).map(a=>`<tr><td>${a.n}</td><td><div class="nm">${a.cand}</div><div class="em">${a.prof}</div></td><td>${a.job}</td><td>${a.date}</td><td><span class="badge ${a.st}">${a.st}</span></td></tr>`).join('')}</tbody>`;}
 
   // Categories
   document.getElementById('tblCats').innerHTML = `
