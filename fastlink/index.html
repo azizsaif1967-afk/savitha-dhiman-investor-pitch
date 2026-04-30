@@ -2152,11 +2152,13 @@ function loginCredSubmit(e){
     return;
   }
   loginCtx.signedInAt=new Date().toISOString();
-  try{localStorage.setItem('fastlink_session', JSON.stringify(loginCtx));}catch(err){}
+  try{
+    localStorage.setItem('fastlink_session', JSON.stringify(loginCtx));
+    // Also set admin.html's session bypass so user isn't asked to log in again
+    sessionStorage.setItem('fl_admin', JSON.stringify({user:loginCtx.email||loginCtx.role,via:'fastlink-portal',role:loginCtx.role,at:Date.now()}));
+  }catch(err){}
   closeLogin();
-  // Redirect by role
-  const dest = {admin:'admin.html', client:'admin.html', candidate:'admin.html'}[loginCtx.role] || 'admin.html';
-  setTimeout(()=>{window.location.href = dest;}, 200);
+  setTimeout(()=>{window.location.href='admin.html';}, 200);
 }
 function loginGoogle(){
   loginCtx.provider='google';
