@@ -660,6 +660,23 @@ nav.main a.nav-download:hover{background:var(--green);color:#fff}
 @media (max-width:980px){.cand-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.cand-grid{grid-template-columns:1fr}}
 
+
+.nav-login{margin-left:4px;color:var(--ink) !important;font-weight:700 !important}
+.nav-login:hover{background:var(--ink) !important;color:#fff !important}
+
+.login-steps{display:flex;gap:6px;margin-top:14px;font-size:11px;color:rgba(255,255,255,.6);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.ls-step{padding:5px 10px;background:rgba(255,255,255,.08);border-radius:4px;transition:.2s}
+.ls-step.on{background:rgba(255,255,255,.2);color:#fff}
+.ls-step.done{background:rgba(46,170,75,.5);color:#fff}
+
+.role-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.role-card{padding:20px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;transition:.2s;display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center;font-family:inherit}
+.role-card:hover{border-color:var(--blue);background:var(--blue-soft);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.role-ico{width:48px;height:48px;border-radius:8px;display:grid;place-items:center;font-size:22px}
+.role-name{font-size:14.5px;font-weight:700;color:var(--ink);letter-spacing:-.005em}
+.role-desc{font-size:12px;color:var(--muted);line-height:1.4}
+@media (max-width:560px){.role-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body data-mode="candidate">
@@ -696,6 +713,7 @@ nav.main a.nav-download:hover{background:var(--green);color:#fff}
       <a href="#faq">FAQ</a>
       <a href="#brochure" class="nav-download">📥 Brochure</a>
       <a href="#contact">Contact</a>
+      <a href="#" class="nav-login" onclick="event.preventDefault();openLogin()">🔐 Login</a>
     </nav>
     <div class="nav-cta">
       <a href="#contact" class="btn btn-primary" style="background:var(--blue);color:#fff;padding:0 18px;height:42px;border-radius:6px;font-weight:600">Contact us</a>
@@ -786,6 +804,96 @@ nav.main a.nav-download:hover{background:var(--green);color:#fff}
         </button>
         <div class="legal" style="text-align:center;margin-top:4px">By continuing you agree to our <a href="#" style="color:var(--blue)">Terms</a> &amp; <a href="#" style="color:var(--blue)">Privacy Policy</a>.</div>
       </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- LOGIN PORTAL (multi-step: role → profile → credentials) -->
+<div class="modal-back" id="loginModal">
+  <div class="modal" style="max-width:560px">
+    <div class="modal-head" style="background:linear-gradient(135deg,#0E1F3A,#143E76)">
+      <h3 id="loginTitle">Login to FastLink</h3>
+      <p id="loginSub">Choose your role to continue</p>
+      <button class="close" onclick="closeLogin()">×</button>
+      <div class="login-steps">
+        <span class="ls-step on" data-s="1">1. Role</span>
+        <span class="ls-step" data-s="2">2. Profile</span>
+        <span class="ls-step" data-s="3">3. Sign in</span>
+      </div>
+    </div>
+    <div class="modal-body" style="gap:14px">
+
+      <!-- STEP 1: role -->
+      <div class="login-step" data-step="1">
+        <div class="role-grid">
+          <button class="role-card" onclick="loginPickRole('admin')">
+            <div class="role-ico" style="background:#0E1F3A;color:#fff">🛡️</div>
+            <div class="role-name">Admin</div>
+            <div class="role-desc">Internal FastLink team</div>
+          </button>
+          <button class="role-card" onclick="loginPickRole('client')">
+            <div class="role-ico" style="background:var(--blue-soft);color:var(--blue)">🏢</div>
+            <div class="role-name">Client / Employer</div>
+            <div class="role-desc">Manage open roles &amp; CVs</div>
+          </button>
+          <button class="role-card" onclick="loginPickRole('candidate')">
+            <div class="role-ico" style="background:var(--green-soft);color:var(--green-deep)">👤</div>
+            <div class="role-name">Job Seeker</div>
+            <div class="role-desc">Track applications &amp; alerts</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: profile capture -->
+      <div class="login-step" data-step="2" style="display:none">
+        <form onsubmit="loginProfileSubmit(event)" style="display:flex;flex-direction:column;gap:12px">
+          <div class="row">
+            <div><label>Email address</label><input type="email" id="lpEmail" required placeholder="you@email.com"/></div>
+            <div><label>Contact number</label><input type="tel" id="lpMob" required placeholder="+971 50 000 0000"/></div>
+          </div>
+          <div class="row">
+            <div><label>Company / Organisation</label><input type="text" id="lpCo" required placeholder="Company name"/></div>
+            <div><label>Emirate</label>
+              <select id="lpCity" required>
+                <option value="">Select city…</option>
+                <option>Dubai</option>
+                <option>Abu Dhabi</option>
+                <option>Sharjah</option>
+                <option>Ajman</option>
+                <option>Ras Al Khaimah</option>
+                <option>Fujairah</option>
+                <option>Umm Al Quwain</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:6px">
+            <button type="button" class="btn btn-ghost" onclick="loginGoStep(1)" style="flex:0 0 auto">← Back</button>
+            <button type="submit" class="submit" style="flex:1;background:#0E1F3A">Continue →</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- STEP 3: credentials -->
+      <div class="login-step" data-step="3" style="display:none">
+        <div style="text-align:center;margin-bottom:6px">
+          <div style="font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase" id="loginRoleLabel">Admin Login</div>
+        </div>
+        <form onsubmit="loginCredSubmit(event)" style="display:flex;flex-direction:column;gap:12px">
+          <div><label>Email</label><input type="email" id="lcEmail" required readonly/></div>
+          <div><label>Password</label><input type="password" id="lcPass" required minlength="8" placeholder="At least 8 characters"/></div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px"><label style="display:flex;gap:6px;color:var(--ink-2);cursor:pointer"><input type="checkbox" checked/> Keep me signed in</label><a href="#" style="color:var(--blue);font-weight:600">Forgot password?</a></div>
+          <button type="submit" class="submit" style="background:#0E1F3A">🔓 Sign in →</button>
+          <div class="auth-or" id="loginOrRow"><span>OR</span></div>
+          <button type="button" class="auth-social" onclick="loginGoogle()">
+            <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.2 6 29.4 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.1 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.2 6 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.2-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2c-.4.4 6.6-4.8 6.6-14.8 0-1.3-.1-2.6-.4-3.9z"/></svg>
+            Continue with Google
+          </button>
+          <button type="button" class="btn btn-ghost" onclick="loginGoStep(2)" style="margin-top:4px">← Back</button>
+          <div class="legal" style="text-align:center">By signing in you agree to FastLink's <a href="#" style="color:var(--blue)">Terms</a> &amp; <a href="#" style="color:var(--blue)">Privacy Policy</a>.</div>
+        </form>
+      </div>
+
     </div>
   </div>
 </div>
@@ -2000,6 +2108,57 @@ function authGoogle(){
   localStorage.setItem('fastlink_candidate',JSON.stringify({email,provider:'google',loggedInAt:new Date().toISOString()}));
   closeAuth();
   setTimeout(()=>{alert('✅ Signed in with Google (demo)');runPendingAction();},150);
+}
+
+/* Login portal — multi-step */
+let loginCtx = {};
+function openLogin(){document.getElementById('loginModal').classList.add('open');loginGoStep(1);}
+function closeLogin(){document.getElementById('loginModal').classList.remove('open');}
+function loginGoStep(n){
+  document.querySelectorAll('.login-step').forEach(el=>el.style.display = (el.dataset.step==String(n))?'block':'none');
+  document.querySelectorAll('.ls-step').forEach(el=>{
+    el.classList.remove('on','done');
+    if(+el.dataset.s===n) el.classList.add('on');
+    else if(+el.dataset.s<n) el.classList.add('done');
+  });
+}
+function loginPickRole(role){
+  loginCtx.role=role;
+  const titleMap={admin:'Admin Sign-in',client:'Client / Employer Sign-in',candidate:'Job Seeker Sign-in'};
+  document.getElementById('loginTitle').textContent=titleMap[role];
+  document.getElementById('loginSub').textContent='Tell us a bit about you';
+  loginGoStep(2);
+}
+function loginProfileSubmit(e){
+  e.preventDefault();
+  loginCtx.email = document.getElementById('lpEmail').value;
+  loginCtx.mob = document.getElementById('lpMob').value;
+  loginCtx.co = document.getElementById('lpCo').value;
+  loginCtx.city = document.getElementById('lpCity').value;
+  document.getElementById('lcEmail').value = loginCtx.email;
+  const lblMap={admin:'Admin Login',client:'Client / Employer Login',candidate:'Job Seeker Login'};
+  document.getElementById('loginRoleLabel').textContent = lblMap[loginCtx.role];
+  // Google option only for admin and candidate (not client by default)
+  document.getElementById('loginOrRow').style.display = (loginCtx.role==='admin' || loginCtx.role==='candidate') ? 'flex':'none';
+  document.querySelector('#loginModal .auth-social').style.display = (loginCtx.role==='admin' || loginCtx.role==='candidate') ? 'flex':'none';
+  loginGoStep(3);
+}
+function loginCredSubmit(e){
+  e.preventDefault();
+  loginCtx.pass='********';
+  loginCtx.signedInAt=new Date().toISOString();
+  console.log('🔐 Login:', loginCtx);
+  try{localStorage.setItem('fastlink_session', JSON.stringify(loginCtx));}catch(err){}
+  closeLogin();
+  setTimeout(()=>alert(`✅ Welcome! Signed in as ${loginCtx.role.toUpperCase()} (demo).\n\nIn production this would redirect to:\n• /admin/dashboard\n• /client/portal\n• /candidate/profile`), 150);
+}
+function loginGoogle(){
+  loginCtx.provider='google';
+  loginCtx.signedInAt=new Date().toISOString();
+  console.log('🔐 Google login:', loginCtx);
+  try{localStorage.setItem('fastlink_session', JSON.stringify(loginCtx));}catch(err){}
+  closeLogin();
+  setTimeout(()=>alert(`✅ Signed in with Google as ${loginCtx.role.toUpperCase()} (demo).`), 150);
 }
 </script>
 </body>
