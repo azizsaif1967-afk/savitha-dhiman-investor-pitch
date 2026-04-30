@@ -187,7 +187,15 @@ tbody td{padding:14px 18px;vertical-align:middle}
     <div style="padding:8px 0">
       <nav class="side">
         <a class="on" data-view="dashboard"><span class="ico">📊</span> Dashboard</a>
+        <a data-view="js_home" data-cand-only><span class="ico">🔎</span> Find Jobs</a>
         <a data-view="emp_jobs" data-emp-only><span class="ico">💼</span> My Jobs</a>
+        <a data-view="emp_candidates" data-emp-only><span class="ico">👥</span> Candidates</a>
+        <a data-view="emp_messages" data-emp-only><span class="ico">💬</span> Messages</a>
+        <a data-view="emp_analytics" data-emp-only><span class="ico">📈</span> Analytics</a>
+        <a data-view="emp_templates" data-emp-only><span class="ico">📝</span> Templates</a>
+        <a data-view="emp_company" data-emp-only><span class="ico">🏢</span> Company page</a>
+        <a data-view="emp_billing" data-emp-only><span class="ico">💳</span> Billing &amp; Sponsorship</a>
+        <a data-view="emp_tools" data-emp-only><span class="ico">🛠️</span> Tools &amp; Integrations</a>
         <a data-view="companies"><span class="ico">🏢</span> Companies</a>
         <a data-view="candidates"><span class="ico">👥</span> Candidates</a>
         <a data-view="plans"><span class="ico">📦</span> Package Plans</a>
@@ -357,6 +365,42 @@ tbody td{padding:14px 18px;vertical-align:middle}
       </div>
     </section>
 
+    <!-- JOB SEEKER PORTAL (candidate role only) -->
+    <section class="view" data-view="js_home">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+        <div>
+          <div style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.14em;text-transform:uppercase">Job Seeker</div>
+          <h2 style="font-size:22px;font-weight:800;letter-spacing:-.01em;margin-top:4px" id="jsHello">Welcome</h2>
+        </div>
+        <div style="display:flex;gap:10px">
+          <label class="btn btn-ghost" style="border:1px solid var(--line);cursor:pointer">📎 Upload CV<input type="file" id="jsCv" accept=".pdf,.doc,.docx" style="display:none" onchange="jsUpload(this)"/></label>
+          <button class="btn btn-green" onclick="document.querySelector('#jsSearch').focus()">🔍 Search jobs</button>
+        </div>
+      </div>
+
+      <div class="kpi-row">
+        <div class="kpi g"><div><h3>Open Jobs in UAE</h3><div class="num">2,180</div><div class="sub">Updated hourly</div></div><div class="ico">💼</div></div>
+        <div class="kpi b"><div><h3>Your Applications</h3><div class="num" id="jsAppCount">0</div><div class="sub">Track status below</div></div><div class="ico">📨</div></div>
+        <div class="kpi o"><div><h3>CV Status</h3><div class="num" id="jsCvStat" style="font-size:22px">Not uploaded</div><div class="sub" id="jsCvSub">PDF / DOC / DOCX · max 5 MB</div></div><div class="ico">📄</div></div>
+      </div>
+
+      <div class="table-card" style="margin-top:18px">
+        <div class="table-head">
+          <h2>Available jobs you can apply for</h2>
+          <div class="table-tools">
+            <input id="jsSearch" placeholder="Search by title, skill, city…" oninput="jsRender()"/>
+            <select id="jsCity" onchange="jsRender()"><option value="">All emirates</option><option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option><option>Ajman</option><option>RAK</option><option>JAFZA</option><option>Mussafah</option></select>
+          </div>
+        </div>
+        <table id="tblJsJobs"></table>
+      </div>
+
+      <div class="table-card" style="margin-top:18px">
+        <div class="table-head"><h2>Search &amp; application history</h2><button class="btn btn-ghost" onclick="jsClearHistory()">Clear history</button></div>
+        <table id="tblJsHistory"></table>
+      </div>
+    </section>
+
     <!-- EMPLOYER PORTAL — Indeed-style "My Jobs" + billing (visible to client/employer role) -->
     <section class="view" data-view="emp_jobs">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
@@ -417,6 +461,184 @@ tbody td{padding:14px 18px;vertical-align:middle}
       </div>
     </section>
 
+    <!-- EMPLOYER · CANDIDATES -->
+    <section class="view" data-view="emp_candidates">
+      <h2 style="font-size:22px;font-weight:800;margin-bottom:14px">Candidates</h2>
+      <div class="kpi-row">
+        <div class="kpi b"><div><h3>New this week</h3><div class="num">42</div><div class="sub">across 2 active jobs</div></div><div class="ico">🆕</div></div>
+        <div class="kpi g"><div><h3>Shortlisted</h3><div class="num">12</div><div class="sub">awaiting interview</div></div><div class="ico">⭐</div></div>
+        <div class="kpi o"><div><h3>Interviewing</h3><div class="num">5</div><div class="sub">scheduled this week</div></div><div class="ico">🎤</div></div>
+      </div>
+      <div class="table-card" style="margin-top:18px">
+        <div class="table-head">
+          <h2>Applicants</h2>
+          <div class="table-tools">
+            <select><option>All jobs</option><option>Chef · Dubai (open)</option><option>Chef · Dubai (closed)</option></select>
+            <select><option>All status</option><option>Applied</option><option>Reviewed</option><option>Shortlisted</option><option>Interview</option><option>Offer</option><option>Hired</option><option>Rejected</option></select>
+            <input placeholder="Search candidate…"/>
+          </div>
+        </div>
+        <table id="tblEmpCandidates"></table>
+      </div>
+    </section>
+
+    <!-- EMPLOYER · MESSAGES -->
+    <section class="view" data-view="emp_messages">
+      <h2 style="font-size:22px;font-weight:800;margin-bottom:14px">Messages</h2>
+      <div class="card">
+        <div style="display:grid;grid-template-columns:280px 1fr;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;min-height:480px">
+          <div style="border-right:1px solid var(--line);background:var(--cream)">
+            <div style="padding:12px;border-bottom:1px solid var(--line)"><input placeholder="Search messages…" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px"/></div>
+            <div style="padding:12px;border-bottom:1px solid var(--line);background:#fff;border-left:3px solid var(--blue)">
+              <div style="display:flex;justify-content:space-between"><strong>Khandaker R.</strong><span style="font-size:11px;color:var(--muted)">2h</span></div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px">Senior Civil Engineer · Available 30 days</div>
+            </div>
+            <div style="padding:12px;border-bottom:1px solid var(--line)">
+              <div style="display:flex;justify-content:space-between"><strong>Aisha P.</strong><span style="font-size:11px;color:var(--muted)">1d</span></div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px">UI/UX Designer · Portfolio attached</div>
+            </div>
+            <div style="padding:12px;border-bottom:1px solid var(--line)">
+              <div style="display:flex;justify-content:space-between"><strong>Carlos R.</strong><span style="font-size:11px;color:var(--muted)">3d</span></div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px">Hotel Operations · 9 yrs exp</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center">
+              <div><strong>Khandaker Rahman</strong><div style="font-size:12px;color:var(--muted)">Senior Civil Engineer</div></div>
+              <div style="display:flex;gap:8px"><button class="btn btn-ghost">Schedule interview</button><button class="btn btn-green">View profile</button></div>
+            </div>
+            <div style="flex:1;padding:18px;background:var(--cream);display:flex;flex-direction:column;gap:10px">
+              <div style="background:#fff;padding:10px 14px;border-radius:8px;max-width:60%;border:1px solid var(--line)">Hi — I'm very interested in the Senior Civil Engineer role in Abu Dhabi.</div>
+              <div style="background:var(--blue);color:#fff;padding:10px 14px;border-radius:8px;max-width:60%;align-self:flex-end">Thanks for applying. Could you share your availability for a call this week?</div>
+              <div style="background:#fff;padding:10px 14px;border-radius:8px;max-width:60%;border:1px solid var(--line)">Yes — Tue or Wed afternoon works. UAE time.</div>
+            </div>
+            <div style="padding:12px;border-top:1px solid var(--line);display:flex;gap:8px">
+              <input placeholder="Type a message…" style="flex:1;padding:10px 12px;border:1px solid var(--line);border-radius:6px"/>
+              <button class="btn btn-green">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMPLOYER · ANALYTICS -->
+    <section class="view" data-view="emp_analytics">
+      <h2 style="font-size:22px;font-weight:800;margin-bottom:14px">Analytics &amp; Reports</h2>
+      <div class="kpi-row">
+        <div class="kpi b"><div><h3>Job views (30d)</h3><div class="num">4,820</div><div class="sub">▲ 18%</div></div><div class="ico">👁</div></div>
+        <div class="kpi g"><div><h3>Applicants (30d)</h3><div class="num">187</div><div class="sub">▲ 22%</div></div><div class="ico">📨</div></div>
+        <div class="kpi o"><div><h3>Apply rate</h3><div class="num">3.9%</div><div class="sub">vs 3.1% industry avg</div></div><div class="ico">🎯</div></div>
+      </div>
+      <div class="charts">
+        <div class="card"><h3>Views &amp; applies — last 12 weeks</h3>
+          <div class="bars" style="height:180px">
+            <div class="bar"><div class="b g" style="height:42%"></div></div>
+            <div class="bar"><div class="b g" style="height:55%"></div></div>
+            <div class="bar"><div class="b g" style="height:38%"></div></div>
+            <div class="bar"><div class="b g" style="height:60%"></div></div>
+            <div class="bar"><div class="b g" style="height:48%"></div></div>
+            <div class="bar"><div class="b g" style="height:72%"></div></div>
+            <div class="bar"><div class="b g" style="height:65%"></div></div>
+            <div class="bar"><div class="b g" style="height:58%"></div></div>
+            <div class="bar"><div class="b g" style="height:70%"></div></div>
+            <div class="bar"><div class="b g" style="height:82%"></div></div>
+            <div class="bar"><div class="b g" style="height:75%"></div></div>
+            <div class="bar"><div class="b g" style="height:90%"></div></div>
+          </div>
+        </div>
+        <div class="card"><h3>Top sources of hire</h3>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
+            <div><div style="display:flex;justify-content:space-between;font-size:13px"><span>FastLink portal</span><strong>54%</strong></div><div style="height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:4px"><div style="width:54%;height:100%;background:var(--blue)"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:13px"><span>Sponsored job ads</span><strong>28%</strong></div><div style="height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:4px"><div style="width:28%;height:100%;background:var(--green)"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:13px"><span>Referrals</span><strong>12%</strong></div><div style="height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:4px"><div style="width:12%;height:100%;background:#F59E0B"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:13px"><span>Direct / company page</span><strong>6%</strong></div><div style="height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:4px"><div style="width:6%;height:100%;background:#8B5CF6"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:18px"><h3>Download reports</h3><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><button class="btn btn-ghost">📊 Hiring funnel (CSV)</button><button class="btn btn-ghost">📊 Sponsorship spend (PDF)</button><button class="btn btn-ghost">📊 Applicant demographics (XLSX)</button></div></div>
+    </section>
+
+    <!-- EMPLOYER · TEMPLATES -->
+    <section class="view" data-view="emp_templates">
+      <h2 style="font-size:22px;font-weight:800;margin-bottom:14px">Templates</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
+        <div class="card"><h3>Job description templates</h3><p style="color:var(--muted);margin:6px 0 12px">Re-usable JD templates pre-filled for common UAE roles.</p>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px">
+            <li style="padding:10px;border:1px solid var(--line);border-radius:6px;display:flex;justify-content:space-between"><span>Chef de Partie · Hotel</span><button class="btn btn-ghost">Use</button></li>
+            <li style="padding:10px;border:1px solid var(--line);border-radius:6px;display:flex;justify-content:space-between"><span>Civil Engineer · Megaproject</span><button class="btn btn-ghost">Use</button></li>
+            <li style="padding:10px;border:1px solid var(--line);border-radius:6px;display:flex;justify-content:space-between"><span>Site Foreman</span><button class="btn btn-ghost">Use</button></li>
+          </ul>
+          <button class="btn btn-green" style="margin-top:10px">+ New template</button>
+        </div>
+        <div class="card"><h3>Email &amp; message templates</h3><p style="color:var(--muted);margin:6px 0 12px">Quick replies, interview invites, rejection notes.</p>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px">
+            <li style="padding:10px;border:1px solid var(--line);border-radius:6px;display:flex;justify-content:space-between"><span>Interview invitation</span><button class="btn btn-ghost">Edit</button></li>
+            <li style="padding:10px;border:1px solid var(--line);border-radius:6px;display:flex;justify-content:space-between"><span>Application received</span><button class="btn btn-ghost">Edit</button></li>
+            <li style="padding:10px;border:1px solid var(--line);border-radius:6px;display:flex;justify-content:space-between"><span>Polite rejection</span><button class="btn btn-ghost">Edit</button></li>
+          </ul>
+          <button class="btn btn-green" style="margin-top:10px">+ New template</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMPLOYER · COMPANY PAGE -->
+    <section class="view" data-view="emp_company">
+      <h2 style="font-size:22px;font-weight:800;margin-bottom:14px">Company page</h2>
+      <div class="card">
+        <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">
+          <div style="width:120px;height:120px;border:1px dashed var(--line);border-radius:8px;display:grid;place-items:center;color:var(--muted);font-size:12px;text-align:center;cursor:pointer">📷<br/>Upload logo</div>
+          <div style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:10px">
+            <div><label style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.08em">COMPANY NAME</label><input value="Your Company FZE" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;margin-top:4px"/></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div><label style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.08em">INDUSTRY</label><input value="Construction" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;margin-top:4px"/></div>
+              <div><label style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.08em">HQ</label><input value="Dubai, UAE" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;margin-top:4px"/></div>
+              <div><label style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.08em">SIZE</label><input value="201–500 employees" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;margin-top:4px"/></div>
+              <div><label style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.08em">WEBSITE</label><input value="https://yourcompany.ae" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;margin-top:4px"/></div>
+            </div>
+            <div><label style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.08em">ABOUT</label><textarea rows="4" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;margin-top:4px;font-family:inherit">A leading UAE-based contractor delivering megaproject delivery across Dubai &amp; Abu Dhabi.</textarea></div>
+            <div style="display:flex;gap:10px;justify-content:flex-end"><button class="btn btn-ghost">Preview</button><button class="btn btn-green">Save changes</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMPLOYER · BILLING & SPONSORSHIP -->
+    <section class="view" data-view="emp_billing">
+      <h2 style="font-size:22px;font-weight:800;margin-bottom:14px">Billing &amp; Sponsorship</h2>
+      <div class="kpi-row">
+        <div class="kpi b"><div><h3>Spend (this month)</h3><div class="num">AED 28.77</div><div class="sub">Apr 2026</div></div><div class="ico">💰</div></div>
+        <div class="kpi g"><div><h3>Active plan</h3><div class="num" style="font-size:22px">Growth</div><div class="sub">renews 23 May 2026</div></div><div class="ico">📦</div></div>
+        <div class="kpi o"><div><h3>Sponsored jobs</h3><div class="num">1</div><div class="sub">5.00 AED daily</div></div><div class="ico">⭐</div></div>
+      </div>
+      <div class="card" style="margin-top:18px">
+        <h3>Payment methods</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+          <div style="padding:14px 18px;border:1px solid var(--line);border-radius:8px;min-width:240px">
+            <div style="font-weight:700">Visa •••• 4421</div>
+            <div style="font-size:12px;color:var(--muted)">Expires 09/27 · primary</div>
+          </div>
+          <button class="btn btn-ghost" style="border:1px dashed var(--line)">+ Add payment method</button>
+        </div>
+      </div>
+      <div class="table-card" style="margin-top:18px">
+        <div class="table-head"><h2>Recent invoices</h2><button class="btn btn-ghost">Download all (PDF)</button></div>
+        <table>
+          <thead><tr><th>Invoice #</th><th>Date</th><th>Description</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>INV-26041</td><td>23 Apr 2026</td><td>Sponsorship · Chef Dubai (6 days)</td><td>AED 28.77</td><td><span class="badge hired">Paid</span></td><td><a href="#" style="color:var(--blue);font-weight:700">PDF</a></td></tr>
+            <tr><td>INV-26032</td><td>23 Mar 2026</td><td>Growth plan · monthly</td><td>AED 295.00</td><td><span class="badge hired">Paid</span></td><td><a href="#" style="color:var(--blue);font-weight:700">PDF</a></td></tr>
+            <tr><td>INV-26023</td><td>23 Feb 2026</td><td>Growth plan · monthly</td><td>AED 295.00</td><td><span class="badge hired">Paid</span></td><td><a href="#" style="color:var(--blue);font-weight:700">PDF</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- EMPLOYER · TOOLS & INTEGRATIONS -->
+    <section class="view" data-view="emp_tools">
+      <h2 style="font-size:22px;font-weight:800;margin-bottom:14px">Tools &amp; Integrations</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px" id="empToolsGrid"></div>
+    </section>
+
     <!-- Other admin views (lightweight stubs) -->
     <section class="view" data-view="plans"><div class="card"><h3>Package Plans</h3><p style="color:var(--muted);margin-top:6px">Manage employer subscription tiers (Starter / Growth / Enterprise) — pricing, job-post limits, featured-post quotas, support SLAs.</p></div></section>
     <section class="view" data-view="subs"><div class="card"><h3>Subscriptions</h3><p style="color:var(--muted);margin-top:6px">142 active employer subscriptions · AED 387,420 YTD revenue · auto-renewal, billing history, invoices.</p></div></section>
@@ -465,18 +687,36 @@ function showApp(name){
   // Detect role from /fastlink/index.html login flow
   let role='admin';
   try{const s=JSON.parse(localStorage.getItem('fastlink_session')||'{}');if(s.role)role=s.role;}catch(e){}
-  // All roles see the full dashboard. Client/Employer additionally lands on My Jobs.
   document.body.setAttribute('data-role',role);
+  // Hide role-specific items by default
+  document.querySelectorAll('nav.side a[data-cand-only]').forEach(a=>a.style.display='none');
+  document.querySelectorAll('nav.side a[data-emp-only]').forEach(a=>a.style.display='none');
+
   if(role==='client'){
     document.querySelector('.user-chip .rl').textContent='Employer · UAE';
+    document.querySelectorAll('nav.side a[data-emp-only]').forEach(a=>a.style.display='');
     document.querySelectorAll('nav.side a').forEach(b=>b.classList.remove('on'));
-    const empLink=document.querySelector('nav.side a[data-view="emp_jobs"]');
-    if(empLink) empLink.classList.add('on');
+    document.querySelector('nav.side a[data-view="emp_jobs"]').classList.add('on');
     document.querySelectorAll('.view').forEach(s=>s.classList.remove('on'));
     document.querySelector('.view[data-view="emp_jobs"]').classList.add('on');
     document.getElementById('topTitle').textContent='My Jobs';
   } else if(role==='candidate'){
     document.querySelector('.user-chip .rl').textContent='Job Seeker · UAE';
+    // Job Seeker: ONLY Find Jobs + Log out — no admin dashboards
+    document.querySelectorAll('nav.side a[data-view]').forEach(a=>{
+      a.style.display = (a.dataset.view==='js_home') ? '' : 'none';
+    });
+    document.querySelector('nav.side a[data-view="js_home"]').classList.add('on');
+    document.querySelectorAll('nav.side a:not([data-view])').forEach(a=>{
+      // keep Log out (only the logout anchor has onclick=logout)
+      if(!a.getAttribute('onclick')||!a.getAttribute('onclick').includes('logout')) a.style.display='none';
+    });
+    document.querySelectorAll('.menu-section').forEach(m=>m.style.display='none');
+    document.querySelectorAll('.view').forEach(s=>s.classList.remove('on'));
+    document.querySelector('.view[data-view="js_home"]').classList.add('on');
+    document.getElementById('topTitle').textContent='Find Jobs';
+    // Hide top search box (candidate has its own)
+    const ts=document.querySelector('.top .search'); if(ts) ts.style.display='none';
   }
   initData();
 }
@@ -636,6 +876,37 @@ function initData(){
     <thead><tr><th>S.N</th><th>Candidate</th><th>Job</th><th>Applied</th><th>Status</th></tr></thead>
     <tbody>${APPLICANTS.slice(0,6).map(a=>`<tr><td>${a.n}</td><td><div class="nm">${a.cand}</div><div class="em">${a.prof}</div></td><td>${a.job}</td><td>${a.date}</td><td><span class="badge ${a.st}">${a.st}</span></td></tr>`).join('')}</tbody>`;}
 
+  // Job Seeker portal
+  initJobSeeker();
+
+  // Employer · Candidates
+  const empCands=document.getElementById('tblEmpCandidates');
+  if(empCands){empCands.innerHTML=`
+    <thead><tr><th>Candidate</th><th>Job applied</th><th>Status</th><th>Match</th><th>Applied</th><th>Action</th></tr></thead>
+    <tbody>${APPLICANTS.map(a=>`<tr>
+      <td><div class="nm">${a.cand}</div><div class="em">${a.prof} · 📍 ${a.loc}</div></td>
+      <td>${a.job}</td>
+      <td><span class="badge ${a.st}">${a.st}</span></td>
+      <td><strong>${70+(a.n*3)%25}%</strong></td>
+      <td>${a.date}</td>
+      <td><button class="btn btn-ghost">View</button> <button class="btn btn-green">Message</button></td>
+    </tr>`).join('')}</tbody>`;}
+
+  // Employer · Tools & Integrations
+  const tools=[
+    ['Calendly','Auto-schedule interviews','📅'],
+    ['WhatsApp Business','Message candidates instantly','💬'],
+    ['HubSpot CRM','Sync candidates to pipeline','🔗'],
+    ['Slack','Notify team on new applicants','💼'],
+    ['Microsoft Teams','Interview directly in Teams','🟦'],
+    ['Workday / SuccessFactors','Push hires to HRIS','🏢'],
+    ['Zapier','5,000+ app automations','⚡'],
+    ['BambooHR','Onboarding handoff','🌱'],
+    ['LinkedIn Recruiter','Cross-post jobs','💼'],
+  ];
+  const tg=document.getElementById('empToolsGrid');
+  if(tg){tg.innerHTML=tools.map(t=>`<div class="card"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="font-size:28px">${t[2]}</div><button class="btn btn-ghost">Connect</button></div><h3 style="margin-top:10px">${t[0]}</h3><p style="color:var(--muted);font-size:13px;margin-top:4px">${t[1]}</p></div>`).join('');}
+
   // Categories
   document.getElementById('tblCats').innerHTML = `
     <thead><tr><th>ID</th><th>Image</th><th>Category Name</th><th>Featured</th><th>Status</th><th>Action</th></tr></thead>
@@ -644,6 +915,99 @@ function initData(){
       <td>${tog(c.feat)}</td><td>${tog(c.live)}</td><td>${actBtns()}</td>
     </tr>`).join('')}</tbody>`;
 }
+
+/* ============================================================
+   JOB SEEKER PORTAL
+   ============================================================ */
+const JS_OPEN_JOBS = [
+  {id:201,title:'Senior Civil Engineer (Megaproject)',co:'Quartz Construction',city:'Abu Dhabi',sal:'AED 28k–35k',exp:'10+ yrs',type:'Full-time',posted:'2 days ago',tags:['PMP','FIDIC','MEP']},
+  {id:202,title:'Hotel Operations Manager — 5★',co:'Halcyon Hospitality',city:'Dubai',sal:'AED 22k–28k',exp:'8+ yrs',type:'Full-time',posted:'4 days ago',tags:['Pre-opening','Opera','F&B']},
+  {id:203,title:'ICU Registered Nurse (DOH)',co:'Cedar Healthcare',city:'Abu Dhabi',sal:'AED 14k–18k',exp:'5+ yrs',type:'Full-time',posted:'1 day ago',tags:['DOH','BLS','ACLS']},
+  {id:204,title:'Full-Stack Developer (Node + React)',co:'Northwind Logistics',city:'JAFZA',sal:'AED 22k–28k',exp:'5+ yrs',type:'Full-time',posted:'today',tags:['Node','React','AWS']},
+  {id:205,title:'MEP Site Engineer',co:'BluePeak Engineering',city:'Dubai',sal:'AED 18k–22k',exp:'4+ yrs',type:'Full-time',posted:'3 days ago',tags:['MEP','HVAC','Revit']},
+  {id:206,title:'Bilingual Executive Assistant',co:'Mira Retail Group',city:'Dubai',sal:'AED 16k–20k',exp:'6+ yrs',type:'Full-time',posted:'today',tags:['EN/AR','C-suite']},
+  {id:207,title:'Logistics Coordinator',co:'Northwind Logistics',city:'JAFZA',sal:'AED 9k–12k',exp:'3+ yrs',type:'Full-time',posted:'5 days ago',tags:['Customs','SAP']},
+  {id:208,title:'Retail Supervisor — Dubai Mall',co:'Mira Retail Group',city:'Dubai',sal:'AED 7.5k–9.5k',exp:'3+ yrs',type:'Full-time',posted:'2 days ago',tags:['Luxury','POS']},
+  {id:209,title:'Procurement Manager (MEP)',co:'Helios Energy Services',city:'Mussafah',sal:'AED 30k–38k',exp:'10+ yrs',type:'Full-time',posted:'6 days ago',tags:['MEP','FIDIC']},
+  {id:210,title:'Site Foreman (Concrete)',co:'Quartz Construction',city:'Abu Dhabi',sal:'AED 9.5k–12k',exp:'10+ yrs',type:'Full-time',posted:'1 week ago',tags:['HSE','Concrete']},
+  {id:211,title:'Sales Executive (B2B SaaS)',co:'Aurum Properties',city:'Dubai',sal:'AED 14k + comm',exp:'3+ yrs',type:'Full-time',posted:'today',tags:['SaaS','Bilingual']},
+  {id:212,title:'F&B Manager — Marina',co:'Vantage F&B',city:'Dubai',sal:'AED 14k–18k',exp:'6+ yrs',type:'Full-time',posted:'4 days ago',tags:['F&B','Mgmt']},
+];
+function jsState(){try{return JSON.parse(localStorage.getItem('fl_js_state')||'{"apps":[],"cv":null,"history":[]}');}catch(e){return {apps:[],cv:null,history:[]};}}
+function jsSave(s){try{localStorage.setItem('fl_js_state',JSON.stringify(s));}catch(e){}}
+function initJobSeeker(){
+  const s=jsState();
+  // Greeting
+  let first='Job Seeker';
+  try{const sess=JSON.parse(localStorage.getItem('fastlink_session')||'{}');if(sess.first)first=sess.first;else if(sess.email)first=sess.email.split('@')[0];}catch(e){}
+  const hello=document.getElementById('jsHello'); if(hello) hello.textContent='Welcome, '+first;
+  // CV status
+  if(s.cv){const el=document.getElementById('jsCvStat');if(el){el.textContent='Uploaded';document.getElementById('jsCvSub').textContent=s.cv.name+' · '+(s.cv.size/1024|0)+' KB';}}
+  document.getElementById('jsAppCount').textContent=s.apps.length;
+  jsRender(); jsRenderHistory();
+}
+function jsRender(){
+  const tbl=document.getElementById('tblJsJobs'); if(!tbl) return;
+  const q=(document.getElementById('jsSearch')?.value||'').toLowerCase().trim();
+  const city=document.getElementById('jsCity')?.value||'';
+  const s=jsState();
+  const rows=JS_OPEN_JOBS.filter(j=>{
+    if(city && j.city!==city) return false;
+    if(!q) return true;
+    return (j.title+' '+j.co+' '+j.tags.join(' ')+' '+j.city).toLowerCase().includes(q);
+  });
+  if(q){
+    if(!s.history.some(h=>h.q===q && h.city===city)){s.history.unshift({q,city,at:new Date().toLocaleString(),hits:rows.length});s.history=s.history.slice(0,20);jsSave(s);jsRenderHistory();}
+  }
+  tbl.innerHTML=`
+    <thead><tr><th>Job</th><th>Company</th><th>Location</th><th>Salary</th><th>Experience</th><th>Posted</th><th>Action</th></tr></thead>
+    <tbody>${rows.map(j=>{
+      const applied=s.apps.some(a=>a.id===j.id);
+      return `<tr>
+        <td><div class="nm">${j.title}</div><div class="em">${j.tags.map(t=>`<span class="badge live" style="margin-right:4px">${t}</span>`).join('')}</div></td>
+        <td>${j.co}</td><td>📍 ${j.city}</td><td>${j.sal}</td><td>${j.exp}</td><td>${j.posted}</td>
+        <td>${applied
+          ? '<span class="badge hired">Applied ✓</span>'
+          : `<button class="btn btn-green" onclick="jsApply(${j.id})">Apply →</button>`}</td>
+      </tr>`;
+    }).join('')}</tbody>`;
+  if(!rows.length) tbl.innerHTML+='<tbody><tr><td colspan="7" style="padding:30px;text-align:center;color:var(--muted)">No jobs match your search.</td></tr></tbody>';
+}
+function jsApply(id){
+  const j=JS_OPEN_JOBS.find(x=>x.id===id); if(!j) return;
+  const s=jsState();
+  if(!s.cv){alert('📎 Please upload your CV first (button at top).');return;}
+  if(s.apps.some(a=>a.id===id)){alert('Already applied.');return;}
+  s.apps.unshift({id,title:j.title,co:j.co,at:new Date().toLocaleString(),status:'Applied'});
+  s.history.unshift({q:'[Applied] '+j.title,city:j.city,at:new Date().toLocaleString(),hits:1});
+  s.history=s.history.slice(0,20);
+  jsSave(s);
+  document.getElementById('jsAppCount').textContent=s.apps.length;
+  alert('✅ Application submitted to '+j.co+' for '+j.title+'.');
+  jsRender(); jsRenderHistory();
+}
+function jsUpload(input){
+  const f=input.files[0]; if(!f) return;
+  if(f.size>5*1024*1024){alert('CV must be under 5 MB.');return;}
+  const s=jsState();
+  s.cv={name:f.name,size:f.size,at:new Date().toLocaleString()};
+  jsSave(s);
+  document.getElementById('jsCvStat').textContent='Uploaded';
+  document.getElementById('jsCvSub').textContent=f.name+' · '+(f.size/1024|0)+' KB';
+  alert('✅ CV uploaded: '+f.name);
+}
+function jsRenderHistory(){
+  const tbl=document.getElementById('tblJsHistory'); if(!tbl) return;
+  const s=jsState();
+  if(!s.history.length){tbl.innerHTML='<tbody><tr><td style="padding:30px;text-align:center;color:var(--muted)">No history yet — your searches and applications will appear here.</td></tr></tbody>';return;}
+  tbl.innerHTML=`
+    <thead><tr><th>Activity</th><th>Filter</th><th>When</th><th>Result</th></tr></thead>
+    <tbody>${s.history.map(h=>`<tr>
+      <td>${h.q.startsWith('[Applied]')?`<span class="badge applied">Applied</span> ${h.q.replace('[Applied] ','')}`:`🔍 ${h.q}`}</td>
+      <td>${h.city||'All emirates'}</td><td>${h.at}</td><td>${h.hits} ${h.hits===1?'match':'matches'}</td>
+    </tr>`).join('')}</tbody>`;
+}
+function jsClearHistory(){if(confirm('Clear search & application history?')){const s=jsState();s.history=[];jsSave(s);jsRenderHistory();}}
 </script>
 </body>
 </html>
